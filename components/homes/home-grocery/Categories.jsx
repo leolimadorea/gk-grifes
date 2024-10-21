@@ -12,7 +12,7 @@ export default function Categories() {
       <div className="container">
         <div className="flat-title flex-row justify-content-between px-0">
           <span className="title fw-6 wow fadeInUp" data-wow-delay="0s">
-            Featured Categories
+            Produtos{" "}
           </span>
           <div className="box-sw-navigation">
             <div className="sw-dots style-2 medium sw-pagination-recent justify-content-center scpd1" />
@@ -42,8 +42,8 @@ export default function Categories() {
                     data-src={slide.imgSrc}
                     alt={slide.imgAlt}
                     src={slide.imgSrc}
-                    width={124}
-                    height={124}
+                    width={134}
+                    height={134}
                   />
                 </Link>
                 <div className="collection-content text-center">

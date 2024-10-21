@@ -13,6 +13,7 @@ import Products2 from "@/components/homes/home-paddle-boards/Products2";
 import Testimonials from "@/components/homes/home-paddle-boards/Testimonials";
 import React from "react";
 import Footer2 from "@/components/footers/Footer2";
+import Header18 from "@/components/headers/Header18";
 
 export const metadata = {
   title: "Home Paddle Boards || Ecomus - Ultimate Nextjs Ecommerce Template",
@@ -22,7 +23,7 @@ export default function page() {
   return (
     <>
       <Topbar2 bgColor="bg_blue-6" />
-      <Header12 />
+      <Header18 />
       <Hero /> <Features />
       <Products />
       <Collections />

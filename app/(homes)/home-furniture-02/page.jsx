@@ -1,4 +1,5 @@
 import Footer1 from "@/components/footers/Footer1";
+import Header18 from "@/components/headers/Header18";
 import Header2 from "@/components/headers/Header2";
 import Topbar1 from "@/components/headers/Topbar1";
 import Collections from "@/components/homes/home-furniture-02/Collections";
@@ -17,7 +18,7 @@ export default function page() {
   return (
     <>
       <Topbar1 />
-      <Header2 />
+      <Header18 />
       <Hero />
       <Collections />
       <Features />

@@ -1,5 +1,6 @@
 import Features from "@/components/common/Features2";
 import Footer4 from "@/components/footers/Footer4";
+import Header18 from "@/components/headers/Header18";
 import Header5 from "@/components/headers/Header5";
 import Banner from "@/components/homes/home-jewerly/Banner";
 import Categories from "@/components/homes/home-jewerly/Categories";
@@ -19,7 +20,7 @@ export default function page() {
   return (
     <>
       <div className="color-primary-4">
-        <Header5 isArrow={false} uppercase Linkfs="fs-14" />
+        <Header18 isArrow={false} uppercase Linkfs="fs-14" />
         <Hero /> <Categories />
         <Products />
         <Collections />

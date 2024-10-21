@@ -1,4 +1,5 @@
 import Footer6 from "@/components/footers/Footer6";
+import Header18 from "@/components/headers/Header18";
 import Header6 from "@/components/headers/Header6";
 import BannerCollections from "@/components/homes/home-handbag/BannerCollections";
 import Collections from "@/components/homes/home-handbag/Collections";
@@ -18,7 +19,7 @@ export const metadata = {
 export default function page() {
   return (
     <>
-      <Header6 isArrow={false} uppercase />
+      <Header18 isArrow={false} uppercase />
       <Hero />
       <Marquee />
       <Testimonials />

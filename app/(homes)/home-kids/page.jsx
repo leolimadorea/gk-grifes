@@ -1,5 +1,6 @@
 import Footer1 from "@/components/footers/Footer1";
 import Header17 from "@/components/headers/Header17";
+import Header18 from "@/components/headers/Header18";
 import CollectionBanner from "@/components/homes/home-kids/CollectionBanner";
 import Collections from "@/components/homes/home-kids/Collections";
 import Features from "@/components/homes/home-kids/Features";
@@ -20,7 +21,7 @@ export default function page() {
   return (
     <>
       <Announcment />
-      <Header17 />
+      <Header18 />
       <Hero />
       <Products />
       <Collections />

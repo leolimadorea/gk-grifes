@@ -1,18 +1,10 @@
 export const footerLinks = [
-  { href: "/privacy-policy", text: "Privacy Policy" },
-  { href: "/delivery-return", text: "Returns + Exchanges" },
-  { href: "/shipping-delivery", text: "Shipping" },
-  { href: "/terms-conditions", text: "Terms & Conditions" },
-  { href: "/faq-1", text: "FAQ’s" },
-  { href: "/compare", text: "Compare" },
-  { href: "/wishlist", text: "My Wishlist" },
+  { text: "Segunda a Sábado das 7:00 ás 21:00" },
+  { text: "Domingo e Feriados das 8:00 ás 16:00" },
 ];
 export const aboutLinks = [
-  { href: "/about-us", text: "Our Story" },
-  { href: "/our-store", text: "Visit Our Store" },
-  { href: "/contact-1", text: "Contact Us" },
-  { href: "/about-us", text: "About Us" },
-  { href: "/login", text: "Account" },
+  { title: "Telefone Fixo ", text: "(11) 23641485" },
+  { title: "Whatsapp ", text: "(11) 94934-3750" },
 ];
 export const paymentImages = [
   { src: "/images/payments/visa.png", width: 48, height: 30, alt: "" },

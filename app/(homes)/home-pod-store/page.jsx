@@ -12,6 +12,7 @@ import Testimonials from "@/components/homes/home-pod-store/Testimonials";
 import Brands from "@/components/homes/home-pod-store/Brands";
 import React from "react";
 import Footer1 from "@/components/footers/Footer1";
+import Header18 from "@/components/headers/Header18";
 
 export const metadata = {
   title: "Home Pod Store || Ecomus - Ultimate Nextjs Ecommerce Template",
@@ -21,7 +22,7 @@ export default function page() {
   return (
     <>
       <Topbar1 />
-      <Header2 />
+      <Header18 />
       <Hero />
       <Categories />
       <Collections />

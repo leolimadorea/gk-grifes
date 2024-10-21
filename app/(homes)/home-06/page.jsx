@@ -10,6 +10,7 @@ import Products from "@/components/homes/home-6/Products";
 import Location from "@/components/homes/home-6/Location";
 import React from "react";
 import Announcmentbar from "@/components/common/Announcmentbar";
+import Header18 from "@/components/headers/Header18";
 
 export const metadata = {
   title: "Home 6 || Ecomus - Ultimate Nextjs Ecommerce Template",
@@ -19,7 +20,7 @@ export default function page() {
   return (
     <>
       <Announcmentbar />
-      <Header4 />
+      <Header18 />
       <Hero />
       <Categories />
       <Products />

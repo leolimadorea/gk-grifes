@@ -1,5 +1,6 @@
 import Features from "@/components/common/Features2";
 import Footer2 from "@/components/footers/Footer2";
+import Header18 from "@/components/headers/Header18";
 import Header2 from "@/components/headers/Header2";
 import Topbar2 from "@/components/headers/Topbar2";
 import Banner from "@/components/homes/home-glasses/Banner";
@@ -21,7 +22,7 @@ export default function page() {
       <div className="color-primary-6">
         <Topbar2 bgColor="bg_dark" />
 
-        <Header2 uppercase />
+        <Header18 uppercase />
 
         <Hero />
         <Banner />

@@ -1,4 +1,5 @@
 import Footer2 from "@/components/footers/Footer2";
+import Header18 from "@/components/headers/Header18";
 import Header9 from "@/components/headers/Header9";
 import Announcment from "@/components/homes/home-stroller/Announcment";
 import Banner from "@/components/homes/home-stroller/Banner";
@@ -20,7 +21,7 @@ export default function page() {
   return (
     <>
       <Announcment />
-      <Header9 />
+      <Header18 />
       <Hero />
       <Features />
       <Categories />

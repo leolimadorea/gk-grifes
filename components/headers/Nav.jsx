@@ -17,7 +17,7 @@ import {
 } from "@/data/menu";
 import { usePathname } from "next/navigation";
 
-export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
+export default function Nav({ isArrow = false, textColor = "", Linkfs = "" }) {
   const pathname = usePathname();
   const isMenuActive = (menuItem) => {
     let active = false;
@@ -64,7 +64,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
       {" "}
       <li className="menu-item">
         <a
-          href="#"
+          href="/home-grocery"
           className={`item-link ${Linkfs} ${textColor} ${
             isMenuActive(allHomepages) ? "activeMenu" : ""
           } `}
@@ -72,60 +72,10 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
           Home
           {isArrow ? <i className="icon icon-arrow-down" /> : ""}
         </a>
-        <div className="sub-menu mega-menu">
-          <div className="container">
-            <div className="row-demo">
-              {demoItems.map((item, index) => (
-                <div
-                  className={`demo-item ${
-                    isMenuActive(item) ? "activeMenu" : ""
-                  } `}
-                  key={index}
-                >
-                  <Link href={item.href}>
-                    <div className="demo-image position-relative">
-                      <Image
-                        className="lazyload"
-                        data-src={item.src}
-                        alt={item.alt}
-                        src={item.src}
-                        width="300"
-                        height="329"
-                      />
-                      {item.labels && (
-                        <div className="demo-label">
-                          {item.labels.map((label, labelIndex) => (
-                            <span
-                              key={labelIndex}
-                              className={label.className || undefined}
-                            >
-                              {label.text}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                    <span className="demo-name">{item.name}</span>
-                  </Link>
-                </div>
-              ))}
-            </div>
-            <div className="text-center view-all-demo">
-              <a
-                href="#modalDemo"
-                data-bs-toggle="modal"
-                className="tf-btn btn-xl btn-fill radius-3 animate-hover-btn fw-6"
-              >
-                <span>View all demos (34+)</span>
-                <i className="icon icon-arrow-right" />
-              </a>
-            </div>
-          </div>
-        </div>
       </li>
       <li className="menu-item">
         <a
-          href="#"
+          href="shop-default"
           className={`item-link ${Linkfs} ${textColor} ${
             isMenuActive(productsPages) ? "activeMenu" : ""
           } `}
@@ -133,7 +83,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
           Shop
           {isArrow ? <i className="icon icon-arrow-down" /> : ""}
         </a>
-        <div className="sub-menu mega-menu">
+        {/* <div className="sub-menu mega-menu">
           <div className="container">
             <div className="row">
               {productsPages.map((menu, index) => (
@@ -215,7 +165,7 @@ export default function Nav({ isArrow = true, textColor = "", Linkfs = "" }) {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </li>
       <li className="menu-item">
         <a

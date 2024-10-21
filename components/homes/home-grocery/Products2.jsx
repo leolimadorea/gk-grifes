@@ -31,7 +31,7 @@ export default function Products2() {
               className="title text-nowrap fw-6 wow fadeInUp"
               data-wow-delay="0s"
             >
-              Popular products
+              Produtos Populares{" "}
             </span>
             <ul className="widget-tab-5" role="tablist">
               {tabs.map((tab, index) => (

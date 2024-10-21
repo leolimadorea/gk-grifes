@@ -251,10 +251,18 @@
 
 .collection-item-circle {
   position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 140px;
+  border-radius: 20px;
+  overflow: hidden;
   .collection-image {
-    border-radius: 50%;
-    overflow: hidden;
+    border-radius: 10%;
+    width: 100%;
+    height: 55%;
     display: block;
+    object-fit: cover;
   }
   .collection-content {
     margin-top: 15px;
@@ -463,9 +471,15 @@
 
 .tf-sw-collection {
   .swiper-slide {
-    height: auto;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px;
     img {
+      width: 100%;
       height: 100%;
+      object-fit: contain;
     }
   }
 }

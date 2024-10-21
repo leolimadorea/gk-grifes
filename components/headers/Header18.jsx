@@ -38,7 +38,7 @@ export default function Header18() {
                 <Image
                   alt="logo"
                   className="logo"
-                  src="/images/logo/logo-blue2.svg"
+                  src="/images/logo/logo.png"
                   width={137}
                   height={22}
                 />

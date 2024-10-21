@@ -28,8 +28,8 @@ export default function Hero() {
                   data-src={slide.imgSrc}
                   alt={slide.imgAlt}
                   src={slide.imgSrc}
-                  width={slide.imgWidth}
-                  height={slide.imgHeight}
+                  layout="fill"
+                  objectFit="cover"
                 />
                 <div className="box-content">
                   <div className="container">

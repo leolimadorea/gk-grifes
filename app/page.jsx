@@ -3,6 +3,7 @@ import ShopGram from "@/components/common/ShopGram";
 import Testimonials from "@/components/common/Testimonials";
 import Footer1 from "@/components/footers/Footer1";
 import Header1 from "@/components/headers/Header1";
+import Header18 from "@/components/headers/Header18";
 import Topbar1 from "@/components/headers/Topbar1";
 import Brands from "@/components/homes/home-1/Brands";
 
@@ -21,7 +22,7 @@ export default function Home() {
   return (
     <>
       <Topbar1 />
-      <Header1 />
+      <Header18 />
       <Hero />
       <Marquee />
       <Categories />

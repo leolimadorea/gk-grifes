@@ -8,6 +8,7 @@ import React from "react";
 import Link from "next/link";
 import SliderWithGalleryPopup from "@/components/shopDetails/sliders/SliderWithGalleryPopup";
 import DetailsPopup from "@/components/shopDetails/DetailsPopup";
+import Header18 from "@/components/headers/Header18";
 export const metadata = {
   title:
     "Product Photoswipe Popup || Ecomus - Ultimate Nextjs Ecommerce Template",
@@ -16,7 +17,7 @@ export const metadata = {
 export default function page() {
   return (
     <>
-      <Header2 />
+      <Header18 />
       <div className="tf-breadcrumb">
         <div className="container">
           <div className="tf-breadcrumb-wrap d-flex justify-content-between flex-wrap align-items-center">

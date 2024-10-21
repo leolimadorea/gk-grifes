@@ -8,6 +8,7 @@ import React from "react";
 import Link from "next/link";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
 import { allProducts } from "@/data/products";
+import Header18 from "@/components/headers/Header18";
 export const metadata = {
   title: "Shop Details || Ecomus - Ultimate Nextjs Ecommerce Template",
   description: "Ecomus - Ultimate Nextjs Ecommerce Template",
@@ -17,7 +18,7 @@ export default function page({ params }) {
     allProducts.filter((elm) => elm.id == params.id)[0] || allProducts[0];
   return (
     <>
-      <Header2 />
+      <Header18 />
       <div className="tf-breadcrumb">
         <div className="container">
           <div className="tf-breadcrumb-wrap d-flex justify-content-between flex-wrap align-items-center">

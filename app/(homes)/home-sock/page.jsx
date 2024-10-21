@@ -1,4 +1,5 @@
 import Footer1 from "@/components/footers/Footer1";
+import Header18 from "@/components/headers/Header18";
 import Header2 from "@/components/headers/Header2";
 import Banner from "@/components/homes/home-sock/Banner";
 import Collections from "@/components/homes/home-sock/Collections";
@@ -20,7 +21,7 @@ export default function page() {
   return (
     <>
       <div className="color-primary-7">
-        <Header2 isArrow={false} uppercase />
+        <Header18 isArrow={false} uppercase />
         <Hero /> <Marquee />
         <Features />
         <Collections />

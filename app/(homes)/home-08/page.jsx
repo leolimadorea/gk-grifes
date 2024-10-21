@@ -9,6 +9,7 @@ import Lookbook from "@/components/homes/home-8/Lookbook";
 import Marquee from "@/components/homes/home-8/Marquee";
 import Products from "@/components/homes/home-8/Products";
 import React from "react";
+import Header18 from "@/components/headers/Header18";
 
 export const metadata = {
   title: "Home 8 || Ecomus - Ultimate Nextjs Ecommerce Template",
@@ -18,7 +19,7 @@ export default function page() {
   return (
     <>
       <Announcement />
-      <Header6 />
+      <Header18 />
       <Hero />
       <Collection />
       <Products />

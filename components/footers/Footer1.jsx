@@ -68,7 +68,7 @@ export default function Footer1({ bgColor = "" }) {
                     <Link href={`/`}>
                       <Image
                         alt=""
-                        src="/images/logo/logo.svg"
+                        src="/images/logo/logo.png "
                         width="136"
                         height="21"
                       />
@@ -77,64 +77,29 @@ export default function Footer1({ bgColor = "" }) {
                   <ul>
                     <li>
                       <p>
-                        Address: 1234 Fashion Street, Suite 567, <br />
-                        New York, NY 10001
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Email: <a href="#">info@fashionshop.com</a>
-                      </p>
-                    </li>
-                    <li>
-                      <p>
-                        Phone: <a href="#">(212) 555-1234</a>
+                        Endereço: Rua João Fernandes Camisa Nova Júnior n808,{" "}
+                        <br />
+                        Jardim São Luís São Paulo
                       </p>
                     </li>
                   </ul>
-                  <Link href={`/contact-1`} className="tf-btn btn-line">
-                    Get direction
-                    <i className="icon icon-arrow1-top-left" />
-                  </Link>
+
                   <ul className="tf-social-icon d-flex gap-10">
                     <li>
                       <a
-                        href="#"
+                        href="https://www.facebook.com/bifarmasaoluis/?_rdc=1&_rdr"
                         className="box-icon w_34 round social-facebook social-line"
                       >
                         <i className="icon fs-14 icon-fb" />
                       </a>
                     </li>
+
                     <li>
                       <a
-                        href="#"
-                        className="box-icon w_34 round social-twiter social-line"
-                      >
-                        <i className="icon fs-12 icon-Icon-x" />
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
+                        href="https://www.instagram.com/drogaria_vivamais/"
                         className="box-icon w_34 round social-instagram social-line"
                       >
                         <i className="icon fs-14 icon-instagram" />
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="box-icon w_34 round social-tiktok social-line"
-                      >
-                        <i className="icon fs-14 icon-tiktok" />
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="box-icon w_34 round social-pinterest social-line"
-                      >
-                        <i className="icon fs-14 icon-pinterest-1" />
                       </a>
                     </li>
                   </ul>
@@ -142,34 +107,29 @@ export default function Footer1({ bgColor = "" }) {
               </div>
               <div className="col-xl-3 col-md-6 col-12 footer-col-block">
                 <div className="footer-heading footer-heading-desktop">
-                  <h6>Help</h6>
+                  <h6>Horário de Funcionamento</h6>
                 </div>
                 <div className="footer-heading footer-heading-moblie">
-                  <h6>Help</h6>
+                  <h6>Horário de Funcionamento</h6>
                 </div>
                 <ul className="footer-menu-list tf-collapse-content">
                   {footerLinks.map((link, index) => (
-                    <li key={index}>
-                      <Link href={link.href} className="footer-menu_item">
-                        {link.text}
-                      </Link>
-                    </li>
+                    <li key={index}>{link.text}</li>
                   ))}
                 </ul>
               </div>
               <div className="col-xl-3 col-md-6 col-12 footer-col-block">
                 <div className="footer-heading footer-heading-desktop">
-                  <h6>About us</h6>
+                  <h6>Fale Conosco</h6>
                 </div>
                 <div className="footer-heading footer-heading-moblie">
-                  <h6>About us</h6>
+                  <h6>Fale Conosco</h6>
                 </div>
                 <ul className="footer-menu-list tf-collapse-content">
                   {aboutLinks.slice(0, 4).map((link, index) => (
                     <li key={index}>
-                      <Link href={link.href} className="footer-menu_item">
-                        {link.text}
-                      </Link>
+                      <h6> {link.title}</h6>
+                      {link.text}
                     </li>
                   ))}
                 </ul>
@@ -177,12 +137,22 @@ export default function Footer1({ bgColor = "" }) {
               <div className="col-xl-3 col-md-6 col-12">
                 <div className="footer-newsletter footer-col-block">
                   <div className="footer-heading footer-heading-desktop">
-                    <h6>Sign Up for Email</h6>
+                    <h6>Métodos de pagamento</h6>
                   </div>
                   <div className="footer-heading footer-heading-moblie">
-                    <h6>Sign Up for Email</h6>
+                    <h6>Métodos de pagamento</h6>
                   </div>
-                  <div className="tf-collapse-content">
+                  <div className="tf-payment">
+                    <Image
+                      src="/images/payments/metodoPag.webp"
+                      alt="Método de Pagamento"
+                      width={150}
+                      height={50}
+                      layout="fixed"
+                      objectFit="contain"
+                    />
+                  </div>
+                  {/* <div className="tf-collapse-content">
                     <div className="footer-menu_item">
                       Sign up to get first dibs on new arrivals, sales,
                       exclusive content, events and more!
@@ -245,7 +215,7 @@ export default function Footer1({ bgColor = "" }) {
                         <LanguageSelect />
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -257,19 +227,7 @@ export default function Footer1({ bgColor = "" }) {
               <div className="col-12">
                 <div className="footer-bottom-wrap d-flex gap-20 flex-wrap justify-content-between align-items-center">
                   <div className="footer-menu_item">
-                    © {new Date().getFullYear()} Ecomus Store. All Rights
-                    Reserved
-                  </div>
-                  <div className="tf-payment">
-                    {paymentImages.map((image, index) => (
-                      <Image
-                        key={index}
-                        src={image.src}
-                        width={image.width}
-                        height={image.height}
-                        alt={image.alt}
-                      />
-                    ))}
+                    <p>© {new Date().getFullYear()} DROGARIA VIVAMAIS</p>
                   </div>
                 </div>
               </div>

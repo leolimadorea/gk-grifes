@@ -52,7 +52,7 @@ export default function Collections() {
                       <button
                         className={`tf-btn style-3 ${slide.buttonClass} radius-60 animate-hover-btn`}
                       >
-                        Shop now
+                        Comprar Agora
                       </button>
                     </div>
                   </div>

@@ -1,5 +1,6 @@
 import Footer1 from "@/components/footers/Footer1";
 import Header15 from "@/components/headers/Header15";
+import Header18 from "@/components/headers/Header18";
 import Header9 from "@/components/headers/Header9";
 import Topbar1 from "@/components/headers/Topbar1";
 import Brands from "@/components/homes/home-1/Brands";
@@ -21,7 +22,7 @@ export default function page() {
   return (
     <>
       <Topbar1 />
-      <Header15 />
+      <Header18 />
       <Hero />
       <Categories />
       <Brands />

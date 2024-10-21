@@ -10,6 +10,7 @@ import Link from "next/link";
 import ProductSidebar from "@/components/modals/ProductSidebar";
 import SidebarToggler from "@/components/shopDetails/SidebarToggler";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
+import Header18 from "@/components/headers/Header18";
 export const metadata = {
   title: "Shop Drawer Sidebar || Ecomus - Ultimate Nextjs Ecommerce Template",
   description: "Ecomus - Ultimate Nextjs Ecommerce Template",
@@ -17,7 +18,7 @@ export const metadata = {
 export default function page() {
   return (
     <>
-      <Header2 />
+      <Header18 />
       <div className="tf-breadcrumb">
         <div className="container">
           <div className="tf-breadcrumb-wrap d-flex justify-content-between flex-wrap align-items-center">

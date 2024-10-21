@@ -2,6 +2,7 @@ import Announcmentbar from "@/components/common/Announcmentbar";
 import Features from "@/components/common/Features2";
 
 import Footer1 from "@/components/footers/Footer1";
+import Header18 from "@/components/headers/Header18";
 import Header4 from "@/components/headers/Header4";
 import Banner from "@/components/homes/home-kitchen-wear/Banner";
 import Categories from "@/components/homes/home-kitchen-wear/Categories";
@@ -22,7 +23,7 @@ export default function page() {
     <>
       <div className="color-primary-4">
         <Announcmentbar bgColor="bg_primary" />
-        <Header4 />
+        <Header18 />
         <Hero /> <Collections />
         <Products />
         <Banner />

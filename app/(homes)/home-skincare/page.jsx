@@ -14,6 +14,7 @@ import React from "react";
 import ShopGram from "@/components/homes/home-skincare/ShopGram";
 import Features from "@/components/homes/home-6/Features";
 import Footer1 from "@/components/footers/Footer1";
+import Header18 from "@/components/headers/Header18";
 
 export const metadata = {
   title: "Home Skincare || Ecomus - Ultimate Nextjs Ecommerce Template",
@@ -23,7 +24,7 @@ export default function page() {
   return (
     <>
       <Announcement />
-      <Header8 />
+      <Header18 />
       <Hero />
       <Products />
       <Banner />
