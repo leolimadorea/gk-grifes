@@ -50,12 +50,12 @@ export default function Header18() {
                   onSubmit={(e) => e.preventDefault()}
                   className="search-box"
                 >
-                  <input type="text" required placeholder="Search product" />
+                  <input type="text" required placeholder="Buscar Produto" />
                   <button className="tf-btn">
                     <i className="icon icon-search" />
                   </button>
                 </form>
-                <div className="search-suggests-results">
+                {/* <div className="search-suggests-results">
                   <div className="search-suggests-results-inner">
                     <ul>
                       {products44.map((product, index) => (
@@ -94,7 +94,7 @@ export default function Header18() {
                       ))}
                     </ul>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="col-md-4 col-3">
@@ -119,7 +119,7 @@ export default function Header18() {
                     <span className="text">Login</span>
                   </a>
                 </li>
-                <li className="nav-compare">
+                {/* <li className="nav-compare">
                   <Link
                     href={`/compare`}
                     className="nav-icon-item align-items-center gap-10"
@@ -127,8 +127,8 @@ export default function Header18() {
                     <i className="icon icon-compare" />
                     <span className="text">Compare</span>
                   </Link>
-                </li>
-                <li className="nav-wishlist">
+                </li> */}
+                {/* <li className="nav-wishlist">
                   <Link
                     href={`/wishlist`}
                     className="nav-icon-item align-items-center gap-10"
@@ -136,7 +136,7 @@ export default function Header18() {
                     <i className="icon icon-heart" />
                     <span className="text">Wishlist</span>
                   </Link>
-                </li>
+                </li> */}
                 <li className="nav-cart cart-lg">
                   <a
                     href="#shoppingCart"
@@ -172,9 +172,9 @@ export default function Header18() {
                       fill="currentColor"
                     />
                   </svg>
-                  Browse All Categories
+                  Todas As Categorias
                 </a>
-                <div className="list-categories-inner toolbar-shop-mobile">
+                {/* <div className="list-categories-inner toolbar-shop-mobile">
                   <ul className="nav-ul-mb" id="wrapper-menu-navigation">
                     <li className="nav-mb-item">
                       <Link
@@ -530,19 +530,19 @@ export default function Header18() {
                       <i className="icon icon-arrow1-top-left" />
                     </Link>
                   </div>
-                </div>
+                </div> */}
               </div>
               <nav className="box-navigation text-center">
                 <ul className="box-nav-ul d-flex align-items-center justify-content-center gap-30">
                   <Nav />
-                  <li className="menu-item">
+                  {/* <li className="menu-item">
                     <a
                       href="https://themeforest.net/item/ecomus-ultimate-html5-template/53417990?s_rank=3"
                       className="item-link"
                     >
                       Buy now
                     </a>
-                  </li>
+                  </li> */}
                 </ul>
               </nav>
             </div>
@@ -577,9 +577,9 @@ export default function Header18() {
               </div>
               <div className="number d-grid">
                 <a href="tel:1900100888" className="phone">
-                  1900100888
+                  (11) 94934-3750
                 </a>
-                <span className="fw-5 text">Support Center</span>
+                <span className="fw-5 text">Cliente Suporte</span>
               </div>
             </div>
           </div>

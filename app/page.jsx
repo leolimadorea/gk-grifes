@@ -29,7 +29,7 @@ export default function page() {
   return (
     <>
       <div className="color-primary-8 color-main-text-2">
-        <Topbar4 />
+        {/* <Topbar4 /> */}
         <Header18 />
         <Hero />
         <Categories />

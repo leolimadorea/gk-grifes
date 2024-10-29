@@ -1,11 +1,7 @@
-import { products1 } from "@/data/products";
 import React from "react";
 import { ProductCard } from "../shopCards/ProductCard";
 
-export default function ProductGrid({
-  gridItems = 4,
-  allproducts = products1,
-}) {
+export default function ProductGrid({ gridItems = 4, allproducts }) {
   return (
     <>
       <div
@@ -16,14 +12,13 @@ export default function ProductGrid({
           marginBottom: "24px",
         }}
       >
-        {allproducts.length} product(s) found
+        {allproducts.length} produtos
       </div>
-      <div className="grid-layout wrapper-shop" data-grid={`grid-${gridItems}`}>
-        {/* card product 1 */}
-        {allproducts.map((elm, i) => (
-          <ProductCard product={elm} key={i} />
+      <div className={`grid-layout wrapper-shop grid-${gridItems}`}>
+        {allproducts.map((product, i) => (
+          <ProductCard product={product} key={product.id} />
         ))}
-      </div>{" "}
+      </div>
     </>
   );
 }

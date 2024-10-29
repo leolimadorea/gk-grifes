@@ -1,15 +1,18 @@
 "use client";
 import { layouts } from "@/data/shop";
 import ProductGrid from "./ProductGrid";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Pagination from "../common/Pagination";
 import ShopFilter from "./ShopFilter";
 import Sorting from "./Sorting";
 
-export default function ShopDefault() {
+export default function ShopDefault({ products }) {
   const [gridItems, setGridItems] = useState(4);
-  const [products, setProducts] = useState([]);
   const [finalSorted, setFinalSorted] = useState([]);
+
+  useEffect(() => {
+    setFinalSorted(products);
+  }, [products]);
   return (
     <>
       <section className="flat-spacing-2">
@@ -31,7 +34,7 @@ export default function ShopDefault() {
                 <li
                   key={index}
                   className={`tf-view-layout-switch ${layout.className} ${
-                    gridItems == layout.dataValueGrid ? "active" : ""
+                    gridItems === layout.dataValueGrid ? "active" : ""
                   }`}
                   onClick={() => setGridItems(layout.dataValueGrid)}
                 >
@@ -49,6 +52,7 @@ export default function ShopDefault() {
           </div>
           <div className="wrapper-control-shop">
             <div className="meta-filter-shop" />
+            {/* Passa os produtos para ProductGrid */}
             <ProductGrid allproducts={finalSorted} gridItems={gridItems} />
             {/* pagination */}
             {finalSorted.length ? (
@@ -61,7 +65,7 @@ export default function ShopDefault() {
           </div>
         </div>
       </section>
-      <ShopFilter setProducts={setProducts} />
+      <ShopFilter setProducts={setFinalSorted} />
     </>
   );
 }

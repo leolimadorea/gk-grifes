@@ -167,7 +167,7 @@ export default function Nav({ isArrow = false, textColor = "", Linkfs = "" }) {
           </div>
         </div> */}
       </li>
-      <li className="menu-item">
+      {/* <li className="menu-item">
         <a
           href="#"
           className={`item-link ${Linkfs} ${textColor}  ${
@@ -235,8 +235,8 @@ export default function Nav({ isArrow = false, textColor = "", Linkfs = "" }) {
             </div>
           </div>
         </div>
-      </li>
-      <li className="menu-item position-relative">
+      </li> */}
+      {/* <li className="menu-item position-relative">
         <a
           href="#"
           className={`item-link ${Linkfs} ${textColor}  ${
@@ -305,8 +305,8 @@ export default function Nav({ isArrow = false, textColor = "", Linkfs = "" }) {
             ))}
           </ul>
         </div>
-      </li>
-      <li className="menu-item position-relative">
+      </li> */}
+      {/* <li className="menu-item position-relative">
         <a
           href="#"
           className={`item-link ${Linkfs} ${textColor}  ${
@@ -332,7 +332,7 @@ export default function Nav({ isArrow = false, textColor = "", Linkfs = "" }) {
             ))}
           </ul>
         </div>
-      </li>
+      </li> */}
     </>
   );
 }

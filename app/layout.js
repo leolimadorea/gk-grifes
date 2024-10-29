@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import "../public/scss/main.scss";
 import "photoswipe/dist/photoswipe.css";
 import "rc-slider/assets/index.css";
-import HomesModal from "@/components/modals/HomesModal";
-import Context from "@/context/Context";
+import Context from "../context/Context.jsx";
+
 import QuickView from "@/components/modals/QuickView";
 import ProductSidebar from "@/components/modals/ProductSidebar";
 import QuickAdd from "@/components/modals/QuickAdd";
@@ -163,8 +163,8 @@ export default function RootLayout({ children }) {
           {showChild ? (
             <>
               <div id="wrapper">{children}</div>
-              <RtlToggle />
-              <HomesModal /> <QuickView />
+              {/* <RtlToggle /> */}
+              <QuickView />
               <QuickAdd />
               <ProductSidebar />
               <Compare />
@@ -181,7 +181,7 @@ export default function RootLayout({ children }) {
               <SearchModal />
               <ToolbarBottom />
               <ToolbarShop />
-              <NewsletterModal />
+              {/* <NewsletterModal /> */}
               <ShareModal />{" "}
             </>
           ) : (

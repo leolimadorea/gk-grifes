@@ -35,12 +35,12 @@ export default function QuickView() {
       .addEventListener("hidden.bs.modal", () => {
         myModal.hide();
       });
-    const backdrops = document.querySelectorAll(".modal-backdrop");
-    if (backdrops.length > 1) {
-      // Apply z-index to the last backdrop
-      const lastBackdrop = backdrops[backdrops.length - 1];
-      lastBackdrop.style.zIndex = "1057";
-    }
+    // const backdrops = document.querySelectorAll(".modal-backdrop");
+    // if (backdrops.length > 1) {
+    //   // Apply z-index to the last backdrop
+    //   const lastBackdrop = backdrops[backdrops.length - 1];
+    //   lastBackdrop.style.zIndex = "1057";
+    // }
   };
 
   return (

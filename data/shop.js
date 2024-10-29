@@ -27,10 +27,10 @@ export const layouts = [
 ];
 
 export const sortingOptions = [
-  { text: "Default" },
+  { text: "Padrão" },
 
-  { text: "Alphabetically, A-Z" },
-  { text: "Alphabetically, Z-A" },
-  { text: "Price, low to high" },
-  { text: "Price, high to low" },
+  { text: "Alfabética, A-Z" },
+  { text: "Alfabética, Z-A" },
+  { text: "Menor Preço" },
+  { text: "Maior Preço" },
 ];

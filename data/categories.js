@@ -2066,37 +2066,37 @@ export const slides12 = [
   {
     imgSrc: "/images/collections/jhonson.webp",
     imgAlt: "collection-img",
-    title: "Jhonson & Jhonson",
+    // title: "Jhonson & Jhonson",
   },
   {
     imgSrc: "/images/collections/havaianas.webp",
     imgAlt: "collection-img",
-    title: "Havaianas",
+    // title: "Havaianas",
   },
   {
     imgSrc: "/images/collections/kimberly-Clark.webp",
     imgAlt: "collection-img",
-    title: "Kimberly-Clark",
+    // title: "Kimberly-Clark",
   },
   {
     imgSrc: "/images/collections/l´ORÉAL.webp",
     imgAlt: "l´ORÉAL.webp",
-    title: "L´ORÉAL",
+    // title: "L´ORÉAL",
   },
   {
     imgSrc: "/images/collections/kimberly-Clark.webp",
     imgAlt: "collection-img",
-    title: "Kimberly-Clark",
+    // title: "Kimberly-Clark",
   },
   {
     imgSrc: "/images/collections/kimberly-Clark.webp",
     imgAlt: "collection-img",
-    title: "Kimberly-Clark",
+    // title: "Kimberly-Clark",
   },
   {
     imgSrc: "/images/collections/havaianas.webp",
     imgAlt: "collection-img",
-    title: "Havaianas",
+    // title: "Havaianas",
   },
 ];
 
