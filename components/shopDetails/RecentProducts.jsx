@@ -10,7 +10,7 @@ export default function RecentProducts() {
     <section className="flat-spacing-4 pt_0">
       <div className="container">
         <div className="flat-title">
-          <span className="title">Recently Viewed</span>
+          <span className="title">Visualizações Recentes</span>
         </div>
         <div className="hover-sw-nav hover-sw-2">
           <Swiper

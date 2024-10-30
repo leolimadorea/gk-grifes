@@ -196,8 +196,8 @@ export default function Products() {
                       className="tf-btn tf-btn-loading"
                     >
                       {isAddedToCartProducts(product.id)
-                        ? "Already Added"
-                        : "ADD TO CART"}
+                        ? "Adicionar ao carrinho"
+                        : "Adicionar ao carrinho"}
                     </a>
                   </div>
                 </div>

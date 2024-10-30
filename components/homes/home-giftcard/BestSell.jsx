@@ -236,8 +236,8 @@ export default function BestSell() {
                           >
                             <span>
                               {isAddedToCartProducts(productBestcell[0].id)
-                                ? "Already Added"
-                                : "Add to cart -"}{" "}
+                                ? "Adicionar ao carrinho"
+                                : "Adicionar ao carrinho -"}{" "}
                             </span>
                             <span className="tf-qty-price">
                               ${(quantity * currentPrice.price).toFixed(2)}

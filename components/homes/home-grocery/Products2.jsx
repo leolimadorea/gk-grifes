@@ -1,11 +1,11 @@
 "use client";
 import { useContextElement } from "@/context/Context";
-import { products48 } from "@/data/products";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-export default function Products2() {
+export default function Products2({ products }) {
+  // Recebe os produtos como prop
   const { setQuickViewItem } = useContextElement();
   const {
     setQuickAddItem,
@@ -14,14 +14,20 @@ export default function Products2() {
     addToCompareItem,
     isAddedtoCompareItem,
   } = useContextElement();
-  const tabs = ["Meat", "Oils", "Tomatoes", , "Soup"];
+
+  const tabs = ["Meat", "Oils", "Tomatoes", "Soup"];
   const [activeTab, setActiveTab] = useState(tabs[0]);
-  const [filtered, setFiltered] = useState(products48);
-  useEffect(() => {
-    setFiltered(
-      [...products48].filter((el) => el.filterCategories.includes(activeTab))
-    );
-  }, [activeTab, products48]);
+
+  // Comentado: Atualiza a lista de produtos filtrados com base na aba ativa
+  // const [filtered, setFiltered] = useState(products);
+  // useEffect(() => {
+  //   setFiltered(
+  //     products.filter(
+  //       (el) => el.filterCategories && el.filterCategories.includes(activeTab)
+  //     )
+  //   );
+  // }, [activeTab, products]);
+
   return (
     <section className="flat-spacing-5 pt_0">
       <div className="container">
@@ -31,7 +37,7 @@ export default function Products2() {
               className="title text-nowrap fw-6 wow fadeInUp"
               data-wow-delay="0s"
             >
-              Produtos Populares{" "}
+              Produtos Populares
             </span>
             <ul className="widget-tab-5" role="tablist">
               {tabs.map((tab, index) => (
@@ -69,8 +75,8 @@ export default function Products2() {
           <div className="tab-content">
             <div className="tab-pane active show" id="meat" role="tabpanel">
               <div className="tf-grid-layout tf-col-2 lg-col-4">
-                {filtered.map((product, index) => (
-                  <div key={index} className="card-product style-9">
+                {products.map((product) => (
+                  <div key={product.id} className="card-product style-9">
                     <div className="card-product-wrapper">
                       <Link
                         href={`/product-detail/${product.id}`}
@@ -78,17 +84,15 @@ export default function Products2() {
                       >
                         <Image
                           className="lazyload img-product"
-                          data-src={product.imgSrc}
+                          src={product.img}
                           alt="image-product"
-                          src={product.imgSrc}
                           width={360}
                           height={360}
                         />
                         <Image
                           className="lazyload img-hover"
-                          data-src={product.imgHoverSrc}
-                          alt="image-product"
-                          src={product.imgHoverSrc}
+                          src={product.img}
+                          alt="image-hover"
                           width={360}
                           height={360}
                         />
@@ -104,12 +108,10 @@ export default function Products2() {
                             }`}
                           />
                           <span className="tooltip">
-                            {" "}
                             {isAddedtoWishlist(product.id)
                               ? "Already Wishlisted"
                               : "Add to Wishlist"}
                           </span>
-                          <span className="icon icon-delete" />
                         </a>
                         <a
                           href="#compare"
@@ -124,12 +126,10 @@ export default function Products2() {
                             }`}
                           />
                           <span className="tooltip">
-                            {" "}
                             {isAddedtoCompareItem(product.id)
                               ? "Already Compared"
                               : "Add to Compare"}
                           </span>
-                          <span className="icon icon-check" />
                         </a>
                         <a
                           href="#quick_view"
@@ -151,7 +151,7 @@ export default function Products2() {
                           {product.title}
                         </Link>
                         <span className="price fw-6">
-                          ${product.price.toFixed(2)}
+                          R${product.price.toFixed(2)}
                         </span>
                       </div>
                       <div className="list-product-btn">
@@ -162,7 +162,7 @@ export default function Products2() {
                           className="box-icon quick-add tf-btn-loading"
                         >
                           <span className="icon icon-bag" />
-                          <span className="tooltip">Add to cart</span>
+                          <span className="tooltip">Adicionar ao Carrinho</span>
                         </a>
                       </div>
                     </div>

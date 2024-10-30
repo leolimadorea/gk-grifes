@@ -46,8 +46,8 @@ export default function ProductCard20({ product }) {
             <span className="icon icon-bag" />
             <span className="tooltip">
               {isAddedToCartProducts(product.id)
-                ? "Already Added"
-                : "Add to cart"}
+                ? "Adicionar ao carrinho"
+                : "Adicionar ao carrinho"}
             </span>
           </a>
           <a

@@ -123,8 +123,8 @@ export default function QuickAdd() {
                 >
                   <span>
                     {isAddedToCartProducts(item.id)
-                      ? "Already Added - "
-                      : "Add to cart - "}
+                      ? "Adicionar ao carrinho - "
+                      : "Adicionar ao carrinho - "}
                   </span>
                   <span className="tf-qty-price">${item.price.toFixed(2)}</span>
                 </a>

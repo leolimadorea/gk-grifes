@@ -24,25 +24,10 @@ export default function AccountEdit() {
               className="tf-field-label fw-4 text_black-2"
               htmlFor="property1"
             >
-              First name
+              Nome
             </label>
           </div>
-          <div className="tf-field style-1 mb_15">
-            <input
-              className="tf-field-input tf-input"
-              placeholder=" "
-              type="text"
-              required
-              id="property2"
-              name="last name"
-            />
-            <label
-              className="tf-field-label fw-4 text_black-2"
-              htmlFor="property2"
-            >
-              Last name
-            </label>
-          </div>
+
           <div className="tf-field style-1 mb_15">
             <input
               className="tf-field-input tf-input"
@@ -60,7 +45,7 @@ export default function AccountEdit() {
               Email
             </label>
           </div>
-          <h6 className="mb_20">Password Change</h6>
+          <h6 className="mb_20">Trocar senha</h6>
           <div className="tf-field style-1 mb_30">
             <input
               className="tf-field-input tf-input"
@@ -75,7 +60,7 @@ export default function AccountEdit() {
               className="tf-field-label fw-4 text_black-2"
               htmlFor="property4"
             >
-              Current password
+              Sua Senha
             </label>
           </div>
           <div className="tf-field style-1 mb_30">
@@ -92,7 +77,7 @@ export default function AccountEdit() {
               className="tf-field-label fw-4 text_black-2"
               htmlFor="property5"
             >
-              New password
+              Nova Senha
             </label>
           </div>
           <div className="tf-field style-1 mb_30">
@@ -109,7 +94,7 @@ export default function AccountEdit() {
               className="tf-field-label fw-4 text_black-2"
               htmlFor="property6"
             >
-              Confirm password
+              Confirmar Senha
             </label>
           </div>
           <div className="mb_20">
@@ -117,7 +102,7 @@ export default function AccountEdit() {
               type="submit"
               className="tf-btn w-100 radius-3 btn-fill animate-hover-btn justify-content-center"
             >
-              Save Changes
+              Salvar Mudanças
             </button>
           </div>
         </form>

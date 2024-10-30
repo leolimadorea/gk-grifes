@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
+import NextAuthSessionProvider from "./SessionProvider";
 import "../public/scss/main.scss";
 import "photoswipe/dist/photoswipe.css";
 import "rc-slider/assets/index.css";
@@ -33,14 +33,16 @@ import RtlToggle from "@/components/common/RtlToggle";
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
+
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // Import the script only on the client side
+      // Importa o script apenas no lado do cliente
       import("bootstrap/dist/js/bootstrap.esm").then(() => {
-        // Module is imported, you can access any exported functionality if
+        // Módulo importado, você pode acessar qualquer funcionalidade exportada se necessário
       });
     }
   }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector("header");
@@ -53,48 +55,49 @@ export default function RootLayout({ children }) {
 
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup function to remove event listener on component unmount
+    // Função de limpeza para remover o event listener quando o componente for desmontado
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []); // Empty dependency array means this effect runs once on mount and cleans up on unmount
+  }, []);
 
   const [scrollDirection, setScrollDirection] = useState("down");
 
   useEffect(() => {
     setScrollDirection("up");
+    const lastScrollY = { current: window.scrollY };
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY > 250) {
         if (currentScrollY > lastScrollY.current) {
-          // Scrolling down
+          // Rolando para baixo
           setScrollDirection("down");
         } else {
-          // Scrolling up
+          // Rolando para cima
           setScrollDirection("up");
         }
       } else {
-        // Below 250px
+        // Abaixo de 250px
         setScrollDirection("down");
       }
 
       lastScrollY.current = currentScrollY;
     };
 
-    const lastScrollY = { current: window.scrollY };
-
-    // Add scroll event listener
+    // Adiciona o event listener de scroll
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup: remove event listener when component unmounts
+    // Função de limpeza: remove o event listener quando o componente for desmontado
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [pathname]);
+
   useEffect(() => {
-    // Close any open modal
-    const bootstrap = require("bootstrap"); // dynamically import bootstrap
+    // Fecha qualquer modal aberto
+    const bootstrap = require("bootstrap"); // Importação dinâmica do bootstrap
     const modalElements = document.querySelectorAll(".modal.show");
     modalElements.forEach((modal) => {
       const modalInstance = bootstrap.Modal.getInstance(modal);
@@ -103,7 +106,7 @@ export default function RootLayout({ children }) {
       }
     });
 
-    // Close any open offcanvas
+    // Fecha qualquer offcanvas aberto
     const offcanvasElements = document.querySelectorAll(".offcanvas.show");
     offcanvasElements.forEach((offcanvas) => {
       const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvas);
@@ -111,18 +114,19 @@ export default function RootLayout({ children }) {
         offcanvasInstance.hide();
       }
     });
-  }, [pathname]); // Runs every time the route changes
+  }, [pathname]); // Executa toda vez que a rota muda
 
   useEffect(() => {
     const header = document.querySelector("header");
     if (header) {
-      if (scrollDirection == "up") {
+      if (scrollDirection === "up") {
         header.style.top = "0px";
       } else {
         header.style.top = "-185px";
       }
     }
   }, [scrollDirection]);
+
   useEffect(() => {
     const { WOW } = require("wowjs");
     const wow = new WOW({
@@ -131,18 +135,14 @@ export default function RootLayout({ children }) {
     });
     wow.init();
   }, [pathname]);
+
   const [showChild, setShowChild] = useState(false);
+
   useEffect(() => {
     if (localStorage.getItem("direction")) {
-      // document.documentElement.dir = JSON.parse(
-      //   localStorage.getItem("direction")?.dir
-      // );
-      document.documentElement.dir = JSON.parse(
-        localStorage.getItem("direction")
-      ).dir;
-      document.body.classList.add(
-        JSON.parse(localStorage.getItem("direction")).dir
-      );
+      const direction = JSON.parse(localStorage.getItem("direction")).dir;
+      document.documentElement.dir = direction;
+      document.body.classList.add(direction);
     } else {
       document.documentElement.dir = "ltr";
     }
@@ -150,7 +150,8 @@ export default function RootLayout({ children }) {
       setShowChild(true);
       document.getElementById("preloader").classList.add("disabled");
     }, 800);
-  });
+  }, []);
+
   return (
     <html lang="en">
       <body className="preload-wrapper">
@@ -161,7 +162,7 @@ export default function RootLayout({ children }) {
         </div>
         <Context>
           {showChild ? (
-            <>
+            <NextAuthSessionProvider>
               <div id="wrapper">{children}</div>
               {/* <RtlToggle /> */}
               <QuickView />
@@ -182,8 +183,8 @@ export default function RootLayout({ children }) {
               <ToolbarBottom />
               <ToolbarShop />
               {/* <NewsletterModal /> */}
-              <ShareModal />{" "}
-            </>
+              <ShareModal />
+            </NextAuthSessionProvider>
           ) : (
             " "
           )}

@@ -1,31 +1,24 @@
-import Topbar4 from "@/components/headers/Topbar4";
 import Footer1 from "@/components/footers/Footer1";
 
 import Hero from "@/components/homes/home-grocery/Hero";
-
+import axios from "axios";
 import Header18 from "@/components/headers/Header18";
 import Categories from "@/components/homes/home-grocery/Categories";
 import Collections from "@/components/homes/home-grocery/Collections";
 import Products from "@/components/homes/home-grocery/Products";
 import Products2 from "@/components/homes/home-grocery/Products2";
-import Features from "@/components/homes/home-grocery/Features";
-import Banner from "@/components/homes/home-grocery/Banner";
-import Topbar1 from "@/components/headers/Topbar1";
-import Topbar2 from "@/components/headers/Topbar2";
-import Topbar3 from "@/components/headers/Topbar3";
-import Header17 from "@/components/headers/Header17";
-import Footer2 from "@/components/footers/Footer2";
-import Footer3 from "@/components/footers/Footer3";
-import Footer4 from "@/components/footers/Footer4";
-import Footer5 from "@/components/footers/Footer5";
-import Footer6 from "@/components/footers/Footer6";
-import Footer7 from "@/components/footers/Footer7";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 
 export const metadata = {
   title: "Home Grocery || Ecomus - Ultimate Nextjs Ecommerce Template",
   description: "Ecomus - Ultimate Nextjs Ecommerce Template",
 };
-export default function page() {
+export default async function page() {
+  const res = await axios.get(`http://localhost:3000/api/products`);
+  const products = res.data;
+  const session = await getServerSession(authOptions);
+  console.log(session, "session");
   return (
     <>
       <div className="color-primary-8 color-main-text-2">
@@ -34,8 +27,8 @@ export default function page() {
         <Hero />
         <Categories />
         <Collections />
-        <Products />
-        <Products2 />
+        <Products products={products} />
+        <Products2 products={products} />
         {/* <Features />
         <Banner /> */}
         <Footer1 />

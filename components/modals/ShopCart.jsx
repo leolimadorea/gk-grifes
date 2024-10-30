@@ -32,7 +32,7 @@ export default function ShopCart() {
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="header">
-            <div className="title fw-5">Shopping cart</div>
+            <div className="title fw-5">Carrinho</div>
             <span
               className="icon-close icon-close-popup"
               data-bs-dismiss="modal"
@@ -60,8 +60,8 @@ export default function ShopCart() {
                 </span>
               </div>
               <div className="tf-progress-msg">
-                Buy <span className="price fw-6">$75.00</span> more to enjoy
-                <span className="fw-6">Free Shipping</span>
+                Compre mais<span className="price fw-6">R$75.00</span>para
+                aproveitar o<span className="fw-6"> Frete Grátis</span>
               </div>
             </div>
             <div className="tf-mini-cart-wrap">
@@ -88,7 +88,7 @@ export default function ShopCart() {
                           >
                             {elm.title}
                           </Link>
-                          <div className="meta-variant">Light gray</div>
+
                           <div className="price fw-6">
                             ${elm.price?.toFixed(2)}
                           </div>
@@ -125,7 +125,7 @@ export default function ShopCart() {
                               style={{ cursor: "pointer" }}
                               onClick={() => removeItem(elm.id)}
                             >
-                              Remove
+                              Remover
                             </div>
                           </div>
                         </div>
@@ -150,61 +150,6 @@ export default function ShopCart() {
                         </div>
                       </div>
                     )}
-                  </div>
-                  <div className="tf-minicart-recommendations">
-                    <div className="tf-minicart-recommendations-heading">
-                      <div className="tf-minicart-recommendations-title">
-                        You may also like
-                      </div>
-                      <div className="sw-dots small style-2 cart-slide-pagination spdsc1" />
-                    </div>
-                    <Swiper
-                      modules={[Pagination]}
-                      pagination={{
-                        clickable: true,
-                        clickable: true,
-                        el: ".spdsc1",
-                      }}
-                      className="swiper tf-cart-slide"
-                    >
-                      {products1.slice(0, 2).map((elm, i) => (
-                        <SwiperSlide key={i} className="swiper-slide">
-                          <div className="tf-minicart-recommendations-item">
-                            <div className="tf-minicart-recommendations-item-image">
-                              <Link href={`/product-detail/${elm.id}`}>
-                                <Image
-                                  alt=""
-                                  src={elm.imgSrc}
-                                  width={720}
-                                  height={1005}
-                                />
-                              </Link>
-                            </div>
-                            <div className="tf-minicart-recommendations-item-infos flex-grow-1">
-                              <Link
-                                className="title"
-                                href={`/product-detail/${1}`}
-                              >
-                                {elm.title}
-                              </Link>
-                              <div className="price">
-                                ${elm.price.toFixed(2)}
-                              </div>
-                            </div>
-                            <div className="tf-minicart-recommendations-item-quickview">
-                              <a
-                                href="#quick_view"
-                                data-bs-toggle="modal"
-                                onClick={() => setQuickViewItem(elm)}
-                                className="btn-show-quickview quickview hover-tooltip"
-                              >
-                                <span className="icon icon-view" />
-                              </a>
-                            </div>
-                          </div>
-                        </SwiperSlide>
-                      ))}
-                    </Swiper>
                   </div>
                 </div>
               </div>
@@ -266,11 +211,11 @@ export default function ShopCart() {
                   <div className="tf-cart-totals-discounts">
                     <div className="tf-cart-total">Subtotal</div>
                     <div className="tf-totals-total-value fw-6">
-                      ${totalPrice.toFixed(2)} USD
+                      R${totalPrice.toFixed(2)}
                     </div>
                   </div>
                   <div className="tf-cart-tax">
-                    Taxes and <a href="#">shipping</a> calculated at checkout
+                    Impostos e <a href="#">frete</a> calculados no checkout
                   </div>
                   <div className="tf-mini-cart-line" />
                   <div className="tf-cart-checkbox">
@@ -286,9 +231,9 @@ export default function ShopCart() {
                       </div>
                     </div>
                     <label htmlFor="CartDrawer-Form_agree">
-                      I agree with the
+                      Eu concordo com os{" "}
                       <a href="#" title="Terms of Service">
-                        terms and conditions
+                        termos e condições
                       </a>
                     </label>
                   </div>
@@ -297,13 +242,13 @@ export default function ShopCart() {
                       href={`/view-cart`}
                       className="tf-btn btn-outline radius-3 link w-100 justify-content-center"
                     >
-                      View cart
+                      Ver Carrinho
                     </Link>
                     <Link
                       href={`/checkout`}
                       className="tf-btn btn-fill animate-hover-btn radius-3 w-100 justify-content-center"
                     >
-                      <span>Check out</span>
+                      <span>Comprar</span>
                     </Link>
                   </div>
                 </div>

@@ -89,8 +89,8 @@ export default function Products2() {
                           <span className="icon icon-bag" />
                           <span className="tooltip">
                             {isAddedToCartProducts(item.id)
-                              ? "Already Added"
-                              : "Add to cart"}
+                              ? "Adicionar ao carrinho"
+                              : "Adicionar ao carrinho"}
                           </span>
                         </a>
                         <a

@@ -11,15 +11,15 @@ export const metadata = {
 export default function page() {
   return (
     <>
-      <Header18 />
-      <div className="tf-page-title">
-        <div className="container-full">
-          <div className="heading text-center">Check Out</div>
+      <div className="color-primary-8 color-main-text-2">
+        <Header18 />
+        <div className="tf-page-title">
+          <div className="container-full"></div>
         </div>
-      </div>
 
-      <Checkout />
-      <Footer1 />
+        <Checkout />
+        <Footer1 />
+      </div>
     </>
   );
 }

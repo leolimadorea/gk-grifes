@@ -207,8 +207,8 @@ export default function QuickView() {
                     >
                       <span>
                         {isAddedToCartProducts(quickViewItem.id)
-                          ? "Already Added - "
-                          : "Add to cart - "}
+                          ? "Adicionar ao carrinho- "
+                          : "Adicionar ao carrinho - "}
                       </span>
                       <span className="tf-qty-price">
                         ${quickViewItem.price.toFixed(2)}
