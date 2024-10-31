@@ -23,18 +23,26 @@ export default function Context({ children }) {
     setTotalPrice(subtotal);
   }, [cartProducts]);
 
-  const addProductToCart = (id, qty) => {
-    if (!cartProducts.filter((elm) => elm.id == id)[0]) {
-      const item = {
-        ...allProducts.filter((elm) => elm.id == id)[0],
-        quantity: qty ? qty : 1,
-      };
-      setCartProducts((pre) => [...pre, item]);
-      openCartModal();
+  const addProductToCart = (product, qty) => {
+    setCartProducts((prevCartProducts) => {
+      const existingProduct = prevCartProducts.find(
+        (item) => item.id === product.id
+      );
 
-      // openCart();
-    }
+      if (existingProduct) {
+        return prevCartProducts.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + (qty || 1) }
+            : item
+        );
+      } else {
+        return [...prevCartProducts, { ...product, quantity: qty || 1 }];
+      }
+    });
+
+    openCartModal();
   };
+
   const isAddedToCartProducts = (id) => {
     if (cartProducts.filter((elm) => elm.id == id)[0]) {
       return true;

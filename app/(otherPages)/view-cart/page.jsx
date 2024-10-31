@@ -20,8 +20,7 @@ export default function page() {
         </div>
 
         <Cart />
-        <Testimonials />
-        <RecentProducts />
+
         <Footer1 />
       </div>
     </>

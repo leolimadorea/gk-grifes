@@ -45,6 +45,8 @@ model Product {
     category    Category      @relation(fields: [categoryId], references: [id])
     payments    Payment[]
     
+
+    paymentProducts PaymentProduct[]
 }
 
 
@@ -67,15 +69,27 @@ model User {
 model Payment {
     id              Int           @id @default(autoincrement())
     userId          Int
-    productId       Int
-    productQuantity Int
+    productId       Int?
+    productQuantity Int?
     amount          Float
     gatewayId       String        @unique
     paymentMethod   PaymentMethod
     status          PaymentStatus
              
 
-    product Product @relation(fields: [productId], references: [id])
+    product Product? @relation(fields: [productId], references: [id])
     user    User    @relation(fields: [userId], references: [id])
+
+    paymentProducts PaymentProduct[]
 }
 
+model PaymentProduct {
+    id         Int    @id @default(autoincrement())
+    paymentId  Int
+    productId  Int
+    quantity   Int
+ 
+    product    Product @relation(fields: [productId], references: [id]) 
+    payment    Payment @relation(fields: [paymentId], references: [id])
+
+    }

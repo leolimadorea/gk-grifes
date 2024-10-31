@@ -95,7 +95,15 @@ export default function DetailsOuterZoom({ product }) {
                       <a
                         onClick={() => {
                           openCartModal();
-                          addProductToCart(product.id);
+                          addProductToCart(
+                            {
+                              id: product.id,
+                              title: product.title,
+                              price: product.price,
+                              imgSrc: product.img,
+                            },
+                            quantity
+                          );
                         }}
                         className="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn"
                       >

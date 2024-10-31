@@ -17,6 +17,7 @@
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.3.3",
     "drift-zoom": "^1.5.1",
+    "mercadopago": "^2.0.15",
     "next": "14.2.7",
     "next-auth": "^4.24.10",
     "photoswipe": "^5.4.4",
