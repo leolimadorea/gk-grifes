@@ -3,7 +3,7 @@ import Header18 from "@/components/headers/Header18";
 import Header2 from "@/components/headers/Header2";
 import React from "react";
 
-export default function page() {
+export default function Page() {
   return (
     <>
       <Header18 />

@@ -16,7 +16,7 @@ export const metadata = {
   title: "Home Glasses || Ecomus - Ultimate Nextjs Ecommerce Template",
   description: "Ecomus - Ultimate Nextjs Ecommerce Template",
 };
-export default function page() {
+export default function Page() {
   return (
     <>
       <div className="color-primary-6">

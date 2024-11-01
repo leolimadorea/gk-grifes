@@ -11,7 +11,7 @@ export const metadata = {
   title: "Product Swatch Image || Ecomus - Ultimate Nextjs Ecommerce Template",
   description: "Ecomus - Ultimate Nextjs Ecommerce Template",
 };
-export default function page() {
+export default function Page() {
   return (
     <>
       <Header18 />

@@ -48,7 +48,7 @@ export async function POST(req) {
           },
         },
         notification_url:
-          "https://seu-dominio.com/api/payment/mercadopago-webhook",
+          "https://6b77-2804-d55-405d-c700-305e-1899-18e9-d27b.ngrok-free.app/api/payment/mercadopago-webhook",
       },
     });
 

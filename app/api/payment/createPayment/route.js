@@ -1,5 +1,5 @@
+import { createPayment } from "@/app/db/payment/createPayment";
 import { NextResponse } from "next/server";
-import { createPayment } from "@/app/server/db/payment/createPayment";
 
 export async function POST(request) {
   const input = await request.json();

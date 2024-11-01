@@ -19,7 +19,7 @@ export const metadata = {
   title: "Home Paddle Boards || Ecomus - Ultimate Nextjs Ecommerce Template",
   description: "Ecomus - Ultimate Nextjs Ecommerce Template",
 };
-export default function page() {
+export default function Page() {
   return (
     <>
       <Topbar2 bgColor="bg_blue-6" />

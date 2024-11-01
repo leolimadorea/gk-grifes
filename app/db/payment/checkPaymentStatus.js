@@ -1,4 +1,4 @@
-import { prisma } from "../../../server/db/prisma";
+import { prisma } from "../prisma";
 
 export async function checkPaymentStatus(gatewayId) {
   try {

@@ -1,5 +1,5 @@
+import { checkPaymentStatus } from "@/app/db/payment/checkPaymentStatus";
 import { NextRequest, NextResponse } from "next/server";
-import { checkPaymentStatus } from "../../../../server/db/payment/checkPaymentStatus";
 
 export async function GET(req, { params }) {
   try {

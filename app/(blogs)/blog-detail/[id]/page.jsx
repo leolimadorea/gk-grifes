@@ -11,7 +11,7 @@ export const metadata = {
   title: "Blog Details || Ecomus - Ultimate Nextjs Ecommerce Template",
   description: "Ecomus - Ultimate Nextjs Ecommerce Template",
 };
-export default function page({ params }) {
+export default function Page({ params }) {
   const blog = allBlogs.filter((elm) => elm.id == params.id)[0] || allBlogs[0];
   return (
     <>

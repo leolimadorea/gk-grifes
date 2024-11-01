@@ -9,7 +9,7 @@ export const metadata = {
   title: "Wishlist || Ecomus - Ultimate Nextjs Ecommerce Template",
   description: "Ecomus - Ultimate Nextjs Ecommerce Template",
 };
-export default function page() {
+export default function Page() {
   return (
     <>
       <Topbar1 />

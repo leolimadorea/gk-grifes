@@ -1,22 +1,20 @@
-import { gerarKeyKeyAuth } from "@/app/server/db/keyauth/keyauth";
-import { prisma } from "@/app/server/db/prisma";
-import { PaymentStatus, Type } from "@prisma/client";
+import { prisma } from "@/app/db/prisma";
 import axios from "axios";
 import crypto from "crypto";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import Pusher from "pusher";
 
 export async function POST(req) {
   const pusher = new Pusher({
-    appId: "1874525",
-    key: "50eb5d0aba00fe70f0e5",
-    secret: "3adc1732bf048e87e29d",
+    appId: "1889693",
+    key: "92ce80a4f49372f48d51",
+    secret: "fe87ca04b5d9fe9cab07",
     cluster: "us2",
     useTLS: true,
   });
 
   const secret =
-    "4bb2c392ff1536207b0a1208046007fd32249d74b94d63544f2d786cd1dba231";
+    "efd2bdde39ec6ccd9cec723082d3d19e4857b6e0ef92696f1a1a6dc65cbd6a79";
 
   try {
     const signatureHeader = req.headers.get("x-signature");
@@ -66,7 +64,7 @@ export async function POST(req) {
         `https://api.mercadopago.com/v1/payments/${paymentId}`,
         {
           headers: {
-            Authorization: `Bearer APP_USR-5508268551429017-100117-b9bdef654caecc3a475843a66b1b6901-773708748`,
+            Authorization: `Bearer APP_USR-3758424019225992-040322-918b6e811465f67f5255863b5b32e6cd-1164572593`,
           },
         }
       );
@@ -85,26 +83,13 @@ export async function POST(req) {
       try {
         const paymentWithProductAndCategory = await prisma.payment.findUnique({
           where: {
-            gatewayId: paymentId.toString(), // Busca pelo `gatewayId` do pagamento
-          },
-          include: {
-            product: {
-              include: {
-                category: true, // Inclui a categoria relacionada ao produto
-              },
-            },
+            gatewayId: paymentId.toString(),
           },
         });
 
         if (!paymentWithProductAndCategory) {
           throw new Error("Pagamento não encontrado.");
         }
-
-        const produto = paymentWithProductAndCategory.product;
-        const categoria = produto.category;
-
-        console.log("Produto:", produto);
-        console.log("Categoria:", categoria);
 
         console.log(`Triggering Pusher event for payment ID: ${paymentId}`);
         await pusher.trigger(
