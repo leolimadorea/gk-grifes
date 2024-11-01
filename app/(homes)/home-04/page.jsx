@@ -13,8 +13,8 @@ import Testimonials from "@/components/homes/home-4/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home 4 || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Home 4 || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

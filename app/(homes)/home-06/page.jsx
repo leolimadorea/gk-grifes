@@ -13,8 +13,8 @@ import Announcmentbar from "@/components/common/Announcmentbar";
 import Header18 from "@/components/headers/Header18";
 
 export const metadata = {
-  title: "Home 6 || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Home 6 || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

@@ -6,8 +6,8 @@ import Wishlist from "@/components/othersPages/dashboard/Wishlist";
 import React from "react";
 
 export const metadata = {
-  title: "My Account Wishlist || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

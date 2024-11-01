@@ -4,8 +4,8 @@ import Header18 from "@/components/headers/Header18";
 import Link from "next/link";
 import React from "react";
 export const metadata = {
-  title: "Page Not Found || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Page Not Found || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function notFound() {
   return (

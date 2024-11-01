@@ -7,8 +7,8 @@ import RecentProducts from "@/components/shopDetails/RecentProducts";
 import React from "react";
 
 export const metadata = {
-  title: "View Cart || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: " Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

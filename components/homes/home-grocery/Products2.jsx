@@ -15,7 +15,7 @@ export default function Products2({ products }) {
     isAddedtoCompareItem,
   } = useContextElement();
 
-  const tabs = ["Meat", "Oils", "Tomatoes", "Soup"];
+  const tabs = ["Higiene", "Fralda", "Perfumaria", "Medicamentos"];
   const [activeTab, setActiveTab] = useState(tabs[0]);
 
   // Comentado: Atualiza a lista de produtos filtrados com base na aba ativa
@@ -55,7 +55,7 @@ export default function Products2({ products }) {
                   href={`/shop-collection-sub`}
                   className="d-flex align-items-center gap-10"
                 >
-                  Shop all
+                  Comprar Agora
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width={10}
@@ -97,50 +97,6 @@ export default function Products2({ products }) {
                           height={360}
                         />
                       </Link>
-                      <div className="list-product-btn absolute-2">
-                        <a
-                          onClick={() => addToWishlist(product.id)}
-                          className="box-icon bg_white wishlist btn-icon-action"
-                        >
-                          <span
-                            className={`icon icon-heart ${
-                              isAddedtoWishlist(product.id) ? "added" : ""
-                            }`}
-                          />
-                          <span className="tooltip">
-                            {isAddedtoWishlist(product.id)
-                              ? "Already Wishlisted"
-                              : "Add to Wishlist"}
-                          </span>
-                        </a>
-                        <a
-                          href="#compare"
-                          data-bs-toggle="offcanvas"
-                          aria-controls="offcanvasLeft"
-                          onClick={() => addToCompareItem(product.id)}
-                          className="box-icon bg_white compare btn-icon-action"
-                        >
-                          <span
-                            className={`icon icon-compare ${
-                              isAddedtoCompareItem(product.id) ? "added" : ""
-                            }`}
-                          />
-                          <span className="tooltip">
-                            {isAddedtoCompareItem(product.id)
-                              ? "Already Compared"
-                              : "Add to Compare"}
-                          </span>
-                        </a>
-                        <a
-                          href="#quick_view"
-                          onClick={() => setQuickViewItem(product)}
-                          data-bs-toggle="modal"
-                          className="box-icon bg_white quickview tf-btn-loading"
-                        >
-                          <span className="icon icon-view" />
-                          <span className="tooltip">Quick View</span>
-                        </a>
-                      </div>
                     </div>
                     <div className="card-product-info">
                       <div className="inner-info">

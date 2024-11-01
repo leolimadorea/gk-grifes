@@ -10,9 +10,8 @@ import SliderWithGalleryPopup from "@/components/shopDetails/sliders/SliderWithG
 import DetailsPopup from "@/components/shopDetails/DetailsPopup";
 import Header18 from "@/components/headers/Header18";
 export const metadata = {
-  title:
-    "Product Photoswipe Popup || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Product Photoswipe Popup || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

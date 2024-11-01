@@ -12,8 +12,8 @@ import Products from "@/components/homes/home-7/Products";
 import React from "react";
 
 export const metadata = {
-  title: "Home 7 || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Home 7 || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

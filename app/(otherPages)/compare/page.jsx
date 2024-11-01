@@ -7,8 +7,8 @@ import Compare from "@/components/othersPages/Compare";
 import React from "react";
 
 export const metadata = {
-  title: "Compare || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Compare || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

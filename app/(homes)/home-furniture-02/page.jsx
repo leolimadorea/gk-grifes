@@ -11,8 +11,8 @@ import Testimonials from "@/components/homes/home-furniture-02/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Furniture 2 || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Home Furniture 2 || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

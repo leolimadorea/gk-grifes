@@ -72,59 +72,7 @@ export default function Products({ products }) {
                       height={497}
                     />
                   </Link>
-                  <div className="list-product-btn absolute-2">
-                    <a
-                      href="#quick_add"
-                      data-bs-toggle="modal"
-                      onClick={() => setQuickAddItem(product.id)}
-                      className="box-icon bg_white quick-add tf-btn-loading"
-                    >
-                      <span className="icon icon-bag" />
-                      <span className="tooltip">Adicionar</span>
-                    </a>
-                    <a
-                      onClick={() => addToWishlist(product.id)}
-                      className="box-icon bg_white wishlist btn-icon-action"
-                    >
-                      <span
-                        className={`icon icon-heart ${
-                          isAddedtoWishlist(product.id) ? "added" : ""
-                        }`}
-                      />
-                      <span className="tooltip">
-                        {isAddedtoWishlist(product.id)
-                          ? "Already Wishlisted"
-                          : "Add to Wishlist"}
-                      </span>
-                    </a>
-                    <a
-                      href="#compare"
-                      data-bs-toggle="offcanvas"
-                      onClick={() => addToCompareItem(product.id)}
-                      aria-controls="offcanvasLeft"
-                      className="box-icon bg_white compare btn-icon-action"
-                    >
-                      <span
-                        className={`icon icon-compare ${
-                          isAddedtoCompareItem(product.id) ? "added" : ""
-                        }`}
-                      />
-                      <span className="tooltip">
-                        {isAddedtoCompareItem(product.id)
-                          ? "Already Compared"
-                          : "Add to Compare"}
-                      </span>
-                    </a>
-                    <a
-                      href="#quick_view"
-                      data-bs-toggle="modal"
-                      onClick={() => setQuickViewItem(product)}
-                      className="box-icon bg_white quickview tf-btn-loading"
-                    >
-                      <span className="icon icon-view" />
-                      <span className="tooltip">Visualizar</span>
-                    </a>
-                  </div>
+
                   {product.salePercentage && (
                     <div className="on-sale-wrap text-end">
                       <div className="on-sale-item">{`${product.salePercentage}%`}</div>
@@ -148,43 +96,10 @@ export default function Products({ products }) {
                       R${product.price.toFixed(2)}
                     </span>
                   </span>
-                  <div className="pr-stock">
-                    <div className="pr-stock-status d-flex justify-content-between align-items-center">
-                      <div className="pr-stock-available">
-                        <span className="pr-stock-label fs-12 fw-6">
-                          Avaliação:
-                        </span>
-                        <span className="pr-stock-value fs-12 fw-6">
-                          {product.available}
-                        </span>
-                      </div>
-                      <div className="pr-stock-sold">
-                        <span className="pr-stock-label fs-12 fw-6">Sold:</span>
-                        <span className="pr-stock-value fs-12 fw-6">
-                          {product.sold}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="progress">
-                      <div
-                        className="progress-bar"
-                        role="progressbar"
-                        style={{
-                          width: `${
-                            (product.available /
-                              (product.available + product.sold)) *
-                            100
-                          }%`,
-                        }}
-                        aria-valuenow={product.available}
-                        aria-valuemin={0}
-                        aria-valuemax={100}
-                      />
-                    </div>
-                  </div>
-                  <div className="count-down">
+
+                  {/* <div className="count-down">
                     <CountdownComponent labels="Days,Hours,Mins,Secs" />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </SwiperSlide>

@@ -8,8 +8,8 @@ import Link from "next/link";
 import Details26 from "@/components/shopDetails/Details26";
 import Header18 from "@/components/headers/Header18";
 export const metadata = {
-  title: "Product Swatch Image || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Product Swatch Image || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

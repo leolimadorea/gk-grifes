@@ -12,8 +12,8 @@ import Testimonials from "@/components/homes/home-tee/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Tee || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Home Tee || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

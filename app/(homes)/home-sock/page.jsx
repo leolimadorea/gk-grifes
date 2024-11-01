@@ -14,8 +14,8 @@ import Testimonials from "@/components/homes/home-sock/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Sock || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Home Sock || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

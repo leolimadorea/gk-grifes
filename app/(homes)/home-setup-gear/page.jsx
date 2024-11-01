@@ -14,8 +14,8 @@ import Testimonials from "@/components/homes/home-setup-gear/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Setup Gear || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Home Setup Gear || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

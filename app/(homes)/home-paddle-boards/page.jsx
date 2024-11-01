@@ -16,8 +16,8 @@ import Footer2 from "@/components/footers/Footer2";
 import Header18 from "@/components/headers/Header18";
 
 export const metadata = {
-  title: "Home Paddle Boards || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Home Paddle Boards || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

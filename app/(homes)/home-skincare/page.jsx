@@ -17,8 +17,8 @@ import Footer1 from "@/components/footers/Footer1";
 import Header18 from "@/components/headers/Header18";
 
 export const metadata = {
-  title: "Home Skincare || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Home Skincare || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

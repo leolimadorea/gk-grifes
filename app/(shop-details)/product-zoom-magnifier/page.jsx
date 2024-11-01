@@ -9,9 +9,8 @@ import Link from "next/link";
 import DetailsMagnifierZoom from "@/components/shopDetails/DetailsMagnifierZoom";
 import Header18 from "@/components/headers/Header18";
 export const metadata = {
-  title:
-    "Product Zoom Magnifier || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Product Zoom Magnifier || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

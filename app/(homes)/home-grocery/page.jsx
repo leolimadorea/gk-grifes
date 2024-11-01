@@ -22,8 +22,8 @@ import Footer6 from "@/components/footers/Footer6";
 import Footer7 from "@/components/footers/Footer7";
 
 export const metadata = {
-  title: "Home Grocery || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Home Grocery || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

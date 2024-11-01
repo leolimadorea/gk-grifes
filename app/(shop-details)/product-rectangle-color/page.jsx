@@ -9,9 +9,8 @@ import React from "react";
 import Link from "next/link";
 import Header18 from "@/components/headers/Header18";
 export const metadata = {
-  title:
-    "Product Rectangle Color || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Product Rectangle Color || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

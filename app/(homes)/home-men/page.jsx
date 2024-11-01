@@ -15,8 +15,8 @@ import Announcment from "@/components/homes/multi-brand/Announcment";
 import React from "react";
 
 export const metadata = {
-  title: "Home Men || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Home Men || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

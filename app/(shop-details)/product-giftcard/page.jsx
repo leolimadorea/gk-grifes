@@ -10,8 +10,8 @@ import React from "react";
 import Link from "next/link";
 import Header18 from "@/components/headers/Header18";
 export const metadata = {
-  title: "Shop Gift Card || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Shop Gift Card || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

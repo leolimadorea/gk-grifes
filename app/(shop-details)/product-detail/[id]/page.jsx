@@ -11,8 +11,8 @@ import Header18 from "@/components/headers/Header18";
 import axios from "axios";
 
 export const metadata = {
-  title: "Shop Details || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: " Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 
 export default async function Page({ params }) {

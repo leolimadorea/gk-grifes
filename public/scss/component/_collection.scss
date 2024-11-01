@@ -250,10 +250,12 @@
 }
 
 .collection-item-circle {
+  //Arrumar depois
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
+  justify-content: space-between;
+  margin-left: 200px;
+  width: 150%;
   height: 100%;
   overflow: hidden;
 

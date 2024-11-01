@@ -7,8 +7,8 @@ import ProductStyle5 from "@/components/shop/ProductStyle5";
 import React from "react";
 
 export const metadata = {
-  title: "Product Style 5 || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Product Style 5 || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

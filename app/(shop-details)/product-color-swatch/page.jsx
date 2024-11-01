@@ -9,8 +9,8 @@ import React from "react";
 import Link from "next/link";
 import Header18 from "@/components/headers/Header18";
 export const metadata = {
-  title: "Shop Color Switch || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Shop Color Switch || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

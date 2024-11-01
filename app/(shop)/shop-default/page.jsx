@@ -5,8 +5,8 @@ import axios from "axios";
 import React from "react";
 
 export const metadata = {
-  title: "Product Default || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: " Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default async function page() {
   const res = await axios.get(`http://localhost:3000/api/products`);

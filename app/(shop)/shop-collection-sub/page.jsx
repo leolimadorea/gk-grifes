@@ -7,9 +7,8 @@ import Subcollections from "@/components/shop/Subcollections";
 import React from "react";
 
 export const metadata = {
-  title:
-    "Product Collection Sub || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Product Collection Sub || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

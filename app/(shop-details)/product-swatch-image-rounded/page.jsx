@@ -9,9 +9,8 @@ import React from "react";
 import Link from "next/link";
 import Header18 from "@/components/headers/Header18";
 export const metadata = {
-  title:
-    "Product Swatch Image Rounded || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Product Swatch Image Rounded || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

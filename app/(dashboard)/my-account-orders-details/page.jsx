@@ -7,8 +7,8 @@ import Orders from "@/components/othersPages/dashboard/Orders";
 import React from "react";
 
 export const metadata = {
-  title: "My Account Orders || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: " Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

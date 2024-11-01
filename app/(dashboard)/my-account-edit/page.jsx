@@ -6,7 +6,7 @@ import DashboardNav from "@/components/othersPages/dashboard/DashboardNav";
 import React from "react";
 
 export const metadata = {
-  title: "My Account Edit || Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: " Drogaria VivaMais",
   description: "Ecomus - Ultimate React Nextjs Ecommerce Template",
 };
 export default function Page() {

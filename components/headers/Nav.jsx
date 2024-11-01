@@ -80,7 +80,7 @@ export default function Nav({ isArrow = false, textColor = "", Linkfs = "" }) {
             isMenuActive(productsPages) ? "activeMenu" : ""
           } `}
         >
-          Shop
+          Comprar
           {isArrow ? <i className="icon icon-arrow-down" /> : ""}
         </a>
         {/* <div className="sub-menu mega-menu">

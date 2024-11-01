@@ -15,8 +15,8 @@ import Topbar from "@/components/homes/home-headphone/Topbar";
 import React from "react";
 
 export const metadata = {
-  title: "Home Headphone || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Home Headphone || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

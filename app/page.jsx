@@ -11,8 +11,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 
 export const metadata = {
-  title: "Home Grocery || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Drogaria VivaMais",
 };
 export default async function page() {
   const res = await axios.get(`http://localhost:3000/api/products`);

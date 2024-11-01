@@ -1,12 +1,12 @@
 import BlogLeftSidebar from "@/components/blogs/BlogLeftSidebar";
 import Footer1 from "@/components/footers/Footer1";
-import Header2 from "@/components/headers/Header2";
+
 import React from "react";
 import Link from "next/link";
 import Header18 from "@/components/headers/Header18";
 export const metadata = {
-  title: "Blog  Sidebar Left || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Blog  Sidebar Left || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

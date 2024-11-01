@@ -8,8 +8,8 @@ import { authOptions } from "../../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 
 export const metadata = {
-  title: "Minha Conta || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 
 export default async function page() {

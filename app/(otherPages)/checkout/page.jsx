@@ -5,8 +5,8 @@ import Checkout from "@/components/othersPages/Checkout";
 import React from "react";
 
 export const metadata = {
-  title: "Checkout || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: " Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

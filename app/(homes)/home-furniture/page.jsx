@@ -13,8 +13,8 @@ import ShopGram from "@/components/homes/home-furniture/ShopGram";
 import React from "react";
 
 export const metadata = {
-  title: "Home Furniture || Ecomus - Ultimate Nextjs Ecommerce Template",
-  description: "Ecomus - Ultimate Nextjs Ecommerce Template",
+  title: "Home Furniture || Drogaria VivaMais",
+  description: "Drogaria VivaMais",
 };
 export default function Page() {
   return (

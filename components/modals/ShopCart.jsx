@@ -39,7 +39,7 @@ export default function ShopCart() {
             />
           </div>
           <div className="wrap">
-            <div className="tf-mini-cart-threshold">
+            {/* <div className="tf-mini-cart-threshold">
               <div className="tf-progress-bar">
                 <span style={{ width: "50%" }}>
                   <div className="progress-car">
@@ -63,7 +63,7 @@ export default function ShopCart() {
                 Compre mais<span className="price fw-6">R$75.00</span>para
                 aproveitar o<span className="fw-6"> Frete Grátis</span>
               </div>
-            </div>
+            </div> */}
             <div className="tf-mini-cart-wrap">
               <div className="tf-mini-cart-main">
                 <div className="tf-mini-cart-sroll">
@@ -154,7 +154,7 @@ export default function ShopCart() {
                 </div>
               </div>
               <div className="tf-mini-cart-bottom">
-                <div className="tf-mini-cart-tool">
+                {/* <div className="tf-mini-cart-tool">
                   <div
                     className="tf-mini-cart-tool-btn btn-add-note"
                     onClick={() => addNoteRef.current.classList.add("open")}
@@ -206,7 +206,7 @@ export default function ShopCart() {
                       />
                     </svg>
                   </div>
-                </div>
+                </div> */}
                 <div className="tf-mini-cart-bottom-wrap">
                   <div className="tf-cart-totals-discounts">
                     <div className="tf-cart-total">Subtotal</div>
