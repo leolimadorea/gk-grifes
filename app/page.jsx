@@ -9,16 +9,20 @@ import Section3 from "@/components/imuno/Section3";
 import Section4 from "@/components/imuno/Section4";
 import Section5 from "@/components/imuno/Section5";
 import Section6 from "@/components/imuno/Section6";
-import axios from "axios";
 
 export const metadata = {
   title: "Drogaria VivaMais",
 };
-export default async function page() {
-  const res = await axios.get(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`
-  );
-  const products = res.data || [];
+export default async function Page() {
+  let products = [];
+
+  if (typeof window !== "undefined") {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`
+    );
+    products = await res.json();
+  }
+
   return (
     <>
       <div className="color-primary-8 color-main-text-2">
