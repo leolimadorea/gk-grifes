@@ -1,7 +1,7 @@
 import { checkPaymentStatus } from "@/app/db/payment/checkPaymentStatus";
 import { NextResponse } from "next/server";
 
-export async function GET(req, { params }) {
+export async function GET({ params }) {
   try {
     const { paymentId } = params;
     console.log("CHECK PAYMENT STATUS", paymentId);
