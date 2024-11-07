@@ -47,8 +47,7 @@ export async function POST(req) {
             number: cpf,
           },
         },
-        notification_url:
-          "https://6b77-2804-d55-405d-c700-305e-1899-18e9-d27b.ngrok-free.app/api/payment/mercadopago-webhook",
+        notification_url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/payment/mercadopago-webhook`,
       },
     });
 
