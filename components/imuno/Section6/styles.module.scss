@@ -1,0 +1,54 @@
+.container {
+  background: #fff;
+}
+
+.content {
+  display: flex;
+  gap: 50px;
+}
+
+.leftside {
+  width: 50%;
+  img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+}
+
+.rightside {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  h3 {
+    color: #da781f;
+    text-align: center;
+    font-size: 31.639px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 48.5px;
+    text-transform: uppercase;
+  }
+  p {
+    color: #da781f;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    width: 60%;
+  }
+  button {
+    border: 1px solid #da781f;
+    color: #da781f;
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 23px;
+    padding: 10px 20px;
+    background: #fff;
+  }
+}

@@ -1,14 +1,13 @@
-import React from "react";
-import Nav from "./Nav";
 import Image from "next/image";
 import Link from "next/link";
 import CartLength from "../common/CartLength";
-import WishlistLength from "../common/WishlistLength";
+import Nav from "./Nav";
 export default function Header3() {
   return (
     <header
       id="header"
-      className="header-default header-absolute header-white bg_light-grey-2"
+      className="header-default header-absolute header-white "
+      style={{ marginBottom: "50px", background: "#DA781F" }}
     >
       <div className="px_15 lg-px_40">
         <div className="row wrapper-header align-items-center">
@@ -38,7 +37,7 @@ export default function Header3() {
               <Image
                 alt="logo"
                 className="logo"
-                src="/images/logo/logo-white@2x.png"
+                src="/videos/logoWhite.png"
                 width={272}
                 height={42}
               />
@@ -53,7 +52,7 @@ export default function Header3() {
                     href="https://themeforest.net/item/ecomus-ultimate-html5-template/53417990?s_rank=3"
                     className="item-link"
                   >
-                    Buy now
+                    Comprar agora
                   </a>
                 </li>
               </ul>
@@ -61,33 +60,6 @@ export default function Header3() {
           </div>
           <div className="col-xl-3 col-md-4 col-3">
             <ul className="nav-icon d-flex justify-content-end align-items-center gap-20">
-              <li className="nav-search">
-                <a
-                  href="#canvasSearch"
-                  data-bs-toggle="offcanvas"
-                  aria-controls="offcanvasLeft"
-                  className="nav-icon-item"
-                >
-                  <i className="icon icon-search" />
-                </a>
-              </li>
-              <li className="nav-account">
-                <a
-                  href="#login"
-                  data-bs-toggle="modal"
-                  className="nav-icon-item"
-                >
-                  <i className="icon icon-account" />
-                </a>
-              </li>
-              <li className="nav-wishlist">
-                <Link href={`/wishlist`} className="nav-icon-item">
-                  <i className="icon icon-heart" />
-                  <span className="count-box">
-                    <WishlistLength />
-                  </span>
-                </Link>
-              </li>
               <li className="nav-cart">
                 <a
                   href="#shoppingCart"

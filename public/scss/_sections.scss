@@ -41,10 +41,10 @@
     height: 39px;
     @include flex(center, center);
     box-sizing: border-box;
-    color: #0098ff;
+    color: #da781f;
 
     border: 1px solid;
-    border: 1px solid#0098ff;
+    border: 1px solid#DA781F;
     border-radius: 3px;
     overflow: hidden;
     position: relative;
@@ -55,9 +55,9 @@
   .active {
     .pagination-link {
       box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 10px 0px;
-      background-color: #0098ff;
+      background-color: #da781f;
       color: var(--white);
-      border-color: #0098ff;
+      border-color: #da781f;
     }
   }
 }
@@ -315,15 +315,19 @@
     }
   }
   .marquee-item {
-    padding-left: 18px;
-    padding-right: 18px;
+    padding-left: 60px;
+
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 60px;
     .text {
       font-size: 18px;
       line-height: 21.6px;
       white-space: nowrap;
+      color: #fff;
+      font-weight: 600;
+      font-style: italic;
+      letter-spacing: 2px;
     }
     p {
       white-space: nowrap;
@@ -389,15 +393,12 @@
       .text {
         color: #704228;
       }
-      .icon svg {
-        fill: #704228;
-      }
     }
   }
   &.type-md {
     .marquee-item {
       gap: 32px;
-      .icon svg {
+      .icon img {
         width: 20px;
         height: auto;
       }

@@ -1,14 +1,14 @@
 export const marqueeItems = [
-  "Spring Clearance Event: Save Up to 70%",
-  "Spring Clearance Event: Save Up to 70%",
-  "Spring Clearance Event: Save Up to 70%",
-  "Spring Clearance Event: Save Up to 70%",
-  "Spring Clearance Event: Save Up to 70%",
-  "Spring Clearance Event: Save Up to 70%",
-  "Spring Clearance Event: Save Up to 70%",
-  "Spring Clearance Event: Save Up to 70%",
-  "Spring Clearance Event: Save Up to 70%",
-  "Spring Clearance Event: Save Up to 70%",
+  "IMUNO PUMP",
+  "IMUNO PUMP",
+  "IMUNO PUMP",
+  "IMUNO PUMP",
+  "IMUNO PUMP",
+  "IMUNO PUMP",
+  "IMUNO PUMP",
+  "IMUNO PUMP",
+  "IMUNO PUMP",
+  "IMUNO PUMP",
 ];
 
 export const marqueeItems2 = [

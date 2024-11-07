@@ -1,13 +1,13 @@
 "use client";
-import { useContext, useEffect, useRef, useState } from "react";
 import { useContextElement } from "@/context/Context";
+import { loadMercadoPago } from "@mercadopago/sdk-js";
 import { useSession } from "next-auth/react";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import Head from "next/head";
-import { loadMercadoPago } from "@mercadopago/sdk-js";
-import { toast, ToastContainer } from "react-toastify";
 import Pusher from "pusher-js";
+import { useEffect, useRef, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 const Checkout = () => {
   const { cartProducts, totalPrice, userCpf } = useContextElement();
@@ -238,7 +238,7 @@ const Checkout = () => {
       productId: product.id,
       quantity: product.quantity,
     }));
-    console.log("products", products); // Adicione essa linha para verificar o valor de products
+    console.log("products", products);
     try {
       const response = await fetch("/api/payment/mercadoPago", {
         method: "POST",

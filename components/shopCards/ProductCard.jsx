@@ -1,8 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useContextElement } from "@/context/Context";
 import Image from "next/image";
 import Link from "next/link";
-import { useContextElement } from "@/context/Context";
+import { useEffect, useState } from "react";
 import CountdownComponent from "../common/Countdown";
 
 export const ProductCard = ({ product }) => {
@@ -40,9 +40,7 @@ export const ProductCard = ({ product }) => {
             height={1005}
           />
         </Link>
-        <div className="list-product-btn">
-          {/* Quick Add, Wishlist, Compare, and Quick View buttons */}
-        </div>
+
         {product.countdown && (
           <div className="countdown-box">
             <div className="js-countdown">

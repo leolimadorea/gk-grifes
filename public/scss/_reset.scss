@@ -129,7 +129,6 @@ body {
 }
 
 img {
-  max-width: 100%;
   height: auto;
   transform: scale(1);
   vertical-align: middle;
@@ -172,7 +171,7 @@ li {
   max-width: 100%;
   margin: 0 auto;
   padding: 0px 15px;
-  color: #0098ff;
+  color: #da781f;
 }
 .slider-layout-right {
   width: calc(100vw - ((100vw - 1440px) / 2) + 30px);

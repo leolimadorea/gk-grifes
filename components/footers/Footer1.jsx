@@ -1,11 +1,9 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import { aboutLinks, footerLinks } from "@/data/footerLinks";
+import emailjs from "@emailjs/browser";
 import Image from "next/image";
 import Link from "next/link";
-import LanguageSelect from "../common/LanguageSelect";
-import CurrencySelect from "../common/CurrencySelect";
-import emailjs from "@emailjs/browser";
-import { aboutLinks, footerLinks, paymentImages } from "@/data/footerLinks";
+import { useEffect, useRef, useState } from "react";
 export default function Footer1({ bgColor = "" }) {
   useEffect(() => {
     const headings = document.querySelectorAll(".footer-heading-moblie");
@@ -57,7 +55,11 @@ export default function Footer1({ bgColor = "" }) {
   };
 
   return (
-    <footer id="footer" className={`footer md-pb-70 ${bgColor}`}>
+    <footer
+      id="footer"
+      className={`footer md-pb-70 ${bgColor}`}
+      style={{ background: "#DA781F" }}
+    >
       <div className="footer-wrap">
         <div className="footer-body">
           <div className="container">
@@ -68,7 +70,7 @@ export default function Footer1({ bgColor = "" }) {
                     <Link href={`/`}>
                       <Image
                         alt=""
-                        src="/images/logo/logo.png "
+                        src="/videos/logoWhite.png"
                         width="136"
                         height="21"
                       />
@@ -76,7 +78,7 @@ export default function Footer1({ bgColor = "" }) {
                   </div>
                   <ul>
                     <li>
-                      <p>
+                      <p style={{ color: "#fff" }}>
                         Endereço: Rua João Fernandes Camisa Nova Júnior n808,{" "}
                         <br />
                         Jardim São Luís São Paulo
@@ -107,10 +109,10 @@ export default function Footer1({ bgColor = "" }) {
               </div>
               <div className="col-xl-3 col-md-6 col-12 footer-col-block">
                 <div className="footer-heading footer-heading-desktop">
-                  <h6>Horário de Funcionamento</h6>
+                  <h6 style={{ color: "#fff" }}>Horário de Funcionamento</h6>
                 </div>
                 <div className="footer-heading footer-heading-moblie">
-                  <h6>Horário de Funcionamento</h6>
+                  <h6 style={{ color: "#fff" }}>Horário de Funcionamento</h6>
                 </div>
                 <ul className="footer-menu-list tf-collapse-content">
                   {footerLinks.map((link, index) => (
@@ -120,15 +122,15 @@ export default function Footer1({ bgColor = "" }) {
               </div>
               <div className="col-xl-3 col-md-6 col-12 footer-col-block">
                 <div className="footer-heading footer-heading-desktop">
-                  <h6>Fale Conosco</h6>
+                  <h6 style={{ color: "#fff" }}>Fale Conosco</h6>
                 </div>
                 <div className="footer-heading footer-heading-moblie">
-                  <h6>Fale Conosco</h6>
+                  <h6 style={{ color: "#fff" }}>Fale Conosco</h6>
                 </div>
                 <ul className="footer-menu-list tf-collapse-content">
                   {aboutLinks.slice(0, 4).map((link, index) => (
                     <li key={index}>
-                      <h6> {link.title}</h6>
+                      <h6 style={{ color: "#fff" }}> {link.title}</h6>
                       {link.text}
                     </li>
                   ))}
@@ -137,10 +139,10 @@ export default function Footer1({ bgColor = "" }) {
               <div className="col-xl-3 col-md-6 col-12">
                 <div className="footer-newsletter footer-col-block">
                   <div className="footer-heading footer-heading-desktop">
-                    <h6>Métodos de pagamento</h6>
+                    <h6 style={{ color: "#fff" }}>Métodos de pagamento</h6>
                   </div>
                   <div className="footer-heading footer-heading-moblie">
-                    <h6>Métodos de pagamento</h6>
+                    <h6 style={{ color: "#fff" }}>Métodos de pagamento</h6>
                   </div>
                   <div className="tf-payment">
                     <Image
@@ -152,70 +154,6 @@ export default function Footer1({ bgColor = "" }) {
                       objectFit="contain"
                     />
                   </div>
-                  {/* <div className="tf-collapse-content">
-                    <div className="footer-menu_item">
-                      Sign up to get first dibs on new arrivals, sales,
-                      exclusive content, events and more!
-                    </div>
-                    <div
-                      className={`tfSubscribeMsg ${
-                        showMessage ? "active" : ""
-                      }`}
-                    >
-                      {success ? (
-                        <p style={{ color: "rgb(52, 168, 83)" }}>
-                          You have successfully subscribed.
-                        </p>
-                      ) : (
-                        <p style={{ color: "red" }}>Something went wrong</p>
-                      )}
-                    </div>
-                    <form
-                      ref={formRef}
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                        sendMail();
-                      }}
-                      className="form-newsletter subscribe-form"
-                      action="#"
-                      method="post"
-                      acceptCharset="utf-8"
-                      data-mailchimp="true"
-                    >
-                      <div className="subscribe-content">
-                        <fieldset className="email">
-                          <input
-                            required
-                            type="email"
-                            name="email-form"
-                            className="subscribe-email"
-                            placeholder="Enter your email...."
-                            tabIndex={0}
-                            aria-required="true"
-                            autoComplete="abc@xyz.com"
-                          />
-                        </fieldset>
-                        <div className="button-submit">
-                          <button
-                            className="subscribe-button tf-btn btn-sm radius-3 btn-fill btn-icon animate-hover-btn"
-                            type="submit"
-                          >
-                            Subscribe
-                            <i className="icon icon-arrow1-top-left" />
-                          </button>
-                        </div>
-                      </div>
-                      <div className="subscribe-msg" />
-                    </form>
-                    <div className="tf-cur">
-                      <div className="tf-currencies">
-                        <CurrencySelect />
-                      </div>
-                      <div className="tf-languages">
-                        <LanguageSelect />
-                      </div>
-                    </div>
-                  </div> */}
                 </div>
               </div>
             </div>
@@ -227,7 +165,9 @@ export default function Footer1({ bgColor = "" }) {
               <div className="col-12">
                 <div className="footer-bottom-wrap d-flex gap-20 flex-wrap justify-content-between align-items-center">
                   <div className="footer-menu_item">
-                    <p>© {new Date().getFullYear()} DROGARIA VIVAMAIS</p>
+                    <p style={{ color: "#fff" }}>
+                      © {new Date().getFullYear()} DROGARIA VIVAMAIS
+                    </p>
                   </div>
                 </div>
               </div>

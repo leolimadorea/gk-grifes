@@ -1,14 +1,9 @@
 import Footer1 from "@/components/footers/Footer1";
-import Header2 from "@/components/headers/Header2";
-import Products from "@/components/shopDetails/Products";
-import RecentProducts from "@/components/shopDetails/RecentProducts";
-import ShopDetailsTab from "@/components/shopDetails/ShopDetailsTab";
-import React from "react";
-import Link from "next/link";
+import Header3 from "@/components/headers/Header3";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
-import { allProducts } from "@/data/products";
-import Header18 from "@/components/headers/Header18";
+import RecentProducts from "@/components/shopDetails/RecentProducts";
 import axios from "axios";
+import Link from "next/link";
 
 export const metadata = {
   title: " Drogaria VivaMais",
@@ -24,7 +19,7 @@ export default async function Page({ params }) {
   return (
     <>
       <div className="color-primary-8 color-main-text-2">
-        <Header18 />
+        <Header3 />
         <div className="tf-breadcrumb">
           <div className="container">
             <div className="tf-breadcrumb-wrap d-flex justify-content-between flex-wrap align-items-center">
@@ -52,7 +47,7 @@ export default async function Page({ params }) {
           </div>
         </div>
         <DetailsOuterZoom product={product} />
-        <ShopDetailsTab />
+        {/* <ShopDetailsTab /> */}
         {/* <Products /> */}
         <RecentProducts />
         <Footer1 />

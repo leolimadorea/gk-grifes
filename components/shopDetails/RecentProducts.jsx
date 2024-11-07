@@ -1,11 +1,27 @@
 "use client";
 
-import { products1 } from "@/data/products";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { ProductCard } from "../shopCards/ProductCard";
-import { Navigation, Pagination } from "swiper/modules";
 
 export default function RecentProducts() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const response = await axios.get("http://localhost:3000/api/products");
+        setProducts(response.data.slice(4, 12));
+      } catch (error) {
+        console.error("Erro ao buscar os produtos:", error);
+      }
+    }
+
+    fetchProducts();
+  }, []);
+
   return (
     <section className="flat-spacing-4 pt_0">
       <div className="container">
@@ -15,18 +31,18 @@ export default function RecentProducts() {
         <div className="hover-sw-nav hover-sw-2">
           <Swiper
             className="swiper tf-sw-product-sell wrap-sw-over"
-            slidesPerView={4} // Equivalent to data-preview={4}
-            spaceBetween={30} // Equivalent to data-space-lg={30}
+            slidesPerView={4}
+            spaceBetween={30}
             breakpoints={{
               1024: {
-                slidesPerView: 4, // Equivalent to data-tablet={3}
+                slidesPerView: 4,
               },
               640: {
-                slidesPerView: 3, // Equivalent to data-tablet={3}
+                slidesPerView: 3,
               },
               0: {
-                slidesPerView: 2, // Equivalent to data-mobile={2}
-                spaceBetween: 15, // Equivalent to data-space-md={15}
+                slidesPerView: 2,
+                spaceBetween: 15,
               },
             }}
             modules={[Navigation, Pagination]}
@@ -36,8 +52,8 @@ export default function RecentProducts() {
             }}
             pagination={{ clickable: true, el: ".spd308" }}
           >
-            {products1.slice(4, 12).map((product, i) => (
-              <SwiperSlide key={i} className="swiper-slide">
+            {products.map((product) => (
+              <SwiperSlide key={product.id} className="swiper-slide">
                 <ProductCard product={product} />
               </SwiperSlide>
             ))}
