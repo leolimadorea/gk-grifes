@@ -1,45 +1,40 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import NextAuthSessionProvider from "./SessionProvider";
-import "../public/scss/main.scss";
 import "photoswipe/dist/photoswipe.css";
 import "rc-slider/assets/index.css";
+import { useEffect, useState } from "react";
 import Context from "../context/Context.jsx";
+import "../public/scss/main.scss";
+import NextAuthSessionProvider from "./SessionProvider";
 
-import QuickView from "@/components/modals/QuickView";
-import ProductSidebar from "@/components/modals/ProductSidebar";
-import QuickAdd from "@/components/modals/QuickAdd";
-import Compare from "@/components/modals/Compare";
-import ShopCart from "@/components/modals/ShopCart";
 import AskQuestion from "@/components/modals/AskQuestion";
 import BlogSidebar from "@/components/modals/BlogSidebar";
 import ColorCompare from "@/components/modals/ColorCompare";
+import Compare from "@/components/modals/Compare";
 import DeliveryReturn from "@/components/modals/DeliveryReturn";
 import FindSize from "@/components/modals/FindSize";
 import Login from "@/components/modals/Login";
 import MobileMenu from "@/components/modals/MobileMenu";
+import ProductSidebar from "@/components/modals/ProductSidebar";
+import QuickAdd from "@/components/modals/QuickAdd";
+import QuickView from "@/components/modals/QuickView";
 import Register from "@/components/modals/Register";
 import ResetPass from "@/components/modals/ResetPass";
 import SearchModal from "@/components/modals/SearchModal";
+import ShopCart from "@/components/modals/ShopCart";
 import ToolbarBottom from "@/components/modals/ToolbarBottom";
 import ToolbarShop from "@/components/modals/ToolbarShop";
 
-import { usePathname } from "next/navigation";
-import NewsletterModal from "@/components/modals/NewsletterModal";
-import ShareModal from "@/components/modals/ShareModal";
 import ScrollTop from "@/components/common/ScrollTop";
-import RtlToggle from "@/components/common/RtlToggle";
+import ShareModal from "@/components/modals/ShareModal";
+import { usePathname } from "next/navigation";
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // Importa o script apenas no lado do cliente
-      import("bootstrap/dist/js/bootstrap.esm").then(() => {
-        // Módulo importado, você pode acessar qualquer funcionalidade exportada se necessário
-      });
+      import("bootstrap/dist/js/bootstrap.esm").then(() => {});
     }
   }, []);
 
@@ -96,60 +91,62 @@ export default function RootLayout({ children }) {
   }, [pathname]);
 
   useEffect(() => {
-    // Fecha qualquer modal aberto
-    const bootstrap = require("bootstrap"); // Importação dinâmica do bootstrap
-    const modalElements = document.querySelectorAll(".modal.show");
-    modalElements.forEach((modal) => {
-      const modalInstance = bootstrap.Modal.getInstance(modal);
-      if (modalInstance) {
-        modalInstance.hide();
-      }
-    });
+    if (typeof window !== "undefined") {
+      import("bootstrap").then((bootstrap) => {
+        const modalElements = document.querySelectorAll(".modal.show");
+        modalElements.forEach((modal) => {
+          const modalInstance = bootstrap.Modal.getInstance(modal);
+          if (modalInstance) modalInstance.hide();
+        });
 
-    // Fecha qualquer offcanvas aberto
-    const offcanvasElements = document.querySelectorAll(".offcanvas.show");
-    offcanvasElements.forEach((offcanvas) => {
-      const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvas);
-      if (offcanvasInstance) {
-        offcanvasInstance.hide();
-      }
-    });
-  }, [pathname]); // Executa toda vez que a rota muda
+        const offcanvasElements = document.querySelectorAll(".offcanvas.show");
+        offcanvasElements.forEach((offcanvas) => {
+          const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvas);
+          if (offcanvasInstance) offcanvasInstance.hide();
+        });
+      });
+    }
+  }, [pathname]);
 
   useEffect(() => {
-    const header = document.querySelector("header");
-    if (header) {
-      if (scrollDirection === "up") {
-        header.style.top = "0px";
-      } else {
-        header.style.top = "-185px";
+    if (typeof window !== "undefined") {
+      const header = document.querySelector("header");
+      if (header) {
+        if (scrollDirection === "up") {
+          header.style.top = "0px";
+        } else {
+          header.style.top = "-185px";
+        }
       }
     }
   }, [scrollDirection]);
 
   useEffect(() => {
-    const { WOW } = require("wowjs");
-    const wow = new WOW({
-      mobile: false,
-      live: false,
-    });
-    wow.init();
+    if (typeof window !== "undefined") {
+      import("wowjs").then(({ WOW }) => {
+        const wow = new WOW({
+          mobile: false,
+          live: false,
+        });
+        wow.init();
+      });
+    }
   }, [pathname]);
 
   const [showChild, setShowChild] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem("direction")) {
-      const direction = JSON.parse(localStorage.getItem("direction")).dir;
+    if (typeof window !== "undefined") {
+      const direction = localStorage.getItem("direction")
+        ? JSON.parse(localStorage.getItem("direction")).dir
+        : "ltr";
       document.documentElement.dir = direction;
       document.body.classList.add(direction);
-    } else {
-      document.documentElement.dir = "ltr";
+      setTimeout(() => {
+        setShowChild(true);
+        document.getElementById("preloader").classList.add("disabled");
+      }, 800);
     }
-    setTimeout(() => {
-      setShowChild(true);
-      document.getElementById("preloader").classList.add("disabled");
-    }, 800);
   }, []);
 
   return (
@@ -161,10 +158,9 @@ export default function RootLayout({ children }) {
           </div>
         </div>
         <Context>
-          {showChild ? (
+          {showChild && (
             <NextAuthSessionProvider>
               <div id="wrapper">{children}</div>
-              {/* <RtlToggle /> */}
               <QuickView />
               <QuickAdd />
               <ProductSidebar />
@@ -182,11 +178,8 @@ export default function RootLayout({ children }) {
               <SearchModal />
               <ToolbarBottom />
               <ToolbarShop />
-              {/* <NewsletterModal /> */}
               <ShareModal />
             </NextAuthSessionProvider>
-          ) : (
-            " "
           )}
         </Context>
         <ScrollTop />

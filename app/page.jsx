@@ -15,7 +15,9 @@ export const metadata = {
   title: "Drogaria VivaMais",
 };
 export default async function page() {
-  const res = await axios.get(`http://localhost:3000/api/products`);
+  const res = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`
+  );
   const products = res.data || [];
   return (
     <>

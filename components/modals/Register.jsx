@@ -1,9 +1,14 @@
 "use client";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
-import { Modal } from "bootstrap"; // Certifique-se de que o Bootstrap está disponível
+
+// Importação dinâmica do Bootstrap Modal
+const Modal = dynamic(() => import("bootstrap").then((mod) => mod.Modal), {
+  ssr: false,
+});
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -13,6 +18,13 @@ export default function Register() {
   });
   const [error, setError] = useState("");
   const router = useRouter();
+  const modalRef = useRef(null);
+  const [isModalLoaded, setIsModalLoaded] = useState(false);
+
+  useEffect(() => {
+    // Marca o modal como carregado quando o Bootstrap Modal está disponível
+    if (Modal) setIsModalLoaded(true);
+  }, []);
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -37,19 +49,16 @@ export default function Register() {
 
         if (signInResult.ok) {
           // Fechar o modal de registro
-          const modalElement = document.getElementById("register");
-          if (modalElement) {
-            const modalInstance = Modal.getInstance(modalElement);
-            if (modalInstance) {
-              modalInstance.hide();
-            } else {
-              const newModalInstance = new Modal(modalElement);
-              newModalInstance.hide();
-            }
+          if (isModalLoaded && modalRef.current) {
+            const modalInstance =
+              Modal.getInstance(modalRef.current) ||
+              new Modal(modalRef.current);
+            modalInstance.hide();
           }
 
           // Exibir o toast de sucesso
           toast.success("Usuário registrado com sucesso!");
+          router.push("/");
         } else {
           setError("Erro ao fazer login após o registro.");
         }
@@ -65,6 +74,7 @@ export default function Register() {
     <div
       className="modal modalCentered fade form-sign-in modal-part-content"
       id="register"
+      ref={modalRef}
     >
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
@@ -89,9 +99,7 @@ export default function Register() {
                     setFormData({ ...formData, name: e.target.value })
                   }
                 />
-                <label className="tf-field-label" htmlFor="">
-                  Nome
-                </label>
+                <label className="tf-field-label">Nome</label>
               </div>
 
               <div className="tf-field style-1">
@@ -106,9 +114,7 @@ export default function Register() {
                     setFormData({ ...formData, email: e.target.value })
                   }
                 />
-                <label className="tf-field-label" htmlFor="">
-                  Email *
-                </label>
+                <label className="tf-field-label">Email *</label>
               </div>
 
               <div className="tf-field style-1">
@@ -123,9 +129,7 @@ export default function Register() {
                     setFormData({ ...formData, password: e.target.value })
                   }
                 />
-                <label className="tf-field-label" htmlFor="">
-                  Senha *
-                </label>
+                <label className="tf-field-label">Senha *</label>
               </div>
 
               <div className="bottom">

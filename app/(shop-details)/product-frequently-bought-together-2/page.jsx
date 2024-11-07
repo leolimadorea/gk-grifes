@@ -1,13 +1,4 @@
-import Footer1 from "@/components/footers/Footer1";
-import Header2 from "@/components/headers/Header2";
-import DefaultShopDetails from "@/components/shopDetails/DefaultShopDetails";
-import Detaila20 from "@/components/shopDetails/Detaila20";
-import Products from "@/components/shopDetails/Products";
-import RecentProducts from "@/components/shopDetails/RecentProducts";
-import ShopDetailsTab from "@/components/shopDetails/ShopDetailsTab";
-import React from "react";
 import Link from "next/link";
-import Header18 from "@/components/headers/Header18";
 export const metadata = {
   title: "Shop Frequently Bought 2 || Drogaria VivaMais",
   description: "Drogaria VivaMais",
@@ -15,12 +6,12 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <Header18 />
+      {/* <Header18 /> */}
       <div className="tf-breadcrumb">
         <div className="container">
           <div className="tf-breadcrumb-wrap d-flex justify-content-between flex-wrap align-items-center">
             <div className="tf-breadcrumb-list">
-              <Link href={`/`} className="text">
+              <Link href="/" className="text">
                 Home
               </Link>
               <i className="icon icon-arrow-right" />
@@ -47,11 +38,11 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <Detaila20 />
+      {/* <Detaila20 />
       <ShopDetailsTab />
       <Products />
       <RecentProducts />
-      <Footer1 />
+      <Footer1 /> */}
     </>
   );
 }

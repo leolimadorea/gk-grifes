@@ -12,7 +12,7 @@ export const metadata = {
 
 export default async function Page({ params }) {
   const res = await axios.get(
-    `http://localhost:3000/api/products/${params.id}`
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products/${params.id}`
   );
   const product = res.data;
 
