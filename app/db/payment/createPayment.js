@@ -1,4 +1,3 @@
-import { PaymentMethod, PaymentStatus } from "@prisma/client";
 import { prisma } from "../prisma";
 
 export const createPayment = async (input) => {
