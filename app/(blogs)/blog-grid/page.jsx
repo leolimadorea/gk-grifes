@@ -1,11 +1,9 @@
 import BlogGrid from "@/components/blogs/BlogGrid";
 import Footer1 from "@/components/footers/Footer1";
-import Header2 from "@/components/headers/Header2";
-import React from "react";
-import Link from "next/link";
 import Header18 from "@/components/headers/Header18";
+import Link from "next/link";
 export const metadata = {
-  title: "Drogaria VivaMais",
+  title: "Imuno-Pump",
   description: "Drogaria VivaMais",
 };
 export default function Page() {

@@ -3,7 +3,7 @@ import Header18 from "@/components/headers/Header18";
 import ShopDefault from "@/components/shop/ShopDefault";
 
 export const metadata = {
-  title: "Drogaria VivaMais",
+  title: "Imuno-Pump",
   description: "Drogaria VivaMais",
 };
 

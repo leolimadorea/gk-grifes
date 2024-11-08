@@ -2,13 +2,12 @@ import Footer1 from "@/components/footers/Footer1";
 import Header18 from "@/components/headers/Header18";
 import DashboardNav from "@/components/othersPages/dashboard/DashboardNav";
 import MyAccount from "@/components/othersPages/dashboard/MyAccount";
-import React from "react";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
+import { authOptions } from "../../api/auth/[...nextauth]/route";
 
 export const metadata = {
-  title: "Drogaria VivaMais",
+  title: "Imuno-Pump",
   description: "Drogaria VivaMais",
 };
 

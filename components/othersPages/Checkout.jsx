@@ -29,6 +29,35 @@ const Checkout = () => {
   const [paymentApproved, setPaymentApproved] = useState(false);
   const cardFormRef = useRef(null);
   const [formKey, setFormKey] = useState(0);
+  const [zipCode, setZipCode] = useState("");
+  const [shippingOptions, setShippingOptions] = useState([]);
+
+  const calculateShipping = async () => {
+    if (!zipCode) return; // Verifica se o CEP foi preenchido
+
+    try {
+      const response = await fetch("/api/shipping", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ zipCode }), // Envia apenas o CEP, já que as dimensões são fixas
+      });
+
+      const data = await response.json();
+      setShippingOptions(data);
+    } catch (error) {
+      console.error("Erro ao calcular o frete:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (zipCode.length === 8) {
+      // Gatilho para CEP com 8 dígitos
+      calculateShipping();
+    }
+  }, [zipCode]);
+
   useEffect(() => {
     if (!paymentId) {
       return;
@@ -347,6 +376,18 @@ const Checkout = () => {
                 </fieldset>
 
                 <fieldset className="box fieldset">
+                  <label htmlFor="zipcode">CEP</label>
+                  <input
+                    required
+                    type="text"
+                    id="zipcode"
+                    value={zipCode}
+                    onChange={(e) => setZipCode(e.target.value)}
+                    placeholder="CEP de destino"
+                  />
+                </fieldset>
+
+                <fieldset className="box fieldset">
                   <label htmlFor="country">País</label>
                   <div className="select-custom">
                     <select
@@ -426,6 +467,22 @@ const Checkout = () => {
             </div>
             <div className="tf-page-cart-footer">
               <div className="tf-cart-footer-inner">
+                <h5 className="fw-5 mb_20">Opções de Frete</h5>
+                {shippingOptions.length > 0 ? (
+                  <ul>
+                    {shippingOptions.map((option, index) => (
+                      <li key={index}>
+                        <strong>Transportadora:</strong> {option.company.name}
+                        <br />
+                        <strong>Prazo:</strong> {option.delivery_time} dias
+                        <br />
+                        <strong>Preço:</strong> R$ {option.price.toFixed(2)}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>Preencha o CEP para calcular o frete.</p>
+                )}
                 <h5 className="fw-5 mb_20">Seu Pedido</h5>
                 <form
                   onSubmit={(e) => e.preventDefault()}
