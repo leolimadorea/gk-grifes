@@ -16,12 +16,10 @@ export const metadata = {
 export default async function Page() {
   let products = [];
 
-  if (typeof window !== "undefined") {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`
-    );
-    products = await res.json();
-  }
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`
+  );
+  products = await res.json();
 
   return (
     <>
