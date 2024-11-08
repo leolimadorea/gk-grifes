@@ -8,6 +8,14 @@
   margin: 0 auto;
   padding-inline: 100px;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    padding-inline: 0;
+    padding-block: 40px;
+    gap: 20px;
+  }
 }
 
 .card {
@@ -24,6 +32,11 @@
     object-fit: cover;
     width: 300px;
     height: 400px;
+
+    @media (max-width: 768px) {
+      width: 250px;
+      height: 350px;
+    }
   }
 }
 
@@ -34,5 +47,11 @@
   h4 {
     color: #000;
     font-size: 24px;
+  }
+
+  @media (max-width: 768px) {
+    h4 {
+      font-size: 18px;
+    }
   }
 }

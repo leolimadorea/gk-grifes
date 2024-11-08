@@ -14,12 +14,22 @@
   left: 10%;
   color: white;
   width: 25%;
+
+  @media (max-width: 768px) {
+    left: 5%;
+    width: 70%;
+  }
 }
 
 .overlay h1 {
   font-size: 60px;
   color: #fff;
   line-height: 60px;
+
+  @media (max-width: 768px) {
+    font-size: 40px;
+    line-height: 30px;
+  }
 }
 
 .overlay button {
