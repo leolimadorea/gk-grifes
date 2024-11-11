@@ -14,7 +14,7 @@ export default function Section1() {
           <img
             src="/videos/creatina.svg"
             alt="Gloss Essencial"
-            style={{ width: "300px" }}
+            className={styles.ImagemPrincipal}
           />
           <img src="/videos/creatina.svg" alt="Gloss Essencial" />
         </div>

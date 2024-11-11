@@ -17,6 +17,9 @@
         max-width: 1440px;
         transform: translateX(-50%);
       }
+      @media (max-width: 768px) {
+        padding-inline: 40px;
+      }
     }
     .footer-bottom {
       .footer-bottom-wrap {

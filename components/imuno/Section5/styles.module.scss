@@ -36,6 +36,15 @@
     font-weight: 700;
     line-height: normal;
     text-transform: uppercase;
+
+    @media (max-width: 768px) {
+      font-size: 30px;
+      line-height: 40px;
+    }
+
+    @media (max-width: 480px) {
+      padding-bottom: 10px;
+    }
   }
   p {
     color: #000;
@@ -52,6 +61,12 @@
   display: flex;
   gap: 50px;
   height: 600px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 30px;
+    height: auto;
+  }
 }
 
 .leftside {
@@ -59,6 +74,11 @@
     width: 600px;
     height: 100%;
     object-fit: cover;
+
+    @media (max-width: 768px) {
+      width: 250px;
+      height: 300px;
+    }
   }
 }
 
@@ -67,6 +87,11 @@
     width: 500px;
     height: 450px;
     object-fit: cover;
+
+    @media (max-width: 768px) {
+      width: 250px;
+      height: 300px;
+    }
   }
   h3 {
     color: #000;
@@ -96,5 +121,10 @@
     background: #da781f;
     border: none;
     padding: 15px 25px;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      padding: 10px 15px;
+    }
   }
 }
