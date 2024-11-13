@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
+import NextAuthSessionProvider from "./SessionProvider";
 import "../public/scss/main.scss";
 import "photoswipe/dist/photoswipe.css";
 import "rc-slider/assets/index.css";
@@ -30,6 +30,8 @@ import NewsletterModal from "@/components/modals/NewsletterModal";
 import ShareModal from "@/components/modals/ShareModal";
 import ScrollTop from "@/components/common/ScrollTop";
 import RtlToggle from "@/components/common/RtlToggle";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
@@ -160,33 +162,50 @@ export default function RootLayout({ children }) {
           </div>
         </div>
         <Context>
-          {showChild ? (
-            <>
-              <div id="wrapper">{children}</div>
-              <RtlToggle />
-              <HomesModal /> <QuickView />
-              <QuickAdd />
-              <ProductSidebar />
-              <Compare />
-              <ShopCart />
-              <AskQuestion />
-              <BlogSidebar />
-              <ColorCompare />
-              <DeliveryReturn />
-              <FindSize />
-              <Login />
-              <MobileMenu />
-              <Register />
-              <ResetPass />
-              <SearchModal />
-              <ToolbarBottom />
-              <ToolbarShop />
-              <NewsletterModal />
-              <ShareModal />{" "}
-            </>
-          ) : (
-            " "
-          )}
+          <NextAuthSessionProvider>
+            {showChild ? (
+              <>
+                <div id="wrapper">{children}</div>
+                <RtlToggle />
+                <HomesModal /> <QuickView />
+                <QuickAdd />
+                <ProductSidebar />
+                <Compare />
+                <ShopCart />
+                <AskQuestion />
+                <BlogSidebar />
+                <ColorCompare />
+                <DeliveryReturn />
+                <FindSize />
+                <Login />
+                <MobileMenu />
+                <Register />
+                <ResetPass />
+                <SearchModal />
+                <ToolbarBottom />
+                <ToolbarShop />
+                <NewsletterModal />
+                <ShareModal />{" "}
+              </>
+            ) : (
+              " "
+            )}
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              className="custom-toast-container"
+              toastClassName="custom-toast"
+              bodyClassName="custom-toast-body"
+              progressClassName="custom-progress-bar"
+            />
+          </NextAuthSessionProvider>
         </Context>
         <ScrollTop />
       </body>

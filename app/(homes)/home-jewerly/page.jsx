@@ -1,6 +1,6 @@
 import Features from "@/components/common/Features2";
 import Footer4 from "@/components/footers/Footer4";
-import Header18 from "@/components/headers/Header18";
+import Header6 from "@/components/headers/Header6";
 import Header5 from "@/components/headers/Header5";
 import Banner from "@/components/homes/home-jewerly/Banner";
 import Categories from "@/components/homes/home-jewerly/Categories";

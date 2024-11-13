@@ -1,7 +1,7 @@
 import Features from "@/components/common/Features";
 import Footer1 from "@/components/footers/Footer1";
 import Header11 from "@/components/headers/Header11";
-import Header18 from "@/components/headers/Header18";
+import Header6 from "@/components/headers/Header6";
 
 import Topbar1 from "@/components/headers/Topbar1";
 import Categories from "@/components/homes/home-dog-accessories/Categories";
@@ -21,7 +21,7 @@ export default function Page() {
   return (
     <>
       <Topbar1 />
-      <Header18 />
+      <Header6 />
       <Hero />
       <CollectionBanner />
       <Products />

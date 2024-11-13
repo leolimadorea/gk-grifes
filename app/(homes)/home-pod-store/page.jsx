@@ -12,7 +12,7 @@ import Testimonials from "@/components/homes/home-pod-store/Testimonials";
 import Brands from "@/components/homes/home-pod-store/Brands";
 import React from "react";
 import Footer1 from "@/components/footers/Footer1";
-import Header18 from "@/components/headers/Header18";
+import Header6 from "@/components/headers/Header6";
 
 export const metadata = {
   title: "Home Pod Store || Drogaria VivaMais",
@@ -22,7 +22,7 @@ export default function Page() {
   return (
     <>
       <Topbar1 />
-      <Header18 />
+      <Header6 />
       <Hero />
       <Categories />
       <Collections />

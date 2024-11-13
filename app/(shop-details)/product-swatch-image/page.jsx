@@ -6,7 +6,7 @@ import ShopDetailsTab from "@/components/shopDetails/ShopDetailsTab";
 import React from "react";
 import Link from "next/link";
 import Details26 from "@/components/shopDetails/Details26";
-import Header18 from "@/components/headers/Header18";
+import Header6 from "@/components/headers/Header6";
 export const metadata = {
   title: "Product Swatch Image || Drogaria VivaMais",
   description: "Drogaria VivaMais",
@@ -14,7 +14,7 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <Header18 />
+      <Header6 />
       <div className="tf-breadcrumb">
         <div className="container">
           <div className="tf-breadcrumb-wrap d-flex justify-content-between flex-wrap align-items-center">

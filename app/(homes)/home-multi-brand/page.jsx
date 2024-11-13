@@ -1,6 +1,6 @@
 import Features from "@/components/common/Features";
 import Footer1 from "@/components/footers/Footer1";
-import Header18 from "@/components/headers/Header18";
+import Header6 from "@/components/headers/Header6";
 import Header7 from "@/components/headers/Header7";
 import Announcment from "@/components/homes/multi-brand/Announcment";
 import BannerCollection from "@/components/homes/multi-brand/BannerCollection";
@@ -22,7 +22,7 @@ export default function Page() {
   return (
     <>
       <Announcment />
-      <Header18 />
+      <Header6 />
       <Categories />
       <Hero />
       <Categories2 />

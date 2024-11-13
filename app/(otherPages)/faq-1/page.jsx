@@ -5,7 +5,7 @@ import Faq2 from "@/components/othersPages/faq/Faq2";
 import Faq3 from "@/components/othersPages/faq/Faq3";
 import React from "react";
 import Link from "next/link";
-import Header18 from "@/components/headers/Header18";
+import Header6 from "@/components/headers/Header6";
 export const metadata = {
   title: "Faq 1 || Drogaria VivaMais",
   description: "Drogaria VivaMais",
@@ -13,7 +13,7 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <Header18 />
+      <Header6 />
       <>
         <div className="tf-page-title style-2">
           <div className="container-full">

@@ -1,60 +1,41 @@
 import axios from "axios";
 
-export const POST = async (req) => {
+export async function POST(req) {
   try {
-    const { zipCode } = await req.json();
+    const { zipCode, products } = await req.json();
 
-    const ORIGIN_ZIP_CODE = "81210000";
-    const ACCESS_TOKEN = "Wu6g7Fsu6xi0mF9PNCbssTzGE7YysdK84KGqQ0L1";
+    // if (!zipCode) {
+    //   return new Response(
+    //     JSON.stringify({ error: "CEP de destino é obrigatório" }),
+    //     { status: 400 }
+    //   );
+    // }
 
-    const payload = {
-      from: { postal_code: ORIGIN_ZIP_CODE },
-      to: { postal_code: zipCode },
-      products: [
-        {
-          weight: 0.5, // Peso fixo em kg
-          width: 12, // Largura fixa em cm
-          height: 2, // Altura fixa em cm
-          length: 17, // Comprimento fixo em cm
-          insurance_value: 100.0, // Valor do seguro (ajuste conforme necessário)
-          quantity: 1, // Quantidade de produtos
-        },
-      ],
-      options: {
-        receipt: false,
-        own_hand: false,
-        collect: false,
+    const options = {
+      method: "POST",
+      url: "https://sandbox.melhorenvio.com.br/api/v2/me/shipment/calculate",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+        "User-Agent": "TESTANDO (gustavopacosa@gmail.com)",
+      },
+      data: {
+        from: { postal_code: "96020360" },
+        to: { postal_code: "80420080" },
+        products,
       },
     };
 
-    const response = await axios.post(
-      "https://api.melhorenvio.com.br/v2/me/shipment/calculate",
-      payload,
-      {
-        headers: {
-          Authorization: `Bearer ${ACCESS_TOKEN}`,
-          "Content-Type": "application/json",
-        },
-      }
-    );
-
-    return new Response(JSON.stringify(response.data), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    });
+    const response = await axios.request(options);
+    return new Response(JSON.stringify(response.data), { status: 200 });
   } catch (error) {
     console.error(
       "Erro ao calcular o frete:",
       error.response?.data || error.message
     );
-    return new Response(
-      JSON.stringify({
-        error: error.response?.data || "Erro interno do servidor",
-      }),
-      {
-        status: error.response?.status || 500,
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    return new Response(JSON.stringify({ error: "Erro ao calcular o frete" }), {
+      status: 500,
+    });
   }
-};
+}

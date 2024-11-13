@@ -3,7 +3,7 @@ import Footer1 from "@/components/footers/Footer1";
 
 import Hero from "@/components/homes/home-grocery/Hero";
 
-import Header18 from "@/components/headers/Header18";
+import Header6 from "@/components/headers/Header6";
 import Categories from "@/components/homes/home-grocery/Categories";
 import Collections from "@/components/homes/home-grocery/Collections";
 import Products from "@/components/homes/home-grocery/Products";
@@ -30,7 +30,7 @@ export default function Page() {
     <>
       <div className="color-primary-8 color-main-text-2">
         <Topbar4 />
-        <Header18 />
+        <Header6 />
         <Hero />
         <Categories />
         <Collections />

@@ -1,6 +1,6 @@
 import Footer1 from "@/components/footers/Footer1";
-
 import Header6 from "@/components/headers/Header6";
+
 import Marquee from "@/components/homes/home-1/Marquee";
 import Hero from "@/components/homes/home-grocery/Hero";
 import Section1 from "@/components/imuno/Section1";

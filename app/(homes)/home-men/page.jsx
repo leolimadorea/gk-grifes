@@ -1,7 +1,7 @@
 import Features from "@/components/common/Features2";
 import Footer1 from "@/components/footers/Footer1";
 import Header16 from "@/components/headers/Header16";
-import Header18 from "@/components/headers/Header18";
+import Header6 from "@/components/headers/Header6";
 import Banner from "@/components/homes/home-men/Banner";
 import Blogs from "@/components/homes/home-men/Blogs";
 import CollectionBanner from "@/components/homes/home-men/CollectionBanner";
@@ -22,7 +22,7 @@ export default function Page() {
   return (
     <>
       <Announcment />
-      <Header18 />
+      <Header6 />
       <Hero />
       <Countdown />
       <Collections />

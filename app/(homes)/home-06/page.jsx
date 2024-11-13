@@ -10,7 +10,7 @@ import Products from "@/components/homes/home-6/Products";
 import Location from "@/components/homes/home-6/Location";
 import React from "react";
 import Announcmentbar from "@/components/common/Announcmentbar";
-import Header18 from "@/components/headers/Header18";
+import Header6 from "@/components/headers/Header6";
 
 export const metadata = {
   title: "Home 6 || Drogaria VivaMais",
@@ -20,7 +20,7 @@ export default function Page() {
   return (
     <>
       <Announcmentbar />
-      <Header18 />
+      <Header6 />
       <Hero />
       <Categories />
       <Products />

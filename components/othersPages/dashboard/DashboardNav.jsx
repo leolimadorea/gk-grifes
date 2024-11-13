@@ -7,6 +7,8 @@ const accountLinks = [
   { href: "/my-account-orders", label: "Pedidos" },
 
   { href: "/my-account-edit", label: "Detalhes da Conta" },
+
+  { href: "/resetPassword/", label: "Reset Password" },
 ];
 
 export default function DashboardNav() {

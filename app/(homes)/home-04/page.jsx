@@ -1,6 +1,6 @@
 import Features from "@/components/common/Features";
 import Footer2 from "@/components/footers/Footer2";
-import Header18 from "@/components/headers/Header18";
+import Header6 from "@/components/headers/Header6";
 import Header2 from "@/components/headers/Header2";
 import Topbar2 from "@/components/headers/Topbar2";
 import Categories from "@/components/homes/home-4/Categories";
@@ -20,7 +20,7 @@ export default function Page() {
   return (
     <>
       <Topbar2 />
-      <Header18 />
+      <Header6 />
       <Hero />
       <Marquee />
       <Categories />

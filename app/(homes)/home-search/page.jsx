@@ -1,5 +1,5 @@
 import Footer2 from "@/components/footers/Footer2";
-import Header18 from "@/components/headers/Header18";
+import Header6 from "@/components/headers/Header6";
 import Header2 from "@/components/headers/Header2";
 import Topbar2 from "@/components/headers/Topbar2";
 import Products from "@/components/homes/home-search/Products";
@@ -13,7 +13,7 @@ export default function Page() {
   return (
     <>
       <Topbar2 />
-      <Header18 />
+      <Header6 />
       <div className="tf-page-title style-2">
         <div className="container-full">
           <div className="heading text-center">Search</div>

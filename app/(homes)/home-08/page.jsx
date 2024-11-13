@@ -9,7 +9,7 @@ import Lookbook from "@/components/homes/home-8/Lookbook";
 import Marquee from "@/components/homes/home-8/Marquee";
 import Products from "@/components/homes/home-8/Products";
 import React from "react";
-import Header18 from "@/components/headers/Header18";
+import Header6 from "@/components/headers/Header6";
 
 export const metadata = {
   title: "Home 8 || Drogaria VivaMais",
@@ -19,7 +19,7 @@ export default function Page() {
   return (
     <>
       <Announcement />
-      <Header18 />
+      <Header6 />
       <Hero />
       <Collection />
       <Products />

@@ -6,7 +6,7 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      {/* <Header18 /> */}
+      {/* <Header6 /> */}
       <div className="tf-breadcrumb">
         <div className="container">
           <div className="tf-breadcrumb-wrap d-flex justify-content-between flex-wrap align-items-center">

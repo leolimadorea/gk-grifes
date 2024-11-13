@@ -438,12 +438,10 @@ export default function Cart() {
                   <div className="cart-checkout-btn">
                     <button
                       href="#login"
-                      data-bs-toggle={status === "authenticated" ? "" : "modal"}
                       onClick={(e) => {
                         e.preventDefault();
-                        if (status === "authenticated") {
-                          router.push("/checkout");
-                        }
+
+                        router.push("/checkout");
                       }}
                       className="tf-btn w-100 btn-fill animate-hover-btn radius-3 justify-content-center"
                     >

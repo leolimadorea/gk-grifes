@@ -3,6 +3,7 @@ import { signIn } from "next-auth/react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+
 import { toast } from "react-toastify";
 
 // Importação dinâmica do Bootstrap Modal
@@ -38,7 +39,7 @@ export default function Register() {
       });
 
       const data = await res.json();
-
+      console.log(res, "DATA");
       if (res.ok) {
         // Registro bem-sucedido, agora faça login automaticamente
         const signInResult = await signIn("credentials", {
@@ -46,16 +47,8 @@ export default function Register() {
           email: formData.email,
           password: formData.password,
         });
-
+        console.log(signInResult, "RESULTADO DA CRICACAO");
         if (signInResult.ok) {
-          // Fechar o modal de registro
-          if (isModalLoaded && modalRef.current) {
-            const modalInstance =
-              Modal.getInstance(modalRef.current) ||
-              new Modal(modalRef.current);
-            modalInstance.hide();
-          }
-
           // Exibir o toast de sucesso
           toast.success("Usuário registrado com sucesso!");
           router.push("/");
@@ -71,94 +64,96 @@ export default function Register() {
   };
 
   return (
-    <div
-      className="modal modalCentered fade form-sign-in modal-part-content"
-      id="register"
-      ref={modalRef}
-    >
-      <div className="modal-dialog modal-dialog-centered">
-        <div className="modal-content">
-          <div className="header">
-            <div className="demo-title">Registro</div>
-            <span
-              className="icon-close icon-close-popup"
-              data-bs-dismiss="modal"
-            />
-          </div>
-          <div className="tf-login-form">
-            <form onSubmit={handleRegister} className="">
-              <div className="tf-field style-1">
-                <input
-                  className="tf-field-input tf-input"
-                  placeholder=" "
-                  type="text"
-                  required
-                  name="name"
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                />
-                <label className="tf-field-label">Nome</label>
-              </div>
-
-              <div className="tf-field style-1">
-                <input
-                  className="tf-field-input tf-input"
-                  placeholder=" "
-                  type="email"
-                  required
-                  name="email"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                />
-                <label className="tf-field-label">Email *</label>
-              </div>
-
-              <div className="tf-field style-1">
-                <input
-                  className="tf-field-input tf-input"
-                  placeholder=" "
-                  type="password"
-                  required
-                  name="password"
-                  value={formData.password}
-                  onChange={(e) =>
-                    setFormData({ ...formData, password: e.target.value })
-                  }
-                />
-                <label className="tf-field-label">Senha *</label>
-              </div>
-
-              <div className="bottom">
-                <button
-                  type="submit"
-                  className="tf-btn btn-fill animate-hover-btn radius-3 w-100 justify-content-center"
-                >
-                  Registrar
-                </button>
-                {error && (
-                  <div className="w-100 mt-2">
-                    <p style={{ color: "red" }}>{error}</p>
-                  </div>
-                )}
-                <div className="w-100 mt-2">
-                  <a
-                    href="#login"
-                    data-bs-toggle="modal"
-                    className="btn-link fw-6 w-100 link"
-                  >
-                    Já tem uma conta? Faça login aqui
-                    <i className="icon icon-arrow1-top-left" />
-                  </a>
+    <>
+      <div
+        className="modal modalCentered fade form-sign-in modal-part-content"
+        id="register"
+        ref={modalRef}
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="header">
+              <div className="demo-title">Registro</div>
+              <span
+                className="icon-close icon-close-popup"
+                data-bs-dismiss="modal"
+              />
+            </div>
+            <div className="tf-login-form">
+              <form onSubmit={handleRegister} className="">
+                <div className="tf-field style-1">
+                  <input
+                    className="tf-field-input tf-input"
+                    placeholder=" "
+                    type="text"
+                    required
+                    name="name"
+                    value={formData.name}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
+                  />
+                  <label className="tf-field-label">Nome</label>
                 </div>
-              </div>
-            </form>
+
+                <div className="tf-field style-1">
+                  <input
+                    className="tf-field-input tf-input"
+                    placeholder=" "
+                    type="email"
+                    required
+                    name="email"
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                  />
+                  <label className="tf-field-label">Email *</label>
+                </div>
+
+                <div className="tf-field style-1">
+                  <input
+                    className="tf-field-input tf-input"
+                    placeholder=" "
+                    type="password"
+                    required
+                    name="password"
+                    value={formData.password}
+                    onChange={(e) =>
+                      setFormData({ ...formData, password: e.target.value })
+                    }
+                  />
+                  <label className="tf-field-label">Senha *</label>
+                </div>
+
+                <div className="bottom">
+                  <button
+                    type="submit"
+                    className="tf-btn btn-fill animate-hover-btn radius-3 w-100 justify-content-center"
+                  >
+                    Registrar
+                  </button>
+                  {error && (
+                    <div className="w-100 mt-2">
+                      <p style={{ color: "red" }}>{error}</p>
+                    </div>
+                  )}
+                  <div className="w-100 mt-2">
+                    <a
+                      href="#login"
+                      data-bs-toggle="modal"
+                      className="btn-link fw-6 w-100 link"
+                    >
+                      Já tem uma conta? Faça login aqui
+                      <i className="icon icon-arrow1-top-left" />
+                    </a>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

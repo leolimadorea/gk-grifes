@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Pusher from "pusher-js";
 import { useEffect, useRef, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Checkout = () => {
   const { cartProducts, totalPrice, userCpf } = useContextElement();
@@ -28,12 +28,29 @@ const Checkout = () => {
   const [paymentId, setPaymentId] = useState("");
   const [paymentApproved, setPaymentApproved] = useState(false);
   const cardFormRef = useRef(null);
+  const [userId, setUserId] = useState(null);
+  console.log(userId, "USERID");
   const [formKey, setFormKey] = useState(0);
   const [zipCode, setZipCode] = useState("");
+  console.log(zipCode, "ZIPCODE");
   const [shippingOptions, setShippingOptions] = useState([]);
+  console.log(shippingOptions, "SHIPPING");
+  const [isCalculating, setIsCalculating] = useState(false);
 
   const calculateShipping = async () => {
-    if (!zipCode) return; // Verifica se o CEP foi preenchido
+    if (!zipCode) return;
+
+    setIsCalculating(true);
+
+    const productsData = cartProducts.map((product) => ({
+      id: product.id,
+      width: 11,
+      height: 17,
+      length: 11,
+      weight: 0.3,
+      insurance_value: product.price,
+      quantity: product.quantity,
+    }));
 
     try {
       const response = await fetch("/api/shipping", {
@@ -41,19 +58,25 @@ const Checkout = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ zipCode }), // Envia apenas o CEP, já que as dimensões são fixas
+        body: JSON.stringify({
+          from: { postal_code: "96020360" },
+          to: { postal_code: "80420080" },
+          products: productsData,
+        }),
       });
 
       const data = await response.json();
       setShippingOptions(data);
     } catch (error) {
       console.error("Erro ao calcular o frete:", error);
+      toast.error("Erro ao calcular o frete. Tente novamente.");
+    } finally {
+      setIsCalculating(false);
     }
   };
 
   useEffect(() => {
     if (zipCode.length === 8) {
-      // Gatilho para CEP com 8 dígitos
       calculateShipping();
     }
   }, [zipCode]);
@@ -234,7 +257,53 @@ const Checkout = () => {
       console.error("Erro ao inicializar o MercadoPago:", error);
     }
   };
+  const registerUser = async (email, name) => {
+    const password = generateRandomPassword();
+    try {
+      const response = await fetch("/api/auth/registerCheckout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password, name }),
+      });
 
+      if (response.ok) {
+        const data = await response.json();
+        setUserId(data.user.id);
+        return true;
+      } else {
+        const data = await response.json();
+
+        return false;
+      }
+    } catch (error) {
+      console.error("Erro ao registrar usuário:", error);
+
+      return false;
+    }
+  };
+  const checkUserExists = async (email) => {
+    try {
+      const response = await fetch("/api/user/checkUserExists", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await response.json();
+      console.log(data, "DATA ON CHECK USER");
+      if (response.ok) {
+        setUserId(data.userId);
+        return data.userId;
+      }
+      return data.exists;
+    } catch (error) {
+      console.error("Error checking user existence:", error);
+      toast.error("Erro ao verificar a existência do usuário.");
+      return false;
+    }
+  };
+  const generateRandomPassword = () => {
+    return Math.random().toString(36).slice(-8); // Generates an 8-character random password
+  };
   const handlePlaceOrder = async () => {
     if (
       !firstName ||
@@ -250,15 +319,19 @@ const Checkout = () => {
       setTimeout(() => setShowToast(false), 3000); // Oculta o toast após 3 segundos
       return;
     }
-
+    const userExists = await checkUserExists(email);
+    if (!userExists) {
+      const registered = await registerUser(email, firstName + " " + lastName);
+      if (!registered) {
+        return; // Stop the process if registration fails
+      }
+    }
     if (paymentMethod === "pix") {
       setIsLoading(true);
       const qrCode = await generatePixQRCode();
       setQrCodeBase64(qrCode);
       setIsLoading(false);
     } else {
-      // O processamento do pagamento com cartão agora é tratado pelo MercadoPago
-      // Portanto, não é necessário fazer nada aqui
     }
   };
 
@@ -267,6 +340,8 @@ const Checkout = () => {
       productId: product.id,
       quantity: product.quantity,
     }));
+    const idToUse = await checkUserExists(session?.user?.email ?? email);
+
     console.log("products", products);
     try {
       const response = await fetch("/api/payment/mercadoPago", {
@@ -277,9 +352,9 @@ const Checkout = () => {
         body: JSON.stringify({
           transaction_amount: totalPrice,
           description: "Descrição do Produto",
-          email: session.user.email,
+          email: email,
           cpf: cpf,
-          userId: session.user.id,
+          userId: idToUse,
           products: products,
         }),
       });
@@ -385,6 +460,7 @@ const Checkout = () => {
                     onChange={(e) => setZipCode(e.target.value)}
                     placeholder="CEP de destino"
                   />
+                  <button onClick={calculateShipping}>CALCULAR</button>
                 </fieldset>
 
                 <fieldset className="box fieldset">
@@ -476,7 +552,7 @@ const Checkout = () => {
                         <br />
                         <strong>Prazo:</strong> {option.delivery_time} dias
                         <br />
-                        <strong>Preço:</strong> R$ {option.price.toFixed(2)}
+                        <strong>Preço:</strong> R$ {option.price}
                       </li>
                     ))}
                   </ul>
@@ -735,7 +811,7 @@ const Checkout = () => {
           </div>
         </div>
       </section>
-      <ToastContainer />
+
       <style jsx>{`
         @keyframes spin {
           0% {
