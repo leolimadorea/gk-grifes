@@ -5,8 +5,8 @@ import ShopDefault from "@/components/shop/ShopDefault";
 import React from "react";
 
 export const metadata = {
-  title: "Shop Women || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Shop Women || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

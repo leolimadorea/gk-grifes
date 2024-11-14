@@ -14,8 +14,8 @@ import Testimonials from "@/components/homes/home-setup-gear/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Setup Gear || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home Setup Gear || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

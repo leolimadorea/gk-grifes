@@ -6,8 +6,8 @@ import axios from "axios";
 import Link from "next/link";
 
 export const metadata = {
-  title: " Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: " ImunoPump",
+  description: "ImunoPump",
 };
 
 export default async function Page({ params }) {

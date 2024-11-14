@@ -6,8 +6,8 @@ import ShopLoadmore from "@/components/shop/ShopLoadmore";
 import React from "react";
 
 export const metadata = {
-  title: "Shop Loadmore || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Shop Loadmore || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

@@ -9,8 +9,8 @@ import Link from "next/link";
 import DefaultShopDetailsNoZoom from "@/components/shopDetails/DefaultShopDetailsNoZoom";
 import Header6 from "@/components/headers/Header6";
 export const metadata = {
-  title: "Product No Zoom || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Product No Zoom || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

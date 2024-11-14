@@ -15,8 +15,8 @@ import TestimonialSection from "@/components/homes/home-decor/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Decor || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home Decor || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

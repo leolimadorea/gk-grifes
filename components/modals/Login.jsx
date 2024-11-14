@@ -11,7 +11,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
-  const modalRef = useRef(null); // Referência para o modal
+  const modalRef = useRef(null);
 
   const handleLogin = async (e) => {
     e.preventDefault();

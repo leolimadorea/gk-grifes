@@ -12,8 +12,8 @@ import ShopGram from "@/components/homes/home-5/ShopGram";
 import React from "react";
 
 export const metadata = {
-  title: "Home 5 || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home 5 || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

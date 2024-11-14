@@ -10,8 +10,8 @@ import SliderWithGalleryPopup from "@/components/shopDetails/sliders/SliderWithG
 import DetailsPopup from "@/components/shopDetails/DetailsPopup";
 import Header6 from "@/components/headers/Header6";
 export const metadata = {
-  title: "Product Photoswipe Popup || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Product Photoswipe Popup || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

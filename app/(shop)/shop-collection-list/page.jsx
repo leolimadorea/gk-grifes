@@ -7,8 +7,8 @@ import ShopCollections from "@/components/shop/ShopCollections";
 import React from "react";
 
 export const metadata = {
-  title: "Product Collection List || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Product Collection List || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

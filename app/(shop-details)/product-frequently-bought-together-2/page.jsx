@@ -1,7 +1,7 @@
 import Link from "next/link";
 export const metadata = {
-  title: "Shop Frequently Bought 2 || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Shop Frequently Bought 2 || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

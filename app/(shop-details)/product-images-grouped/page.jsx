@@ -9,8 +9,8 @@ import Link from "next/link";
 import ShopDetailsImageGrouped from "@/components/shopDetails/ShopDetailsImageGrouped";
 import Header6 from "@/components/headers/Header6";
 export const metadata = {
-  title: "Product Images Grouped || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Product Images Grouped || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

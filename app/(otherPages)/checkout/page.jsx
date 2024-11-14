@@ -3,8 +3,8 @@ import Header3 from "@/components/headers/Header3";
 import Checkout from "@/components/othersPages/Checkout";
 
 export const metadata = {
-  title: " Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: " ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

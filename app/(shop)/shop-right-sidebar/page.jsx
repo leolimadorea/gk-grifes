@@ -6,8 +6,8 @@ import ShopSidebarRight from "@/components/shop/ShopSidebarRight";
 import React from "react";
 
 export const metadata = {
-  title: "Shop Right Sidebar || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Shop Right Sidebar || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

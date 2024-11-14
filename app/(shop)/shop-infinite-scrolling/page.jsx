@@ -6,8 +6,8 @@ import ShopLoadmoreOnScroll from "@/components/shop/ShopLoadmoreOnScroll";
 import React from "react";
 
 export const metadata = {
-  title: "Shop Infinite Scrolling  || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Shop Infinite Scrolling  || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

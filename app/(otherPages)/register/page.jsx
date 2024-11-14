@@ -5,8 +5,8 @@ import Register from "@/components/othersPages/Register";
 import React from "react";
 
 export const metadata = {
-  title: "Register || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Register || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

@@ -6,8 +6,8 @@ import ProductStyle6 from "@/components/shop/ProductStyle6";
 import React from "react";
 
 export const metadata = {
-  title: "Product Style 6 || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Product Style 6 || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

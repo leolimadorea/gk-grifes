@@ -12,8 +12,8 @@ import React from "react";
 import Header6 from "@/components/headers/Header6";
 
 export const metadata = {
-  title: "Home 8 || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home 8 || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

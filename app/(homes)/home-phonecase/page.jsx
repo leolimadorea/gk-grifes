@@ -15,8 +15,8 @@ import Testimonials from "@/components/homes/home-phonecase/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Phonecase || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home Phonecase || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

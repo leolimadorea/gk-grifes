@@ -6,8 +6,8 @@ import Map from "@/components/othersPages/contact/Map";
 import React from "react";
 
 export const metadata = {
-  title: "Contact 1 || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Contact 1 || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

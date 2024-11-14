@@ -4,7 +4,7 @@ import ShopDefault from "@/components/shop/ShopDefault";
 
 export const metadata = {
   title: "Imuno-Pump",
-  description: "Drogaria VivaMais",
+  description: "ImunoPump",
 };
 
 export default async function Page() {

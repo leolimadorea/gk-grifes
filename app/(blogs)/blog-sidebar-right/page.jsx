@@ -4,8 +4,8 @@ import Header2 from "@/components/headers/Header2";
 import React from "react";
 import Link from "next/link";
 export const metadata = {
-  title: "Blog Sidebar Right || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Blog Sidebar Right || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

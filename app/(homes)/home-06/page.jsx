@@ -13,8 +13,8 @@ import Announcmentbar from "@/components/common/Announcmentbar";
 import Header6 from "@/components/headers/Header6";
 
 export const metadata = {
-  title: "Home 6 || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home 6 || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

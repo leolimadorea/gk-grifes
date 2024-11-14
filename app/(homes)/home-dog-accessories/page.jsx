@@ -14,8 +14,8 @@ import Products from "@/components/homes/home-dog-accessories/Products";
 import React from "react";
 
 export const metadata = {
-  title: "Home Dog Accessories || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home Dog Accessories || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

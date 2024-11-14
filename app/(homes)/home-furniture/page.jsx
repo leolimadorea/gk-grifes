@@ -13,8 +13,8 @@ import ShopGram from "@/components/homes/home-furniture/ShopGram";
 import React from "react";
 
 export const metadata = {
-  title: "Home Furniture || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home Furniture || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

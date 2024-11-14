@@ -5,8 +5,8 @@ import PaymentFailure from "@/components/othersPages/PaymentFailure";
 import React from "react";
 
 export const metadata = {
-  title: "Payment Failure || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Payment Failure || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

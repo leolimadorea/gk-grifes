@@ -16,8 +16,8 @@ import Testimonials from "@/components/homes/home-activewear/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Activewear || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home Activewear || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

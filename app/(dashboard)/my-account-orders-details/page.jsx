@@ -7,8 +7,8 @@ import Orders from "@/components/othersPages/dashboard/Orders";
 import React from "react";
 
 export const metadata = {
-  title: " Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: " ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

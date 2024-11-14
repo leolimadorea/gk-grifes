@@ -14,8 +14,8 @@ import Testimonials from "@/components/homes/home-stroller/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Stroller || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home Stroller || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

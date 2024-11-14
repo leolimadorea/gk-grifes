@@ -11,9 +11,11 @@ import { toast } from "react-toastify";
 
 const Checkout = () => {
   const { cartProducts, totalPrice, userCpf } = useContextElement();
+
   const [paymentMethod, setPaymentMethod] = useState("pix");
   const { data: session, status } = useSession();
   const [qrCodeBase64, setQrCodeBase64] = useState("");
+  const [qrCodeText, setQrCodeText] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [firstName, setFirstName] = useState("");
@@ -29,12 +31,12 @@ const Checkout = () => {
   const [paymentApproved, setPaymentApproved] = useState(false);
   const cardFormRef = useRef(null);
   const [userId, setUserId] = useState(null);
-  console.log(userId, "USERID");
+
   const [formKey, setFormKey] = useState(0);
   const [zipCode, setZipCode] = useState("");
-  console.log(zipCode, "ZIPCODE");
+
   const [shippingOptions, setShippingOptions] = useState([]);
-  console.log(shippingOptions, "SHIPPING");
+
   const [isCalculating, setIsCalculating] = useState(false);
 
   const calculateShipping = async () => {
@@ -121,142 +123,6 @@ const Checkout = () => {
     };
   }, [paymentMethod, formKey]);
 
-  const initializeMercadoPago = async () => {
-    try {
-      await loadMercadoPago();
-
-      const mp = new window.MercadoPago(
-        "TEST-f24084ec-647b-4665-a14f-235c050018f6",
-        {
-          locale: "pt-BR",
-        }
-      );
-
-      cardFormRef.current = mp.cardForm({
-        amount: totalPrice.toFixed(2),
-        iframe: true,
-        form: {
-          id: "form-checkout-card",
-          cardNumber: {
-            id: "form-checkout__cardNumber",
-            placeholder: "Número do cartão",
-          },
-          expirationDate: {
-            id: "form-checkout__expirationDate",
-            placeholder: "MM/AA",
-          },
-          securityCode: {
-            id: "form-checkout__securityCode",
-            placeholder: "Código de segurança",
-          },
-          cardholderName: {
-            id: "form-checkout__cardholderName",
-            placeholder: "Titular do cartão",
-          },
-          issuer: {
-            id: "form-checkout__issuer",
-            placeholder: "Banco emissor",
-          },
-          installments: {
-            id: "form-checkout__installments",
-            placeholder: "Parcelas",
-          },
-          identificationType: {
-            id: "form-checkout__identificationType",
-            placeholder: "Tipo de documento",
-          },
-          identificationNumber: {
-            id: "form-checkout__identificationNumber",
-            placeholder: "Número do documento",
-          },
-          cardholderEmail: {
-            id: "form-checkout__cardholderEmail",
-            placeholder: "E-mail",
-          },
-        },
-        callbacks: {
-          onFormMounted: (error) => {
-            if (error)
-              return console.warn("Erro ao montar o formulário: ", error);
-            console.log("Formulário montado");
-          },
-          onSubmit: (event) => {
-            event.preventDefault();
-
-            if (!cardFormRef.current) {
-              console.error("CardForm não está inicializado.");
-              return;
-            }
-
-            const {
-              paymentMethodId: payment_method_id,
-              issuerId: issuer_id,
-              cardholderEmail: email,
-              amount,
-              token,
-              installments,
-              identificationNumber,
-              identificationType,
-            } = cardFormRef.current.getCardFormData();
-
-            fetch("/api/payment/createCardPayment", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                token,
-                issuer_id,
-                payment_method_id,
-                transaction_amount: Number(amount),
-                installments: Number(installments),
-                description: "Descrição do produto",
-                payer: {
-                  email,
-                  identification: {
-                    type: identificationType,
-                    number: identificationNumber,
-                  },
-                },
-              }),
-            })
-              .then((response) => response.json())
-              .then((data) => {
-                console.log("Pagamento processado com sucesso:", data);
-                if (data.status === "approved") {
-                  setPaymentApproved(true);
-                  toast.success("PAGAMENTO APROVADO");
-                } else {
-                  resetCardForm();
-                  toast.error("Pagamento não aprovado, tente novamente");
-                }
-              })
-              .catch((error) => {
-                console.error("Erro ao processar o pagamento:", error);
-                toast.error("Erro ao processar o pagamento. Tente novamente.");
-              });
-          },
-          onFetching: (resource) => {
-            console.log("Buscando recurso: ", resource);
-
-            // Anima a barra de progresso
-            const progressBar = document.querySelector(".progress-bar");
-            if (progressBar) {
-              progressBar.removeAttribute("value");
-            }
-
-            return () => {
-              if (progressBar) {
-                progressBar.setAttribute("value", "0");
-              }
-            };
-          },
-        },
-      });
-    } catch (error) {
-      console.error("Erro ao inicializar o MercadoPago:", error);
-    }
-  };
   const registerUser = async (email, name) => {
     const password = generateRandomPassword();
     try {
@@ -289,7 +155,7 @@ const Checkout = () => {
         body: JSON.stringify({ email }),
       });
       const data = await response.json();
-      console.log(data, "DATA ON CHECK USER");
+
       if (response.ok) {
         setUserId(data.userId);
         return data.userId;
@@ -368,7 +234,9 @@ const Checkout = () => {
         result?.point_of_interaction?.transaction_data?.qr_code_base64 || "";
       const paymentId = result.id;
       setPaymentId(paymentId);
-      console.log("QR Code Base64:", qrCodeBase64);
+      const qrCodeText =
+        result?.point_of_interaction?.transaction_data?.qr_code || "";
+      setQrCodeText(qrCodeText);
       return qrCodeBase64;
     } catch (error) {
       console.error("Erro ao gerar QR Code Pix:", error.message);
@@ -377,7 +245,175 @@ const Checkout = () => {
       return "";
     }
   };
+  const copyPixCode = () => {
+    navigator.clipboard
+      .writeText(qrCodeText)
+      .then(() => {
+        toast.success("Código Pix copiado para a área de transferência!");
+      })
+      .catch((error) => {
+        toast.error("Erro ao copiar o código Pix.");
+        console.error("Erro ao copiar o código Pix:", error);
+      });
+  };
+  const initializeMercadoPago = async () => {
+    try {
+      await loadMercadoPago();
 
+      const mp = new window.MercadoPago(
+        "TEST-f24084ec-647b-4665-a14f-235c050018f6",
+        {
+          locale: "pt-BR",
+        }
+      );
+
+      cardFormRef.current = mp.cardForm({
+        amount: totalPrice.toFixed(2),
+        iframe: true,
+        form: {
+          id: "form-checkout-card",
+          cardNumber: {
+            id: "form-checkout__cardNumber",
+            placeholder: "Número do cartão",
+          },
+          expirationDate: {
+            id: "form-checkout__expirationDate",
+            placeholder: "MM/AA",
+          },
+          securityCode: {
+            id: "form-checkout__securityCode",
+            placeholder: "Código de segurança",
+          },
+          cardholderName: {
+            id: "form-checkout__cardholderName",
+            placeholder: "Titular do cartão",
+          },
+          issuer: {
+            id: "form-checkout__issuer",
+            placeholder: "Banco emissor",
+          },
+          installments: {
+            id: "form-checkout__installments",
+            placeholder: "Parcelas",
+          },
+          identificationType: {
+            id: "form-checkout__identificationType",
+            placeholder: "Tipo de documento",
+          },
+          identificationNumber: {
+            id: "form-checkout__identificationNumber",
+            placeholder: "Número do documento",
+          },
+          cardholderEmail: {
+            id: "form-checkout__cardholderEmail",
+            placeholder: "E-mail",
+          },
+        },
+        callbacks: {
+          onFormMounted: (error) => {
+            if (error)
+              return console.warn("Erro ao montar o formulário: ", error);
+            console.log("Formulário montado");
+          },
+          onSubmit: async (event) => {
+            event.preventDefault();
+
+            if (!cardFormRef.current) {
+              console.error("CardForm não está inicializado.");
+              return;
+            }
+            if (!email) {
+              console.error("Email não definido.");
+              toast.error("Por favor, preencha o campo de email.");
+              return;
+            }
+            const userExists = await checkUserExists(
+              session?.user?.email ?? email
+            );
+            if (!userExists) {
+              const registered = await registerUser(
+                email,
+                firstName + " " + lastName
+              );
+              if (!registered) {
+                return;
+              }
+            }
+            const products = cartProducts.map((product) => ({
+              productId: product.id,
+              quantity: product.quantity,
+            }));
+
+            const {
+              paymentMethodId: payment_method_id,
+              issuerId: issuer_id,
+              cardholderEmail,
+              amount,
+              token,
+              installments,
+              identificationNumber,
+              identificationType,
+            } = cardFormRef.current.getCardFormData();
+
+            fetch("/api/payment/createCardPayment", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                token,
+                issuer_id,
+                payment_method_id,
+                transaction_amount: Number(amount),
+                installments: Number(installments),
+                description: "Descrição do produto",
+                payer: {
+                  email: cardholderEmail,
+                  identification: {
+                    type: identificationType,
+                    number: identificationNumber,
+                  },
+                },
+                userId: userExists,
+                products: products,
+              }),
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                console.log("Pagamento processado com sucesso:", data);
+                if (data.status === "approved") {
+                  setPaymentApproved(true);
+                  toast.success("PAGAMENTO APROVADO");
+                } else {
+                  resetCardForm();
+                  toast.error("Pagamento não aprovado, tente novamente");
+                }
+              })
+              .catch((error) => {
+                console.error("Erro ao processar o pagamento:", error);
+                toast.error("Erro ao processar o pagamento. Tente novamente.");
+              });
+          },
+          onFetching: (resource) => {
+            console.log("Buscando recurso: ", resource);
+
+            const progressBar = document.querySelector(".progress-bar");
+            if (progressBar) {
+              progressBar.removeAttribute("value");
+            }
+
+            return () => {
+              if (progressBar) {
+                progressBar.setAttribute("value", "0");
+              }
+            };
+          },
+        },
+      });
+    } catch (error) {
+      console.error("Erro ao inicializar o MercadoPago:", error);
+    }
+  };
   return (
     <>
       <Head>
@@ -643,7 +679,14 @@ const Checkout = () => {
                         <img
                           src={`data:image/png;base64,${qrCodeBase64}`}
                           alt="QR Code Pix"
+                          style={{ width: "100%", height: "auto" }}
                         />
+                        <button
+                          onClick={copyPixCode}
+                          className="tf-btn radius-3 btn-fill btn-icon animate-hover-btn justify-content-center w-100"
+                        >
+                          Copiar Código Pix
+                        </button>
                       </div>
                     )}
 

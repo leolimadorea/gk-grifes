@@ -14,8 +14,8 @@ import Testimonials from "@/components/homes/home-skateboard/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Skateboard || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home Skateboard || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

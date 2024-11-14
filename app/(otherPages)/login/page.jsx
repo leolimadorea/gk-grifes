@@ -5,8 +5,8 @@ import Login from "@/components/othersPages/Login";
 import React from "react";
 
 export const metadata = {
-  title: "Login || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Login || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

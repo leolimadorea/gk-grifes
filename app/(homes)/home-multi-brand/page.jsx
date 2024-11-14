@@ -15,8 +15,8 @@ import Testimonials from "@/components/homes/multi-brand/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Multi Brand || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home Multi Brand || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

@@ -17,8 +17,8 @@ import Footer1 from "@/components/footers/Footer1";
 import Header6 from "@/components/headers/Header6";
 
 export const metadata = {
-  title: "Home Skincare || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home Skincare || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

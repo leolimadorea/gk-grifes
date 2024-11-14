@@ -13,8 +13,8 @@ import ShopGram from "@/components/homes/home-glasses/ShopGram";
 import React from "react";
 
 export const metadata = {
-  title: "Home Glasses || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home Glasses || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

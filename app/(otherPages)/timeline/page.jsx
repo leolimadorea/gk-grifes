@@ -5,8 +5,8 @@ import Timelines from "@/components/othersPages/Timelines";
 import React from "react";
 
 export const metadata = {
-  title: "Timeline || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Timeline || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

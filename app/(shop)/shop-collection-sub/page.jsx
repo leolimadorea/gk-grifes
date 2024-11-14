@@ -7,8 +7,8 @@ import Subcollections from "@/components/shop/Subcollections";
 import React from "react";
 
 export const metadata = {
-  title: "Product Collection Sub || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Product Collection Sub || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

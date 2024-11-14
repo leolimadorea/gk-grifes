@@ -15,8 +15,8 @@ import Topbar from "@/components/homes/home-headphone/Topbar";
 import React from "react";
 
 export const metadata = {
-  title: "Home Headphone || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home Headphone || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

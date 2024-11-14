@@ -4,8 +4,8 @@ import Header6 from "@/components/headers/Header6";
 import Link from "next/link";
 import React from "react";
 export const metadata = {
-  title: "Page Not Found || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Page Not Found || ImunoPump",
+  description: "ImunoPump",
 };
 export default function notFound() {
   return (

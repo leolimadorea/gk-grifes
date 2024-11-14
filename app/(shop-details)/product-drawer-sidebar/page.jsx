@@ -12,8 +12,8 @@ import SidebarToggler from "@/components/shopDetails/SidebarToggler";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
 import Header6 from "@/components/headers/Header6";
 export const metadata = {
-  title: "Shop Drawer Sidebar || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Shop Drawer Sidebar || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

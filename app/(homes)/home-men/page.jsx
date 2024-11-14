@@ -15,8 +15,8 @@ import Announcment from "@/components/homes/multi-brand/Announcment";
 import React from "react";
 
 export const metadata = {
-  title: "Home Men || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home Men || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

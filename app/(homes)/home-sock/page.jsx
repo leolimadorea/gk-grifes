@@ -14,8 +14,8 @@ import Testimonials from "@/components/homes/home-sock/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Sock || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home Sock || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

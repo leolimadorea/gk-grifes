@@ -6,8 +6,8 @@ import DashboardNav from "@/components/othersPages/dashboard/DashboardNav";
 import React from "react";
 
 export const metadata = {
-  title: " Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: " ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

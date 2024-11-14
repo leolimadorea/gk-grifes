@@ -16,8 +16,8 @@ import Footer2 from "@/components/footers/Footer2";
 import Header6 from "@/components/headers/Header6";
 
 export const metadata = {
-  title: "Home Paddle Boards || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home Paddle Boards || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

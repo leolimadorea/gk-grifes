@@ -4,7 +4,7 @@ import Header6 from "@/components/headers/Header6";
 import Link from "next/link";
 export const metadata = {
   title: "Imuno-Pump",
-  description: "Drogaria VivaMais",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

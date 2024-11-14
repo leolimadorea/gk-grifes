@@ -9,8 +9,8 @@ import React from "react";
 import Link from "next/link";
 import Header6 from "@/components/headers/Header6";
 export const metadata = {
-  title: "Shop Complementery || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Shop Complementery || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

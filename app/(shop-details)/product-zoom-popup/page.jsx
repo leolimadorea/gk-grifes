@@ -9,8 +9,8 @@ import Link from "next/link";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
 import Header6 from "@/components/headers/Header6";
 export const metadata = {
-  title: "Product Zoom Popup || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Product Zoom Popup || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

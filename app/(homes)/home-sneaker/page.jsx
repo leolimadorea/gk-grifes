@@ -15,8 +15,8 @@ import Products from "@/components/homes/home-sneaker/Products";
 import React from "react";
 
 export const metadata = {
-  title: "Home Sneaker || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home Sneaker || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

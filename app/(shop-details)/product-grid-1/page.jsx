@@ -1,7 +1,7 @@
 import Link from "next/link";
 export const metadata = {
-  title: "Product Grid 1 || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Product Grid 1 || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

@@ -11,7 +11,7 @@ import Section5 from "@/components/imuno/Section5";
 import Section6 from "@/components/imuno/Section6";
 
 export const metadata = {
-  title: "Drogaria VivaMais",
+  title: "ImunoPump",
 };
 export default async function Page() {
   let products = [];

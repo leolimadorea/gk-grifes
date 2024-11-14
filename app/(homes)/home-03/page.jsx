@@ -13,8 +13,8 @@ import VideoBanner from "@/components/homes/home-3/VideoBanner";
 import React from "react";
 
 export const metadata = {
-  title: "Home 3 || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home 3 || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

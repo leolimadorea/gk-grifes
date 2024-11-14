@@ -10,8 +10,8 @@ import Link from "next/link";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
 import Header6 from "@/components/headers/Header6";
 export const metadata = {
-  title: "Product Option Customizer || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Product Option Customizer || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

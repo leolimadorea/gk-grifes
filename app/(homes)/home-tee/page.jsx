@@ -12,8 +12,8 @@ import Testimonials from "@/components/homes/home-tee/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Tee || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home Tee || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

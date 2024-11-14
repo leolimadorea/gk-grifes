@@ -7,8 +7,8 @@ import RecentProducts from "@/components/shopDetails/RecentProducts";
 import React from "react";
 
 export const metadata = {
-  title: " Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: " ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

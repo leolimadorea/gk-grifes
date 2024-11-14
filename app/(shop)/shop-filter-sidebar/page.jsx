@@ -6,8 +6,8 @@ import FilterSidebar from "@/components/shop/FilterSidebar";
 import React from "react";
 
 export const metadata = {
-  title: "Shop Filter Sidebar || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Shop Filter Sidebar || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

@@ -14,8 +14,8 @@ import Testimonials from "@/components/homes/home-giftcard/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Giftcard || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home Giftcard || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

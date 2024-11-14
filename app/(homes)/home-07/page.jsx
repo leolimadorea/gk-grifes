@@ -12,8 +12,8 @@ import Products from "@/components/homes/home-7/Products";
 import React from "react";
 
 export const metadata = {
-  title: "Home 7 || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Home 7 || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

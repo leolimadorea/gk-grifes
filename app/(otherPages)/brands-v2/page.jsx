@@ -5,8 +5,8 @@ import Brands2 from "@/components/othersPages/brands/Brands2";
 import React from "react";
 
 export const metadata = {
-  title: "Brands 2 || Drogaria VivaMais",
-  description: "Drogaria VivaMais",
+  title: "Brands 2 || ImunoPump",
+  description: "ImunoPump",
 };
 export default function Page() {
   return (

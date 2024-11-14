@@ -66,6 +66,7 @@ export async function POST(req) {
 
     // Associando produtos ao pagamento
     for (const product of products) {
+      // Create PaymentProduct record
       await prisma.paymentProduct.create({
         data: {
           paymentId: dbPayment.id,
@@ -73,8 +74,17 @@ export async function POST(req) {
           quantity: product.quantity,
         },
       });
-    }
 
+      // Decrement product quantity in Product table
+      await prisma.product.update({
+        where: { id: product.productId },
+        data: {
+          quantity: {
+            decrement: product.quantity,
+          },
+        },
+      });
+    }
     return NextResponse.json(result);
   } catch (error) {
     console.error("Error creating payment:", error);
