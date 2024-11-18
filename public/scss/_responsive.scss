@@ -2937,6 +2937,7 @@
   .wrapper-header {
     .nav-icon {
       gap: 14px;
+      flex-direction: column-reverse;
     }
   }
   .footer {

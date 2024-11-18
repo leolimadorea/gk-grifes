@@ -14,9 +14,6 @@ export default function Page() {
   return (
     <>
       <Header2 />
-      <div className="tf-page-title">
-        <div className="container-full"></div>
-      </div>
 
       <Cart />
 

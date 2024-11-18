@@ -648,52 +648,6 @@ export const navItems = [
     ],
   },
   {
-    id: "dropdown-menu-two",
-    label: "Shop",
-    links: [
-      {
-        id: "sub-shop-one",
-        label: "Shop layouts",
-        links: [
-          { href: "/shop-default", label: "Default" },
-          { href: "/shop-left-sidebar", label: "Left sidebar" },
-          { href: "/shop-right-sidebar", label: "Right sidebar" },
-          { href: "/shop-fullwidth", label: "Fullwidth" },
-          { href: "/shop-collection-sub", label: "Sub collection" },
-          { href: "/shop-collection-list", label: "Collections list" },
-        ],
-      },
-      {
-        id: "sub-shop-two",
-        label: "Features",
-        links: [
-          { href: "/shop-link", label: "Pagination links" },
-          { href: "/shop-loadmore", label: "Pagination loadmore" },
-          {
-            href: "/shop-infinite-scrolling",
-            label: "Pagination infinite scrolling",
-          },
-          { href: "/shop-filter-sidebar", label: "Filter sidebar" },
-          { href: "/shop-filter-hidden", label: "Filter hidden" },
-        ],
-      },
-      {
-        id: "sub-shop-three",
-        label: "Product styles",
-        links: [
-          { href: "/product-style-list", label: "Product style list" },
-          { href: "/product-style-01", label: "Product style 01" },
-          { href: "/product-style-02", label: "Product style 02" },
-          { href: "/product-style-03", label: "Product style 03" },
-          { href: "/product-style-04", label: "Product style 04" },
-          { href: "/product-style-05", label: "Product style 05" },
-          { href: "/product-style-06", label: "Product style 06" },
-          { href: "/product-style-07", label: "Product style 07" },
-        ],
-      },
-    ],
-  },
-  {
     id: "dropdown-menu-three",
     label: "Products",
     links: [
@@ -812,38 +766,6 @@ export const navItems = [
           },
         ],
       },
-    ],
-  },
-  {
-    id: "dropdown-menu-four",
-    label: "Pages",
-    links: [
-      { href: "/about-us", label: "About us" },
-      { href: "/brands", label: "Brands", demoLabel: true },
-      { href: "/brands-v2", label: "Brands V2" },
-      { href: "/contact-1", label: "Contact 1" },
-      { href: "/contact-2", label: "Contact 2" },
-      { href: "/faq-1", label: "FAQ 01" },
-      { href: "/faq-2", label: "FAQ 02" },
-      { href: "/our-store", label: "Our store" },
-      { href: "/store-locations", label: "Store locator" },
-      { href: "/timeline", label: "Timeline", demoLabel: true },
-      { href: "/view-cart", label: "View cart" },
-      { href: "/my-account", label: "My account" },
-      { href: "/wishlist", label: "Wishlist" },
-      { href: "/terms", label: "Terms and conditions" },
-      { href: "/404", label: "404 page" },
-    ],
-  },
-  {
-    id: "dropdown-menu-five",
-    label: "Blogs",
-    links: [
-      { href: "/blog-grid", label: "Grid layout" },
-      { href: "/blog-sidebar-left", label: "Left sidebar" },
-      { href: "/blog-sidebar-right", label: "Right sidebar" },
-      { href: "/blog-list", label: "Blog list" },
-      { href: "/blog-detail/1", label: "Single Post" },
     ],
   },
 ];

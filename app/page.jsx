@@ -37,7 +37,7 @@ export default async function Page() {
       <Marquee />
       <Categories categories={categories} />
       <CollectionBanner />
-      <Collections />
+      {/* <Collections /> */}
       <Products products={products} />
       <Testimonials />
       <Features />
