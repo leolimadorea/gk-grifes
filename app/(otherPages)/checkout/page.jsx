@@ -9,12 +9,10 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <div className="color-primary-8 color-main-text-2">
-        <Header2 />
+      <Header2 />
 
-        <Checkout />
-        <Footer2 />
-      </div>
+      <Checkout />
+      <Footer2 />
     </>
   );
 }

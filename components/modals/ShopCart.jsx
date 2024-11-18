@@ -136,7 +136,7 @@ export default function ShopCart() {
                       <div className="container">
                         <div className="row align-items-center mt-5 mb-5">
                           <div className="col-12 fs-18">
-                            Your shop cart is empty
+                            Seu carrinho está vazio!
                           </div>
                           <div className="col-12 mt-3">
                             <Link
@@ -144,7 +144,7 @@ export default function ShopCart() {
                               className="tf-btn btn-fill animate-hover-btn radius-3 w-100 justify-content-center"
                               style={{ width: "fit-content" }}
                             >
-                              Explore Products!
+                              Comprar produtos!
                             </Link>
                           </div>
                         </div>

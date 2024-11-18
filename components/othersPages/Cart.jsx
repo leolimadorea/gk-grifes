@@ -184,7 +184,9 @@ export default function Cart() {
                 {!cartProducts.length && (
                   <>
                     <div className="row align-items-center mb-5">
-                      <div className="col-6 fs-18">Your shop cart is empty</div>
+                      <div className="col-6 fs-18">
+                        Seu carrinho esta vazio!
+                      </div>
                       <div className="col-6">
                         <Link
                           href={`/shop-default`}

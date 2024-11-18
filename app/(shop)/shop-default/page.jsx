@@ -23,15 +23,11 @@ export default async function Page() {
   const products = await res.json();
 
   return (
-    <div className="color-primary-8 color-main-text-2">
+    <>
       <Header2 />
-      <div className="tf-page-title">
-        <div className="container-full">
-          <div className="heading text-center"></div>
-        </div>
-      </div>
+
       <ShopDefault products={products} />
       <Footer2 />
-    </div>
+    </>
   );
 }

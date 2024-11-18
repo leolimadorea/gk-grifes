@@ -16,18 +16,16 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <div className="color-primary-8 color-main-text-2">
-        <Topbar4 />
-        <Header2 />
-        <Hero />
-        <Categories />
-        <Collections />
-        <Products />
-        <Products2 />
-        {/* <Features />
+      <Topbar4 />
+      <Header2 />
+      <Hero />
+      <Categories />
+      <Collections />
+      <Products />
+      <Products2 />
+      {/* <Features />
         <Banner /> */}
-        <Footer2 />
-      </div>
+      <Footer2 />
     </>
   );
 }

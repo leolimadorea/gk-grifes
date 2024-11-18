@@ -21,6 +21,7 @@ export default function Hero() {
                 alt="fashion-slideshow"
                 src={slide.imgSrc}
                 width="2000"
+                priority
                 height="1125"
               />
               <div className="box-content">

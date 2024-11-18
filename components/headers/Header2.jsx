@@ -1,6 +1,8 @@
+"use client";
 import Link from "next/link";
 import CartLength from "../common/CartLength";
 import Nav from "./Nav";
+import { useSession } from "next-auth/react";
 export default function Header2({
   textClass,
   bgColor = "",
@@ -8,6 +10,7 @@ export default function Header2({
   isArrow = true,
   Linkfs = "",
 }) {
+  const { data: session } = useSession();
   return (
     <header
       id="header"
@@ -94,33 +97,26 @@ export default function Header2({
           </div>
           <div className="col-xl-3 col-md-4 col-3">
             <ul className="nav-icon d-flex justify-content-end align-items-center gap-20">
-              <li className="nav-search">
-                <a
-                  href="#canvasSearch"
-                  data-bs-toggle="offcanvas"
-                  aria-controls="offcanvasLeft"
-                  className="nav-icon-item"
+              {session ? (
+                // Se o usuário estiver logado, mostrar "Minha Conta"
+                <Link
+                  href="/my-account"
+                  className="nav-icon-item align-items-center gap-10"
                 >
-                  <i className="icon icon-search" />
-                </a>
-              </li>
-              {/* <li className="nav-account">
+                  <i className="icon icon-account" />
+                  <span className="text">Minha Conta</span>
+                </Link>
+              ) : (
+                // Se o usuário não estiver logado, mostrar "Login"
                 <a
                   href="#login"
                   data-bs-toggle="modal"
-                  className="nav-icon-item"
+                  className="nav-icon-item align-items-center gap-10"
                 >
                   <i className="icon icon-account" />
+                  <span className="text">Login</span>
                 </a>
-              </li> */}
-              {/* <li className="nav-wishlist">
-                <Link href={`/wishlist`} className="nav-icon-item">
-                  <i className="icon icon-heart" />
-                  <span className={`count-box ${bgColor} ${textClass}`}>
-                    <WishlistLength />
-                  </span>
-                </Link>
-              </li> */}
+              )}
               <li className="nav-cart">
                 <a
                   href="#shoppingCart"
@@ -128,7 +124,7 @@ export default function Header2({
                   className="nav-icon-item"
                 >
                   <i className="icon icon-bag" />
-                  <span className={`count-box ${bgColor} ${textClass}`}>
+                  <span className="count-box">
                     <CartLength />
                   </span>
                 </a>

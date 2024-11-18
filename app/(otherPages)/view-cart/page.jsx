@@ -13,16 +13,14 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <div className="color-primary-8 color-main-text-2">
-        <Header2 />
-        <div className="tf-page-title">
-          <div className="container-full"></div>
-        </div>
-
-        <Cart />
-
-        <Footer2 />
+      <Header2 />
+      <div className="tf-page-title">
+        <div className="container-full"></div>
       </div>
+
+      <Cart />
+
+      <Footer2 />
     </>
   );
 }
