@@ -10,7 +10,7 @@ import Link from "next/link";
 import ProductSidebar from "@/components/modals/ProductSidebar";
 import SidebarToggler from "@/components/shopDetails/SidebarToggler";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
-import Header2 from "@/components/headers/Header2";
+
 export const metadata = {
   title: "Shop Drawer Sidebar || ImunoPump",
   description: "ImunoPump",

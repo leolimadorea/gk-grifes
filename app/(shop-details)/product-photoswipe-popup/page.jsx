@@ -8,7 +8,7 @@ import React from "react";
 import Link from "next/link";
 import SliderWithGalleryPopup from "@/components/shopDetails/sliders/SliderWithGalleryPopup";
 import DetailsPopup from "@/components/shopDetails/DetailsPopup";
-import Header2 from "@/components/headers/Header2";
+
 export const metadata = {
   title: "Product Photoswipe Popup || ImunoPump",
   description: "ImunoPump",

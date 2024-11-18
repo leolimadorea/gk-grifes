@@ -2,7 +2,6 @@ import Features from "@/components/common/Features";
 import ShopGram from "@/components/common/ShopGram";
 import Footer2 from "@/components/footers/Footer2";
 import Header2 from "@/components/headers/Header2";
-import Header2 from "@/components/headers/Header2";
 import Categories from "@/components/homes/home-3/Categories";
 import Countdown from "@/components/homes/home-3/Countdown";
 import Hero from "@/components/homes/home-3/Hero";

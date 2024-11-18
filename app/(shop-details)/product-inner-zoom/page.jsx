@@ -7,7 +7,7 @@ import ShopDetailsTab from "@/components/shopDetails/ShopDetailsTab";
 import React from "react";
 import Link from "next/link";
 import DetailsInnerZoom from "@/components/shopDetails/DetailsInnerZoom";
-import Header2 from "@/components/headers/Header2";
+
 export const metadata = {
   title: "Product Inner Zoom || ImunoPump",
   description: "ImunoPump",

@@ -7,7 +7,6 @@ import ShopDetailsTab from "@/components/shopDetails/ShopDetailsTab";
 import React from "react";
 import Link from "next/link";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
-import Header2 from "@/components/headers/Header2";
 export const metadata = {
   title: "Product Zoom Popup || ImunoPump",
   description: "ImunoPump",

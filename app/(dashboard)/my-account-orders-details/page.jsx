@@ -1,6 +1,6 @@
 import Footer2 from "@/components/footers/Footer2";
 import Header2 from "@/components/headers/Header2";
-import Header2 from "@/components/headers/Header2";
+
 import DashboardNav from "@/components/othersPages/dashboard/DashboardNav";
 import OrderDetails from "@/components/othersPages/dashboard/OrderDetails";
 import Orders from "@/components/othersPages/dashboard/Orders";

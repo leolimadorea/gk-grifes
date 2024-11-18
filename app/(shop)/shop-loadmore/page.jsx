@@ -1,6 +1,5 @@
 import Footer2 from "@/components/footers/Footer2";
 import Header2 from "@/components/headers/Header2";
-import Header2 from "@/components/headers/Header2";
 import ShopDefault from "@/components/shop/ShopDefault";
 import ShopLoadmore from "@/components/shop/ShopLoadmore";
 import React from "react";

@@ -1,6 +1,5 @@
 import Footer2 from "@/components/footers/Footer2";
 import Header2 from "@/components/headers/Header2";
-import Header2 from "@/components/headers/Header2";
 import Topbar2 from "@/components/headers/Topbar2";
 import Products from "@/components/homes/home-search/Products";
 import React from "react";

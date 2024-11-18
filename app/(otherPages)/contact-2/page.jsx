@@ -1,6 +1,5 @@
 import Footer2 from "@/components/footers/Footer2";
 import Header2 from "@/components/headers/Header2";
-import Header2 from "@/components/headers/Header2";
 import ContactForm2 from "@/components/othersPages/contact/ContactForm2";
 import Map2 from "@/components/othersPages/contact/Map2";
 import React from "react";

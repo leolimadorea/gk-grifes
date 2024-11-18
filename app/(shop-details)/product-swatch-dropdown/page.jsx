@@ -7,7 +7,6 @@ import RecentProducts from "@/components/shopDetails/RecentProducts";
 import ShopDetailsTab from "@/components/shopDetails/ShopDetailsTab";
 import React from "react";
 import Link from "next/link";
-import Header2 from "@/components/headers/Header2";
 export const metadata = {
   title: " Product Swatch Dropdown || ImunoPump",
   description: "ImunoPump",

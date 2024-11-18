@@ -8,7 +8,7 @@ import ShopDetailsTab from "@/components/shopDetails/ShopDetailsTab";
 import Tabs5 from "@/components/shopDetails/Tabs5";
 import React from "react";
 import Link from "next/link";
-import Header2 from "@/components/headers/Header2";
+
 export const metadata = {
   title: "Shop Gift Card || ImunoPump",
   description: "ImunoPump",

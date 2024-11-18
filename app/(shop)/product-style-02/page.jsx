@@ -1,6 +1,5 @@
 import Footer2 from "@/components/footers/Footer2";
 import Header2 from "@/components/headers/Header2";
-import Header2 from "@/components/headers/Header2";
 import Topbar1 from "@/components/headers/Topbar1";
 import ProductStyle1 from "@/components/shop/ProductStyle1";
 import ProductStyle2 from "@/components/shop/ProductStyle2";

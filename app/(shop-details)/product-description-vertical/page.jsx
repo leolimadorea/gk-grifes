@@ -8,7 +8,7 @@ import Tab4 from "@/components/shopDetails/Tab4";
 import React from "react";
 import Link from "next/link";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
-import Header2 from "@/components/headers/Header2";
+
 export const metadata = {
   title: "Shop Description Vertical || ImunoPump",
   description: "ImunoPump",

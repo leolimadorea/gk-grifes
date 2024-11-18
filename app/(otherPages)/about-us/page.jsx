@@ -1,6 +1,5 @@
 import Footer2 from "@/components/footers/Footer2";
 import Header2 from "@/components/headers/Header2";
-import Header2 from "@/components/headers/Header2";
 import About from "@/components/othersPages/about/About";
 import Features from "@/components/othersPages/about/Features";
 import FlatTitle from "@/components/othersPages/about/FlatTitle";

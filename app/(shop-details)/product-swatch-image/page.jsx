@@ -6,7 +6,7 @@ import ShopDetailsTab from "@/components/shopDetails/ShopDetailsTab";
 import React from "react";
 import Link from "next/link";
 import Details26 from "@/components/shopDetails/Details26";
-import Header2 from "@/components/headers/Header2";
+
 export const metadata = {
   title: "Product Swatch Image || ImunoPump",
   description: "ImunoPump",

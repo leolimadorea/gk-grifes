@@ -1,6 +1,5 @@
 import Footer2 from "@/components/footers/Footer2";
 import Header2 from "@/components/headers/Header2";
-import Header2 from "@/components/headers/Header2";
 import Topbar3 from "@/components/headers/Topbar3";
 import BannerCountdown from "@/components/homes/home-5/BannerCountdown";
 import Collection from "@/components/homes/home-5/Collection";

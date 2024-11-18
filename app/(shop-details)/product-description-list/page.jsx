@@ -8,7 +8,7 @@ import Tab3 from "@/components/shopDetails/Tab3";
 import React from "react";
 import Link from "next/link";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
-import Header2 from "@/components/headers/Header2";
+
 export const metadata = {
   title: "Shop Description List || ImunoPump",
   description: "ImunoPump",

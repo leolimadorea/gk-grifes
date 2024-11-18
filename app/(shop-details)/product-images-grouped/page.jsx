@@ -7,7 +7,7 @@ import ShopDetailsTab from "@/components/shopDetails/ShopDetailsTab";
 import React from "react";
 import Link from "next/link";
 import ShopDetailsImageGrouped from "@/components/shopDetails/ShopDetailsImageGrouped";
-import Header2 from "@/components/headers/Header2";
+
 export const metadata = {
   title: "Product Images Grouped || ImunoPump",
   description: "ImunoPump",

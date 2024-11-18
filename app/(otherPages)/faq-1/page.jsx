@@ -5,7 +5,7 @@ import Faq2 from "@/components/othersPages/faq/Faq2";
 import Faq3 from "@/components/othersPages/faq/Faq3";
 import React from "react";
 import Link from "next/link";
-import Header2 from "@/components/headers/Header2";
+
 export const metadata = {
   title: "Faq 1 || ImunoPump",
   description: "ImunoPump",

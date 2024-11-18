@@ -7,7 +7,7 @@ import ShopDetailsTab from "@/components/shopDetails/ShopDetailsTab";
 import React from "react";
 import Link from "next/link";
 import DefaultShopDetailsNoZoom from "@/components/shopDetails/DefaultShopDetailsNoZoom";
-import Header2 from "@/components/headers/Header2";
+
 export const metadata = {
   title: "Product No Zoom || ImunoPump",
   description: "ImunoPump",
