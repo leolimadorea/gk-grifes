@@ -1,18 +1,35 @@
 "use client";
 import { layouts } from "@/data/shop";
-import ProductGrid from "./ProductGrid";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Pagination from "../common/Pagination";
+import ProductGrid from "./ProductGrid";
 import ShopFilter from "./ShopFilter";
 import Sorting from "./Sorting";
 
-export default function ShopDefault({ products }) {
+export default function ShopDefault() {
   const [gridItems, setGridItems] = useState(4);
   const [finalSorted, setFinalSorted] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setFinalSorted(products);
-  }, [products]);
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`
+        );
+        const data = await res.json();
+        setProducts(data);
+        setFinalSorted(data); // Inicialmente, ordenamos os produtos recebidos.
+        setLoading(false);
+      } catch (error) {
+        console.error("Erro ao buscar produtos:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
   return (
     <>
       <section className="flat-spacing-2">
@@ -53,7 +70,11 @@ export default function ShopDefault({ products }) {
           <div className="wrapper-control-shop">
             <div className="meta-filter-shop" />
             {/* Passa os produtos para ProductGrid */}
-            <ProductGrid allproducts={finalSorted} gridItems={gridItems} />
+            <ProductGrid
+              allproducts={finalSorted}
+              gridItems={gridItems}
+              products={products}
+            />
             {/* pagination */}
             {finalSorted.length ? (
               <ul className="tf-pagination-wrap tf-pagination-list tf-pagination-btn">
