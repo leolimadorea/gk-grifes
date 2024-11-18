@@ -21,7 +21,14 @@ export default async function Page() {
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`
   );
   products = await res.json();
+  let categories = [];
 
+  const res2 = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/categories`
+  );
+  categories = await res2.json();
+
+  console.log("categories", categories);
   return (
     <>
       <div className="color-primary-8 color-main-text-2">
@@ -29,12 +36,12 @@ export default async function Page() {
         <Header2 />
         <Hero />
         <Marquee />
-        <Categories />
-        {/* <Section2 products={products} />
-         */}
+        <Categories categories={categories} />
+        {/* <Section2 products={products} /> */}
+
         <CollectionBanner />
         <Collections />
-        <Products />
+        <Products products={products} />
         <Testimonials />
         {/* <Brands /> */}
 

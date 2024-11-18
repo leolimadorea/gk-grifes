@@ -1,5 +1,5 @@
-import Footer1 from "@/components/footers/Footer1";
-import Header3 from "@/components/headers/Header3";
+import Footer2 from "@/components/footers/Footer2";
+import Header2 from "@/components/headers/Header2";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
 import RecentProducts from "@/components/shopDetails/RecentProducts";
 import axios from "axios";
@@ -19,7 +19,7 @@ export default async function Page({ params }) {
   return (
     <>
       <div className="color-primary-8 color-main-text-2">
-        <Header3 />
+        <Header2 />
         <div className="tf-breadcrumb">
           <div className="container">
             <div className="tf-breadcrumb-wrap d-flex justify-content-between flex-wrap align-items-center">
@@ -48,7 +48,7 @@ export default async function Page({ params }) {
         </div>
         <DetailsOuterZoom product={product} />
 
-        <Footer1 />
+        <Footer2 />
       </div>
     </>
   );

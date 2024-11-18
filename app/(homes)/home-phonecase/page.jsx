@@ -1,6 +1,6 @@
 import Announcmentbar from "@/components/common/Announcmentbar";
-import Footer1 from "@/components/footers/Footer1";
-import Header6 from "@/components/headers/Header6";
+import Footer2 from "@/components/footers/Footer2";
+import Header2 from "@/components/headers/Header2";
 import Header4 from "@/components/headers/Header4";
 import Categories from "@/components/homes/home-phonecase/Categories";
 import Collection2 from "@/components/homes/home-phonecase/Collection2";
@@ -23,7 +23,7 @@ export default function Page() {
     <>
       <div className="color-primary-5">
         <Announcmentbar bgColor="bg_dark" />
-        <Header6 />
+        <Header2 />
         <Hero />
         <Categories />
         <CollectionBanner />

@@ -1,4 +1,4 @@
-import Footer1 from "@/components/footers/Footer1";
+import Footer2 from "@/components/footers/Footer2";
 import Header2 from "@/components/headers/Header2";
 import Topbar1 from "@/components/headers/Topbar1";
 
@@ -22,7 +22,7 @@ export default function Page() {
 
       <Wishlist />
 
-      <Footer1 />
+      <Footer2 />
     </>
   );
 }

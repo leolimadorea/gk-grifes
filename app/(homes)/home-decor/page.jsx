@@ -1,7 +1,7 @@
 import Announcement from "@/components/common/Announcement";
-import Footer1 from "@/components/footers/Footer1";
+import Footer2 from "@/components/footers/Footer2";
 import Header10 from "@/components/headers/Header10";
-import Header6 from "@/components/headers/Header6";
+import Header2 from "@/components/headers/Header2";
 
 import Header9 from "@/components/headers/Header9";
 import Categories from "@/components/homes/home-decor/Categories";
@@ -23,14 +23,14 @@ export default function Page() {
     <>
       <div className="color-primary-2">
         <Announcement bgColor={"bg_brown-1"} />
-        <Header6 />
+        <Header2 />
         <Hero /> <Collections />
         <Products />
         <Categories />
         <Products2 />
         <Collcetion2 />
         <TestimonialSection />
-        <Footer1 />
+        <Footer2 />
       </div>
     </>
   );

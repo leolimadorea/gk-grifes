@@ -1,9 +1,9 @@
 import Topbar4 from "@/components/headers/Topbar4";
-import Footer1 from "@/components/footers/Footer1";
+import Footer2 from "@/components/footers/Footer2";
 
 import Hero from "@/components/homes/home-grocery/Hero";
 
-import Header6 from "@/components/headers/Header6";
+import Header2 from "@/components/headers/Header2";
 import Categories from "@/components/homes/home-grocery/Categories";
 import Collections from "@/components/homes/home-grocery/Collections";
 import Products from "@/components/homes/home-grocery/Products";
@@ -30,7 +30,7 @@ export default function Page() {
     <>
       <div className="color-primary-8 color-main-text-2">
         <Topbar4 />
-        <Header6 />
+        <Header2 />
         <Hero />
         <Categories />
         <Collections />
@@ -38,7 +38,7 @@ export default function Page() {
         <Products2 />
         {/* <Features />
         <Banner /> */}
-        <Footer1 />
+        <Footer2 />
       </div>
     </>
   );

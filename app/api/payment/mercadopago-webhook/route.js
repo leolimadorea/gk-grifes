@@ -189,7 +189,7 @@ export async function POST(req) {
         };
 
         const shippingResponse = await fetch(
-          "https://6202-179-60-172-33.ngrok-free.app/api/createShipping",
+          "https://e991-2804-d55-403a-3100-886c-c16a-fe4a-46d3.ngrok-free.app/api/createShipping",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },

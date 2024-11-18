@@ -1,4 +1,4 @@
-import Footer1 from "@/components/footers/Footer1";
+import Footer2 from "@/components/footers/Footer2";
 import Header4 from "@/components/headers/Header4";
 import Brands from "@/components/homes/home-1/Brands";
 
@@ -10,7 +10,7 @@ import Products from "@/components/homes/home-6/Products";
 import Location from "@/components/homes/home-6/Location";
 import React from "react";
 import Announcmentbar from "@/components/common/Announcmentbar";
-import Header6 from "@/components/headers/Header6";
+import Header2 from "@/components/headers/Header2";
 
 export const metadata = {
   title: "Home 6 || ImunoPump",
@@ -20,7 +20,7 @@ export default function Page() {
   return (
     <>
       <Announcmentbar />
-      <Header6 />
+      <Header2 />
       <Hero />
       <Categories />
       <Products />

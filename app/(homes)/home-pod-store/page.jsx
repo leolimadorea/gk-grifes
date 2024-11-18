@@ -11,8 +11,8 @@ import Products2 from "@/components/homes/home-pod-store/Products2";
 import Testimonials from "@/components/homes/home-pod-store/Testimonials";
 import Brands from "@/components/homes/home-pod-store/Brands";
 import React from "react";
-import Footer1 from "@/components/footers/Footer1";
-import Header6 from "@/components/headers/Header6";
+import Footer2 from "@/components/footers/Footer2";
+import Header2 from "@/components/headers/Header2";
 
 export const metadata = {
   title: "Home Pod Store || ImunoPump",
@@ -22,7 +22,7 @@ export default function Page() {
   return (
     <>
       <Topbar1 />
-      <Header6 />
+      <Header2 />
       <Hero />
       <Categories />
       <Collections />
@@ -34,7 +34,7 @@ export default function Page() {
       <Marquee />
       <Testimonials />
       <Brands />
-      <Footer1 />
+      <Footer2 />
     </>
   );
 }

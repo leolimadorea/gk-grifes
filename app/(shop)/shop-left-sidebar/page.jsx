@@ -1,5 +1,5 @@
-import Footer1 from "@/components/footers/Footer1";
-import Header6 from "@/components/headers/Header6";
+import Footer2 from "@/components/footers/Footer2";
+import Header2 from "@/components/headers/Header2";
 import Header2 from "@/components/headers/Header2";
 import Topbar1 from "@/components/headers/Topbar1";
 import ShopSidebarleft from "@/components/shop/ShopSidebarleft";
@@ -12,7 +12,7 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <Topbar1 /> <Header6 />
+      <Topbar1 /> <Header2 />
       <div className="tf-page-title">
         <div className="container-full">
           <div className="row">
@@ -26,7 +26,7 @@ export default function Page() {
         </div>
       </div>
       <ShopSidebarleft />
-      <Footer1 />
+      <Footer2 />
     </>
   );
 }

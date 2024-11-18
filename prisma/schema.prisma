@@ -12,10 +12,6 @@ enum ProductStatus {
     OUT_STOCK
 }
 
-
-
-
-
 enum PaymentMethod {
     PIX
     CREDITO
@@ -33,31 +29,63 @@ model Product {
     title       String
     price       Float
     categoryId  Int
-    description String        @db.Text  
+    description String        @db.Text
     quantity    Int           @default(1)
     status      ProductStatus
     category    Category      @relation(fields: [categoryId], references: [id])
     payments    Payment[]
-    
 
     paymentProducts PaymentProduct[]
 }
 
-
-
 model Category {
-    id       Int       @id @default(autoincrement())
-    name     String
-  
-    products Product[]
+    id          Int       @id @default(autoincrement())
+    name        String
+    description String?
+    imageUrl    String?
+    createdAt   DateTime  @default(now())
+    products    Product[]
+}
+
+enum Role {
+    SUBSCRIBER
+    ADMIN
+}
+
+enum DeviceType {
+    MOBILE
+    DESKTOP
+}
+
+model AccessLog {
+    id          Int        @id @default(autoincrement())
+    userId      Int?
+    ip          String
+    city        String?
+    browser     String
+    deviceType  DeviceType
+    isIphone    Boolean
+    createdAt   DateTime   @default(now())
+    deviceBrand String?
+    deviceModel String?
+    user        User?      @relation(fields: [userId], references: [id])
+
+    @@index([userId], map: "AccessLog_userId_fkey")
 }
 
 model User {
-    id       Int       @id @default(autoincrement())
-    name     String?
-    email    String    @unique
-    password String
-    payments Payment[]
+    id          Int         @id @default(autoincrement())
+    name        String?
+    email       String      @unique
+    password    String
+    image_url   String?
+    role        Role        @default(SUBSCRIBER)
+    phoneNumber String?
+    AccessLog   AccessLog[]
+    payments    Payment[]
+    createdAt   DateTime    @default(now())
+
+    @@index([role], map: "User_role_fkey")
 }
 
 model Payment {
@@ -69,10 +97,10 @@ model Payment {
     gatewayId       String        @unique
     paymentMethod   PaymentMethod
     status          PaymentStatus
-             
+    createdAt       DateTime      @default(now())
 
     product Product? @relation(fields: [productId], references: [id])
-    user    User    @relation(fields: [userId], references: [id])
+    user    User     @relation(fields: [userId], references: [id])
 
     paymentProducts PaymentProduct[]
 
@@ -80,31 +108,30 @@ model Payment {
 }
 
 model PaymentProduct {
-    id         Int    @id @default(autoincrement())
+    id        Int      @id @default(autoincrement())
+    paymentId Int
+    productId Int
+    quantity  Int
+    approved  Boolean?
+
+    product Product @relation(fields: [productId], references: [id])
+    payment Payment @relation(fields: [paymentId], references: [id])
+}
+
+model PaymentDeliveryAddress {
+    id         Int     @id @default(autoincrement())
     paymentId  Int
-    productId  Int
-    quantity   Int
-    approved   Boolean?
- 
-    product    Product @relation(fields: [productId], references: [id]) 
-    payment    Payment @relation(fields: [paymentId], references: [id])
+    address    String
+    city       String
+    state      String
+    country    String
+    zip        String
+    phone      String
+    cpf        String
+    name       String
+    serviceId  String
+    complement String?
+    number     String?
 
-    }
-
-    model PaymentDeliveryAddress {
-        id         Int    @id @default(autoincrement())
-        paymentId  Int
-        address    String
-        city       String
-        state      String
-        country    String
-        zip        String
-        phone      String
-        cpf        String
-        name       String
-        serviceId  String
-        complement String?
-        number      String?
-
-        payment    Payment @relation(fields: [paymentId], references: [id])
-    }
+    payment Payment @relation(fields: [paymentId], references: [id])
+}

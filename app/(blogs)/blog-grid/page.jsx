@@ -1,6 +1,6 @@
 import BlogGrid from "@/components/blogs/BlogGrid";
-import Footer1 from "@/components/footers/Footer1";
-import Header6 from "@/components/headers/Header6";
+import Footer2 from "@/components/footers/Footer2";
+import Header2 from "@/components/headers/Header2";
 import Link from "next/link";
 export const metadata = {
   title: "Imuno-Pump",
@@ -9,7 +9,7 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <Header6 />
+      <Header2 />
       <div className="tf-page-title">
         <div className="container-full">
           <div className="row">
@@ -30,7 +30,7 @@ export default function Page() {
       </div>
 
       <BlogGrid />
-      <Footer1 />
+      <Footer2 />
     </>
   );
 }

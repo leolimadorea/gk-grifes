@@ -1,7 +1,7 @@
 import BlogDetails from "@/components/blogs/BlogDetails";
 import RelatedBlogs from "@/components/blogs/RelatedBlogs";
-import Footer1 from "@/components/footers/Footer1";
-import Header6 from "@/components/headers/Header6";
+import Footer2 from "@/components/footers/Footer2";
+import Header2 from "@/components/headers/Header2";
 import Header2 from "@/components/headers/Header2";
 import { allBlogs } from "@/data/blogs";
 import Link from "next/link";
@@ -15,7 +15,7 @@ export default function Page({ params }) {
   const blog = allBlogs.filter((elm) => elm.id == params.id)[0] || allBlogs[0];
   return (
     <>
-      <Header6 />
+      <Header2 />
       <div className="tf-page-title">
         <div className="container-full">
           <div className="row">
@@ -36,7 +36,7 @@ export default function Page({ params }) {
       </div>
       <BlogDetails blog={blog} />
       <RelatedBlogs />
-      <Footer1 />
+      <Footer2 />
     </>
   );
 }

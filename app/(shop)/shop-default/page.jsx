@@ -1,5 +1,5 @@
-import Footer1 from "@/components/footers/Footer1";
-import Header6 from "@/components/headers/Header6";
+import Footer2 from "@/components/footers/Footer2";
+import Header2 from "@/components/headers/Header2";
 import ShopDefault from "@/components/shop/ShopDefault";
 
 export const metadata = {
@@ -24,14 +24,14 @@ export default async function Page() {
 
   return (
     <div className="color-primary-8 color-main-text-2">
-      <Header6 />
+      <Header2 />
       <div className="tf-page-title">
         <div className="container-full">
           <div className="heading text-center"></div>
         </div>
       </div>
       <ShopDefault products={products} />
-      <Footer1 />
+      <Footer2 />
     </div>
   );
 }

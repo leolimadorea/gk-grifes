@@ -1,5 +1,5 @@
 import Footer2 from "@/components/footers/Footer2";
-import Header6 from "@/components/headers/Header6";
+import Header2 from "@/components/headers/Header2";
 import Announcement from "@/components/common/Announcement";
 import Blogs from "@/components/homes/home-8/Blogs";
 import Collection from "@/components/homes/home-8/Collection";
@@ -18,7 +18,7 @@ export default function Page() {
   return (
     <>
       <Announcement />
-      <Header6 />
+      <Header2 />
       <Hero />
       <Collection />
       <Products />

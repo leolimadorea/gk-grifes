@@ -1,12 +1,12 @@
-import Footer1 from "@/components/footers/Footer1";
-import Header6 from "@/components/headers/Header6";
+import Footer2 from "@/components/footers/Footer2";
+import Header2 from "@/components/headers/Header2";
 import Header2 from "@/components/headers/Header2";
 import React from "react";
 
 export default function Page() {
   return (
     <>
-      <Header6 />
+      <Header2 />
       <>
         {/* page-title */}
         <div className="tf-page-title style-2">
@@ -62,7 +62,7 @@ export default function Page() {
         </section>
       </>
 
-      <Footer1 />
+      <Footer2 />
     </>
   );
 }

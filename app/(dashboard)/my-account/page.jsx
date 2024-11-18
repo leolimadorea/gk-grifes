@@ -1,5 +1,5 @@
-import Footer1 from "@/components/footers/Footer1";
-import Header6 from "@/components/headers/Header6";
+import Footer2 from "@/components/footers/Footer2";
+import Header2 from "@/components/headers/Header2";
 import DashboardNav from "@/components/othersPages/dashboard/DashboardNav";
 import MyAccount from "@/components/othersPages/dashboard/MyAccount";
 import { getServerSession } from "next-auth/next";
@@ -20,7 +20,7 @@ export default async function page() {
 
   return (
     <>
-      <Header6 />
+      <Header2 />
       <div className="tf-page-title">
         <div className="container-full"></div>
       </div>
@@ -37,7 +37,7 @@ export default async function page() {
         </div>
       </section>
 
-      <Footer1 />
+      <Footer2 />
     </>
   );
 }

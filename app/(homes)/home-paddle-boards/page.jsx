@@ -13,7 +13,7 @@ import Products2 from "@/components/homes/home-paddle-boards/Products2";
 import Testimonials from "@/components/homes/home-paddle-boards/Testimonials";
 import React from "react";
 import Footer2 from "@/components/footers/Footer2";
-import Header6 from "@/components/headers/Header6";
+import Header2 from "@/components/headers/Header2";
 
 export const metadata = {
   title: "Home Paddle Boards || ImunoPump",
@@ -23,7 +23,7 @@ export default function Page() {
   return (
     <>
       <Topbar2 bgColor="bg_blue-6" />
-      <Header6 />
+      <Header2 />
       <Hero /> <Features />
       <Products />
       <Collections />

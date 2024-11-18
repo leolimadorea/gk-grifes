@@ -1,5 +1,5 @@
-import Footer1 from "@/components/footers/Footer1";
-import Header6 from "@/components/headers/Header6";
+import Footer2 from "@/components/footers/Footer2";
+import Header2 from "@/components/headers/Header2";
 import DashboardNav from "@/components/othersPages/dashboard/DashboardNav";
 import Orders from "@/components/othersPages/dashboard/Orders";
 
@@ -10,7 +10,7 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <Header6 />
+      <Header2 />
       <div className="tf-page-title">
         <div className="container-full">
           <div className="heading text-center">My Orders</div>
@@ -29,7 +29,7 @@ export default function Page() {
         </div>
       </section>
 
-      <Footer1 />
+      <Footer2 />
     </>
   );
 }

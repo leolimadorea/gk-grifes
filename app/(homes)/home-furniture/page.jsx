@@ -1,5 +1,5 @@
-import Footer1 from "@/components/footers/Footer1";
-import Header6 from "@/components/headers/Header6";
+import Footer2 from "@/components/footers/Footer2";
+import Header2 from "@/components/headers/Header2";
 import Header4 from "@/components/headers/Header4";
 import Features from "@/components/homes/home-6/Features";
 import Announcment from "@/components/homes/home-furniture/Announcment";
@@ -21,7 +21,7 @@ export default function Page() {
     <>
       <div className="color-primary-2">
         <Announcment />
-        <Header6 /> <Hero />
+        <Header2 /> <Hero />
         <Collection />
         <Categories />
         <Banner />

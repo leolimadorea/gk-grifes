@@ -1,4 +1,4 @@
-import Footer1 from "@/components/footers/Footer1";
+import Footer2 from "@/components/footers/Footer2";
 import Header2 from "@/components/headers/Header2";
 import DefaultShopDetails from "@/components/shopDetails/DefaultShopDetails";
 import Details7 from "@/components/shopDetails/Details7";
@@ -10,7 +10,7 @@ import Link from "next/link";
 import ProductSidebar from "@/components/modals/ProductSidebar";
 import SidebarToggler from "@/components/shopDetails/SidebarToggler";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
-import Header6 from "@/components/headers/Header6";
+import Header2 from "@/components/headers/Header2";
 export const metadata = {
   title: "Shop Drawer Sidebar || ImunoPump",
   description: "ImunoPump",
@@ -18,7 +18,7 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <Header6 />
+      <Header2 />
       <div className="tf-breadcrumb">
         <div className="container">
           <div className="tf-breadcrumb-wrap d-flex justify-content-between flex-wrap align-items-center">
@@ -56,7 +56,7 @@ export default function Page() {
       <ShopDetailsTab />
       <Products />
       <RecentProducts />
-      <Footer1 />
+      <Footer2 />
     </>
   );
 }

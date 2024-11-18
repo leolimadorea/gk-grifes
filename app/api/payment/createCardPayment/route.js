@@ -3,38 +3,56 @@ import { PaymentMethod, PaymentStatus } from "@prisma/client";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
-  const {
-    token,
-    transaction_amount,
-    installments,
-    payment_method_id,
-    issuer_id,
-    payer,
-    userId,
-    products,
-    orderData,
-  } = await req.json();
-  if (
-    !transaction_amount ||
-    !token ||
-    !payment_method_id ||
-    !payer ||
-    !userId ||
-    !products ||
-    !products.length ||
-    !orderData
-  ) {
-    return NextResponse.json(
-      { error: "Missing required fields" },
-      { status: 400 }
-    );
-  }
+  console.log("Recebendo requisição de pagamento...");
   try {
+    const {
+      token,
+      transaction_amount,
+      installments,
+      payment_method_id,
+      issuer_id,
+      payer,
+      userId,
+      products,
+      orderData,
+    } = await req.json();
+
+    console.log("Dados recebidos:", {
+      token,
+      transaction_amount,
+      installments,
+      payment_method_id,
+      issuer_id,
+      payer,
+      userId,
+      products,
+      orderData,
+    });
+
+    if (
+      !transaction_amount ||
+      !token ||
+      !payment_method_id ||
+      !payer ||
+      !userId ||
+      !products ||
+      !products.length ||
+      !orderData
+    ) {
+      console.error("Campos obrigatórios ausentes");
+      return NextResponse.json(
+        { error: "Missing required fields" },
+        { status: 400 }
+      );
+    }
+
+    console.log("Iniciando chamada para a API do Mercado Pago...");
+
     const response = await fetch("https://api.mercadopago.com/v1/payments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer TEST-3758424019225992-040322-010d86f865bf1f9635ef37103c630a7b-1164572593`, // Substitua pela sua Access Token do Mercado Pago
+        Authorization: `Bearer TEST-3758424019225992-040322-010d86f865bf1f9635ef37103c630a7b-1164572593`,
         "X-Idempotency-Key": crypto.randomUUID(),
       },
       body: JSON.stringify({
@@ -47,23 +65,37 @@ export async function POST(req) {
       }),
     });
 
+    console.log("Resposta da API do Mercado Pago recebida.");
+
     const result = await response.json();
+
+    console.log("Resultado da chamada ao Mercado Pago:", result);
+
     if (!response.ok) {
+      console.error("Erro na resposta do Mercado Pago:", result);
       throw new Error(result.message || "Erro ao criar pagamento");
     }
+
     const { id, status } = result;
+
+    console.log("Status do pagamento:", status);
+
     if (status === "approved") {
+      console.log("Pagamento aprovado. Criando registro no banco de dados...");
+
       const dbPayment = await createPayment({
         userId,
         amount: transaction_amount,
         paymentMethod: PaymentMethod.CREDITO,
         gatewayId: id.toString(),
-        status:
-          status === "approved"
-            ? PaymentStatus.APPROVED
-            : PaymentStatus.PENDING,
+        status: PaymentStatus.APPROVED,
       });
+
+      console.log("Pagamento registrado no banco de dados:", dbPayment);
+
       for (const product of products) {
+        console.log("Processando produto:", product);
+
         await prisma.paymentProduct.create({
           data: {
             paymentId: dbPayment.id,
@@ -72,6 +104,8 @@ export async function POST(req) {
             approved: true,
           },
         });
+
+        console.log(`Produto ${product.productId} registrado no pagamento.`);
 
         await prisma.product.update({
           where: { id: product.productId },
@@ -82,90 +116,33 @@ export async function POST(req) {
           },
         });
 
-        await prisma.paymentDeliveryAddress.create({
-          data: {
-            paymentId: dbPayment.id,
-            address: orderData.to.address,
-            city: orderData.to.city,
-            state: orderData.to.state_abbr,
-            country: "Brasil",
-            zip: orderData.to.postal_code,
-            phone: orderData.to.phone,
-            name: orderData.to.name,
-            serviceId: orderData.service.toString(),
-            complement: orderData.to.complement,
-            number: orderData.to.number,
-            cpf: orderData.to.document,
-          },
-        });
-      }
-      const notaFiscalData = {
-        tipo: 1, // Nota Fiscal de Saída
-        numero: id.toString(), // Número único da NF
-        dataOperacao: new Date().toISOString(), // Data da operação
-        contato: {
-          nome: orderData.to.name,
-          tipoPessoa: "F", // Pessoa Física
-          numeroDocumento: orderData.to.document,
-          telefone: orderData.to.phone,
-          email: payer.email,
-          endereco: {
-            endereco: orderData.to.address,
-            numero: orderData.to.number,
-            complemento: orderData.to.complement,
-            bairro: orderData.to.neighborhood || "Centro",
-            cep: orderData.to.postal_code,
-            municipio: orderData.to.city,
-            uf: orderData.to.state_abbr,
-            pais: "Brasil",
-          },
-        },
-        itens: products.map((product) => ({
-          codigo: product.productId.toString(),
-          descricao: product.description || "Produto",
-          unidade: "UN",
-          quantidade: product.quantity,
-          valor: product.price,
-          tipo: "P", // Produto
-        })),
-        parcelas: [
-          {
-            data: new Date().toISOString().split("T")[0],
-            valor: transaction_amount,
-            formaPagamento: { id: 1 }, // Substitua com o ID de forma de pagamento no Bling
-          },
-        ],
-      };
-      try {
-        const nfeResponse = await fetch("https://api.bling.com.br/Api/v3/nfe", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer 8770429d18a79e9954cfc9a01261cb0af6a71b45`, // Substitua pelo seu Access Token do Bling
-          },
-          body: JSON.stringify(notaFiscalData),
-        });
-
-        if (!nfeResponse.ok) {
-          // Trata erros de resposta HTTP (ex: 400 ou 500)
-          const errorData = await nfeResponse.json();
-          throw new Error(
-            `Erro na API: ${nfeResponse.status} - ${
-              errorData?.message || "Erro desconhecido"
-            }`
-          );
-        }
-
-        const nfeData = await nfeResponse.json();
-        console.log("Nota Fiscal criada com sucesso:", nfeData);
-
-        // Log indicando que a nota fiscal foi emitida com sucesso
         console.log(
-          `Nota Fiscal emitida com ID: ${nfeData.id || "Desconhecido"}`
+          `Estoque do produto ${product.productId} atualizado no banco de dados.`
         );
-      } catch (error) {
-        console.error("Erro ao criar a Nota Fiscal:", error.message);
       }
+
+      console.log("Registrando endereço de entrega...");
+
+      await prisma.paymentDeliveryAddress.create({
+        data: {
+          paymentId: dbPayment.id,
+          address: orderData.to.address,
+          city: orderData.to.city,
+          state: orderData.to.state_abbr,
+          country: "Brasil",
+          zip: orderData.to.postal_code,
+          phone: orderData.to.phone,
+          name: orderData.to.name,
+          serviceId: orderData.service.toString(),
+          complement: orderData.to.complement,
+          number: orderData.to.number,
+          cpf: orderData.to.document,
+        },
+      });
+
+      console.log("Endereço de entrega registrado com sucesso.");
+
+      console.log("Criando frete...");
 
       const shippingResponse = await fetch(
         "http://localhost:3000/api/createShipping",
@@ -177,16 +154,23 @@ export async function POST(req) {
       );
 
       const shippingResult = await shippingResponse.json();
+
+      console.log("Resultado da criação do frete:", shippingResult);
+
       if (!shippingResponse.ok) {
+        console.error("Erro ao criar frete:", shippingResult);
         throw new Error(shippingResult.error || "Erro ao criar frete");
       }
+
+      console.log("Frete criado com sucesso.");
 
       return NextResponse.json({ ...result, shipping: shippingResult });
     }
 
+    console.warn("Pagamento não aprovado:", result);
     return NextResponse.json(result);
   } catch (error) {
-    console.error("Erro ao processar pagamento:", error.message);
+    console.error("Erro ao processar pagamento:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

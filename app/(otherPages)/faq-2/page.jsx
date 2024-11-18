@@ -1,11 +1,11 @@
-import Footer1 from "@/components/footers/Footer1";
+import Footer2 from "@/components/footers/Footer2";
 import Header2 from "@/components/headers/Header2";
 import Faq1 from "@/components/othersPages/faq/Faq1";
 import Faq2 from "@/components/othersPages/faq/Faq2";
 import Faq3 from "@/components/othersPages/faq/Faq3";
 import React from "react";
 import Link from "next/link";
-import Header6 from "@/components/headers/Header6";
+import Header2 from "@/components/headers/Header2";
 export const metadata = {
   title: "Faq 2 || ImunoPump",
   description: "ImunoPump",
@@ -13,7 +13,7 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <Header6 />
+      <Header2 />
       <>
         {/* page-title */}
         <div className="tf-page-title style-2">
@@ -84,7 +84,7 @@ export default function Page() {
         </section>
       </>
 
-      <Footer1 />
+      <Footer2 />
     </>
   );
 }

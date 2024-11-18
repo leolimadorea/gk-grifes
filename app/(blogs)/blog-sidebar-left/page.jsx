@@ -1,9 +1,9 @@
 import BlogLeftSidebar from "@/components/blogs/BlogLeftSidebar";
-import Footer1 from "@/components/footers/Footer1";
+import Footer2 from "@/components/footers/Footer2";
 
 import React from "react";
 import Link from "next/link";
-import Header6 from "@/components/headers/Header6";
+import Header2 from "@/components/headers/Header2";
 export const metadata = {
   title: "Blog  Sidebar Left || ImunoPump",
   description: "ImunoPump",
@@ -11,7 +11,7 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <Header6 />
+      <Header2 />
       <div className="tf-page-title">
         <div className="container-full">
           <div className="row">
@@ -32,7 +32,7 @@ export default function Page() {
       </div>
       <BlogLeftSidebar />
 
-      <Footer1 />
+      <Footer2 />
     </>
   );
 }

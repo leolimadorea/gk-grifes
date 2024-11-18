@@ -3,10 +3,16 @@ import { useContextElement } from "@/context/Context";
 import { products15 } from "@/data/products";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-export default function Products() {
+export default function Products({ products }) {
+  const router = useRouter();
+
+  const handleProductClick = (id) => {
+    router.push(`/product-detail/${id}`);
+  };
   const {
     setQuickViewItem,
     setQuickAddItem,
@@ -59,7 +65,7 @@ export default function Products() {
                 nextEl: ".snbn161",
               }}
             >
-              {products15.map((product, index) => (
+              {products.map((product, index) => (
                 <SwiperSlide className="swiper-slide height-auto" key={index}>
                   <div className="card-product overflow-hidden bg_white radius-20 border-line h-100">
                     <div className="card-product-wrapper">
@@ -69,14 +75,14 @@ export default function Products() {
                       >
                         <Image
                           className="lazyload img-product"
-                          src={product.imgSrc}
+                          src={product.img}
                           alt="image-product"
                           width={360}
                           height={360}
                         />
                         <Image
                           className="lazyload img-hover"
-                          src={product.imgHoverSrc}
+                          src={product.img}
                           alt="image-product"
                           width={360}
                           height={360}
@@ -145,18 +151,8 @@ export default function Products() {
                       >
                         {product.title}
                       </Link>
-                      {product.oldPrice ? (
-                        <span className="price">
-                          <span className="old-price">{product.oldPrice}</span>
-                          <span className="new-price">
-                            ${product.price.toFixed(2)}
-                          </span>
-                        </span>
-                      ) : (
-                        <span className="price">
-                          ${product.price.toFixed(2)}
-                        </span>
-                      )}
+
+                      <span className="price">${product.price.toFixed(2)}</span>
                     </div>
                   </div>
                 </SwiperSlide>
