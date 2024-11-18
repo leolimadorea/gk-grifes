@@ -1,10 +1,15 @@
 "use client";
-import React, { useState, useRef } from "react";
-import { toast } from "react-toastify";
+import React, { useState, useRef, useEffect } from "react";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { Modal } from "bootstrap";
+import dynamic from "next/dynamic";
+
+// Importação dinâmica do Bootstrap Modal
+const Modal = dynamic(() => import("bootstrap").then((mod) => mod.Modal), {
+  ssr: false,
+});
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -12,6 +17,12 @@ export default function Login() {
   const [error, setError] = useState("");
   const router = useRouter();
   const modalRef = useRef(null);
+  const [isModalLoaded, setIsModalLoaded] = useState(false);
+
+  useEffect(() => {
+    // Marca o modal como carregado quando o Bootstrap Modal está disponível
+    if (Modal) setIsModalLoaded(true);
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -30,9 +41,11 @@ export default function Login() {
       toast.success("Login bem-sucedido!");
 
       // Fecha o modal
-      const modalEl = modalRef.current;
-      const modal = Modal.getInstance(modalEl) || new Modal(modalEl);
-      modal.hide();
+      if (isModalLoaded && modalRef.current) {
+        const modal =
+          Modal.getInstance(modalRef.current) || new Modal(modalRef.current);
+        modal.hide();
+      }
 
       // Redireciona para a página inicial
       router.push("/");
@@ -41,10 +54,12 @@ export default function Login() {
 
   return (
     <>
+      <ToastContainer />
+
       <div
         className="modal modalCentered fade form-sign-in modal-part-content"
         id="login"
-        ref={modalRef} // Anexa a referência ao modal
+        ref={modalRef}
       >
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
