@@ -43,8 +43,6 @@ export default function Login() {
 
   return (
     <>
-      <ToastContainer />
-
       <div
         className="modal modalCentered fade form-sign-in modal-part-content"
         id="login"

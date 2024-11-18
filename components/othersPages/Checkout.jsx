@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Pusher from "pusher-js";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
@@ -25,7 +26,7 @@ const Checkout = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [cpf, setCpf] = useState("");
-
+  const router = useRouter();
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [note, setNote] = useState("");
@@ -533,7 +534,10 @@ const Checkout = () => {
                 console.log("Pagamento processado com sucesso:", data);
                 if (data.status === "approved") {
                   setPaymentApproved(true);
-                  toast.success("PAGAMENTO APROVADO");
+                  toast.success(
+                    "Pagamento aprovado com sucesso! veja seus pedidos em minha conta"
+                  );
+                  router.push("/my-account-orders");
                 } else {
                   resetCardForm();
                   toast.error("Pagamento não aprovado, tente novamente");

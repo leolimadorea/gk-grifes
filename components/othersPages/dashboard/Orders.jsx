@@ -1,62 +1,69 @@
 import React from "react";
 import Link from "next/link";
-export default function Orders() {
+
+export default function Orders({ orders }) {
+  if (!orders || orders.length === 0) {
+    return (
+      <div className="my-account-content account-order">
+        <p>Você ainda não realizou nenhum pedido.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="my-account-content account-order">
       <div className="wrap-account-order">
         <table>
           <thead>
             <tr>
-              <th className="fw-6">Order</th>
-              <th className="fw-6">Date</th>
+              <th className="fw-6">Pedido</th>
+              <th className="fw-6">Data</th>
               <th className="fw-6">Status</th>
               <th className="fw-6">Total</th>
-              <th className="fw-6">Actions</th>
+              <th className="fw-6">Ações</th>
             </tr>
           </thead>
           <tbody>
-            <tr className="tf-order-item">
-              <td>#123</td>
-              <td>August 1, 2024</td>
-              <td>On hold</td>
-              <td>$200.0 for 1 items</td>
-              <td>
-                <Link
-                  href={`/my-account-orders-details`}
-                  className="tf-btn btn-fill animate-hover-btn rounded-0 justify-content-center"
-                >
-                  <span>View</span>
-                </Link>
-              </td>
-            </tr>
-            <tr className="tf-order-item">
-              <td>#345</td>
-              <td>August 2, 2024</td>
-              <td>On hold</td>
-              <td>$300.0 for 1 items</td>
-              <td>
-                <Link
-                  href={`/my-account-orders-details`}
-                  className="tf-btn btn-fill animate-hover-btn rounded-0 justify-content-center"
-                >
-                  <span>View</span>
-                </Link>
-              </td>
-            </tr>
-            <tr className="tf-order-item">
-              <td>#567</td>
-              <td>August 3, 2024</td>
-              <td>On hold</td>
-              <td>$400.0 for 1 items</td>
-              <td>
-                <Link
-                  href={`/my-account-orders-details`}
-                  className="tf-btn btn-fill animate-hover-btn rounded-0 justify-content-center"
-                >
-                  <span>View</span>
-                </Link>
-              </td>
-            </tr>
+            {orders.map((order) => {
+              // Calcula o total de itens e preço
+              const totalItems = order.paymentProducts.reduce(
+                (sum, product) => sum + product.quantity,
+                0
+              );
+              const totalPrice = order.paymentProducts.reduce(
+                (sum, product) =>
+                  sum + product.quantity * product.product.price,
+                0
+              );
+
+              return (
+                <tr key={order.id} className="tf-order-item">
+                  <td>#{order.id}</td>
+                  <td>
+                    {new Date(order.createdAt).toLocaleDateString("pt-BR", {
+                      day: "2-digit",
+                      month: "long",
+                      year: "numeric",
+                    })}
+                  </td>
+                  <td>
+                    {order.status === "APPROVED" ? "Aprovado" : order.status}
+                  </td>
+                  <td>
+                    R${totalPrice.toFixed(2)} por {totalItems} item
+                    {totalItems > 1 ? "s" : ""}
+                  </td>
+                  <td>
+                    <Link
+                      href={`/meus-pedidos-detalhes/${order.id}`}
+                      className="tf-btn btn-fill animate-hover-btn rounded-0 justify-content-center"
+                    >
+                      <span>Ver</span>
+                    </Link>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
