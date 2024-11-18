@@ -31,23 +31,21 @@ export default async function Page() {
   console.log("categories", categories);
   return (
     <>
-      <div className="color-primary-8 color-main-text-2">
-        <Topbar1 />
-        <Header2 />
-        <Hero />
-        <Marquee />
-        <Categories categories={categories} />
-        {/* <Section2 products={products} /> */}
+      <Topbar1 />
+      <Header2 />
+      <Hero />
+      <Marquee />
+      <Categories categories={categories} />
+      {/* <Section2 products={products} /> */}
 
-        <CollectionBanner />
-        <Collections />
-        <Products products={products} />
-        <Testimonials />
-        {/* <Brands /> */}
+      <CollectionBanner />
+      <Collections />
+      <Products products={products} />
+      <Testimonials />
+      {/* <Brands /> */}
 
-        <Features />
-        <Footer2 />
-      </div>
+      <Features />
+      <Footer2 />
     </>
   );
 }
