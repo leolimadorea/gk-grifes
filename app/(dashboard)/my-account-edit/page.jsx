@@ -13,9 +13,7 @@ export default function Page() {
   return (
     <>
       <Header2 />
-      <div className="tf-page-title">
-        <div className="container-full"></div>
-      </div>
+
       <section className="flat-spacing-11">
         <div className="container">
           <div className="row">

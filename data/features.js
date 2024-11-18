@@ -1,62 +1,62 @@
 import Link from "next/link";
 export const iconBoxes = [
   {
-    iconClass: "icon-shipping-1",
-    title: "Free Shipping",
-    description: "Free shipping over order $120",
+    iconClass: "icon-shipping",
+    title: "Frete Grátis",
+    description: "Frete grátis para pedidos acima de R$ 600",
   },
   {
-    iconClass: "icon-payment-1",
-    title: "Flexible Payment",
-    description: "Pay with Multiple Credit Cards",
+    iconClass: "icon-payment fs-22",
+    title: "Pagamento Flexível",
+    description: "Pague com diversos cartões de crédito",
   },
   {
-    iconClass: "icon-return-1",
-    title: "14 Day Returns",
-    description: "Within 30 days for an exchange",
+    iconClass: "icon-return fs-20",
+    title: "Devolução em 14 Dias",
+    description: "Trocas permitidas dentro de 30 dias",
   },
 ];
 
 export const iconBoxData = [
   {
     iconClass: "icon-shipping",
-    title: "Free Shipping",
-    description: "Free shipping over order $120",
+    title: "Frete Grátis",
+    description: "Frete grátis para pedidos acima de R$ 600",
   },
   {
     iconClass: "icon-payment fs-22",
-    title: "Flexible Payment",
-    description: "Pay with Multiple Credit Cards",
+    title: "Pagamento Flexível",
+    description: "Pague com diversos cartões de crédito",
   },
   {
     iconClass: "icon-return fs-20",
-    title: "14 Day Returns",
-    description: "Within 30 days for an exchange",
+    title: "Devolução em 14 Dias",
+    description: "Trocas permitidas dentro de 30 dias",
   },
   {
     iconClass: "icon-suport",
-    title: "Premium Support",
-    description: "Outstanding premium support",
+    title: "Suporte Premium",
+    description: "Atendimento ao cliente excepcional",
   },
   {
     iconClass: "icon-shipping",
-    title: "Free Shipping",
-    description: "Free shipping over order $120",
+    title: "Frete Grátis",
+    description: "Frete grátis para pedidos acima de R$ 600",
   },
   {
     iconClass: "icon-payment fs-22",
-    title: "Flexible Payment",
-    description: "Pay with Multiple Credit Cards",
+    title: "Pagamento Flexível",
+    description: "Pague com diversos cartões de crédito",
   },
   {
     iconClass: "icon-return fs-20",
-    title: "14 Day Returns",
-    description: "Within 30 days for an exchange",
+    title: "Devolução em 14 Dias",
+    description: "Trocas permitidas dentro de 30 dias",
   },
   {
     iconClass: "icon-suport",
-    title: "Premium Support",
-    description: "Outstanding premium support",
+    title: "Suporte Premium",
+    description: "Atendimento ao cliente excepcional",
   },
 ];
 

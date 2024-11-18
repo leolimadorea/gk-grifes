@@ -18,8 +18,8 @@ export default function Testimonials() {
         <div className="wrap-carousel">
           <Swiper
             className="swiper tf-sw-testimonial"
-            spaceBetween={30} // Equivalent to data-space-lg
-            slidesPerView={3} // Equivalent to data-preview
+            spaceBetween={30}
+            slidesPerView={3}
             breakpoints={{
               0: {
                 slidesPerView: 1, // Equivalent to data-mobile
@@ -59,29 +59,6 @@ export default function Testimonials() {
                   <div className="author">
                     <div className="name">{testimonial.name}</div>
                     <div className="metas">{testimonial.metas}</div>
-                  </div>
-                  <div className="product">
-                    <div className="image">
-                      <a href={`#`}>
-                        <Image
-                          className="lazyload"
-                          data-src={testimonial.imageSrc}
-                          src={testimonial.imageSrc}
-                          width={70}
-                          height={98}
-                          alt=""
-                        />
-                      </a>
-                    </div>
-                    <div className="content-wrap">
-                      <div className="product-title">
-                        <a href={`#`}>{testimonial.productTitle}</a>
-                      </div>
-                      <div className="price">{testimonial.price}</div>
-                    </div>
-                    <a href={`#`} className="">
-                      <i className="icon-arrow1-top-left" />
-                    </a>
                   </div>
                 </div>
               </SwiperSlide>

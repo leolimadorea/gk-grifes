@@ -4,11 +4,7 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { toast } from "react-toastify";
 import dynamic from "next/dynamic";
-
-// Importação dinâmica do Bootstrap Modal
-const Modal = dynamic(() => import("bootstrap").then((mod) => mod.Modal), {
-  ssr: false,
-});
+import { Modal } from "bootstrap";
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -19,12 +15,6 @@ export default function Register() {
   const [error, setError] = useState("");
   const router = useRouter();
   const modalRef = useRef(null);
-  const [isModalLoaded, setIsModalLoaded] = useState(false);
-
-  useEffect(() => {
-    // Marca o modal como carregado quando o Bootstrap Modal está disponível
-    if (Modal) setIsModalLoaded(true);
-  }, []);
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -38,9 +28,9 @@ export default function Register() {
       });
 
       const data = await res.json();
+      console.log(data);
 
       if (res.ok) {
-        // Registro bem-sucedido, agora faça login automaticamente
         const signInResult = await signIn("credentials", {
           redirect: false,
           email: formData.email,
@@ -48,15 +38,13 @@ export default function Register() {
         });
 
         if (signInResult.ok) {
-          // Fechar o modal de registro
-          if (isModalLoaded && modalRef.current) {
+          if (modalRef.current) {
             const modalInstance =
               Modal.getInstance(modalRef.current) ||
               new Modal(modalRef.current);
             modalInstance.hide();
           }
 
-          // Exibir o toast de sucesso
           toast.success("Usuário registrado com sucesso!");
           router.push("/");
         } else {

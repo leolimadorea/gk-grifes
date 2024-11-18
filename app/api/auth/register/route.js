@@ -4,18 +4,19 @@ import bcrypt from "bcryptjs";
 const prisma = new PrismaClient();
 
 export async function POST(req) {
-  const { email, password, name } = await req.json();
-
-  if (!email || !password || !name) {
-    return new Response(
-      JSON.stringify({ error: "Todos os campos são obrigatórios." }),
-      {
-        status: 400,
-      }
-    );
-  }
-
   try {
+    const { email, password, name } = await req.json();
+
+    if (!email || !password || !name) {
+      return new Response(
+        JSON.stringify({ error: "Todos os campos são obrigatórios." }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+    }
+
     const existingUser = await prisma.user.findUnique({
       where: { email },
     });
@@ -23,6 +24,7 @@ export async function POST(req) {
     if (existingUser) {
       return new Response(JSON.stringify({ error: "E-mail já está em uso." }), {
         status: 400,
+        headers: { "Content-Type": "application/json" },
       });
     }
 
@@ -40,6 +42,7 @@ export async function POST(req) {
       JSON.stringify({ message: "Usuário registrado com sucesso!", user }),
       {
         status: 201,
+        headers: { "Content-Type": "application/json" },
       }
     );
   } catch (error) {
@@ -48,6 +51,7 @@ export async function POST(req) {
       JSON.stringify({ error: "Erro ao registrar usuário" }),
       {
         status: 500,
+        headers: { "Content-Type": "application/json" },
       }
     );
   }
