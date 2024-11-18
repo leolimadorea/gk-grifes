@@ -1,10 +1,10 @@
 "use client";
-import Image from "next/image";
-import { products15 } from "@/data/products";
 import { useContextElement } from "@/context/Context";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { products15 } from "@/data/products";
+import Image from "next/image";
 import Link from "next/link";
 import { Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function Products() {
   const {
@@ -21,7 +21,7 @@ export default function Products() {
       <div className="container">
         <div className="flat-title flex-row justify-content-between px-0">
           <span className="title wow fadeInUp" data-wow-delay="0s">
-            Trending Products
+            Produtos Quentes
           </span>
           <div className="box-sw-navigation">
             <div className="nav-sw square nav-next-slider nav-next-sell-1 snbp161">

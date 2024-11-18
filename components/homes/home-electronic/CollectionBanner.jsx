@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 export default function CollectionBanner() {
@@ -18,15 +17,19 @@ export default function CollectionBanner() {
           <div className="box-content">
             <div className="container wow fadeInUp" data-wow-delay="0s">
               <div className="sub fw-7 text_white">
-                SALE UP TO 30% OFF TODAY
+                PROMOÇÃO DE ATÉ 30% OFF HOJE
               </div>
-              <h2 className="heading fw-6 text_white">Best Deals Discounts</h2>
-              <p className="text_white">Fast wireless charging on-the-go.</p>
+              <h2 className="heading fw-6 text_white">
+                Melhores Ofertas e Descontos
+              </h2>
+              <p className="text_white">
+                Carregamento sem fio rápido onde quer que esteja.
+              </p>
               <Link
                 href={`/shop-default`}
                 className="rounded-full tf-btn btn-primary-main style-3 fw-6 btn-light-icon animate-hover-btn"
               >
-                <span>Shop Collection</span>
+                <span>Ver Coleção</span>
               </Link>
             </div>
           </div>

@@ -1,14 +1,15 @@
-import Footer1 from "@/components/footers/Footer1";
-import Header6 from "@/components/headers/Header6";
+import Testimonials from "@/components/common/Testimonials";
+import Topbar1 from "@/components/headers/Topbar1";
+import Categories from "@/components/homes/home-electronic/Categories";
+import Products from "@/components/homes/home-electronic/Products";
 
+import Features from "@/components/common/Features2";
+import Footer2 from "@/components/footers/Footer2";
+import Header2 from "@/components/headers/Header2";
+import Hero from "@/components/homes/home-1/Hero";
 import Marquee from "@/components/homes/home-1/Marquee";
-import Hero from "@/components/homes/home-grocery/Hero";
-import Section1 from "@/components/imuno/Section1";
-import Section2 from "@/components/imuno/Section2";
-import Section3 from "@/components/imuno/Section3";
-import Section4 from "@/components/imuno/Section4";
-import Section5 from "@/components/imuno/Section5";
-import Section6 from "@/components/imuno/Section6";
+import CollectionBanner from "@/components/homes/home-electronic/CollectionBanner";
+import Collections from "@/components/homes/home-electronic/Collections";
 
 export const metadata = {
   title: "ImunoPump",
@@ -24,16 +25,21 @@ export default async function Page() {
   return (
     <>
       <div className="color-primary-8 color-main-text-2">
-        <Header6 />
+        <Topbar1 />
+        <Header2 />
         <Hero />
         <Marquee />
-        <Section1 />
-        <Section2 products={products} />
-        <Section3 />
-        <Section4 />
-        <Section5 />
-        <Section6 />
-        <Footer1 />
+        <Categories />
+        {/* <Section2 products={products} />
+         */}
+        <CollectionBanner />
+        <Collections />
+        <Products />
+        <Testimonials />
+        {/* <Brands /> */}
+
+        <Features />
+        <Footer2 />
       </div>
     </>
   );

@@ -1,8 +1,6 @@
 "use client";
-import Image from "next/image";
 import { testimonials } from "@/data/testimonials";
-import React from "react";
-import Link from "next/link";
+import Image from "next/image";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -14,8 +12,8 @@ export default function Testimonials() {
     >
       <div className="container">
         <div className="flat-title wow fadeInUp" data-wow-delay="0s">
-          <span className="title">Happy Clients</span>
-          <p className="sub-title">Hear what they say about us</p>
+          <span className="title">Clientes felizes</span>
+          <p className="sub-title">Veja o que falam de nós</p>
         </div>
         <div className="wrap-carousel">
           <Swiper

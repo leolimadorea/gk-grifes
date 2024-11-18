@@ -1,9 +1,9 @@
 "use client";
+import { collectionItems } from "@/data/categories";
 import Image from "next/image";
 import Link from "next/link";
-import { collectionItems } from "@/data/categories";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function Categories() {
   return (
@@ -12,7 +12,7 @@ export default function Categories() {
         <div className="position-relative">
           <div className="flat-title flex-row justify-content-between px-0">
             <span className="title wow fadeInUp" data-wow-delay="0s">
-              Shop by category.
+              Comprar por categoria
             </span>
           </div>
           <div className="sw-pagination-wrapper">
@@ -57,7 +57,7 @@ export default function Categories() {
                         </div>
                         <div className="bottom">
                           <button className="tf-btn collection-title hover-icon btn-light rounded-full">
-                            <span>Shop now</span>
+                            <span>Comprar agora</span>
                             <i className="icon icon-arrow1-top-left" />
                           </button>
                         </div>

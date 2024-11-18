@@ -56,7 +56,6 @@ export default function Nav({ isArrow = false, textColor = "", Linkfs = "" }) {
           } `}
         >
           Home
-          {isArrow ? <i className="icon icon-arrow-down" /> : ""}
         </a>
       </li>
       <li className="menu-item">
@@ -66,8 +65,7 @@ export default function Nav({ isArrow = false, textColor = "", Linkfs = "" }) {
             isMenuActive(productsPages) ? "activeMenu" : ""
           } `}
         >
-          Depoimentos
-          {isArrow ? <i className="icon icon-arrow-down" /> : ""}
+          Produtos
         </a>
       </li>
     </>

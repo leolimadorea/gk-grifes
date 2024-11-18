@@ -1,9 +1,9 @@
 "use client";
-import Image from "next/image";
 import { recentItems } from "@/data/categories";
+import Image from "next/image";
+import Link from "next/link";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Link from "next/link";
 
 export default function Collections() {
   return (
@@ -48,7 +48,7 @@ export default function Collections() {
                       href={`/shop-collection-sub`}
                       className="rounded-full tf-btn btn-primary-main style-3 fw-6 btn-light-icon animate-hover-btn"
                     >
-                      <span>Shop now</span>
+                      <span>Comprar agora</span>
                     </Link>
                   </div>
                 </div>

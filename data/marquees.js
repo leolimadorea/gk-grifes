@@ -1,27 +1,43 @@
 export const marqueeItems = [
-  "IMUNO PUMP",
-  "IMUNO PUMP",
-  "IMUNO PUMP",
-  "IMUNO PUMP",
-  "IMUNO PUMP",
-  "IMUNO PUMP",
-  "IMUNO PUMP",
-  "IMUNO PUMP",
-  "IMUNO PUMP",
-  "IMUNO PUMP",
+  "Evento de Liquidação de Primavera: Economize até 70%",
+  "Evento de Liquidação de Primavera: Economize até 70%",
+  "Evento de Liquidação de Primavera: Economize até 70%",
+  "Evento de Liquidação de Primavera: Economize até 70%",
+  "Evento de Liquidação de Primavera: Economize até 70%",
+  "Evento de Liquidação de Primavera: Economize até 70%",
+  "Evento de Liquidação de Primavera: Economize até 70%",
+  "Evento de Liquidação de Primavera: Economize até 70%",
+  "Evento de Liquidação de Primavera: Economize até 70%",
+  "Evento de Liquidação de Primavera: Economize até 70%",
 ];
 
 export const marqueeItems2 = [
-  { text: "LIMITED TIME OFFER: FASHION SALE YOU CAN'T RESIST" },
-  { text: "FREE SHIPPING AND RETURN" },
-  { text: "NEW SEASON, NEW STYLES: FASHION SALE YOU CAN'T MISS" },
-  { text: "LIMITED TIME OFFER: FASHION SALE YOU CAN'T RESIST" },
-  { text: "FREE SHIPPING AND RETURN" },
-  { text: "NEW SEASON, NEW STYLES: FASHION SALE YOU CAN'T MISS" },
-  { text: "LIMITED TIME OFFER: FASHION SALE YOU CAN'T RESIST" },
-  { text: "FREE SHIPPING AND RETURN" },
-  { text: "NEW SEASON, NEW STYLES: FASHION SALE YOU CAN'T MISS" },
-  { text: "LIMITED TIME OFFER: FASHION SALE YOU CAN'T RESIST" },
-  { text: "FREE SHIPPING AND RETURN" },
-  { text: "NEW SEASON, NEW STYLES: FASHION SALE YOU CAN'T MISS" },
+  {
+    text: "OFERTA POR TEMPO LIMITADO: LIQUIDAÇÃO DE MODA QUE VOCÊ NÃO PODE RESISTIR",
+  },
+  { text: "FRETE GRÁTIS E DEVOLUÇÃO" },
+  {
+    text: "NOVA TEMPORADA, NOVOS ESTILOS: LIQUIDAÇÃO DE MODA QUE VOCÊ NÃO PODE PERDER",
+  },
+  {
+    text: "OFERTA POR TEMPO LIMITADO: LIQUIDAÇÃO DE MODA QUE VOCÊ NÃO PODE RESISTIR",
+  },
+  { text: "FRETE GRÁTIS E DEVOLUÇÃO" },
+  {
+    text: "NOVA TEMPORADA, NOVOS ESTILOS: LIQUIDAÇÃO DE MODA QUE VOCÊ NÃO PODE PERDER",
+  },
+  {
+    text: "OFERTA POR TEMPO LIMITADO: LIQUIDAÇÃO DE MODA QUE VOCÊ NÃO PODE RESISTIR",
+  },
+  { text: "FRETE GRÁTIS E DEVOLUÇÃO" },
+  {
+    text: "NOVA TEMPORADA, NOVOS ESTILOS: LIQUIDAÇÃO DE MODA QUE VOCÊ NÃO PODE PERDER",
+  },
+  {
+    text: "OFERTA POR TEMPO LIMITADO: LIQUIDAÇÃO DE MODA QUE VOCÊ NÃO PODE RESISTIR",
+  },
+  { text: "FRETE GRÁTIS E DEVOLUÇÃO" },
+  {
+    text: "NOVA TEMPORADA, NOVOS ESTILOS: LIQUIDAÇÃO DE MODA QUE VOCÊ NÃO PODE PERDER",
+  },
 ];

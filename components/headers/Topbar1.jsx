@@ -1,10 +1,7 @@
 "use client";
-import React from "react";
 import Link from "next/link";
-import LanguageSelect from "../common/LanguageSelect";
-import CurrencySelect from "../common/CurrencySelect";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 export default function Topbar1() {
   return (
     <div className="tf-top-bar bg_white line">
@@ -59,30 +56,30 @@ export default function Topbar1() {
             >
               <SwiperSlide className="swiper-slide">
                 <p className="top-bar-text fw-5">
-                  Spring Fashion Sale{" "}
+                  Super Promoção de Tecnologia{" "}
                   <Link
                     href={`/shop-default`}
-                    title="all collection"
+                    title="toda a coleção"
                     className="tf-btn btn-line"
                   >
-                    Shop now
+                    Compre agora
                     <i className="icon icon-arrow1-top-left" />
                   </Link>
                 </p>
               </SwiperSlide>
               <SwiperSlide className="swiper-slide">
                 <p className="top-bar-text fw-5">
-                  Summer sale discount off 70%
+                  Desconto de até 70% em dispositivos de última geração!
                 </p>
               </SwiperSlide>
               <SwiperSlide className="swiper-slide">
                 <p className="top-bar-text fw-5">
-                  Time to refresh your wardrobe.
+                  Hora de atualizar seu setup com as melhores ofertas.
                 </p>
               </SwiperSlide>
             </Swiper>
           </div>
-          <div className="top-bar-language tf-cur justify-content-end">
+          {/* <div className="top-bar-language tf-cur justify-content-end">
             <div className="tf-currencies">
               <CurrencySelect topStart />
             </div>
@@ -94,7 +91,7 @@ export default function Topbar1() {
                 topStart
               />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

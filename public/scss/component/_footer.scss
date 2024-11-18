@@ -4,21 +4,17 @@
       padding-top: 40px;
       padding-bottom: 40px;
       position: relative;
-      color: #fff;
       &::before {
         position: absolute;
         content: "";
         top: 0;
-
+      
         left: 50%;
         background-color: var(--line);
         height: 1px;
         width: 100%;
         max-width: 1440px;
         transform: translateX(-50%);
-      }
-      @media (max-width: 768px) {
-        padding-inline: 40px;
       }
     }
     .footer-bottom {
@@ -50,7 +46,7 @@
     margin-bottom: 30px;
   }
   .footer-heading {
-    margin-bottom: 22px;
+    margin-bottom: 25px;
     h6 {
       font-size: 18px;
       font-weight: 500;
@@ -62,10 +58,6 @@
   }
   .footer-menu_item {
     line-height: 30px;
-
-    p {
-      color: red;
-    }
   }
   .footer-infor {
     ul {
