@@ -47,9 +47,7 @@ export default async function Page({ params }) {
           </div>
         </div>
         <DetailsOuterZoom product={product} />
-        {/* <ShopDetailsTab /> */}
-        {/* <Products /> */}
-        <RecentProducts />
+
         <Footer1 />
       </div>
     </>

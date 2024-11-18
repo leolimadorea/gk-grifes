@@ -43,23 +43,23 @@ export default function RootLayout({ children }) {
       });
     }
   }, []);
-  useEffect(() => {
-    const handleScroll = () => {
-      const header = document.querySelector("header");
-      if (window.scrollY > 100) {
-        header.classList.add("header-bg");
-      } else {
-        header.classList.remove("header-bg");
-      }
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const header = document.querySelector("header");
+  //     if (window.scrollY > 100) {
+  //       header.classList.add("header-bg");
+  //     } else {
+  //       header.classList.remove("header-bg");
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
+  //   window.addEventListener("scroll", handleScroll);
 
-    // Cleanup function to remove event listener on component unmount
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []); // Empty dependency array means this effect runs once on mount and cleans up on unmount
+  //   // Cleanup function to remove event listener on component unmount
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []); // Empty dependency array means this effect runs once on mount and cleans up on unmount
 
   const [scrollDirection, setScrollDirection] = useState("down");
 
@@ -166,7 +166,6 @@ export default function RootLayout({ children }) {
             {showChild ? (
               <>
                 <div id="wrapper">{children}</div>
-                <RtlToggle />
                 <HomesModal /> <QuickView />
                 <QuickAdd />
                 <ProductSidebar />

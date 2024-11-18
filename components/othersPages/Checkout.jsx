@@ -1,5 +1,6 @@
 "use client";
 import { useContextElement } from "@/context/Context";
+import { products } from "@/data/categories";
 import { loadMercadoPago } from "@mercadopago/sdk-js";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
@@ -11,6 +12,9 @@ import { toast } from "react-toastify";
 
 const Checkout = () => {
   const { cartProducts, totalPrice, userCpf } = useContextElement();
+  const cardFormElementRef = useRef(null);
+
+  const [selectedShipping, setSelectedShipping] = useState(null);
 
   const [paymentMethod, setPaymentMethod] = useState("pix");
   const { data: session, status } = useSession();
@@ -21,9 +25,7 @@ const Checkout = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [cpf, setCpf] = useState("");
-  const [country, setCountry] = useState("");
-  const [city, setCity] = useState("");
-  const [address, setAddress] = useState("");
+
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [note, setNote] = useState("");
@@ -32,15 +34,48 @@ const Checkout = () => {
   const cardFormRef = useRef(null);
   const [userId, setUserId] = useState(null);
 
+  const [shippingAddress, setShippingAddress] = useState({
+    city: "",
+    address: "",
+    zipCode: "",
+    phone: "",
+    number: "",
+    complement: "",
+  });
+
+  const [useSameAddress, setUseSameAddress] = useState(false);
+
   const [formKey, setFormKey] = useState(0);
   const [zipCode, setZipCode] = useState("");
 
   const [shippingOptions, setShippingOptions] = useState([]);
 
   const [isCalculating, setIsCalculating] = useState(false);
+  const fetchAddressByZipCode = async (zipCode) => {
+    try {
+      const response = await fetch(`https://viacep.com.br/ws/${zipCode}/json/`);
+      if (!response.ok) {
+        throw new Error("Erro ao buscar endereço.");
+      }
+      const data = await response.json();
+      if (data.erro) {
+        toast.error("CEP inválido. Tente novamente.");
+        return;
+      }
+      setShippingAddress((prev) => ({
+        ...prev,
+        address: data.logradouro || "",
+        city: data.localidade || "",
+        complement: data.complemento || "",
+      }));
+    } catch (error) {
+      console.error("Erro ao buscar endereço:", error);
+      toast.error("Não foi possível buscar o endereço. Tente novamente.");
+    }
+  };
 
   const calculateShipping = async () => {
-    if (!zipCode) return;
+    if (!shippingAddress.zipCode) return;
 
     setIsCalculating(true);
 
@@ -61,8 +96,8 @@ const Checkout = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: { postal_code: "96020360" },
-          to: { postal_code: "80420080" },
+          from: { postal_code: "80420080" },
+          zipCode: shippingAddress.zipCode,
           products: productsData,
         }),
       });
@@ -78,10 +113,11 @@ const Checkout = () => {
   };
 
   useEffect(() => {
-    if (zipCode.length === 8) {
+    if (shippingAddress.zipCode.length === 8) {
       calculateShipping();
+      fetchAddressByZipCode(shippingAddress.zipCode);
     }
-  }, [zipCode]);
+  }, [shippingAddress.zipCode]);
 
   useEffect(() => {
     if (!paymentId) {
@@ -147,6 +183,47 @@ const Checkout = () => {
       return false;
     }
   };
+  const shippingData = {
+    service: selectedShipping?.id || "",
+    from: {
+      name: "Imuno Pump",
+      postal_code: "80420080",
+      document: "06223391501",
+      phone: "79999847482",
+      address: "Rua Emiliano Perneta",
+      complement: "805",
+      number: "659",
+      city: "Curitiba",
+      state_abbr: "PR",
+    },
+    to: {
+      name: `${firstName} ${lastName}`,
+      postal_code: shippingAddress.zipCode,
+      document: cpf,
+      phone: phone,
+      address: shippingAddress.address,
+      complement: shippingAddress.complement || "",
+      number: shippingAddress.number,
+      city: shippingAddress.city,
+      state_abbr: "SP",
+    },
+    products: cartProducts.map((product) => ({
+      name: product.title,
+      quantity: product.quantity,
+      unitary_value: product.price,
+    })),
+    volumes: cartProducts.map((product) => ({
+      height: 11,
+      width: 17,
+      length: 11,
+      weight: 0.3,
+    })),
+    options: {
+      insurance_value: totalPrice,
+      non_commercial: true,
+    },
+  };
+
   const checkUserExists = async (email) => {
     try {
       const response = await fetch("/api/user/checkUserExists", {
@@ -168,23 +245,47 @@ const Checkout = () => {
     }
   };
   const generateRandomPassword = () => {
-    return Math.random().toString(36).slice(-8); // Generates an 8-character random password
+    return Math.random().toString(36).slice(-8);
   };
   const handlePlaceOrder = async () => {
-    if (
-      !firstName ||
-      !lastName ||
-      !cpf ||
-      !country ||
-      !city ||
-      !address ||
-      !phone ||
-      !email
-    ) {
-      setShowToast(true);
-      setTimeout(() => setShowToast(false), 3000); // Oculta o toast após 3 segundos
+    if (!firstName) {
+      toast.error("Preencha seu nome!");
       return;
     }
+    if (!lastName) {
+      toast.error("Preencha seu sobrenome!");
+      return;
+    }
+    if (!cpf) {
+      toast.error("Preencha seu CPF!");
+      return;
+    }
+    if (!shippingAddress.zipCode) {
+      toast.error("Preencha seu CEP!");
+      return;
+    }
+    if (!shippingAddress.city) {
+      toast.error("Preencha sua cidade!");
+      return;
+    }
+    if (!shippingAddress.address) {
+      toast.error("Preencha seu endereço!");
+      return;
+    }
+    if (!phone) {
+      toast.error("Preencha seu telefone!");
+      return;
+    }
+    if (!email) {
+      toast.error("Preencha seu email!");
+      return;
+    }
+
+    if (!selectedShipping) {
+      toast.error("Selecione uma opção de frete!");
+      return;
+    }
+
     const userExists = await checkUserExists(email);
     if (!userExists) {
       const registered = await registerUser(email, firstName + " " + lastName);
@@ -194,14 +295,21 @@ const Checkout = () => {
     }
     if (paymentMethod === "pix") {
       setIsLoading(true);
-      const qrCode = await generatePixQRCode();
+      const qrCode = await generatePixQRCode({
+        shipping: selectedShipping,
+      });
       setQrCodeBase64(qrCode);
       setIsLoading(false);
-    } else {
+    } else if (paymentMethod === "card") {
+      if (cardFormElementRef.current) {
+        cardFormElementRef.current.requestSubmit();
+      } else {
+        console.error("Card form reference is not available.");
+      }
     }
   };
 
-  const generatePixQRCode = async () => {
+  const generatePixQRCode = async ({ shipping }) => {
     const products = cartProducts.map((product) => ({
       productId: product.id,
       quantity: product.quantity,
@@ -216,12 +324,15 @@ const Checkout = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          transaction_amount: totalPrice,
-          description: "Descrição do Produto",
+          transaction_amount: parseFloat(
+            (totalPrice + Number(shipping.price)).toFixed(2)
+          ),
+          description: "Produto Imuno Pump",
           email: email,
           cpf: cpf,
           userId: idToUse,
           products: products,
+          orderData: shippingData,
         }),
       });
 
@@ -256,6 +367,48 @@ const Checkout = () => {
         console.error("Erro ao copiar o código Pix:", error);
       });
   };
+
+  const validatePaymentFields = () => {
+    if (!firstName) {
+      toast.error("Preencha seu nome!");
+      return false;
+    }
+    if (!lastName) {
+      toast.error("Preencha seu sobrenome!");
+      return false;
+    }
+    if (!cpf) {
+      toast.error("Preencha seu CPF!");
+      return false;
+    }
+    if (!shippingAddress.zipCode) {
+      toast.error("Preencha seu CEP!");
+      return false;
+    }
+    if (!shippingAddress.city) {
+      toast.error("Preencha sua cidade!");
+      return false;
+    }
+    if (!shippingAddress.address) {
+      toast.error("Preencha seu endereço!");
+      return false;
+    }
+    if (!phone) {
+      toast.error("Preencha seu telefone!");
+      return false;
+    }
+    if (!email) {
+      toast.error("Preencha seu email!");
+      return false;
+    }
+    if (!selectedShipping) {
+      toast.error("Selecione uma opção de frete!");
+      return false;
+    }
+
+    return true;
+  };
+
   const initializeMercadoPago = async () => {
     try {
       await loadMercadoPago();
@@ -322,11 +475,7 @@ const Checkout = () => {
               console.error("CardForm não está inicializado.");
               return;
             }
-            if (!email) {
-              console.error("Email não definido.");
-              toast.error("Por favor, preencha o campo de email.");
-              return;
-            }
+
             const userExists = await checkUserExists(
               session?.user?.email ?? email
             );
@@ -374,6 +523,7 @@ const Checkout = () => {
                     number: identificationNumber,
                   },
                 },
+                orderData: shippingData,
                 userId: userExists,
                 products: products,
               }),
@@ -486,59 +636,76 @@ const Checkout = () => {
                   />
                 </fieldset>
 
+                <h5 className="fw-5 mb_20">Endereço de Entrega</h5>
                 <fieldset className="box fieldset">
-                  <label htmlFor="zipcode">CEP</label>
+                  <label htmlFor="shipping-zipcode">CEP</label>
                   <input
-                    required
-                    type="text"
-                    id="zipcode"
-                    value={zipCode}
-                    onChange={(e) => setZipCode(e.target.value)}
-                    placeholder="CEP de destino"
-                  />
-                  <button onClick={calculateShipping}>CALCULAR</button>
-                </fieldset>
-
-                <fieldset className="box fieldset">
-                  <label htmlFor="country">País</label>
-                  <div className="select-custom">
-                    <select
-                      required
-                      className="tf-select w-100"
-                      id="country"
-                      value={country}
-                      onChange={(e) => setCountry(e.target.value)}
-                    >
-                      <option value="">Selecione seu país</option>
-                      <option value="Brazil">Brasil</option>
-                      <option value="Australia">Austrália</option>
-                      <option value="United States">Estados Unidos</option>
-                      {/* Adicione mais opções conforme necessário */}
-                    </select>
-                  </div>
-                </fieldset>
-
-                <fieldset className="box fieldset">
-                  <label htmlFor="city">Cidade</label>
-                  <input
-                    required
-                    type="text"
-                    id="city"
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    placeholder="Sua cidade"
+                    id="shipping-zipcode"
+                    value={shippingAddress.zipCode}
+                    onChange={(e) =>
+                      setShippingAddress({
+                        ...shippingAddress,
+                        zipCode: e.target.value,
+                      })
+                    }
+                    className="tf-select w-100"
                   />
                 </fieldset>
 
                 <fieldset className="box fieldset">
-                  <label htmlFor="address">Endereço</label>
+                  <label htmlFor="shipping-city">Cidade</label>
                   <input
-                    required
-                    type="text"
-                    id="address"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                    placeholder="Seu endereço"
+                    id="shipping-city"
+                    value={shippingAddress.city}
+                    onChange={(e) =>
+                      setShippingAddress({
+                        ...shippingAddress,
+                        city: e.target.value,
+                      })
+                    }
+                    className="tf-select w-100"
+                  />
+                </fieldset>
+                <fieldset className="box fieldset">
+                  <label htmlFor="shipping-address">Endereço</label>
+                  <input
+                    id="shipping-address"
+                    value={shippingAddress.address}
+                    onChange={(e) =>
+                      setShippingAddress({
+                        ...shippingAddress,
+                        address: e.target.value,
+                      })
+                    }
+                    className="tf-select w-100"
+                  />
+                </fieldset>
+                <fieldset className="box fieldset">
+                  <label htmlFor="shipping-number">Número</label>
+                  <input
+                    id="shipping-number"
+                    value={shippingAddress.number}
+                    onChange={(e) =>
+                      setShippingAddress({
+                        ...shippingAddress,
+                        number: e.target.value,
+                      })
+                    }
+                    className="tf-select w-100"
+                  />
+                </fieldset>
+                <fieldset className="box fieldset">
+                  <label htmlFor="shipping-complement">Complemento</label>
+                  <input
+                    id="shipping-complement"
+                    value={shippingAddress.complement}
+                    onChange={(e) =>
+                      setShippingAddress({
+                        ...shippingAddress,
+                        complement: e.target.value,
+                      })
+                    }
+                    className="tf-select w-100"
                   />
                 </fieldset>
 
@@ -579,22 +746,6 @@ const Checkout = () => {
             </div>
             <div className="tf-page-cart-footer">
               <div className="tf-cart-footer-inner">
-                <h5 className="fw-5 mb_20">Opções de Frete</h5>
-                {shippingOptions.length > 0 ? (
-                  <ul>
-                    {shippingOptions.map((option, index) => (
-                      <li key={index}>
-                        <strong>Transportadora:</strong> {option.company.name}
-                        <br />
-                        <strong>Prazo:</strong> {option.delivery_time} dias
-                        <br />
-                        <strong>Preço:</strong> R$ {option.price}
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p>Preencha o CEP para calcular o frete.</p>
-                )}
                 <h5 className="fw-5 mb_20">Seu Pedido</h5>
                 <form
                   onSubmit={(e) => e.preventDefault()}
@@ -641,10 +792,43 @@ const Checkout = () => {
                       </div>
                     </div>
                   )}
+                  <h5 className="fw-5 mb_20">Opções de Frete</h5>
+                  {shippingOptions.length > 0 ? (
+                    <ul>
+                      {shippingOptions
+                        .filter((option) => !option.error) // Filtra opções sem erro
+                        .map((option, index) => (
+                          <li key={index}>
+                            <label>
+                              <input
+                                type="radio"
+                                name="shippingOption"
+                                value={option.price}
+                                onChange={() => setSelectedShipping(option)}
+                              />
+                              <strong>Transportadora:</strong>{" "}
+                              {option.company.name}
+                              <br />
+                              <strong>Prazo:</strong> {option.delivery_time}{" "}
+                              dias
+                              <br />
+                              <strong>Preço:</strong> R$ {option.price}
+                            </label>
+                          </li>
+                        ))}
+                    </ul>
+                  ) : (
+                    <p>Preencha o CEP para calcular o frete.</p>
+                  )}
                   <div className="coupon-box"></div>
                   <div className="d-flex justify-content-between line pb_20">
                     <h6 className="fw-5">Total</h6>
-                    <h6 className="total fw-5">R${totalPrice.toFixed(2)}</h6>
+                    <h6 className="total fw-5">
+                      R$
+                      {(
+                        totalPrice + Number(selectedShipping?.price || 0)
+                      ).toFixed(2)}
+                    </h6>
                   </div>
                   <div className="wd-check-payment">
                     <div className="fieldset-radio mb_20">
@@ -695,6 +879,7 @@ const Checkout = () => {
                         {/* O formulário do MercadoPago será inserido aqui */}
                         <form
                           id="form-checkout-card"
+                          ref={cardFormElementRef}
                           style={{ display: "flex", flexDirection: "column" }}
                         >
                           <div
@@ -787,6 +972,7 @@ const Checkout = () => {
                             type="submit"
                             id="form-checkout__submit"
                             className="tf-btn radius-3 btn-fill btn-icon animate-hover-btn justify-content-center"
+                            style={{ display: "none" }}
                           >
                             Pagar
                           </button>
@@ -818,7 +1004,7 @@ const Checkout = () => {
                     </div>
                   )}
 
-                  {!qrCodeBase64 && paymentMethod === "pix" && (
+                  {!qrCodeBase64 && (
                     <button
                       className="tf-btn radius-3 btn-fill btn-icon animate-hover-btn justify-content-center"
                       onClick={handlePlaceOrder}

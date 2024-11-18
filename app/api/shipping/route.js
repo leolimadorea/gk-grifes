@@ -4,12 +4,12 @@ export async function POST(req) {
   try {
     const { zipCode, products } = await req.json();
 
-    // if (!zipCode) {
-    //   return new Response(
-    //     JSON.stringify({ error: "CEP de destino é obrigatório" }),
-    //     { status: 400 }
-    //   );
-    // }
+    if (!zipCode) {
+      return new Response(
+        JSON.stringify({ error: "CEP de destino é obrigatório" }),
+        { status: 400 }
+      );
+    }
 
     const options = {
       method: "POST",
@@ -21,8 +21,8 @@ export async function POST(req) {
         "User-Agent": "TESTANDO (gustavopacosa@gmail.com)",
       },
       data: {
-        from: { postal_code: "96020360" },
-        to: { postal_code: "80420080" },
+        from: { postal_code: "80420080" },
+        to: { postal_code: zipCode },
         products,
       },
     };

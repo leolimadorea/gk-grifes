@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -41,9 +41,6 @@ export default function Login() {
 
   return (
     <>
-      {/* Container do Toast */}
-      <ToastContainer />
-
       <div
         className="modal modalCentered fade form-sign-in modal-part-content"
         id="login"

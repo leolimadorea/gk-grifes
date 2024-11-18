@@ -1,4 +1,5 @@
 import { prisma } from "@/app/db/prisma";
+import { PaymentStatus } from "@prisma/client";
 import axios from "axios";
 import crypto from "crypto";
 import { NextResponse } from "next/server";
@@ -81,14 +82,125 @@ export async function POST(req) {
     }
     if (paymentInfo.status === "approved") {
       try {
+        await prisma.payment.update({
+          where: {
+            gatewayId: paymentId.toString(),
+          },
+          data: {
+            status: PaymentStatus.APPROVED,
+          },
+        });
         const paymentWithProductAndCategory = await prisma.payment.findUnique({
           where: {
             gatewayId: paymentId.toString(),
           },
+          include: {
+            paymentProducts: {
+              include: {
+                product: true,
+              },
+            },
+            paymentDeliveryAddress: true,
+          },
         });
+        await Promise.all(
+          paymentWithProductAndCategory.paymentProducts.map(
+            async (paymentProduct) => {
+              await prisma.paymentProduct.update({
+                where: {
+                  id: paymentProduct.id,
+                },
+                data: {
+                  approved: true,
+                },
+              });
 
+              await prisma.product.update({
+                where: { id: paymentProduct.productId },
+                data: {
+                  quantity: {
+                    decrement: paymentProduct.quantity,
+                  },
+                },
+              });
+
+              return paymentProduct;
+            }
+          )
+        );
         if (!paymentWithProductAndCategory) {
           throw new Error("Pagamento não encontrado.");
+        }
+
+        const deliveryAddress =
+          paymentWithProductAndCategory.paymentDeliveryAddress[0];
+        if (!deliveryAddress) {
+          throw new Error("Dados de entrega não encontrados.");
+        }
+        const shippingData = {
+          service: deliveryAddress.serviceId,
+          from: {
+            name: "Imuno Pump",
+            postal_code: "80420080",
+            document: "06223391501",
+            phone: "79999847482",
+            address: "Rua Emiliano Perneta",
+            complement: "805",
+            number: "659",
+            city: "Curitiba",
+            state_abbr: "PR",
+          },
+          to: {
+            name: deliveryAddress.name,
+            postal_code: deliveryAddress.zip,
+            document: deliveryAddress.cpf,
+            phone: deliveryAddress.phone,
+            address: deliveryAddress.address,
+            complement: deliveryAddress.complement,
+            number: deliveryAddress.number,
+            city: deliveryAddress.city,
+            state_abbr: deliveryAddress.state,
+          },
+          products: paymentWithProductAndCategory.paymentProducts.map(
+            (product) => ({
+              name: product.product.title,
+              quantity: product.quantity,
+              unitary_value: product.product.price,
+            })
+          ),
+          volumes: paymentWithProductAndCategory.paymentProducts.map(() => ({
+            height: 11,
+            width: 17,
+            length: 11,
+            weight: 0.3,
+          })),
+          options: {
+            insurance_value:
+              paymentWithProductAndCategory.paymentProducts.reduce(
+                (total, product) =>
+                  total + product.quantity * parseFloat(product.product.price),
+                0
+              ),
+            receipt: false,
+            own_hand: false,
+            reverse: false,
+            non_commercial: true,
+          },
+        };
+
+        const shippingResponse = await fetch(
+          "https://6202-179-60-172-33.ngrok-free.app/api/createShipping",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ orderData: shippingData }),
+          }
+        );
+
+        const shippingResult = await shippingResponse.json();
+
+        if (!shippingResponse.ok) {
+          throw new Error(shippingResult.error || "Erro ao criar frete");
         }
 
         console.log(`Triggering Pusher event for payment ID: ${paymentId}`);

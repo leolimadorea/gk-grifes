@@ -4,7 +4,8 @@ import { MercadoPagoConfig, Payment } from "mercadopago";
 import { NextResponse } from "next/server";
 
 const client = new MercadoPagoConfig({
-  accessToken: process.env.MERCADO_PAGO_ACCESS_TOKEN || "",
+  accessToken:
+    "APP_USR-3758424019225992-040322-918b6e811465f67f5255863b5b32e6cd-1164572593",
 });
 
 export async function POST(req) {
@@ -14,7 +15,8 @@ export async function POST(req) {
     email,
     cpf,
     userId,
-    products, // Recebendo lista de produtos e quantidades
+    products,
+    orderData,
   } = await req.json();
 
   if (
@@ -24,7 +26,8 @@ export async function POST(req) {
     !cpf ||
     !userId ||
     !products ||
-    !products.length // Verificando se a lista de produtos não está vazia
+    !products.length ||
+    !orderData
   ) {
     return NextResponse.json(
       { error: "Missing required fields" },
@@ -47,14 +50,13 @@ export async function POST(req) {
             number: cpf,
           },
         },
-        // notification_url:
-        //   "${process.env.NEXT_PUBLIC_API_BASE_URL}/api/payment/mercadopago-webhook",
+        notification_url:
+          "https://6202-179-60-172-33.ngrok-free.app/api/payment/mercadopago-webhook",
       },
     });
 
     const { id, status } = result;
 
-    // Criando o pagamento no banco de dados
     const dbPayment = await createPayment({
       userId,
       amount: transaction_amount,
@@ -64,27 +66,32 @@ export async function POST(req) {
         status === "approved" ? PaymentStatus.APPROVED : PaymentStatus.PENDING,
     });
 
-    // Associando produtos ao pagamento
     for (const product of products) {
-      // Create PaymentProduct record
       await prisma.paymentProduct.create({
         data: {
           paymentId: dbPayment.id,
           productId: product.productId,
           quantity: product.quantity,
-        },
-      });
-
-      // Decrement product quantity in Product table
-      await prisma.product.update({
-        where: { id: product.productId },
-        data: {
-          quantity: {
-            decrement: product.quantity,
-          },
+          approved: false,
         },
       });
     }
+    await prisma.paymentDeliveryAddress.create({
+      data: {
+        paymentId: dbPayment.id,
+        address: orderData.to.address,
+        city: orderData.to.city,
+        state: orderData.to.state_abbr,
+        country: "Brasil",
+        zip: orderData.to.postal_code,
+        phone: orderData.to.phone,
+        name: orderData.to.name,
+        serviceId: orderData.service.toString(),
+        complement: orderData.to.complement,
+        number: orderData.to.number,
+        cpf: orderData.to.document,
+      },
+    });
     return NextResponse.json(result);
   } catch (error) {
     console.error("Error creating payment:", error);
