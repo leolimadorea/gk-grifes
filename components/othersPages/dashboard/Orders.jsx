@@ -55,7 +55,7 @@ export default function Orders({ orders }) {
                   </td>
                   <td>
                     <Link
-                      href={`/meus-pedidos-detalhes/${order.id}`}
+                      href={`/my-account-orders-details/${order.id}`}
                       className="tf-btn btn-fill animate-hover-btn rounded-0 justify-content-center"
                     >
                       <span>Ver</span>
