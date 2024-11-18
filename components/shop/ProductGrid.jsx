@@ -1,7 +1,6 @@
-import React from "react";
 import { ProductCard } from "../shopCards/ProductCard";
 
-export default function ProductGrid({ gridItems = 4, allproducts }) {
+export default function ProductGrid({ gridItems = 4, allproducts, products }) {
   return (
     <>
       <div
@@ -12,10 +11,10 @@ export default function ProductGrid({ gridItems = 4, allproducts }) {
           marginBottom: "24px",
         }}
       >
-        {allproducts.length} produtos
+        {products.length} produtos
       </div>
       <div className={`grid-layout wrapper-shop grid-${gridItems}`}>
-        {allproducts.map((product, i) => (
+        {products.map((product, i) => (
           <ProductCard product={product} key={product.id} />
         ))}
       </div>
