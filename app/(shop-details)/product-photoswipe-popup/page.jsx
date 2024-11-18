@@ -10,8 +10,8 @@ import SliderWithGalleryPopup from "@/components/shopDetails/sliders/SliderWithG
 import DetailsPopup from "@/components/shopDetails/DetailsPopup";
 
 export const metadata = {
-  title: "Product Photoswipe Popup || ImunoPump",
-  description: "ImunoPump",
+  title: "Product Photoswipe Popup || VKLTech",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

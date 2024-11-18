@@ -10,8 +10,8 @@ import Link from "next/link";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
 
 export const metadata = {
-  title: "Product Option Customizer || ImunoPump",
-  description: "ImunoPump",
+  title: "Product Option Customizer || VKLTech",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

@@ -15,8 +15,8 @@ import TestimonialSection from "@/components/homes/home-decor/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Decor || ImunoPump",
-  description: "ImunoPump",
+  title: "Home Decor || VKLTech",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

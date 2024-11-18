@@ -8,8 +8,8 @@ import ShopDetailsTab from "@/components/shopDetails/ShopDetailsTab";
 import React from "react";
 import Link from "next/link";
 export const metadata = {
-  title: " Product Swatch Dropdown || ImunoPump",
-  description: "ImunoPump",
+  title: " Product Swatch Dropdown || VKLTech",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

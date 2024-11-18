@@ -4,8 +4,8 @@ import Header2 from "@/components/headers/Header2";
 import Link from "next/link";
 import React from "react";
 export const metadata = {
-  title: "Page Not Found || ImunoPump",
-  description: "ImunoPump",
+  title: "Page Not Found || VKLTech",
+  description: "VKLTech",
 };
 export default function notFound() {
   return (

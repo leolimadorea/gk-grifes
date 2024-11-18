@@ -4,7 +4,7 @@ import ShopDefault from "@/components/shop/ShopDefault";
 
 export const metadata = {
   title: "Imuno-Pump",
-  description: "ImunoPump",
+  description: "VKLTech",
 };
 
 export default async function Page() {

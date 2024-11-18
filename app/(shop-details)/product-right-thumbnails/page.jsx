@@ -9,8 +9,8 @@ import React from "react";
 import Link from "next/link";
 
 export const metadata = {
-  title: "ProductRight Thumbnal || ImunoPump",
-  description: "ImunoPump",
+  title: "ProductRight Thumbnal || VKLTech",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

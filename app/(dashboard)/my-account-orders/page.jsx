@@ -5,7 +5,7 @@ import Orders from "@/components/othersPages/dashboard/Orders";
 
 export const metadata = {
   title: "Imuno-Pump",
-  description: "ImunoPump",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

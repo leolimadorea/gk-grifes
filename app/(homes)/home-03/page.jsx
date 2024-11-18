@@ -12,8 +12,8 @@ import VideoBanner from "@/components/homes/home-3/VideoBanner";
 import React from "react";
 
 export const metadata = {
-  title: "Home 3 || ImunoPump",
-  description: "ImunoPump",
+  title: "Home 3 || VKLTech",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

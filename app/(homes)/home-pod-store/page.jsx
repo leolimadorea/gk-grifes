@@ -14,8 +14,8 @@ import React from "react";
 import Footer2 from "@/components/footers/Footer2";
 
 export const metadata = {
-  title: "Home Pod Store || ImunoPump",
-  description: "ImunoPump",
+  title: "Home Pod Store || VKLTech",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

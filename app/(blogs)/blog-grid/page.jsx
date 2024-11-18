@@ -4,7 +4,7 @@ import Header2 from "@/components/headers/Header2";
 import Link from "next/link";
 export const metadata = {
   title: "Imuno-Pump",
-  description: "ImunoPump",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

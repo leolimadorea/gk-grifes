@@ -9,8 +9,8 @@ import Link from "next/link";
 import ShopDetailsImageGrouped from "@/components/shopDetails/ShopDetailsImageGrouped";
 
 export const metadata = {
-  title: "Product Images Grouped || ImunoPump",
-  description: "ImunoPump",
+  title: "Product Images Grouped || VKLTech",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

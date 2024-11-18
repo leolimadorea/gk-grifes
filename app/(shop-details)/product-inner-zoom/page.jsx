@@ -9,8 +9,8 @@ import Link from "next/link";
 import DetailsInnerZoom from "@/components/shopDetails/DetailsInnerZoom";
 
 export const metadata = {
-  title: "Product Inner Zoom || ImunoPump",
-  description: "ImunoPump",
+  title: "Product Inner Zoom || VKLTech",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

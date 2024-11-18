@@ -12,7 +12,7 @@ import CollectionBanner from "@/components/homes/home-electronic/CollectionBanne
 import Collections from "@/components/homes/home-electronic/Collections";
 
 export const metadata = {
-  title: "ImunoPump",
+  title: "VKL TECH",
 };
 export default async function Page() {
   let products = [];

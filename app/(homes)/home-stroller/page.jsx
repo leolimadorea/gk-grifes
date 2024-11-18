@@ -14,8 +14,8 @@ import Testimonials from "@/components/homes/home-stroller/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Stroller || ImunoPump",
-  description: "ImunoPump",
+  title: "Home Stroller || VKLTech",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

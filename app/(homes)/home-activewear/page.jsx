@@ -16,8 +16,8 @@ import Testimonials from "@/components/homes/home-activewear/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Activewear || ImunoPump",
-  description: "ImunoPump",
+  title: "Home Activewear || VKLTech",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

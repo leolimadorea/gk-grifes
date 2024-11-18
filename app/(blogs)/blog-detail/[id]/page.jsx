@@ -7,8 +7,8 @@ import Link from "next/link";
 import React from "react";
 
 export const metadata = {
-  title: "Blog Details || ImunoPump",
-  description: "ImunoPump",
+  title: "Blog Details || VKLTech",
+  description: "VKLTech",
 };
 export default function Page({ params }) {
   const blog = allBlogs.filter((elm) => elm.id == params.id)[0] || allBlogs[0];

@@ -14,8 +14,8 @@ import Testimonials from "@/components/homes/home-giftcard/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Giftcard || ImunoPump",
-  description: "ImunoPump",
+  title: "Home Giftcard || VKLTech",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

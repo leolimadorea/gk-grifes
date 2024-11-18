@@ -8,8 +8,8 @@ import Link from "next/link";
 import Details26 from "@/components/shopDetails/Details26";
 
 export const metadata = {
-  title: "Product Swatch Image || ImunoPump",
-  description: "ImunoPump",
+  title: "Product Swatch Image || VKLTech",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

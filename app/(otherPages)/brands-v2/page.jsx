@@ -4,8 +4,8 @@ import Brands2 from "@/components/othersPages/brands/Brands2";
 import React from "react";
 
 export const metadata = {
-  title: "Brands 2 || ImunoPump",
-  description: "ImunoPump",
+  title: "Brands 2 || VKLTech",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

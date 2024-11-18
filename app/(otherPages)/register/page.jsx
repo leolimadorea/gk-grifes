@@ -4,8 +4,8 @@ import Register from "@/components/othersPages/Register";
 import React from "react";
 
 export const metadata = {
-  title: "Register || ImunoPump",
-  description: "ImunoPump",
+  title: "Register || VKLTech",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

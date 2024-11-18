@@ -5,8 +5,8 @@ import ShopFullwidth from "@/components/shop/ShopFullwidth";
 import React from "react";
 
 export const metadata = {
-  title: "Shop Full Width || ImunoPump",
-  description: "ImunoPump",
+  title: "Shop Full Width || VKLTech",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

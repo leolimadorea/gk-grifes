@@ -6,8 +6,8 @@ import ProductStyle5 from "@/components/shop/ProductStyle5";
 import React from "react";
 
 export const metadata = {
-  title: "Product Style 5 || ImunoPump",
-  description: "ImunoPump",
+  title: "Product Style 5 || VKLTech",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

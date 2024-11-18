@@ -10,8 +10,8 @@ import Products from "@/components/homes/home-grocery/Products";
 import Products2 from "@/components/homes/home-grocery/Products2";
 
 export const metadata = {
-  title: "Home Grocery || ImunoPump",
-  description: "ImunoPump",
+  title: "Home Grocery || VKLTech",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

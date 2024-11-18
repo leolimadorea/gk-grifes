@@ -5,8 +5,8 @@ import ShopSidebarRight from "@/components/shop/ShopSidebarRight";
 import React from "react";
 
 export const metadata = {
-  title: "Shop Right Sidebar || ImunoPump",
-  description: "ImunoPump",
+  title: "Shop Right Sidebar || VKLTech",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

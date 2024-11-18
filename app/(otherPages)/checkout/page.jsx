@@ -3,8 +3,8 @@ import Header2 from "@/components/headers/Header2";
 import Checkout from "@/components/othersPages/Checkout";
 
 export const metadata = {
-  title: " ImunoPump",
-  description: "ImunoPump",
+  title: " VKLTech",
+  description: "VKLTech",
 };
 export default function Page() {
   return (

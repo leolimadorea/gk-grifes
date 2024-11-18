@@ -12,8 +12,8 @@ import SidebarToggler from "@/components/shopDetails/SidebarToggler";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
 
 export const metadata = {
-  title: "Shop Drawer Sidebar || ImunoPump",
-  description: "ImunoPump",
+  title: "Shop Drawer Sidebar || VKLTech",
+  description: "VKLTech",
 };
 export default function Page() {
   return (
