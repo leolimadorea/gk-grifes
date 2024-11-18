@@ -1,12 +1,10 @@
+"use client";
 import BlogList from "@/components/blogs/BlogList";
 import Footer2 from "@/components/footers/Footer2";
 import Header2 from "@/components/headers/Header2";
 import React from "react";
 import Link from "next/link";
-export const metadata = {
-  title: "Blog List || VKLTech",
-  description: "VKLTech",
-};
+
 export default function Page() {
   return (
     <>

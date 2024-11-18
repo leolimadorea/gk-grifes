@@ -1,12 +1,10 @@
+"use client";
 import BlogLeftRightbar from "@/components/blogs/BlogLeftRightbar";
 import Footer2 from "@/components/footers/Footer2";
 import Header2 from "@/components/headers/Header2";
 import React from "react";
 import Link from "next/link";
-export const metadata = {
-  title: "Blog Sidebar Right || VKLTech",
-  description: "VKLTech",
-};
+
 export default function Page() {
   return (
     <>
