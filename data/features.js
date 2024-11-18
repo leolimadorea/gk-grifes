@@ -126,29 +126,28 @@ export const slides = [
 export const iconBoxes3 = [
   {
     iconClass: "icon-shipping",
-    title: "Free Shipping",
-    description: "Free shipping over order $120",
+    title: "Frete Grátis",
+    description: "Frete grátis em pedidos acima de R$120",
   },
   {
     iconClass: "icon-payment fs-22",
-    title: "Flexible Payment",
-    description: "Pay with Multiple Credit Cards",
+    title: "Pagamento Flexível",
+    description: "Pague com vários cartões de crédito",
   },
   {
     iconClass: "icon-return fs-20",
-    title: "14 Day Returns",
-    description: "Within 30 days for an exchange",
+    title: "Devoluções em 14 Dias",
+    description: "Dentro de 30 dias para troca",
   },
   {
     iconClass: "icon-suport",
-    title: "Premium Support",
-    description: "Outstanding premium support",
+    title: "Suporte Premium",
+    description: "Suporte premium de excelência",
   },
-
   {
     iconClass: "icon-return fs-20",
-    title: "14 Day Returns",
-    description: "Within 30 days for an exchange",
+    title: "Devoluções em 14 Dias",
+    description: "Dentro de 30 dias para troca",
   },
 ];
 
