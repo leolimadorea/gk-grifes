@@ -2,7 +2,7 @@
 import { useContextElement } from "@/context/Context";
 import { products } from "@/data/categories";
 import { loadMercadoPago } from "@mercadopago/sdk-js";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,6 +16,38 @@ const Checkout = () => {
   const cardFormElementRef = useRef(null);
 
   const [selectedShipping, setSelectedShipping] = useState(null);
+  const [coupon, setCoupon] = useState("");
+  const [appliedCoupon, setAppliedCoupon] = useState(null); // Para armazenar o cupom inteiro
+  console.log(appliedCoupon);
+  const applyCoupon = async () => {
+    if (!coupon) {
+      toast.error("Por favor, insira um código de cupom.");
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        `/api/coupon/getCouponByCode?code=${coupon}`
+      );
+      if (!response.ok) {
+        throw new Error("Cupom inválido ou não encontrado.");
+      }
+
+      const couponData = await response.json();
+
+      if (!couponData.isActive) {
+        toast.error("Cupom inativo.");
+        return;
+      }
+
+      setAppliedCoupon(couponData); // Salva o cupom completo no estado
+      toast.success("Cupom aplicado com sucesso!");
+      console.log(couponData); // Para verificar o cupom aplicado
+    } catch (error) {
+      console.error("Erro ao aplicar cupom:", error);
+      toast.error("Erro ao aplicar cupom. Tente novamente.");
+    }
+  };
 
   const [paymentMethod, setPaymentMethod] = useState("pix");
   const { data: session, status } = useSession();
@@ -133,6 +165,11 @@ const Checkout = () => {
 
     channel.bind("payment-approved", (data) => {
       setPaymentApproved(true);
+      toast.success(
+        "Pagamento aprovado com sucesso! Para acessar seus pedidos, faça login utilizando o e-mail informado na compra."
+      );
+
+      router.push("/my-account-orders");
     });
 
     return () => {
@@ -172,6 +209,11 @@ const Checkout = () => {
       if (response.ok) {
         const data = await response.json();
         setUserId(data.user.id);
+        await signIn("credentials", {
+          redirect: false,
+          email: data.user.email,
+          password: data.password,
+        });
         return true;
       } else {
         const data = await response.json();
@@ -317,7 +359,6 @@ const Checkout = () => {
     }));
     const idToUse = await checkUserExists(session?.user?.email ?? email);
 
-    console.log("products", products);
     try {
       const response = await fetch("/api/payment/mercadoPago", {
         method: "POST",
@@ -326,14 +367,24 @@ const Checkout = () => {
         },
         body: JSON.stringify({
           transaction_amount: parseFloat(
-            (totalPrice + Number(shipping.price)).toFixed(2)
+            (
+              totalPrice +
+              Number(shipping.price) -
+              (appliedCoupon
+                ? appliedCoupon.discountType === "FIXED"
+                  ? appliedCoupon.discount
+                  : (totalPrice * appliedCoupon.discount) / 100
+                : 0)
+            ).toFixed(2)
           ),
+
           description: "Produto Imuno Pump",
           email: email,
           cpf: cpf,
           userId: idToUse,
           products: products,
           orderData: shippingData,
+          couponCode: appliedCoupon?.code,
         }),
       });
 
@@ -368,48 +419,17 @@ const Checkout = () => {
         console.error("Erro ao copiar o código Pix:", error);
       });
   };
-
-  const validatePaymentFields = () => {
-    if (!firstName) {
-      toast.error("Preencha seu nome!");
-      return false;
-    }
-    if (!lastName) {
-      toast.error("Preencha seu sobrenome!");
-      return false;
-    }
-    if (!cpf) {
-      toast.error("Preencha seu CPF!");
-      return false;
-    }
-    if (!shippingAddress.zipCode) {
-      toast.error("Preencha seu CEP!");
-      return false;
-    }
-    if (!shippingAddress.city) {
-      toast.error("Preencha sua cidade!");
-      return false;
-    }
-    if (!shippingAddress.address) {
-      toast.error("Preencha seu endereço!");
-      return false;
-    }
-    if (!phone) {
-      toast.error("Preencha seu telefone!");
-      return false;
-    }
-    if (!email) {
-      toast.error("Preencha seu email!");
-      return false;
-    }
-    if (!selectedShipping) {
-      toast.error("Selecione uma opção de frete!");
-      return false;
-    }
-
-    return true;
-  };
-
+  const transactiontotal = parseFloat(
+    (
+      totalPrice +
+      (selectedShipping?.price ? Number(selectedShipping.price) : 0) - // Verifica se shipping e shipping.price existem
+      (appliedCoupon
+        ? appliedCoupon.discountType === "FIXED"
+          ? appliedCoupon.discount
+          : (totalPrice * appliedCoupon.discount) / 100
+        : 0)
+    ).toFixed(2)
+  );
   const initializeMercadoPago = async () => {
     try {
       await loadMercadoPago();
@@ -422,7 +442,7 @@ const Checkout = () => {
       );
 
       cardFormRef.current = mp.cardForm({
-        amount: totalPrice.toFixed(2),
+        amount: transactiontotal.toString(),
         iframe: true,
         form: {
           id: "form-checkout-card",
@@ -527,6 +547,7 @@ const Checkout = () => {
                 orderData: shippingData,
                 userId: userExists,
                 products: products,
+                couponCode: appliedCoupon?.code,
               }),
             })
               .then((response) => response.json())
@@ -535,8 +556,9 @@ const Checkout = () => {
                 if (data.status === "approved") {
                   setPaymentApproved(true);
                   toast.success(
-                    "Pagamento aprovado com sucesso! veja seus pedidos em minha conta"
+                    "Pagamento aprovado com sucesso! Para acessar seus pedidos, faça login utilizando o e-mail informado na compra."
                   );
+
                   router.push("/my-account-orders");
                 } else {
                   resetCardForm();
@@ -568,6 +590,7 @@ const Checkout = () => {
       console.error("Erro ao inicializar o MercadoPago:", error);
     }
   };
+
   return (
     <>
       <Head>
@@ -638,6 +661,33 @@ const Checkout = () => {
                     onChange={(e) => setCpf(e.target.value)}
                     placeholder="123.456.789-09"
                   />
+                </fieldset>
+                <fieldset className="box fieldset">
+                  <label htmlFor="coupon">Cupom de Desconto</label>
+                  <div style={{ display: "flex", gap: "10px" }}>
+                    <input
+                      type="text"
+                      id="coupon"
+                      value={coupon}
+                      onChange={(e) => setCoupon(e.target.value)}
+                      placeholder="Digite o cupom"
+                      style={{
+                        flex: "1",
+                        borderRadius: "4px",
+                        padding: "15px",
+                        border: "1px solid #ccc",
+                        fontSize: "16px",
+                      }}
+                    />
+                    <button
+                      type="button"
+                      onClick={applyCoupon}
+                      className="tf-btn radius-3 btn-fill btn-icon animate-hover-btn justify-content-center"
+                      style={{ whiteSpace: "nowrap" }}
+                    >
+                      Aplicar
+                    </button>
+                  </div>
                 </fieldset>
 
                 <h5 className="fw-5 mb_20">Endereço de Entrega</h5>
@@ -829,9 +879,7 @@ const Checkout = () => {
                     <h6 className="fw-5">Total</h6>
                     <h6 className="total fw-5">
                       R$
-                      {(
-                        totalPrice + Number(selectedShipping?.price || 0)
-                      ).toFixed(2)}
+                      {transactiontotal}
                     </h6>
                   </div>
                   <div className="wd-check-payment">

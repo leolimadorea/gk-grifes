@@ -3,7 +3,7 @@ import axios from "axios";
 export async function POST(req) {
   try {
     const { orderData } = await req.json();
-
+    console.log(orderData);
     const options = {
       method: "POST",
       url: "https://sandbox.melhorenvio.com.br/api/v2/me/cart",

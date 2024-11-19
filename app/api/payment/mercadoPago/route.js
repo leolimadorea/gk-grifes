@@ -17,6 +17,7 @@ export async function POST(req) {
     userId,
     products,
     orderData,
+    couponCode,
   } = await req.json();
 
   if (
@@ -64,6 +65,7 @@ export async function POST(req) {
       gatewayId: id?.toString() || "",
       status:
         status === "approved" ? PaymentStatus.APPROVED : PaymentStatus.PENDING,
+      couponCode: couponCode || undefined,
     });
 
     for (const product of products) {

@@ -73,6 +73,7 @@ export async function POST(req) {
       {
         message: "Usuário registrado com sucesso! Link de redefinição enviado.",
         user,
+        password,
       },
       { status: 201 }
     );

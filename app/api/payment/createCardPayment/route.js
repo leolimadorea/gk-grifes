@@ -15,19 +15,8 @@ export async function POST(req) {
       userId,
       products,
       orderData,
+      couponCode,
     } = await req.json();
-
-    console.log("Dados recebidos:", {
-      token,
-      transaction_amount,
-      installments,
-      payment_method_id,
-      issuer_id,
-      payer,
-      userId,
-      products,
-      orderData,
-    });
 
     if (
       !transaction_amount ||
@@ -89,6 +78,7 @@ export async function POST(req) {
         paymentMethod: PaymentMethod.CREDITO,
         gatewayId: id.toString(),
         status: PaymentStatus.APPROVED,
+        couponCode: couponCode || undefined,
       });
 
       console.log("Pagamento registrado no banco de dados:", dbPayment);

@@ -9,6 +9,7 @@ export const createPayment = async (input) => {
     paymentMethod,
     status,
     gatewayId,
+    couponCode,
   } = input;
 
   const payment = await prisma.payment.create({
@@ -20,6 +21,7 @@ export const createPayment = async (input) => {
       paymentMethod,
       status,
       gatewayId,
+      couponCode: couponCode || undefined,
     },
   });
 
