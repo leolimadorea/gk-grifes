@@ -1,10 +1,8 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { toast } from "react-toastify";
-import dynamic from "next/dynamic";
-import { Modal } from "bootstrap";
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -14,7 +12,7 @@ export default function Register() {
   });
   const [error, setError] = useState("");
   const router = useRouter();
-  const modalRef = useRef(null);
+  const closeModalButtonRef = useRef(null); // Referência para o botão de fechar
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -38,11 +36,9 @@ export default function Register() {
         });
 
         if (signInResult.ok) {
-          if (modalRef.current) {
-            const modalInstance =
-              Modal.getInstance(modalRef.current) ||
-              new Modal(modalRef.current);
-            modalInstance.hide();
+          // Simula o clique no botão de fechar o modal
+          if (closeModalButtonRef.current) {
+            closeModalButtonRef.current.click();
           }
 
           toast.success("Usuário registrado com sucesso!");
@@ -62,7 +58,6 @@ export default function Register() {
     <div
       className="modal modalCentered fade form-sign-in modal-part-content"
       id="register"
-      ref={modalRef}
     >
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
@@ -71,6 +66,7 @@ export default function Register() {
             <span
               className="icon-close icon-close-popup"
               data-bs-dismiss="modal"
+              ref={closeModalButtonRef} // Adiciona a referência ao botão de fechar
             />
           </div>
           <div className="tf-login-form">

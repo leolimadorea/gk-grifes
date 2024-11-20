@@ -1,17 +1,16 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import React, { useState, useRef } from "react";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { Modal } from "bootstrap"; // Importa o Modal do Bootstrap
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
-  const modalRef = useRef(null);
+  const closeModalButtonRef = useRef(null); // Referência para o botão de fechar o modal
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -29,11 +28,9 @@ export default function Login() {
       // Exibe o toast de sucesso
       toast.success("Login bem-sucedido!");
 
-      // Fecha o modal
-      if (modalRef.current) {
-        const modalInstance =
-          Modal.getInstance(modalRef.current) || new Modal(modalRef.current);
-        modalInstance.hide();
+      // Simula o clique no botão de fechar o modal
+      if (closeModalButtonRef.current) {
+        closeModalButtonRef.current.click();
       }
 
       // Redireciona para a página inicial
@@ -46,7 +43,6 @@ export default function Login() {
       <div
         className="modal modalCentered fade form-sign-in modal-part-content"
         id="login"
-        ref={modalRef}
       >
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
@@ -55,6 +51,7 @@ export default function Login() {
               <span
                 className="icon-close icon-close-popup"
                 data-bs-dismiss="modal"
+                ref={closeModalButtonRef} // Adiciona referência ao botão de fechar
               />
             </div>
             <div className="tf-login-form">
