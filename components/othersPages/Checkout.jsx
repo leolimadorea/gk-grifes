@@ -19,6 +19,9 @@ const Checkout = () => {
   const [coupon, setCoupon] = useState("");
   const [appliedCoupon, setAppliedCoupon] = useState(null); // Para armazenar o cupom inteiro
   console.log(appliedCoupon);
+  const [isPixLoading, setIsPixLoading] = useState(false);
+  const [isCardLoading, setIsCardLoading] = useState(false);
+
   const applyCoupon = async () => {
     if (!coupon) {
       toast.error("Por favor, insira um código de cupom.");
@@ -268,6 +271,7 @@ const Checkout = () => {
   };
 
   const checkUserExists = async (email) => {
+    console.log(email);
     try {
       const response = await fetch("/api/user/checkUserExists", {
         method: "POST",
@@ -291,53 +295,67 @@ const Checkout = () => {
     return Math.random().toString(36).slice(-8);
   };
   const handlePlaceOrder = async () => {
+    setIsLoading(true);
     if (!firstName) {
       toast.error("Preencha seu nome!");
+      setIsLoading(false);
       return;
     }
     if (!lastName) {
       toast.error("Preencha seu sobrenome!");
+
+      setIsLoading(false);
       return;
     }
     if (!cpf) {
       toast.error("Preencha seu CPF!");
+      setIsLoading(false);
       return;
     }
     if (!shippingAddress.zipCode) {
       toast.error("Preencha seu CEP!");
+      setIsLoading(false);
       return;
     }
     if (!shippingAddress.city) {
       toast.error("Preencha sua cidade!");
+      setIsLoading(false);
       return;
     }
     if (!shippingAddress.address) {
       toast.error("Preencha seu endereço!");
+      setIsLoading(false);
       return;
     }
     if (!phone) {
       toast.error("Preencha seu telefone!");
+      setIsLoading(false);
       return;
     }
     if (!email) {
       toast.error("Preencha seu email!");
+      setIsLoading(false);
       return;
     }
 
     if (!selectedShipping) {
       toast.error("Selecione uma opção de frete!");
+      setIsLoading(false);
       return;
     }
-
+    console.log(email);
     const userExists = await checkUserExists(email);
     if (!userExists) {
       const registered = await registerUser(email, firstName + " " + lastName);
       if (!registered) {
+        setIsLoading(false);
+
         return; // Stop the process if registration fails
       }
     }
     if (paymentMethod === "pix") {
       setIsLoading(true);
+
       const qrCode = await generatePixQRCode({
         shipping: selectedShipping,
       });
@@ -345,8 +363,12 @@ const Checkout = () => {
       setIsLoading(false);
     } else if (paymentMethod === "card") {
       if (cardFormElementRef.current) {
+        setIsLoading(true);
+
         cardFormElementRef.current.requestSubmit();
       } else {
+        setIsLoading(false);
+
         console.error("Card form reference is not available.");
       }
     }
@@ -490,9 +512,12 @@ const Checkout = () => {
             console.log("Formulário montado");
           },
           onSubmit: async (event) => {
+            setIsLoading(true);
             event.preventDefault();
 
             if (!cardFormRef.current) {
+              setIsLoading(false);
+
               console.error("CardForm não está inicializado.");
               return;
             }
@@ -506,6 +531,8 @@ const Checkout = () => {
                 firstName + " " + lastName
               );
               if (!registered) {
+                setIsLoading(false);
+
                 return;
               }
             }
@@ -558,15 +585,19 @@ const Checkout = () => {
                   toast.success(
                     "Pagamento aprovado com sucesso! Para acessar seus pedidos, faça login utilizando o e-mail informado na compra."
                   );
+                  setIsLoading(false);
 
                   router.push("/my-account-orders");
                 } else {
                   resetCardForm();
+                  setIsLoading(false);
+
                   toast.error("Pagamento não aprovado, tente novamente");
                 }
               })
               .catch((error) => {
                 console.error("Erro ao processar o pagamento:", error);
+                setIsLoading(false);
                 toast.error("Erro ao processar o pagamento. Tente novamente.");
               });
           },
