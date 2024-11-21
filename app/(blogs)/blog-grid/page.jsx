@@ -1,14 +1,14 @@
 "use client";
 
 import BlogGrid from "@/components/blogs/BlogGrid";
-import Footer2 from "@/components/footers/Footer2";
-import Header2 from "@/components/headers/Header2";
+import Footer1 from "@/components/footers/Footer1";
+import Header18 from "@/components/headers/Header18";
 import Link from "next/link";
 
 export default function Page() {
   return (
     <>
-      <Header2 />
+      <Header18 />
       <div className="tf-page-title">
         <div className="container-full">
           <div className="row">
@@ -29,7 +29,7 @@ export default function Page() {
       </div>
 
       <BlogGrid />
-      <Footer2 />
+      <Footer1 />
     </>
   );
 }

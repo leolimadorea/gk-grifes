@@ -17,7 +17,7 @@ const Checkout = () => {
 
   const [selectedShipping, setSelectedShipping] = useState(null);
   const [coupon, setCoupon] = useState("");
-  const [appliedCoupon, setAppliedCoupon] = useState(null); // Para armazenar o cupom inteiro
+  const [appliedCoupon, setAppliedCoupon] = useState(null); 
   console.log(appliedCoupon);
   const [isPixLoading, setIsPixLoading] = useState(false);
   const [isCardLoading, setIsCardLoading] = useState(false);
@@ -149,11 +149,23 @@ const Checkout = () => {
   };
 
   useEffect(() => {
-    if (shippingAddress.zipCode.length === 8) {
+    const normalizedZipCode = shippingAddress.zipCode.replace(/[^0-9]/g, ""); // Remove o hífen e mantém apenas números
+    
+    if (normalizedZipCode.length === 8) {
+      // Atualiza o estado com o CEP normalizado (apenas números)
+      setShippingAddress((prev) => ({
+        ...prev,
+        zipCode: normalizedZipCode,
+      }));
+  
       calculateShipping();
-      fetchAddressByZipCode(shippingAddress.zipCode);
+      fetchAddressByZipCode(normalizedZipCode);
+    } else if (shippingAddress.zipCode.length > 0 && normalizedZipCode.length !== 8) {
+      // Exibe um toast apenas se o usuário digitou algo mas não é um CEP válido
+ 
     }
   }, [shippingAddress.zipCode]);
+  
 
   useEffect(() => {
     if (!paymentId) {
@@ -185,9 +197,9 @@ const Checkout = () => {
       cardFormRef.current = null;
     }
     setFormKey((prevKey) => prevKey + 1);
-    SetTimeout(() => {
+
       window.location.reload();
-    }, 2500);
+  
   };
 
   useEffect(() => {
@@ -229,6 +241,9 @@ const Checkout = () => {
       return false;
     }
   };
+  const [inputTimer, setInputTimer] = useState(null);
+  console.log(inputTimer, "Timer")
+
   const shippingData = {
     service: selectedShipping?.id || "",
     from: {
@@ -350,7 +365,7 @@ const Checkout = () => {
       if (!registered) {
         setIsLoading(false);
 
-        return; // Stop the process if registration fails
+        return; 
       }
     }
     if (paymentMethod === "pix") {
@@ -444,7 +459,7 @@ const Checkout = () => {
   const transactiontotal = parseFloat(
     (
       totalPrice +
-      (selectedShipping?.price ? Number(selectedShipping.price) : 0) - // Verifica se shipping e shipping.price existem
+      (selectedShipping?.price ? Number(selectedShipping.price) : 0) - 
       (appliedCoupon
         ? appliedCoupon.discountType === "FIXED"
           ? appliedCoupon.discount
@@ -622,6 +637,8 @@ const Checkout = () => {
     }
   };
 
+
+
   return (
     <>
       <Head>
@@ -722,20 +739,37 @@ const Checkout = () => {
                 </fieldset>
 
                 <h5 className="fw-5 mb_20">Endereço de Entrega</h5>
+                
                 <fieldset className="box fieldset">
-                  <label htmlFor="shipping-zipcode">CEP</label>
-                  <input
-                    id="shipping-zipcode"
-                    value={shippingAddress.zipCode}
-                    onChange={(e) =>
-                      setShippingAddress({
-                        ...shippingAddress,
-                        zipCode: e.target.value,
-                      })
-                    }
-                    className="tf-select w-100"
-                  />
-                </fieldset>
+      <label htmlFor="shipping-zipcode">CEP</label>
+      <input
+        id="shipping-zipcode"
+        value={shippingAddress.zipCode}
+        onChange={(e) => {
+          const inputValue = e.target.value.replace(/[^0-9-]/g, ""); 
+          setShippingAddress({
+            ...shippingAddress,
+            zipCode: inputValue,
+          });
+
+         
+          if (inputTimer) clearTimeout(inputTimer);
+
+         
+          const newTimer = setTimeout(() => {
+            const normalizedZipCode = inputValue.replace(/[^0-9]/g, "");
+            if (normalizedZipCode.length !== 8) {
+              toast.error("Digite um CEP válido com 8 números.");
+            }
+          }, 8000); 
+
+          setInputTimer(newTimer); 
+        }}
+        className="tf-select w-100"
+        placeholder="12345-678"
+      />
+    </fieldset>
+
 
                 <fieldset className="box fieldset">
                   <label htmlFor="shipping-city">Cidade</label>

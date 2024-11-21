@@ -250,66 +250,19 @@
 }
 
 .collection-item-circle {
-  position: relative;
+  //Arrumar depois
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 200px;
+  width: 150%;
+  height: 100%;
+  overflow: hidden;
+
   .collection-image {
-    border-radius: 50%;
-    overflow: hidden;
-    display: block;
-  }
-  .collection-content {
-    margin-top: 15px;
-    .title {
-      margin-bottom: 5px;
-      font-size: 15px;
-      line-height: 18px;
-      font-weight: 500;
-    }
-    .count {
-      color: var(--text);
-    }
-  }
-  .sale-off {
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-size: 10px;
-    line-height: 19px;
-    padding: 0 5px;
-    background-color: var(--main);
-    border-radius: 999px;
-    color: var(--white);
-  }
-  &.has-bg {
-    padding: 15px 0;
-    background-color: var(--bg-2);
-    border-radius: 20px;
-    .collection-image {
-      max-width: 60%;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .collection-content {
-      margin-top: 19px;
-      .title {
-        margin-bottom: 0;
-      }
-    }
-  }
-  &.has-bg-2 {
-    background-color: #f2f2f2;
-    border-radius: 3px;
-  }
-  &.circle-line {
-    .collection-image {
-      padding: 15px;
-      border: 1px solid var(--primary);
-    }
-    .collection-content {
-      margin-top: 20px;
-      .title {
-        margin: 0;
-      }
-    }
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
@@ -463,9 +416,15 @@
 
 .tf-sw-collection {
   .swiper-slide {
-    height: auto;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px;
     img {
+      width: 100%;
       height: 100%;
+      object-fit: contain;
     }
   }
 }

@@ -1,7 +1,7 @@
 import Testimonials from "@/components/common/Testimonials";
-import Footer2 from "@/components/footers/Footer2";
+import Footer1 from "@/components/footers/Footer1";
 
-import Header2 from "@/components/headers/Header2";
+import Header18 from "@/components/headers/Header18";
 import Cart from "@/components/othersPages/Cart";
 import RecentProducts from "@/components/shopDetails/RecentProducts";
 import React from "react";
@@ -13,11 +13,11 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <Header2 />
+      <Header18 />
 
       <Cart />
 
-      <Footer2 />
+      <Footer1 />
     </>
   );
 }

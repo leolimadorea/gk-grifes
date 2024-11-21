@@ -1,6 +1,6 @@
-import Footer2 from "@/components/footers/Footer2";
-import Header1 from "@/components/headers/Header1";
-import Header2 from "@/components/headers/Header2";
+import Footer1 from "@/components/footers/Footer1";
+
+import Header18 from "@/components/headers/Header18";
 import Link from "next/link";
 import React from "react";
 export const metadata = {
@@ -10,7 +10,7 @@ export const metadata = {
 export default function notFound() {
   return (
     <>
-      <Header2 />
+      <Header18 />
       <section className="page-404-wrap">
         <div className="container">
           <div className="row">
@@ -33,7 +33,7 @@ export default function notFound() {
           </div>
         </div>
       </section>
-      <Footer2 />
+      <Footer1 />
     </>
   );
 }

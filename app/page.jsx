@@ -1,47 +1,40 @@
-import Testimonials from "@/components/common/Testimonials";
-import Topbar1 from "@/components/headers/Topbar1";
-import Categories from "@/components/homes/home-electronic/Categories";
-import Products from "@/components/homes/home-electronic/Products";
-
-import Features from "@/components/common/Features2";
-import Footer2 from "@/components/footers/Footer2";
-import Header2 from "@/components/headers/Header2";
-import Hero from "@/components/homes/home-1/Hero";
-import Marquee from "@/components/homes/home-1/Marquee";
-import CollectionBanner from "@/components/homes/home-electronic/CollectionBanner";
-import Collections from "@/components/homes/home-electronic/Collections";
+import Footer1 from "@/components/footers/Footer1";
+import Hero from "@/components/homes/home-grocery/Hero";
+import Header18 from "@/components/headers/Header18";
+import Categories from "@/components/homes/home-grocery/Categories";
+import Collections from "@/components/homes/home-grocery/Collections";
+import Products from "@/components/homes/home-grocery/Products";
+import Products2 from "@/components/homes/home-grocery/Products2";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import Slider from "@/components/slider";
 
 export const metadata = {
-  title: "VKL TECH",
+  title: "Paty Girls",
 };
+
 export default async function Page() {
-  let products = [];
+  // Realizando a chamada à API diretamente do backend para o frontend
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`, {
+    cache: "no-store", // Evita cache para obter dados atualizados sempre
+  });
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`
-  );
-  products = await res.json();
+  if (!res.ok) {
+    throw new Error("Erro ao buscar os produtos");
+  }
 
-  let categories = [];
-
-  const res2 = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/categories`
-  );
-  categories = await res2.json();
+  const products = await res.json();
+  const session = await getServerSession(authOptions);
 
   return (
-    <>
-      <Topbar1 />
-      <Header2 />
+    <div className="color-primary-8 color-main-text-2">
+      <Header18 />
       <Hero />
-      <Marquee />
-      <Categories categories={categories} />
-      <CollectionBanner />
-      {/* <Collections /> */}
+      <Slider />
+      <Collections />
       <Products products={products} />
-      <Testimonials />
-      <Features />
-      <Footer2 />
-    </>
+      <Products2 products={products} />
+      <Footer1 />
+    </div>
   );
 }

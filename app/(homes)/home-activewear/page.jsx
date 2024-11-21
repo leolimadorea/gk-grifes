@@ -1,7 +1,7 @@
 import Announcement from "@/components/common/Announcement";
 import Footer5 from "@/components/footers/Footer5";
 import Header13 from "@/components/headers/Header13";
-import Header2 from "@/components/headers/Header2";
+import Header18 from "@/components/headers/Header18";
 import Banner from "@/components/homes/home-activewear/Banner";
 import Collections from "@/components/homes/home-activewear/Collections";
 import Countdown from "@/components/homes/home-activewear/Countdown";
@@ -23,7 +23,7 @@ export default function Page() {
   return (
     <>
       <Announcement bgColor="bg_violet-1" />
-      <Header2 />
+      <Header18 />
       <Hero />
       <Features />
       <Collections />

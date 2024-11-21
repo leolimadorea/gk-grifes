@@ -13,8 +13,8 @@ import Videobox from "@/components/homes/home-skincare/Videobox";
 import React from "react";
 import ShopGram from "@/components/homes/home-skincare/ShopGram";
 import Features from "@/components/homes/home-6/Features";
-import Footer2 from "@/components/footers/Footer2";
-import Header2 from "@/components/headers/Header2";
+import Footer1 from "@/components/footers/Footer1";
+import Header18 from "@/components/headers/Header18";
 
 export const metadata = {
   title: "Home Skincare || VKLTech",
@@ -24,7 +24,7 @@ export default function Page() {
   return (
     <>
       <Announcement />
-      <Header2 />
+      <Header18 />
       <Hero />
       <Products />
       <Banner />
@@ -36,7 +36,7 @@ export default function Page() {
       <SkinChange />
       <Features />
       <ShopGram />
-      <Footer2 />
+      <Footer1 />
     </>
   );
 }

@@ -1,5 +1,5 @@
 import Features from "@/components/common/Features";
-import Header2 from "@/components/headers/Header2";
+import Header18 from "@/components/headers/Header18";
 import Topbar1 from "@/components/headers/Topbar1";
 import Categories from "@/components/homes/home-pod-store/Categories";
 import Collections from "@/components/homes/home-pod-store/Collections";
@@ -11,7 +11,7 @@ import Products2 from "@/components/homes/home-pod-store/Products2";
 import Testimonials from "@/components/homes/home-pod-store/Testimonials";
 import Brands from "@/components/homes/home-pod-store/Brands";
 import React from "react";
-import Footer2 from "@/components/footers/Footer2";
+import Footer1 from "@/components/footers/Footer1";
 
 export const metadata = {
   title: "Home Pod Store || VKLTech",
@@ -21,7 +21,7 @@ export default function Page() {
   return (
     <>
       <Topbar1 />
-      <Header2 />
+      <Header18 />
       <Hero />
       <Categories />
       <Collections />
@@ -33,7 +33,7 @@ export default function Page() {
       <Marquee />
       <Testimonials />
       <Brands />
-      <Footer2 />
+      <Footer1 />
     </>
   );
 }

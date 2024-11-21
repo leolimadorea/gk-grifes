@@ -1,5 +1,5 @@
-import Footer2 from "@/components/footers/Footer2";
-import Header2 from "@/components/headers/Header2";
+import Footer1 from "@/components/footers/Footer1";
+import Header18 from "@/components/headers/Header18";
 import Announcement from "@/components/common/Announcement";
 import Blogs from "@/components/homes/home-8/Blogs";
 import Collection from "@/components/homes/home-8/Collection";
@@ -18,7 +18,7 @@ export default function Page() {
   return (
     <>
       <Announcement />
-      <Header2 />
+      <Header18 />
       <Hero />
       <Collection />
       <Products />
@@ -26,7 +26,7 @@ export default function Page() {
       <Lookbook />
       <Marquee />
       <Blogs />
-      <Footer2 />
+      <Footer1 />
     </>
   );
 }

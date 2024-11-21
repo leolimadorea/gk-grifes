@@ -1,15 +1,15 @@
 "use client";
 import BlogLeftSidebar from "@/components/blogs/BlogLeftSidebar";
-import Footer2 from "@/components/footers/Footer2";
+import Footer1 from "@/components/footers/Footer1";
 
 import React from "react";
 import Link from "next/link";
-import Header2 from "@/components/headers/Header2";
+import Header18 from "@/components/headers/Header18";
 
 export default function Page() {
   return (
     <>
-      <Header2 />
+      <Header18 />
       <div className="tf-page-title">
         <div className="container-full">
           <div className="row">
@@ -30,7 +30,7 @@ export default function Page() {
       </div>
       <BlogLeftSidebar />
 
-      <Footer2 />
+      <Footer1 />
     </>
   );
 }

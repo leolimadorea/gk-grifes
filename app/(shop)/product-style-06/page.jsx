@@ -1,5 +1,5 @@
-import Footer2 from "@/components/footers/Footer2";
-import Header2 from "@/components/headers/Header2";
+import Footer1 from "@/components/footers/Footer1";
+import Header18 from "@/components/headers/Header18";
 import Topbar1 from "@/components/headers/Topbar1";
 import ProductStyle6 from "@/components/shop/ProductStyle6";
 import React from "react";
@@ -12,7 +12,7 @@ export default function Page() {
   return (
     <>
       <Topbar1 />
-      <Header2 />
+      <Header18 />
       <div className="tf-page-title">
         <div className="container-full">
           <div className="heading text-center">New Arrival</div>
@@ -22,7 +22,7 @@ export default function Page() {
         </div>
       </div>
       <ProductStyle6 />
-      <Footer2 />
+      <Footer1 />
     </>
   );
 }

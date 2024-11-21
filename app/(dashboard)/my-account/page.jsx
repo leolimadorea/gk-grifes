@@ -1,5 +1,5 @@
-import Footer2 from "@/components/footers/Footer2";
-import Header2 from "@/components/headers/Header2";
+import Footer1 from "@/components/footers/Footer1";
+import Header18 from "@/components/headers/Header18";
 import DashboardNav from "@/components/othersPages/dashboard/DashboardNav";
 import MyAccount from "@/components/othersPages/dashboard/MyAccount";
 import { getServerSession } from "next-auth/next";
@@ -20,7 +20,7 @@ export default async function page() {
 
   return (
     <>
-      <Header2 />
+      <Header18 />
 
       <section className="flat-spacing-11">
         <div className="container">
@@ -35,7 +35,7 @@ export default async function page() {
         </div>
       </section>
 
-      <Footer2 />
+      <Footer1 />
     </>
   );
 }

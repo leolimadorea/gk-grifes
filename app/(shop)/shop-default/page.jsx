@@ -1,5 +1,5 @@
-import Footer2 from "@/components/footers/Footer2";
-import Header2 from "@/components/headers/Header2";
+import Footer1 from "@/components/footers/Footer1";
+import Header18 from "@/components/headers/Header18";
 import ShopDefault from "@/components/shop/ShopDefault";
 
 export const metadata = {
@@ -24,10 +24,10 @@ export default async function Page() {
 
   return (
     <>
-      <Header2 />
+      <Header18 />
 
       <ShopDefault products={products} />
-      <Footer2 />
+      <Footer1 />
     </>
   );
 }

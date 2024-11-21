@@ -1,5 +1,5 @@
-import Footer2 from "@/components/footers/Footer2";
-import Header2 from "@/components/headers/Header2";
+import Footer1 from "@/components/footers/Footer1";
+import Header18 from "@/components/headers/Header18";
 import DefaultShopDetails from "@/components/shopDetails/DefaultShopDetails";
 import Products from "@/components/shopDetails/Products";
 import RecentProducts from "@/components/shopDetails/RecentProducts";
@@ -16,7 +16,7 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <Header2 />
+      <Header18 />
       <div className="tf-breadcrumb">
         <div className="container">
           <div className="tf-breadcrumb-wrap d-flex justify-content-between flex-wrap align-items-center">
@@ -52,7 +52,7 @@ export default function Page() {
       <Tab3 />
       <Products />
       <RecentProducts />
-      <Footer2 />
+      <Footer1 />
     </>
   );
 }

@@ -76,7 +76,7 @@ export default function Header18() {
                   {session ? (
                     // Se o usuário estiver logado, mostrar "Minha Conta"
                     <Link
-                      href="/my-account"
+                      href="/my-account-orders"
                       className="nav-icon-item align-items-center gap-10"
                     >
                       <i className="icon icon-account" />

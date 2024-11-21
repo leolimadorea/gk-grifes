@@ -1,5 +1,5 @@
-import Footer2 from "@/components/footers/Footer2";
-import Header2 from "@/components/headers/Header2";
+import Footer1 from "@/components/footers/Footer1";
+import Header18 from "@/components/headers/Header18";
 import Header9 from "@/components/headers/Header9";
 import Announcment from "@/components/homes/home-stroller/Announcment";
 import Banner from "@/components/homes/home-stroller/Banner";
@@ -21,7 +21,7 @@ export default function Page() {
   return (
     <>
       <Announcment />
-      <Header2 />
+      <Header18 />
       <Hero />
       <Features />
       <Categories />
@@ -31,7 +31,7 @@ export default function Page() {
       <Features2 />
       <Faqs />
       <Testimonials />
-      <Footer2 />
+      <Footer1 />
     </>
   );
 }

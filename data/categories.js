@@ -2102,34 +2102,34 @@ export const slides12 = [
 
 export const slides13 = [
   {
-    imgSrc: "/images/collections/gillete.png",
+    imgSrc: "/images/banner/banner1.webp",
     imgAlt: "collection-img",
     subheading: "",
     heading: "",
-    buttonClass: "btn-color-5",
+    buttonClass: "btn-fill",
     color: "text-white",
   },
   {
-    imgSrc: "/images/collections/venus.png",
+    imgSrc: "/images/banner/banner2.webp",
     imgAlt: "collection-img",
     subheading: "",
     heading: "",
-    buttonClass: "btn-color-6",
+    buttonClass: "btn-fill",
   },
   {
-    imgSrc: "/images/collections/gillete.png",
+    imgSrc: "/images/banner/banner1.webp",
     imgAlt: "collection-img",
     subheading: "",
     heading: "",
-    buttonClass: "btn-color-5",
+    buttonClass: "btn-fill",
     color: "text-white",
   },
   {
-    imgSrc: "/images/collections/venus.png",
+    imgSrc: "/images/banner/banner2.webp",
     imgAlt: "collection-img",
     subheading: "",
     heading: "",
-    buttonClass: "btn-color-6",
+    buttonClass: "btn-fill",
   },
 ];
 

@@ -12,8 +12,8 @@ import Products from "@/components/homes/home-paddle-boards/Products";
 import Products2 from "@/components/homes/home-paddle-boards/Products2";
 import Testimonials from "@/components/homes/home-paddle-boards/Testimonials";
 import React from "react";
-import Footer2 from "@/components/footers/Footer2";
-import Header2 from "@/components/headers/Header2";
+import Footer1 from "@/components/footers/Footer1";
+import Header18 from "@/components/headers/Header18";
 
 export const metadata = {
   title: "Home Paddle Boards || VKLTech",
@@ -23,7 +23,7 @@ export default function Page() {
   return (
     <>
       <Topbar2 bgColor="bg_blue-6" />
-      <Header2 />
+      <Header18 />
       <Hero /> <Features />
       <Products />
       <Collections />

@@ -1,5 +1,5 @@
-import Footer2 from "@/components/footers/Footer2";
-import Header2 from "@/components/headers/Header2";
+import Footer1 from "@/components/footers/Footer1";
+import Header18 from "@/components/headers/Header18";
 
 import Topbar1 from "@/components/headers/Topbar1";
 import BannerCollection from "@/components/homes/home-2/BannerCollection";
@@ -15,7 +15,7 @@ export default function Page() {
   return (
     <>
       <Topbar1 />
-      <Header2 />
+      <Header18 />
       <Hero />
       <Categories />
       <Collection />
@@ -23,7 +23,7 @@ export default function Page() {
       <BannerCollection />
       <Store />
       <Brands />
-      <Footer2 />
+      <Footer1 />
     </>
   );
 }

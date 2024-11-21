@@ -1,5 +1,5 @@
-import Footer2 from "@/components/footers/Footer2";
-import Header2 from "@/components/headers/Header2";
+import Footer1 from "@/components/footers/Footer1";
+import Header18 from "@/components/headers/Header18";
 import Topbar3 from "@/components/headers/Topbar3";
 import BannerCountdown from "@/components/homes/home-5/BannerCountdown";
 import Collection from "@/components/homes/home-5/Collection";
@@ -18,7 +18,7 @@ export default function Page() {
   return (
     <>
       <Topbar3 />
-      <Header2 />
+      <Header18 />
       <Hero />
       <Collection />
       <Products />
@@ -26,7 +26,7 @@ export default function Page() {
       <Lookbook />
       <Features />
       <ShopGram />
-      <Footer2 />
+      <Footer1 />
     </>
   );
 }

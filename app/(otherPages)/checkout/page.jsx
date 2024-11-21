@@ -1,5 +1,5 @@
-import Footer2 from "@/components/footers/Footer2";
-import Header2 from "@/components/headers/Header2";
+import Footer1 from "@/components/footers/Footer1";
+import Header18 from "@/components/headers/Header18";
 import Checkout from "@/components/othersPages/Checkout";
 
 export const metadata = {
@@ -9,10 +9,10 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <Header2 />
+      <Header18 />
 
       <Checkout />
-      <Footer2 />
+      <Footer1 />
     </>
   );
 }

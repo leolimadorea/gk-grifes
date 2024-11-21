@@ -1,6 +1,6 @@
-import Footer2 from "@/components/footers/Footer2";
+import Footer1 from "@/components/footers/Footer1";
 
-import Header2 from "@/components/headers/Header2";
+import Header18 from "@/components/headers/Header18";
 import Topbar1 from "@/components/headers/Topbar1";
 import ShopDefault from "@/components/shop/ShopDefault";
 import Subcollections from "@/components/shop/Subcollections";
@@ -14,7 +14,7 @@ export default function Page() {
   return (
     <>
       <Topbar1 />
-      <Header2 />
+      <Header18 />
       <div className="tf-page-title">
         <div className="container-full">
           <div className="heading text-center">New Arrival</div>
@@ -25,7 +25,7 @@ export default function Page() {
       </div>
       <Subcollections />
       <ShopDefault />
-      <Footer2 />
+      <Footer1 />
     </>
   );
 }

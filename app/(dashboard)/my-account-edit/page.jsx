@@ -1,5 +1,5 @@
-import Footer2 from "@/components/footers/Footer2";
-import Header2 from "@/components/headers/Header2";
+import Footer1 from "@/components/footers/Footer1";
+import Header18 from "@/components/headers/Header18";
 
 import AccountEdit from "@/components/othersPages/dashboard/AccountEdit";
 import DashboardNav from "@/components/othersPages/dashboard/DashboardNav";
@@ -12,7 +12,7 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <Header2 />
+      <Header18 />
 
       <section className="flat-spacing-11">
         <div className="container">
@@ -27,7 +27,7 @@ export default function Page() {
         </div>
       </section>
 
-      <Footer2 />
+      <Footer1 />
     </>
   );
 }
