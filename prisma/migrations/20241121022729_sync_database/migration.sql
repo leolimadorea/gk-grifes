@@ -1,56 +1,25 @@
 /*
   Warnings:
 
-  - You are about to drop the column `createdAt` on the `Category` table. All the data in the column will be lost.
-  - You are about to drop the column `description` on the `Category` table. All the data in the column will be lost.
-  - You are about to drop the column `couponCode` on the `Payment` table. All the data in the column will be lost.
-  - You are about to drop the column `createdAt` on the `Payment` table. All the data in the column will be lost.
   - You are about to drop the column `license` on the `Payment` table. All the data in the column will be lost.
   - You are about to drop the column `productKey` on the `Product` table. All the data in the column will be lost.
   - You are about to drop the column `type` on the `Product` table. All the data in the column will be lost.
-  - You are about to drop the column `createdAt` on the `User` table. All the data in the column will be lost.
-  - You are about to drop the column `image_url` on the `User` table. All the data in the column will be lost.
-  - You are about to drop the column `phoneNumber` on the `User` table. All the data in the column will be lost.
-  - You are about to drop the column `role` on the `User` table. All the data in the column will be lost.
-  - You are about to drop the `AccessLog` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `Coupon` table. If the table is not empty, all the data it contains will be lost.
 
 */
 -- DropForeignKey
-ALTER TABLE `AccessLog` DROP FOREIGN KEY `AccessLog_userId_fkey`;
-
--- DropForeignKey
 ALTER TABLE `Payment` DROP FOREIGN KEY `Payment_productId_fkey`;
 
--- DropIndex
-DROP INDEX `User_role_fkey` ON `User`;
+-- AlterTable
+ALTER TABLE `Category` ADD COLUMN `imageUrl` VARCHAR(191) NULL;
 
 -- AlterTable
-ALTER TABLE `Category` DROP COLUMN `createdAt`,
-    DROP COLUMN `description`;
-
--- AlterTable
-ALTER TABLE `Payment` DROP COLUMN `couponCode`,
-    DROP COLUMN `createdAt`,
-    DROP COLUMN `license`,
+ALTER TABLE `Payment` DROP COLUMN `license`,
     MODIFY `productId` INTEGER NULL,
     MODIFY `productQuantity` INTEGER NULL;
 
 -- AlterTable
 ALTER TABLE `Product` DROP COLUMN `productKey`,
     DROP COLUMN `type`;
-
--- AlterTable
-ALTER TABLE `User` DROP COLUMN `createdAt`,
-    DROP COLUMN `image_url`,
-    DROP COLUMN `phoneNumber`,
-    DROP COLUMN `role`;
-
--- DropTable
-DROP TABLE `AccessLog`;
-
--- DropTable
-DROP TABLE `Coupon`;
 
 -- CreateTable
 CREATE TABLE `PaymentProduct` (
