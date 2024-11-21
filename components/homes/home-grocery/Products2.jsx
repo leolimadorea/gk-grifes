@@ -1,32 +1,37 @@
 "use client";
-import { useContextElement } from "@/context/Context";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
 
-export default function Products2({ products }) {
-  // Recebe os produtos como prop
-  const { setQuickViewItem } = useContextElement();
-  const {
-    setQuickAddItem,
-    addToWishlist,
-    isAddedtoWishlist,
-    addToCompareItem,
-    isAddedtoCompareItem,
-  } = useContextElement();
+export default function Products2() {
+  const [categories, setCategories] = useState([]);
+  const [activeCategory, setActiveCategory] = useState(null);
 
-  const tabs = ["Higiene", "Fralda", "Perfumaria", "Medicamentos"];
-  const [activeTab, setActiveTab] = useState(tabs[0]);
+  // Fetch categories on component mount
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch("/api/categories/getAll");
+        if (!response.ok) {
+          throw new Error(`Erro HTTP! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        setCategories(data);
+        // Set the first category as the default active category
+        if (data.length > 0) setActiveCategory(data[0].id);
+      } catch (error) {
+        console.error("Erro ao buscar categorias:", error);
+      }
+    };
 
-  // Comentado: Atualiza a lista de produtos filtrados com base na aba ativa
-  // const [filtered, setFiltered] = useState(products);
-  // useEffect(() => {
-  //   setFiltered(
-  //     products.filter(
-  //       (el) => el.filterCategories && el.filterCategories.includes(activeTab)
-  //     )
-  //   );
-  // }, [activeTab, products]);
+    fetchCategories();
+  }, []);
+
+  // Get products for the active category
+  const activeProducts =
+    categories.find((category) => category.id === activeCategory)?.products ||
+    [];
 
   return (
     <section className="flat-spacing-5 pt_0">
@@ -40,14 +45,16 @@ export default function Products2({ products }) {
               Produtos Populares
             </span>
             <ul className="widget-tab-5" role="tablist">
-              {tabs.map((tab, index) => (
+              {categories.map((category) => (
                 <li
-                  onClick={() => setActiveTab(tab)}
+                  key={category.id}
+                  onClick={() => setActiveCategory(category.id)}
                   className="nav-tab-item"
                   role="presentation"
-                  key={index}
                 >
-                  <a className={activeTab === tab ? "active" : ""}>{tab}</a>
+                  <a className={activeCategory === category.id ? "active" : ""}>
+                    {category.name}
+                  </a>
                 </li>
               ))}
               <li className="nav-tab-item">
@@ -75,7 +82,7 @@ export default function Products2({ products }) {
           <div className="tab-content">
             <div className="tab-pane active show" id="meat" role="tabpanel">
               <div className="tf-grid-layout tf-col-2 lg-col-4">
-                {products.map((product) => (
+                {activeProducts.map((product) => (
                   <div key={product.id} className="card-product style-9">
                     <div className="card-product-wrapper">
                       <Link
@@ -113,7 +120,6 @@ export default function Products2({ products }) {
                       <div className="list-product-btn">
                         <a
                           href="#quick_add"
-                          onClick={() => setQuickAddItem(product.id)}
                           data-bs-toggle="modal"
                           className="box-icon quick-add tf-btn-loading"
                         >
@@ -124,6 +130,9 @@ export default function Products2({ products }) {
                     </div>
                   </div>
                 ))}
+                {activeProducts.length === 0 && (
+                  <p className="no-products">Nenhum produto encontrado.</p>
+                )}
               </div>
             </div>
           </div>
