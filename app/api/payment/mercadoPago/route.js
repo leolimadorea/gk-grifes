@@ -1,4 +1,5 @@
 import { createPayment } from "@/app/db/payment/createPayment";
+import { prisma } from "@/app/db/prisma";
 import { PaymentMethod, PaymentStatus } from "@prisma/client";
 import { MercadoPagoConfig, Payment } from "mercadopago";
 import { NextResponse } from "next/server";
