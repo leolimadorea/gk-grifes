@@ -36,7 +36,6 @@ export default function Header18() {
   };
 
   const handleCategoryClick = (categoryId) => {
-    // Redireciona para a página shop-default com a categoria na URL
     router.push(`/shop-default?category=${categoryId}`);
   };
 
