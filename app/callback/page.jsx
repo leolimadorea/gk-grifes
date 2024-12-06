@@ -14,7 +14,7 @@ const Callback = () => {
       // Fazer a solicitação para obter o token
       const fetchToken = async () => {
         try {
-          const response = await fetch("/api/melhor-envio/getToken", {
+          const response = await fetch("/api/getToken", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
