@@ -52,7 +52,7 @@ export async function POST(req) {
           },
         },
         notification_url:
-          "https://https://www.patygirls.com.br/api/payment/mercadopago-webhook",
+          "https://www.patygirls.com.br/api/payment/mercadopago-webhook",
       },
     });
 
