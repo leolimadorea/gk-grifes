@@ -13,6 +13,8 @@ export const metadata = {
   title: "Paty Girls",
 };
 
+export const revalidate = 0;
+
 export default async function Page() {
   // Realizando a chamada à API diretamente do backend para o frontend
   const res = await fetch(
@@ -36,7 +38,7 @@ export default async function Page() {
       <Slider />
       <Collections />
       <Products products={products} />
-      <Products2 products={products} />
+      {/* <Products2 products={products} /> */}
       <Footer1 />
     </div>
   );
