@@ -6,30 +6,16 @@ import ProductGrid from "./ProductGrid";
 import ShopFilter from "./ShopFilter";
 import Sorting from "./Sorting";
 
-export default function ShopDefault() {
+export default function ShopDefault({ filteredProducts }) {
   const [gridItems, setGridItems] = useState(4);
-  const [finalSorted, setFinalSorted] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState(filteredProducts);
+  const [finalSorted, setFinalSorted] = useState(filteredProducts);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`
-        );
-        const data = await res.json();
-        setProducts(data);
-        setFinalSorted(data); // Inicialmente, ordenamos os produtos recebidos.
-        setLoading(false);
-      } catch (error) {
-        console.error("Erro ao buscar produtos:", error);
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, []);
+    setProducts(filteredProducts);
+    setFinalSorted(filteredProducts);
+  }, [filteredProducts]);
   return (
     <>
       <section className="flat-spacing-2">

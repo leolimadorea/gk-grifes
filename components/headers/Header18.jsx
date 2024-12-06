@@ -5,18 +5,18 @@ import Image from "next/image";
 import Link from "next/link";
 import CartLength from "../common/CartLength";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function Header18() {
   const { data: session } = useSession();
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [showDropdown, setShowDropdown] = useState(false); // Controla a visibilidade do dropdown
+  const [showDropdown, setShowDropdown] = useState(false);
+  const router = useRouter();
 
-  // Função para buscar categorias do endpoint
   const fetchCategories = async () => {
     if (categories.length === 0) {
-      // Evita múltiplas requisições se as categorias já foram carregadas
       setLoading(true);
       setError(null);
       try {
@@ -32,7 +32,12 @@ export default function Header18() {
         setLoading(false);
       }
     }
-    setShowDropdown((prev) => !prev); // Alterna o dropdown ao clicar
+    setShowDropdown((prev) => !prev);
+  };
+
+  const handleCategoryClick = (categoryId) => {
+    // Redireciona para a página shop-default com a categoria na URL
+    router.push(`/shop-default?category=${categoryId}`);
   };
 
   return (
@@ -159,7 +164,13 @@ export default function Header18() {
                     {!loading && categories.length > 0 && (
                       <ul>
                         {categories.map((category) => (
-                          <li key={category.id}>{category.name}</li>
+                          <li
+                            key={category.id}
+                            onClick={() => handleCategoryClick(category.id)}
+                            style={{ cursor: "pointer" }}
+                          >
+                            {category.name}
+                          </li>
                         ))}
                       </ul>
                     )}
