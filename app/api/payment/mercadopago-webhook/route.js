@@ -65,7 +65,7 @@ export async function POST(req) {
         `https://api.mercadopago.com/v1/payments/${paymentId}`,
         {
           headers: {
-            Authorization: `Bearer APP_USR-3758424019225992-040322-918b6e811465f67f5255863b5b32e6cd-1164572593`,
+            Authorization: process.env.MERCADO_PAGO_ACCESS_TOKEN,
           },
         }
       );

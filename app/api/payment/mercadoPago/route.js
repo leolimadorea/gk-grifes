@@ -5,8 +5,7 @@ import { MercadoPagoConfig, Payment } from "mercadopago";
 import { NextResponse } from "next/server";
 
 const client = new MercadoPagoConfig({
-  accessToken:
-    "APP_USR-3758424019225992-040322-918b6e811465f67f5255863b5b32e6cd-1164572593",
+  accessToken: process.env.MERCADO_PAGO_ACCESS_TOKEN,
 });
 
 export async function POST(req) {
@@ -53,7 +52,7 @@ export async function POST(req) {
           },
         },
         notification_url:
-          "https://e991-2804-d55-403a-3100-886c-c16a-fe4a-46d3.ngrok-free.app/api/payment/mercadopago-webhook",
+          "https://www.patygirls.com.br/api/payment/mercadopago-webhook",
       },
     });
 
