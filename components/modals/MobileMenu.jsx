@@ -5,8 +5,10 @@ import LanguageSelect from "../common/LanguageSelect";
 import CurrencySelect from "../common/CurrencySelect";
 import { navItems } from "@/data/menu";
 import { usePathname } from "next/navigation";
+
 export default function MobileMenu() {
   const pathname = usePathname();
+
   const isMenuActive = (menuItem) => {
     let active = false;
     if (menuItem.href?.includes("/")) {
@@ -33,6 +35,7 @@ export default function MobileMenu() {
 
     return active;
   };
+
   return (
     <div className="offcanvas offcanvas-start canvas-mb" id="mobileMenu">
       <span
@@ -45,16 +48,51 @@ export default function MobileMenu() {
           <ul className="nav-ul-mb" id="wrapper-menu-navigation">
             <li className="nav-mb-item">
               <a href="/shop-default" className="mb-menu-link">
-                Home
-              </a>
-            </li>
-            <li className="nav-mb-item">
-              <a href="/shop-default" className="mb-menu-link">
                 Comprar Agora
               </a>
             </li>
+            <li className="nav-mb-item">
+              <a href="#" className="mb-menu-link">
+                Produtos
+              </a>
+              <ul className="sub-menu">
+                <li>
+                  <a href="/products/camisetas" className="mb-menu-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path d="M9 18l6-6-6-6" />
+                    </svg>
+                    Camisetas
+                  </a>
+                </li>
+                <li>
+                  <a href="/products/legging" className="mb-menu-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path d="M9 18l6-6-6-6" />
+                    </svg>
+                    Legging
+                  </a>
+                </li>
+                <li>
+                  <a href="/products/meias" className="mb-menu-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path d="M9 18l6-6-6-6" />
+                    </svg>
+                    Meias
+                  </a>
+                </li>
+                <li>
+                  <a href="/products/chinelos" className="mb-menu-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <path d="M9 18l6-6-6-6" />
+                    </svg>
+                    Chinelos
+                  </a>
+                </li>
+              </ul>
+            </li>
           </ul>
         </div>
+        {/* Parte inferior do menu, caso queira reativar */}
         {/* <div className="mb-bottom">
           <Link href={`/login`} className="site-nav-icon">
             <i className="icon icon-account" />

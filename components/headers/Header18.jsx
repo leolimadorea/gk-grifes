@@ -1,13 +1,39 @@
 "use client";
+import React, { useState } from "react";
 import Nav from "./Nav";
 import Image from "next/image";
 import Link from "next/link";
 import CartLength from "../common/CartLength";
-import { products44 } from "@/data/products";
 import { useSession } from "next-auth/react";
 
 export default function Header18() {
   const { data: session } = useSession();
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [showDropdown, setShowDropdown] = useState(false); // Controla a visibilidade do dropdown
+
+  // Função para buscar categorias do endpoint
+  const fetchCategories = async () => {
+    if (categories.length === 0) {
+      // Evita múltiplas requisições se as categorias já foram carregadas
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await fetch("/api/categories");
+        if (!response.ok) {
+          throw new Error("Erro ao buscar categorias");
+        }
+        const data = await response.json();
+        setCategories(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    setShowDropdown((prev) => !prev); // Alterna o dropdown ao clicar
+  };
 
   return (
     <header
@@ -25,12 +51,14 @@ export default function Header18() {
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width={24}
-                  height={16}
+                  width="24"
+                  height="16"
                   viewBox="0 0 24 16"
                   fill="none"
                 >
-                  {/* SVG do ícone de menu */}
+                  <rect width="24" height="3" fill="black" />
+                  <rect y="6" width="24" height="3" fill="black" />
+                  <rect y="12" width="24" height="3" fill="black" />
                 </svg>
               </a>
             </div>
@@ -56,8 +84,6 @@ export default function Header18() {
                     <i className="icon icon-search" />
                   </button>
                 </form>
-                {/* Seção de sugestões de busca (comentada) */}
-                {/* ... */}
               </div>
             </div>
             <div className="col-md-4 col-3">
@@ -74,7 +100,6 @@ export default function Header18() {
                 </li>
                 <li className="nav-account">
                   {session ? (
-                    // Se o usuário estiver logado, mostrar "Minha Conta"
                     <Link
                       href="/my-account-orders"
                       className="nav-icon-item align-items-center gap-10"
@@ -83,7 +108,6 @@ export default function Header18() {
                       <span className="text">Minha Conta</span>
                     </Link>
                   ) : (
-                    // Se o usuário não estiver logado, mostrar "Login"
                     <a
                       href="#login"
                       data-bs-toggle="modal"
@@ -94,8 +118,6 @@ export default function Header18() {
                     </a>
                   )}
                 </li>
-                {/* Outros itens de navegação (comentados) */}
-                {/* ... */}
                 <li className="nav-cart cart-lg">
                   <a
                     href="#shoppingCart"
@@ -118,23 +140,40 @@ export default function Header18() {
           <div className="wrapper-header d-flex justify-content-between align-items-center">
             <div className="box-left">
               <div className="tf-list-categories">
-                <a href="#" className="categories-title">
-                  {/* SVG do ícone de categorias */}
+                <button className="categories-title" onClick={fetchCategories}>
                   Todas As Categorias
-                </a>
-                {/* Menu de categorias (comentado) */}
-                {/* ... */}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
+                    <path d="M12 16l-6-6h12l-6 6z" fill="currentColor" />
+                  </svg>
+                </button>
+                {showDropdown && (
+                  <div className="categories-dropdown">
+                    {loading && <p>Carregando...</p>}
+                    {error && <p style={{ color: "red" }}>{error}</p>}
+                    {!loading && categories.length > 0 && (
+                      <ul>
+                        {categories.map((category) => (
+                          <li key={category.id}>{category.name}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                )}
               </div>
               <nav className="box-navigation text-center">
                 <ul className="box-nav-ul d-flex align-items-center justify-content-center gap-30">
                   <Nav />
-                  {/* Outros itens de navegação (comentados) */}
-                  {/* ... */}
                 </ul>
               </nav>
             </div>
             <div className="box-right">
-              <div className="icon">{/* SVG do ícone de telefone */}</div>
+              <div className="icon"></div>
               <div className="number d-grid">
                 <a href="tel:1900100888" className="phone">
                   (11) 94934-3750

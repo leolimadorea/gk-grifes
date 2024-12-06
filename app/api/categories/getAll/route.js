@@ -1,27 +1,21 @@
-import { getAllCategories } from "@/app/db/categories/GetAllCategories";
+import { PrismaClient } from "@prisma/client";
 
-export async function GET(req) {
+const prisma = new PrismaClient();
+
+export async function getAllCategories() {
   try {
-    const categories = await getAllCategories();
-    return new Response(JSON.stringify(categories), {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
+    const categories = await prisma.category.findMany({
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        imageUrl: true,
+        createdAt: true,
       },
     });
+    return categories;
   } catch (error) {
-    console.error("Erro na API ao buscar categorias:", error);
-    return new Response(
-      JSON.stringify({
-        message: "Erro ao buscar categorias",
-        error: error.message,
-      }),
-      {
-        status: 500,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    console.error("Erro ao buscar categorias:", error);
+    throw new Error("Erro ao buscar categorias do banco de dados");
   }
 }

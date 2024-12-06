@@ -15,9 +15,12 @@ export const metadata = {
 
 export default async function Page() {
   // Realizando a chamada à API diretamente do backend para o frontend
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`, {
-    cache: "no-store", // Evita cache para obter dados atualizados sempre
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`,
+    {
+      cache: "no-store", // Evita cache para obter dados atualizados sempre
+    }
+  );
 
   if (!res.ok) {
     throw new Error("Erro ao buscar os produtos");
