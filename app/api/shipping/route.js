@@ -10,7 +10,7 @@ export async function POST(req) {
         { status: 400 }
       );
     }
-
+    console.log(`${process.env.ACCESS_TOKEN}`);
     const options = {
       method: "POST",
       url: "https://www.melhorenvio.com.br/api/v2/me/shipment/calculate",
@@ -18,7 +18,7 @@ export async function POST(req) {
         Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
-        "User-Agent": "PatyGirls (marta.carolina01@gmail.com)",
+        "User-Agent": "patygirls (marta.carolina01@gmail.com)",
       },
       data: {
         from: { postal_code: "80420080" },
