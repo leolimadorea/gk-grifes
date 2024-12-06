@@ -228,7 +228,7 @@ export default function Footer1({ bgColor = "" }) {
               <div className="col-12">
                 <div className="footer-bottom-wrap d-flex gap-20 flex-wrap justify-content-between align-items-center">
                   <div className="footer-menu_item">
-                    <p>© {new Date().getFullYear()} DROGARIA VIVAMAIS</p>
+                    <p>© {new Date().getFullYear()} PatyGirls</p>
                   </div>
                 </div>
               </div>
