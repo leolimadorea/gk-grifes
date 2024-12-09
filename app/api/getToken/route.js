@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+export const runtime = "edge"; // Define o runtime para edge
+
 export async function POST(request) {
   try {
     // Obter o corpo da requisição
@@ -37,7 +39,3 @@ export async function POST(request) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
-
-export const config = {
-  runtime: "edge", // Otimização opcional para rotas API
-};
