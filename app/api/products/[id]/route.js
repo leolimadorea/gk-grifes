@@ -1,5 +1,3 @@
-// api/products/[id]/route.js
-
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 
@@ -20,8 +18,26 @@ export async function GET(request, { params }) {
         category: {
           select: { name: true },
         },
+        productVariantValues: {
+          select: {
+            id: true,
+            price: true,
+            stock: true,
+            variantValue: {
+              select: { name: true },
+            },
+          },
+        },
       },
     });
+
+    if (!product) {
+      return NextResponse.json(
+        { error: "Produto não encontrado" },
+        { status: 404 }
+      );
+    }
+
     return NextResponse.json(product);
   } catch (error) {
     console.error("Erro ao buscar o produto:", error);

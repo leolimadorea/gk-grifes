@@ -8,7 +8,6 @@ import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function Products({ products }) {
-  // Recebe products como prop
   const { setQuickViewItem } = useContextElement();
   const {
     setQuickAddItem,
@@ -25,6 +24,23 @@ export default function Products({ products }) {
       setCurrentImage(products[0].img);
     }
   }, [products]);
+
+  const formatPrice = (price) => `R$ ${price.toFixed(2)}`;
+
+  const getPriceRange = (product) => {
+    if (
+      product.productVariantValues &&
+      product.productVariantValues.length > 0
+    ) {
+      const prices = product.productVariantValues.map((v) => v.price);
+      const minPrice = Math.min(...prices);
+      const maxPrice = Math.max(...prices);
+      return minPrice === maxPrice
+        ? formatPrice(minPrice)
+        : `${formatPrice(minPrice)} - ${formatPrice(maxPrice)}`;
+    }
+    return formatPrice(product.price); // Fixed price if no variants
+  };
 
   return (
     <section className="flat-spacing-8">
@@ -87,19 +103,8 @@ export default function Products({ products }) {
                     {product.title}
                   </Link>
                   <span className="price">
-                    {product.oldPrice > 0 && (
-                      <span className="old-price text_primary">
-                        R${product.oldPrice.toFixed(2)}
-                      </span>
-                    )}
-                    <span className="new-price">
-                      R${product.price.toFixed(2)}
-                    </span>
+                    <span className="new-price">{getPriceRange(product)}</span>
                   </span>
-
-                  {/* <div className="count-down">
-                    <CountdownComponent labels="Days,Hours,Mins,Secs" />
-                  </div> */}
                 </div>
               </div>
             </SwiperSlide>

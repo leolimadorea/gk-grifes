@@ -1,24 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { colors, paymentImages } from "@/data/singleProductOptions";
 import Quantity from "./Quantity";
 import Slider1ZoomOuter from "./sliders/Slider1ZoomOuter";
 import { useContextElement } from "@/context/Context";
 import { openCartModal } from "@/utlis/openCartModal";
 
 export default function DetailsOuterZoom({ product }) {
-  const [currentColor, setCurrentColor] = useState(colors[0]);
   const [quantity, setQuantity] = useState(1);
-
-  const handleColor = (color) => {
-    const updatedColor = colors.find(
-      (elm) => elm.value.toLowerCase() === color.toLowerCase()
-    );
-    if (updatedColor) {
-      setCurrentColor(updatedColor);
-    }
-  };
+  const [selectedVariant, setSelectedVariant] = useState(null); // Track selected variant
 
   const {
     addProductToCart,
@@ -28,6 +18,33 @@ export default function DetailsOuterZoom({ product }) {
     addToWishlist,
     isAddedtoWishlist,
   } = useContextElement();
+
+  // Get price of the selected variant or fallback to range/default price
+  const getPrice = () => {
+    if (selectedVariant) {
+      return `R$${selectedVariant.price.toFixed(2)}`;
+    } else if (
+      product &&
+      product.productVariantValues &&
+      product.productVariantValues.length > 0
+    ) {
+      const prices = product.productVariantValues.map((v) => v.price);
+      const minPrice = Math.min(...prices);
+      const maxPrice = Math.max(...prices);
+      return minPrice === maxPrice
+        ? `R$${minPrice.toFixed(2)}`
+        : `R$${minPrice.toFixed(2)} - R$${maxPrice.toFixed(2)}`;
+    }
+    return product ? `R$${product.price.toFixed(2)}` : "Preço indisponível";
+  };
+
+  // Handle variant selection
+  const handleVariantChange = (variantId) => {
+    const variant = product.productVariantValues.find(
+      (v) => v.id === parseInt(variantId, 10)
+    );
+    setSelectedVariant(variant);
+  };
 
   return (
     <section
@@ -44,9 +61,8 @@ export default function DetailsOuterZoom({ product }) {
             <div className="col-md-6">
               <div className="tf-product-media-wrap sticky-top">
                 <Slider1ZoomOuter
-                  handleColor={handleColor}
-                  currentColor={currentColor.value}
-                  productImage={product.img} // Passa a imagem do produto
+                  currentColor={product.color || "default"} // Optional color
+                  productImage={product.img} // Pass product image
                 />
               </div>
             </div>
@@ -60,28 +76,32 @@ export default function DetailsOuterZoom({ product }) {
                     <h5>{product.title || "Produto Padrão"}</h5>
                   </div>
 
-                  {/* Badges */}
-                  <div className="tf-product-info-badges">
-                    <div className="badges">Mais vendido</div>
-                    <div className="product-status-content">
-                      <i className="icon-lightning" />
-                      <p className="fw-6">
-                        Vendendo rápido! 56 pessoas têm isso em seus carrinhos.
-                      </p>
-                    </div>
-                  </div>
-
                   {/* Price */}
                   <div className="tf-product-info-price">
-                    <div className="price-on-sale">
-                      R${product.price.toFixed(2)}
-                    </div>
-                    {product.oldPrice && (
-                      <div className="compare-at-price">
-                        R${product.oldPrice.toFixed(2)}
+                    <div className="price-on-sale">{getPrice()}</div>
+                  </div>
+
+                  {/* Variant Selector */}
+                  {product.productVariantValues &&
+                    product.productVariantValues.length > 0 && (
+                      <div className="tf-product-info-variants">
+                        <div className="variant-title fw-6">
+                          Escolha uma opção:
+                        </div>
+                        <select
+                          onChange={(e) => handleVariantChange(e.target.value)}
+                          className="variant-select"
+                        >
+                          <option value="">Selecione uma variante</option>
+                          {product.productVariantValues.map((variant) => (
+                            <option key={variant.id} value={variant.id}>
+                              {variant.variantValue.name} - R$
+                              {variant.price.toFixed(2)}
+                            </option>
+                          ))}
+                        </select>
                       </div>
                     )}
-                  </div>
 
                   {/* Quantity Selector */}
                   <div className="tf-product-info-quantity">
@@ -99,8 +119,13 @@ export default function DetailsOuterZoom({ product }) {
                             {
                               id: product.id,
                               title: product.title,
-                              price: product.price,
+                              price: selectedVariant
+                                ? selectedVariant.price
+                                : product.price,
                               imgSrc: product.img,
+                              variant: selectedVariant
+                                ? selectedVariant.variantValue.name
+                                : null,
                             },
                             quantity
                           );
@@ -109,43 +134,15 @@ export default function DetailsOuterZoom({ product }) {
                       >
                         <span>Adicionar ao carrinho - </span>
                         <span className="tf-qty-price">
-                          R${(product.price * quantity).toFixed(2)}
+                          R$
+                          {(
+                            (selectedVariant
+                              ? selectedVariant.price
+                              : product.price) * quantity
+                          ).toFixed(2)}
                         </span>
                       </a>
                     </form>
-                  </div>
-
-                  {/* Delivery and Return Information */}
-                  <div className="tf-product-info-delivery-return">
-                    <div className="row">
-                      <div className="col-xl-6 col-12">
-                        <p>
-                          Estimativa de entrega:{" "}
-                          <span className="fw-7">3-6 dias</span>
-                        </p>
-                      </div>
-                      <div className="col-xl-6 col-12">
-                        <p>
-                          Devolução em até <span className="fw-7">30 dias</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Trust Seal */}
-                  <div className="tf-product-info-trust-seal">
-                    <p className="fw-6">Compra Segura Garantida</p>
-                    <div className="tf-payment">
-                      {paymentImages.map((image, index) => (
-                        <Image
-                          key={index}
-                          alt={image.alt}
-                          src={image.src}
-                          width={image.width}
-                          height={image.height}
-                        />
-                      ))}
-                    </div>
                   </div>
                 </div>
               </div>

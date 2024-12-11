@@ -16,11 +16,11 @@ export const metadata = {
 export const revalidate = 0;
 
 export default async function Page() {
-  // Realizando a chamada à API diretamente do backend para o frontend
+  // Fetching products
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`,
     {
-      cache: "no-store", // Evita cache para obter dados atualizados sempre
+      cache: "no-store", // Ensure fresh data
     }
   );
 
@@ -29,7 +29,16 @@ export default async function Page() {
   }
 
   const products = await res.json();
+  console.log("Number of products fetched:", products.length);
+
+  // Log details of each product
+  products.forEach((product, index) => {
+    console.log(`Product #${index + 1}:`, product);
+  });
+
   const session = await getServerSession(authOptions);
+
+  console.log("Session info:", session);
 
   return (
     <div className="color-primary-8 color-main-text-2">

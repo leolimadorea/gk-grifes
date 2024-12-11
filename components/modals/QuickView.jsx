@@ -22,7 +22,6 @@ export default function QuickView() {
   } = useContextElement();
   const [currentColor, setCurrentColor] = useState(colors[0]);
   const [currentSize, setCurrentSize] = useState(sizeOptions[0]);
-  console.log(quickViewItem);
   const openModalSizeChoice = () => {
     const bootstrap = require("bootstrap"); // dynamically import bootstrap
     var myModal = new bootstrap.Modal(document.getElementById("find_size"), {
