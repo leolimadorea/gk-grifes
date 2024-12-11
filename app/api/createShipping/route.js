@@ -6,7 +6,7 @@ export async function POST(req) {
     console.log(orderData);
     const options = {
       method: "POST",
-      url: "https://sandbox.melhorenvio.com.br/api/v2/me/cart",
+      url: "https://melhorenvio.com.br/api/v2/me/cart",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",

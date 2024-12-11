@@ -1,5 +1,5 @@
+import refreshTokenIfNeeded from "@/app/db/token/getAcessToken";
 import axios from "axios";
-
 export async function POST(req) {
   try {
     const { zipCode, products } = await req.json();
@@ -10,18 +10,19 @@ export async function POST(req) {
         { status: 400 }
       );
     }
-    console.log(`${process.env.ACCESS_TOKEN}`);
+    const tokenData = await refreshTokenIfNeeded();
+    console.log(tokenData, "TOKENDATA");
     const options = {
       method: "POST",
-      url: "https://www.melhorenvio.com.br/api/v2/me/shipment/calculate",
+      url: "https://melhorenvio.com.br/api/v2/me/shipment/calculate",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+        Authorization: `Bearer ${tokenData}`,
         "User-Agent": "patygirls (marta.carolina01@gmail.com)",
       },
       data: {
-        from: { postal_code: "80420080" },
+        from: { postal_code: `${process.env.FROM_POSTAL_CODE}` },
         to: { postal_code: zipCode },
         products,
       },

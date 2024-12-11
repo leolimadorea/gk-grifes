@@ -27,41 +27,54 @@ model Product {
     id          Int           @id @default(autoincrement())
     img         String
     title       String
-    price       Float
+    price       Float?
     categoryId  Int
     description String        @db.Text
-    quantity    Int           @default(1)
+    quantity    Int?           @default(1)
     status      ProductStatus
     category    Category      @relation(fields: [categoryId], references: [id])
     payments    Payment[]
     variants    Variant[] 
+    productVariantValues ProductVariantValue[]
+
 
     paymentProducts PaymentProduct[]
 }
 
 model Variant {
-    id          Int           @id @default(autoincrement())
-    name        String  
-    productId   Int?
-    product     Product?       @relation(fields: [productId], references: [id])
-    values      VariantValue[]
+  id          Int           @id @default(autoincrement())
+  name        String
+  productId   Int?
+  product     Product?      @relation(fields: [productId], references: [id])
+  values      VariantValue[]
 
-    createdAt   DateTime      @default(now())
-    updatedAt   DateTime      @updatedAt
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
 }
 
 model VariantValue {
-    id          Int           @id @default(autoincrement())
-    name        String        
-    variantId   Int
-    variant     Variant       @relation(fields: [variantId], references: [id])
-    stock       Int           @default(0) 
-    price       Float         @default(0.0) 
+  id                 Int                  @id @default(autoincrement())
+  name               String
+  variantId          Int
+  variant            Variant              @relation(fields: [variantId], references: [id])
+  productVariantValues ProductVariantValue[]
 
-    createdAt   DateTime      @default(now())
-    updatedAt   DateTime      @updatedAt
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
 }
 
+model ProductVariantValue {
+  id             Int          @id @default(autoincrement())
+  productId      Int
+  variantValueId Int
+  product        Product       @relation(fields: [productId], references: [id])
+  variantValue   VariantValue  @relation(fields: [variantValueId], references: [id])
+  price          Float         @default(0.0)
+  stock          Int           @default(0)
+
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
 
 model Category {
     id          Int       @id @default(autoincrement())
@@ -179,3 +192,9 @@ enum Coupon_discountType {
     PERCENTAGE
     FIXED
 }
+model accessToken {
+        id         Int    @id @default(autoincrement())
+        token      String?  @db.Text
+        refreshToken String? @db.Text
+        expiresAt DateTime?
+    }

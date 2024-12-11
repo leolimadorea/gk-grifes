@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 const Callback = () => {
   const [accessToken, setAccessToken] = useState(null);
+  const [refreshToken, setRefreshToken] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -31,6 +32,7 @@ const Callback = () => {
 
           const data = await response.json();
           setAccessToken(data.access_token);
+          setRefreshToken(data.refresh_token);
         } catch (err) {
           setError(err.message);
         }
@@ -51,6 +53,8 @@ const Callback = () => {
         <div>
           <h2>Access Token Obtido:</h2>
           <pre>{accessToken}</pre>
+          <h2>Refresh Token Obtido</h2>
+          <pre>{refreshToken}</pre>
         </div>
       ) : (
         <p>Processando...</p>

@@ -1,6 +1,6 @@
+import { prisma } from "@/app/db/prisma";
 import { NextResponse } from "next/server";
-
-export const runtime = "edge"; // Define o runtime para edge
+import { createToken } from "../token/createToken";
 
 export async function POST(request) {
   try {
@@ -25,12 +25,25 @@ export async function POST(request) {
       }),
     });
 
-    // Verificar se a resposta foi bem-sucedida
     if (!response.ok) {
       throw new Error(`Erro ao obter o token: ${response.status}`);
     }
 
     const data = await response.json();
+    console.log("Token obtido:", data);
+
+    // Calcular a data de expiração
+    const currentDate = new Date();
+    const expirationDate = new Date(
+      currentDate.getTime() + data.expires_in * 1000
+    );
+    console.log(expirationDate);
+
+    await createToken({
+      token: data.access_token,
+      refreshToken: data.refresh_token,
+      expiresIn: data.expires_in,
+    });
 
     // Retornar o token na resposta
     return NextResponse.json(data);
