@@ -6,8 +6,8 @@ import axios from "axios";
 import Link from "next/link";
 
 export const metadata = {
-  title: " VKLTech",
-  description: "VKLTech",
+  title: " PatyGirls",
+  description: "PatyGirls",
 };
 
 export default async function Page({ params }) {

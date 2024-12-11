@@ -12,8 +12,8 @@ import Products from "@/components/homes/home-7/Products";
 import React from "react";
 
 export const metadata = {
-  title: "Home 7 || VKLTech",
-  description: "VKLTech",
+  title: "Home 7 || PatyGirls",
+  description: "PatyGirls",
 };
 export default function Page() {
   return (

@@ -15,8 +15,8 @@ import TestimonialSection from "@/components/homes/home-decor/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Decor || VKLTech",
-  description: "VKLTech",
+  title: "Home Decor || PatyGirls",
+  description: "PatyGirls",
 };
 export default function Page() {
   return (

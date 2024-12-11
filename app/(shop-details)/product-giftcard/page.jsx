@@ -10,8 +10,8 @@ import React from "react";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Shop Gift Card || VKLTech",
-  description: "VKLTech",
+  title: "Shop Gift Card || PatyGirls",
+  description: "PatyGirls",
 };
 export default function Page() {
   return (

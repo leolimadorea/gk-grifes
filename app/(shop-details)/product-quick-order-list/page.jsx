@@ -8,8 +8,8 @@ import ShopDetailsTab from "@/components/shopDetails/ShopDetailsTab";
 import React from "react";
 import Link from "next/link";
 export const metadata = {
-  title: "Product Quick Order List || VKLTech",
-  description: "VKLTech",
+  title: "Product Quick Order List || PatyGirls",
+  description: "PatyGirls",
 };
 export default function Page() {
   return (

@@ -8,8 +8,8 @@ import React from "react";
 import Link from "next/link";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
 export const metadata = {
-  title: "Product Zoom Popup || VKLTech",
-  description: "VKLTech",
+  title: "Product Zoom Popup || PatyGirls",
+  description: "PatyGirls",
 };
 export default function Page() {
   return (

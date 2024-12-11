@@ -12,8 +12,8 @@ import SidebarToggler from "@/components/shopDetails/SidebarToggler";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
 
 export const metadata = {
-  title: "Shop Drawer Sidebar || VKLTech",
-  description: "VKLTech",
+  title: "Shop Drawer Sidebar || PatyGirls",
+  description: "PatyGirls",
 };
 export default function Page() {
   return (

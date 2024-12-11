@@ -7,8 +7,8 @@ import { getServerSession } from "next-auth";
 import { getOrderById } from "@/app/db/getOrders/getOrderById";
 
 export const metadata = {
-  title: "VKLTech",
-  description: "VKLTech",
+  title: "PatyGirls",
+  description: "PatyGirls",
 };
 
 export default async function Page({ params }) {

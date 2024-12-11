@@ -4,8 +4,8 @@ import Header18 from "@/components/headers/Header18";
 import Link from "next/link";
 import React from "react";
 export const metadata = {
-  title: "Page Not Found || VKLTech",
-  description: "VKLTech",
+  title: "Page Not Found || PatyGirls",
+  description: "PatyGirls",
 };
 export default function notFound() {
   return (

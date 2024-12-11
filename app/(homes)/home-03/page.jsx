@@ -12,8 +12,8 @@ import VideoBanner from "@/components/homes/home-3/VideoBanner";
 import React from "react";
 
 export const metadata = {
-  title: "Home 3 || VKLTech",
-  description: "VKLTech",
+  title: "Home 3 || PatyGirls",
+  description: "PatyGirls",
 };
 export default function Page() {
   return (

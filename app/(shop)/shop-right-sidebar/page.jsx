@@ -5,8 +5,8 @@ import ShopSidebarRight from "@/components/shop/ShopSidebarRight";
 import React from "react";
 
 export const metadata = {
-  title: "Shop Right Sidebar || VKLTech",
-  description: "VKLTech",
+  title: "Shop Right Sidebar || PatyGirls",
+  description: "PatyGirls",
 };
 export default function Page() {
   return (

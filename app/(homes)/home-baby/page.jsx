@@ -12,8 +12,8 @@ import Products2 from "@/components/homes/home-baby/Products2";
 
 import React from "react";
 export const metadata = {
-  title: "Home Baby || VKLTech",
-  description: "VKLTech",
+  title: "Home Baby || PatyGirls",
+  description: "PatyGirls",
 };
 export default function Page() {
   return (

@@ -7,8 +7,8 @@ import ProductStyle4 from "@/components/shop/ProductStyle4";
 import React from "react";
 
 export const metadata = {
-  title: "Product Style 5 || VKLTech",
-  description: "VKLTech",
+  title: "Product Style 5 || PatyGirls",
+  description: "PatyGirls",
 };
 export default function Page() {
   return (

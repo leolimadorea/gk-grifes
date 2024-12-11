@@ -9,8 +9,8 @@ import Testimonials from "@/components/othersPages/about/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "About Us || VKLTech",
-  description: "VKLTech",
+  title: "About Us || PatyGirls",
+  description: "PatyGirls",
 };
 export default function Page() {
   return (

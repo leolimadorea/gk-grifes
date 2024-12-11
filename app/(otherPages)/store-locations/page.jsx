@@ -4,8 +4,8 @@ import StoreLocations from "@/components/othersPages/StoreLocations";
 import React from "react";
 
 export const metadata = {
-  title: "Store Locations || VKLTech",
-  description: "VKLTech",
+  title: "Store Locations || PatyGirls",
+  description: "PatyGirls",
 };
 export default function Page() {
   return (

@@ -4,8 +4,8 @@ import Login from "@/components/othersPages/Login";
 import React from "react";
 
 export const metadata = {
-  title: "Login || VKLTech",
-  description: "VKLTech",
+  title: "Login || PatyGirls",
+  description: "PatyGirls",
 };
 export default function Page() {
   return (

@@ -4,8 +4,8 @@ import Register from "@/components/othersPages/Register";
 import React from "react";
 
 export const metadata = {
-  title: "Register || VKLTech",
-  description: "VKLTech",
+  title: "Register || PatyGirls",
+  description: "PatyGirls",
 };
 export default function Page() {
   return (

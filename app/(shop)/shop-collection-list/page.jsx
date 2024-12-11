@@ -6,8 +6,8 @@ import ShopCollections from "@/components/shop/ShopCollections";
 import React from "react";
 
 export const metadata = {
-  title: "Product Collection List || VKLTech",
-  description: "VKLTech",
+  title: "Product Collection List || PatyGirls",
+  description: "PatyGirls",
 };
 export default function Page() {
   return (

@@ -4,8 +4,8 @@ import ShopDefault from "@/components/shop/ShopDefault";
 import React from "react";
 
 export const metadata = {
-  title: "Shop Women || VKLTech",
-  description: "VKLTech",
+  title: "Shop Women || PatyGirls",
+  description: "PatyGirls",
 };
 export default function Page() {
   return (

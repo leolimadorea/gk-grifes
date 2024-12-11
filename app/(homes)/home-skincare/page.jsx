@@ -17,8 +17,8 @@ import Footer1 from "@/components/footers/Footer1";
 import Header18 from "@/components/headers/Header18";
 
 export const metadata = {
-  title: "Home Skincare || VKLTech",
-  description: "VKLTech",
+  title: "Home Skincare || PatyGirls",
+  description: "PatyGirls",
 };
 export default function Page() {
   return (

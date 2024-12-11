@@ -5,8 +5,8 @@ import ShopLoadmoreOnScroll from "@/components/shop/ShopLoadmoreOnScroll";
 import React from "react";
 
 export const metadata = {
-  title: "Shop Infinite Scrolling  || VKLTech",
-  description: "VKLTech",
+  title: "Shop Infinite Scrolling  || PatyGirls",
+  description: "PatyGirls",
 };
 export default function Page() {
   return (

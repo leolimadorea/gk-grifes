@@ -5,8 +5,8 @@ import Products from "@/components/homes/home-search/Products";
 import React from "react";
 
 export const metadata = {
-  title: "Home Search || VKLTech",
-  description: "VKLTech",
+  title: "Home Search || PatyGirls",
+  description: "PatyGirls",
 };
 export default function Page() {
   return (

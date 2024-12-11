@@ -7,8 +7,8 @@ import Subcollections from "@/components/shop/Subcollections";
 import React from "react";
 
 export const metadata = {
-  title: "Product Collection Sub || VKLTech",
-  description: "VKLTech",
+  title: "Product Collection Sub || PatyGirls",
+  description: "PatyGirls",
 };
 export default function Page() {
   return (
