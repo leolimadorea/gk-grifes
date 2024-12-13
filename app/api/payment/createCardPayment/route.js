@@ -135,7 +135,7 @@ export async function POST(req) {
       console.log("Criando frete...");
 
       const shippingResponse = await fetch(
-        "http://localhost:3001/api/createShipping",
+        "http://clchamines.com.br/api/createShipping",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
