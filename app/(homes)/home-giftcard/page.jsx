@@ -14,8 +14,8 @@ import Testimonials from "@/components/homes/home-giftcard/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Giftcard || PatyGirls",
-  description: "PatyGirls",
+  title: "Home Giftcard || CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (

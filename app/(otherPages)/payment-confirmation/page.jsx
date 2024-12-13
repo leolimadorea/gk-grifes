@@ -4,8 +4,8 @@ import PaymentConfirmation from "@/components/othersPages/PaymentConfirmation";
 import React from "react";
 
 export const metadata = {
-  title: "Payment Confirmation || PatyGirls",
-  description: "PatyGirls",
+  title: "Payment Confirmation || CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (

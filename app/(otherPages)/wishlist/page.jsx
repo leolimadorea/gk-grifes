@@ -6,8 +6,8 @@ import Wishlist from "@/components/othersPages/Wishlist";
 import React from "react";
 
 export const metadata = {
-  title: "Wishlist || PatyGirls",
-  description: "PatyGirls",
+  title: "Wishlist || CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (

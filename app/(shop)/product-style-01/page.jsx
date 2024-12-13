@@ -5,8 +5,8 @@ import ProductStyle1 from "@/components/shop/ProductStyle1";
 import React from "react";
 
 export const metadata = {
-  title: "Product Style 1 || PatyGirls",
-  description: "PatyGirls",
+  title: "Product Style 1 || CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (

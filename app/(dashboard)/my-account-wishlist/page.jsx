@@ -5,7 +5,7 @@ import Wishlist from "@/components/othersPages/dashboard/Wishlist";
 
 export const metadata = {
   title: "Imuno-Pump",
-  description: "PatyGirls",
+  description: "CLC",
 };
 export default function Page() {
   return (

@@ -11,8 +11,8 @@ import ShopGram from "@/components/homes/home-5/ShopGram";
 import React from "react";
 
 export const metadata = {
-  title: "Home 5 || PatyGirls",
-  description: "PatyGirls",
+  title: "Home 5 || CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (

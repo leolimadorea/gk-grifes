@@ -1,7 +1,7 @@
 import Link from "next/link";
 export const metadata = {
-  title: "Shop Frequently Bought 2 || PatyGirls",
-  description: "PatyGirls",
+  title: "Shop Frequently Bought 2 || CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (

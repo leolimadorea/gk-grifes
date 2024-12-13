@@ -6,8 +6,8 @@ import ShopStyleList from "@/components/shop/ShopStyleList";
 import React from "react";
 
 export const metadata = {
-  title: "Product Style List || PatyGirls",
-  description: "PatyGirls",
+  title: "Product Style List || CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (

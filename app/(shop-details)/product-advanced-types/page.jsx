@@ -10,8 +10,8 @@ import Link from "next/link";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
 
 export const metadata = {
-  title: "Shop Advanced Type || PatyGirls",
-  description: "PatyGirls",
+  title: "Shop Advanced Type || CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (

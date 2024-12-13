@@ -8,8 +8,8 @@ import Link from "next/link";
 import Details26 from "@/components/shopDetails/Details26";
 
 export const metadata = {
-  title: "Product Swatch Image || PatyGirls",
-  description: "PatyGirls",
+  title: "Product Swatch Image || CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (

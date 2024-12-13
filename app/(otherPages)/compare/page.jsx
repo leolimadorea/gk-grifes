@@ -6,8 +6,8 @@ import Compare from "@/components/othersPages/Compare";
 import React from "react";
 
 export const metadata = {
-  title: "Compare || PatyGirls",
-  description: "PatyGirls",
+  title: "Compare || CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (

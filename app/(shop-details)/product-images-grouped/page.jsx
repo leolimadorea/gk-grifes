@@ -9,8 +9,8 @@ import Link from "next/link";
 import ShopDetailsImageGrouped from "@/components/shopDetails/ShopDetailsImageGrouped";
 
 export const metadata = {
-  title: "Product Images Grouped || PatyGirls",
-  description: "PatyGirls",
+  title: "Product Images Grouped || CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (

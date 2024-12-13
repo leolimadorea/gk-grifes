@@ -9,8 +9,8 @@ import React from "react";
 import Link from "next/link";
 
 export const metadata = {
-  title: "ProductRight Thumbnal || PatyGirls",
-  description: "PatyGirls",
+  title: "ProductRight Thumbnal || CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (

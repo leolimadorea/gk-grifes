@@ -14,8 +14,8 @@ import Testimonials from "@/components/homes/home-skateboard/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Skateboard || PatyGirls",
-  description: "PatyGirls",
+  title: "Home Skateboard || CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (

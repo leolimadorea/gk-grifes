@@ -9,8 +9,8 @@ import Link from "next/link";
 import DefaultShopDetailsNoZoom from "@/components/shopDetails/DefaultShopDetailsNoZoom";
 
 export const metadata = {
-  title: "Product No Zoom || PatyGirls",
-  description: "PatyGirls",
+  title: "Product No Zoom || CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (

@@ -12,8 +12,8 @@ import Testimonials from "@/components/homes/home-4/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home 4 || PatyGirls",
-  description: "PatyGirls",
+  title: "Home 4 || CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (

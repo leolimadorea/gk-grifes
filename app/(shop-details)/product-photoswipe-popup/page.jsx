@@ -10,8 +10,8 @@ import SliderWithGalleryPopup from "@/components/shopDetails/sliders/SliderWithG
 import DetailsPopup from "@/components/shopDetails/DetailsPopup";
 
 export const metadata = {
-  title: "Product Photoswipe Popup || PatyGirls",
-  description: "PatyGirls",
+  title: "Product Photoswipe Popup || CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (

@@ -11,8 +11,8 @@ import Testimonials from "@/components/homes/home-furniture-02/Testimonials";
 import React from "react";
 
 export const metadata = {
-  title: "Home Furniture 2 || PatyGirls",
-  description: "PatyGirls",
+  title: "Home Furniture 2 || CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (

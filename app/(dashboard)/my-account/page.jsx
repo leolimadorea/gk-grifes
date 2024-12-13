@@ -8,7 +8,7 @@ import { authOptions } from "../../api/auth/[...nextauth]/route";
 
 export const metadata = {
   title: "Imuno-Pump",
-  description: "PatyGirls",
+  description: "CLC",
 };
 
 export default async function page() {

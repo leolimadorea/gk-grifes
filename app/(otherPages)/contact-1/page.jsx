@@ -5,8 +5,8 @@ import Map from "@/components/othersPages/contact/Map";
 import React from "react";
 
 export const metadata = {
-  title: "Contact 1 || PatyGirls",
-  description: "PatyGirls",
+  title: "Contact 1 || CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (

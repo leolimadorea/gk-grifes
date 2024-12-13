@@ -52,7 +52,7 @@ export async function POST(req) {
           },
         },
         notification_url:
-          "https://www.patygirls.com.br/api/payment/mercadopago-webhook",
+          "https://www.CLC.com.br/api/payment/mercadopago-webhook",
       },
     });
 

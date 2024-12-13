@@ -19,7 +19,7 @@ export async function POST(req) {
         Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${tokenData}`,
-        "User-Agent": "patygirls (marta.carolina01@gmail.com)",
+        "User-Agent": "CLC (marta.carolina01@gmail.com)",
       },
       data: {
         from: { postal_code: `${process.env.FROM_POSTAL_CODE}` },

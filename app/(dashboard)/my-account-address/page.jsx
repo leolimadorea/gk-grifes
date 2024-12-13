@@ -5,8 +5,8 @@ import DashboardNav from "@/components/othersPages/dashboard/DashboardNav";
 import React from "react";
 
 export const metadata = {
-  title: " PatyGirls",
-  description: "PatyGirls",
+  title: " CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (

@@ -5,8 +5,8 @@ import FilterSidebar from "@/components/shop/FilterSidebar";
 import React from "react";
 
 export const metadata = {
-  title: "Shop Filter Sidebar || PatyGirls",
-  description: "PatyGirls",
+  title: "Shop Filter Sidebar || CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (

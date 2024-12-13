@@ -4,8 +4,8 @@ import PaymentFailure from "@/components/othersPages/PaymentFailure";
 import React from "react";
 
 export const metadata = {
-  title: "Payment Failure || PatyGirls",
-  description: "PatyGirls",
+  title: "Payment Failure || CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (

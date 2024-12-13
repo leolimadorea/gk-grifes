@@ -5,8 +5,8 @@ import ShopLoadmore from "@/components/shop/ShopLoadmore";
 import React from "react";
 
 export const metadata = {
-  title: "Shop Loadmore || PatyGirls",
-  description: "PatyGirls",
+  title: "Shop Loadmore || CLC",
+  description: "CLC",
 };
 export default function Page() {
   return (
