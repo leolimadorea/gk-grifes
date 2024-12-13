@@ -1,13 +1,15 @@
 import Footer1 from "@/components/footers/Footer1";
+import Header12 from "@/components/headers/Header12";
 import Header18 from "@/components/headers/Header18";
+import Header2 from "@/components/headers/Header2";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
 import RecentProducts from "@/components/shopDetails/RecentProducts";
 import axios from "axios";
 import Link from "next/link";
 
 export const metadata = {
-  title: " PatyGirls",
-  description: "PatyGirls",
+  title: " CLC",
+  description: "Chaminé",
 };
 
 export default async function Page({ params }) {
@@ -18,7 +20,7 @@ export default async function Page({ params }) {
 
   return (
     <>
-      <Header18 />
+      <Header2 />
       <div className="tf-breadcrumb">
         <div className="container">
           <div className="tf-breadcrumb-wrap d-flex justify-content-between flex-wrap align-items-center">
