@@ -58,7 +58,11 @@ export default function Footer1({ bgColor = "" }) {
   };
 
   return (
-    <footer id="footer" className={`footer md-pb-70 ${bgColor}`}>
+    <footer
+      id="footer"
+      className={`footer md-pb-70`}
+      style={{ backgroundColor: "#2D3736", color: "#FFFFFF" }}
+    >
       <div className="footer-wrap">
         <div className="footer-body">
           <div className="container">
@@ -69,7 +73,7 @@ export default function Footer1({ bgColor = "" }) {
                     <Link href={`/`}>
                       <Image
                         alt=""
-                        src="/images/logo/logo.png "
+                        src="/images/logo/logoCLC.png "
                         width="136"
                         height="21"
                       />
@@ -88,16 +92,7 @@ export default function Footer1({ bgColor = "" }) {
                   <ul className="tf-social-icon d-flex gap-10">
                     <li>
                       <a
-                        href="https://www.facebook.com/bifarmasaoluis/?_rdc=1&_rdr"
-                        className="box-icon w_34 round social-facebook social-line"
-                      >
-                        <i className="icon fs-14 icon-fb" />
-                      </a>
-                    </li>
-
-                    <li>
-                      <a
-                        href="https://www.instagram.com/drogaria_vivamais/"
+                        href="https://www.instagram.com/chamine_clc/"
                         className="box-icon w_34 round social-instagram social-line"
                       >
                         <i className="icon fs-14 icon-instagram" />
@@ -108,10 +103,10 @@ export default function Footer1({ bgColor = "" }) {
               </div>
               <div className="col-xl-3 col-md-6 col-12 footer-col-block">
                 <div className="footer-heading footer-heading-desktop">
-                  <h6>Horário de Funcionamento</h6>
+                  <h6 style={{ color: "#FFFFFF" }}>Horário de Funcionamento</h6>
                 </div>
                 <div className="footer-heading footer-heading-moblie">
-                  <h6>Horário de Funcionamento</h6>
+                  <h6 style={{ color: "#FFFFFF" }}>Horário de Funcionamento</h6>
                 </div>
                 <ul className="footer-menu-list tf-collapse-content">
                   {footerLinks.map((link, index) => (
@@ -121,15 +116,15 @@ export default function Footer1({ bgColor = "" }) {
               </div>
               <div className="col-xl-3 col-md-6 col-12 footer-col-block">
                 <div className="footer-heading footer-heading-desktop">
-                  <h6>Fale Conosco</h6>
+                  <h6 style={{ color: "#FFFFFF" }}>Fale Conosco</h6>
                 </div>
                 <div className="footer-heading footer-heading-moblie">
-                  <h6>Fale Conosco</h6>
+                  <h6 style={{ color: "#FFFFFF" }}>Fale Conosco</h6>
                 </div>
                 <ul className="footer-menu-list tf-collapse-content">
                   {aboutLinks.slice(0, 4).map((link, index) => (
                     <li key={index}>
-                      <h6> {link.title}</h6>
+                      <h6 style={{ color: "#FFFFFF" }}> {link.title}</h6>
                       {link.text}
                     </li>
                   ))}
@@ -138,10 +133,10 @@ export default function Footer1({ bgColor = "" }) {
               <div className="col-xl-3 col-md-6 col-12">
                 <div className="footer-newsletter footer-col-block">
                   <div className="footer-heading footer-heading-desktop">
-                    <h6>Métodos de pagamento</h6>
+                    <h6 style={{ color: "#FFFFFF" }}>Métodos de pagamento</h6>
                   </div>
                   <div className="footer-heading footer-heading-moblie">
-                    <h6>Métodos de pagamento</h6>
+                    <h6 style={{ color: "#FFFFFF" }}>Métodos de pagamento</h6>
                   </div>
                   <div className="tf-payment">
                     <Image
@@ -228,7 +223,9 @@ export default function Footer1({ bgColor = "" }) {
               <div className="col-12">
                 <div className="footer-bottom-wrap d-flex gap-20 flex-wrap justify-content-between align-items-center">
                   <div className="footer-menu_item">
-                    <p>© {new Date().getFullYear()} PatyGirls</p>
+                    <p style={{ color: "#FFFFFF" }}>
+                      © {new Date().getFullYear()} CLC - Chaminé
+                    </p>
                   </div>
                 </div>
               </div>

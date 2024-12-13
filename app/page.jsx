@@ -8,9 +8,15 @@ import Products2 from "@/components/homes/home-grocery/Products2";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Slider from "@/components/slider";
+import Header1 from "@/components/headers/Header1";
+import Header2 from "@/components/headers/Header2";
+import Section1 from "@/components/clc/Section1";
+import Section2 from "@/components/clc/Section2";
+import Section3 from "@/components/clc/Section3";
+import Section4 from "@/components/clc/Section4";
 
 export const metadata = {
-  title: "Paty Girls",
+  title: "CLC - Chaminé",
 };
 
 export const revalidate = 0;
@@ -20,7 +26,7 @@ export default async function Page() {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`,
     {
-      cache: "no-store", // Ensure fresh data
+      cache: "no-store",
     }
   );
 
@@ -42,12 +48,13 @@ export default async function Page() {
 
   return (
     <div className="color-primary-8 color-main-text-2">
-      <Header18 />
-      <Hero />
-      <Slider />
-      <Collections />
+      <Header2 />
+      <Section1 />
+      <Section2 />
       <Products products={products} />
-      {/* <Products2 products={products} /> */}
+      <Section3 />
+      <Products2 products={products} />
+      <Section4 />
       <Footer1 />
     </div>
   );

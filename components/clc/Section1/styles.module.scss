@@ -1,0 +1,109 @@
+.container {
+  background: #fff;
+  position: relative; /* Necessário para que a imagem use posição absoluta */
+}
+
+.content {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex; /* Alinha o texto e a imagem lado a lado */
+  align-items: center; /* Centraliza verticalmente */
+  gap: 30px; /* Espaço entre os elementos */
+  padding-inline: 40px;
+  padding-block: 150px;
+  position: relative;
+  @media screen and (max-width: 768px) {
+    flex-direction: column; /* Muda a direção dos elementos em telas menores */
+    gap: 0; /* Remove o espaço entre os elementos */
+    padding-block: 50px;
+    position: static;
+    padding-inline: 20px;
+  }
+}
+
+.block {
+  background: #2d3736;
+  padding-inline: 40px;
+  padding-block: 50px;
+  width: 47%;
+  position: relative;
+  z-index: 2;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    padding-inline: 20px;
+    padding-block: 20px;
+    text-align: center;
+  }
+
+  h1 {
+    color: #fff;
+    font-family: "Red Rose", sans-serif;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 84px;
+    @media screen and (max-width: 768px) {
+      font-size: 30px;
+      line-height: 34px;
+    }
+  }
+
+  h4 {
+    color: #fff;
+    font-family: "Sora", sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24.75px;
+    padding-block: 20px;
+    @media screen and (max-width: 768px) {
+      font-size: 12px;
+      line-height: 21px;
+    }
+  }
+
+  button {
+    color: #000;
+    text-align: center;
+    font-family: "Red Rose", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 16px;
+    background: #fff;
+    padding-block: 10px;
+    padding-inline: 20px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    @media screen and (max-width: 768px) {
+      font-size: 12px;
+    }
+
+    &:hover {
+      background: #f0f0f0;
+    }
+  }
+}
+
+.image {
+  position: absolute; /* Torna a imagem posicionável */
+  top: 50%; /* Ajuste para que fique na vertical central, se necessário */
+  right: 2%; /* Parte da imagem aparece atrás do texto */
+  max-width: 800px;
+  z-index: 1; /* Coloca a imagem atrás do texto */
+  transform: translateY(-50%); /* Alinha verticalmente o centro da imagem */
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  @media screen and (max-width: 768px) {
+    position: static; /* Remove a posição absoluta */
+    margin-block: 20px; /* Espaço entre a imagem e o texto */
+    transform: translateY(-10%);
+  }
+}

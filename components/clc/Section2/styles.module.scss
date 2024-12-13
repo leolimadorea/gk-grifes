@@ -1,0 +1,58 @@
+.container {
+  background: #fff;
+}
+
+.content {
+  display: flex; /* Alinha as imagens lado a lado */
+  justify-content: space-between; /* Espaço igual entre os elementos */
+  align-items: center; /* Centraliza verticalmente */
+  gap: 20px;
+
+  /* Responsividade */
+  @media (max-width: 768px) {
+    flex-direction: column; /* Empilha os elementos no mobile */
+    gap: 20px;
+  }
+}
+
+.image {
+  position: relative; /* Para posicionar o texto sobre a imagem */
+  width: 48%; /* Cada imagem ocupa metade da largura */
+
+  img {
+    width: 100%; /* Garante que a imagem preencha a largura do contêiner */
+    height: auto;
+    object-fit: cover; /* Ajusta o conteúdo da imagem */
+  }
+
+  .text {
+    position: absolute;
+    top: 20px; /* Ajusta o texto para aparecer na parte superior */
+    left: 20px; /* Alinha o texto à esquerda */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+
+    h4 {
+      color: #fff;
+      font-family: "Sora", sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  /* Responsividade */
+  @media (max-width: 768px) {
+    width: 100%; /* Imagem ocupa toda a largura no mobile */
+    .text {
+      top: 10px; /* Ajusta a posição do texto no mobile */
+      left: 10px;
+    }
+  }
+}

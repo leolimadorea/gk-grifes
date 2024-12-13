@@ -47,7 +47,7 @@ export default function Products({ products }) {
       <div className="container">
         <div className="flat-title flex-row justify-content-center px-0">
           <span className="title fw-6 wow fadeInUp" data-wow-delay="0s">
-            Destaques da Semana
+            NOVOS MODELOS
           </span>
         </div>
         <Swiper

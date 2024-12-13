@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Footer1 from "@/components/footers/Footer1";
 import Header18 from "@/components/headers/Header18";
 import ShopDefault from "@/components/shop/ShopDefault";
+import Header2 from "@/components/headers/Header2";
 
 export default function Page() {
   const searchParams = useSearchParams();
@@ -39,7 +40,7 @@ export default function Page() {
 
   return (
     <>
-      <Header18 />
+      <Header2 />
       {loading ? (
         <div className="preload preload-container" id="preloader">
           <div className="preload-logo">

@@ -47,25 +47,56 @@ export default function Nav({ isArrow = false, textColor = "", Linkfs = "" }) {
   };
   return (
     <>
-      {" "}
       <li className="menu-item">
         <a
           href="/"
-          className={`item-link ${Linkfs} ${textColor} ${
-            isMenuActive(allHomepages) ? "activeMenu" : ""
-          } `}
+          style={{
+            color: "#CEB177",
+            textDecoration: "none",
+            fontWeight: "normal",
+          }}
+          className={`item-link ${Linkfs} ${textColor}`}
         >
-          Home
+          Departamentos
         </a>
       </li>
       <li className="menu-item">
         <a
           href="shop-default"
-          className={`item-link ${Linkfs} ${textColor} ${
-            isMenuActive(productsPages) ? "activeMenu" : ""
-          } `}
+          style={{
+            color: "#CEB177",
+            textDecoration: "none",
+            fontWeight: "normal",
+          }}
+          className={`item-link ${Linkfs} ${textColor}`}
         >
-          Produtos
+          Instalações
+        </a>
+      </li>
+      <li className="menu-item">
+        <a
+          href="shop-default"
+          style={{
+            color: "#CEB177",
+            textDecoration: "none",
+            fontWeight: "normal",
+          }}
+          className={`item-link ${Linkfs} ${textColor}`}
+        >
+          Sobre
+        </a>
+      </li>
+      <li className="menu-item">
+        <a
+          href="shop-default"
+          style={{
+            color: "#CEB177",
+            textDecoration: "none",
+            fontWeight: "normal",
+          }}
+          className={`item-link ${Linkfs} ${textColor}`}
+        >
+          Contato
         </a>
       </li>
     </>
