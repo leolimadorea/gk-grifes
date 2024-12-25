@@ -17,40 +17,40 @@ const Checkout = () => {
 
   const [selectedShipping, setSelectedShipping] = useState(null);
   const [coupon, setCoupon] = useState("");
-  const [appliedCoupon, setAppliedCoupon] = useState(null); 
+  const [appliedCoupon, setAppliedCoupon] = useState(null);
   console.log(appliedCoupon);
   const [isPixLoading, setIsPixLoading] = useState(false);
   const [isCardLoading, setIsCardLoading] = useState(false);
 
-  const applyCoupon = async () => {
-    if (!coupon) {
-      toast.error("Por favor, insira um código de cupom.");
-      return;
-    }
+  // const applyCoupon = async () => {
+  //   if (!coupon) {
+  //     toast.error("Por favor, insira um código de cupom.");
+  //     return;
+  //   }
 
-    try {
-      const response = await fetch(
-        `/api/coupon/getCouponByCode?code=${coupon}`
-      );
-      if (!response.ok) {
-        throw new Error("Cupom inválido ou não encontrado.");
-      }
+  //   try {
+  //     const response = await fetch(
+  //       `/api/coupon/getCouponByCode?code=${coupon}`
+  //     );
+  //     if (!response.ok) {
+  //       throw new Error("Cupom inválido ou não encontrado.");
+  //     }
 
-      const couponData = await response.json();
+  //     const couponData = await response.json();
 
-      if (!couponData.isActive) {
-        toast.error("Cupom inativo.");
-        return;
-      }
+  //     if (!couponData.isActive) {
+  //       toast.error("Cupom inativo.");
+  //       return;
+  //     }
 
-      setAppliedCoupon(couponData); // Salva o cupom completo no estado
-      toast.success("Cupom aplicado com sucesso!");
-      console.log(couponData); // Para verificar o cupom aplicado
-    } catch (error) {
-      console.error("Erro ao aplicar cupom:", error);
-      toast.error("Erro ao aplicar cupom. Tente novamente.");
-    }
-  };
+  //     setAppliedCoupon(couponData); // Salva o cupom completo no estado
+  //     toast.success("Cupom aplicado com sucesso!");
+  //     console.log(couponData); // Para verificar o cupom aplicado
+  //   } catch (error) {
+  //     console.error("Erro ao aplicar cupom:", error);
+  //     toast.error("Erro ao aplicar cupom. Tente novamente.");
+  //   }
+  // };
 
   const [paymentMethod, setPaymentMethod] = useState("pix");
   const { data: session, status } = useSession();
@@ -150,22 +150,23 @@ const Checkout = () => {
 
   useEffect(() => {
     const normalizedZipCode = shippingAddress.zipCode.replace(/[^0-9]/g, ""); // Remove o hífen e mantém apenas números
-    
+
     if (normalizedZipCode.length === 8) {
       // Atualiza o estado com o CEP normalizado (apenas números)
       setShippingAddress((prev) => ({
         ...prev,
         zipCode: normalizedZipCode,
       }));
-  
+
       calculateShipping();
       fetchAddressByZipCode(normalizedZipCode);
-    } else if (shippingAddress.zipCode.length > 0 && normalizedZipCode.length !== 8) {
+    } else if (
+      shippingAddress.zipCode.length > 0 &&
+      normalizedZipCode.length !== 8
+    ) {
       // Exibe um toast apenas se o usuário digitou algo mas não é um CEP válido
- 
     }
   }, [shippingAddress.zipCode]);
-  
 
   useEffect(() => {
     if (!paymentId) {
@@ -198,8 +199,7 @@ const Checkout = () => {
     }
     setFormKey((prevKey) => prevKey + 1);
 
-      window.location.reload();
-  
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -242,7 +242,7 @@ const Checkout = () => {
     }
   };
   const [inputTimer, setInputTimer] = useState(null);
-  console.log(inputTimer, "Timer")
+  console.log(inputTimer, "Timer");
 
   const shippingData = {
     service: selectedShipping?.id || "",
@@ -365,7 +365,7 @@ const Checkout = () => {
       if (!registered) {
         setIsLoading(false);
 
-        return; 
+        return;
       }
     }
     if (paymentMethod === "pix") {
@@ -459,7 +459,7 @@ const Checkout = () => {
   const transactiontotal = parseFloat(
     (
       totalPrice +
-      (selectedShipping?.price ? Number(selectedShipping.price) : 0) - 
+      (selectedShipping?.price ? Number(selectedShipping.price) : 0) -
       (appliedCoupon
         ? appliedCoupon.discountType === "FIXED"
           ? appliedCoupon.discount
@@ -637,8 +637,6 @@ const Checkout = () => {
     }
   };
 
-
-
   return (
     <>
       <Head>
@@ -739,37 +737,37 @@ const Checkout = () => {
                 </fieldset>
 
                 <h5 className="fw-5 mb_20">Endereço de Entrega</h5>
-                
+
                 <fieldset className="box fieldset">
-      <label htmlFor="shipping-zipcode">CEP</label>
-      <input
-        id="shipping-zipcode"
-        value={shippingAddress.zipCode}
-        onChange={(e) => {
-          const inputValue = e.target.value.replace(/[^0-9-]/g, ""); 
-          setShippingAddress({
-            ...shippingAddress,
-            zipCode: inputValue,
-          });
+                  <label htmlFor="shipping-zipcode">CEP</label>
+                  <input
+                    id="shipping-zipcode"
+                    value={shippingAddress.zipCode}
+                    onChange={(e) => {
+                      const inputValue = e.target.value.replace(/[^0-9-]/g, "");
+                      setShippingAddress({
+                        ...shippingAddress,
+                        zipCode: inputValue,
+                      });
 
-         
-          if (inputTimer) clearTimeout(inputTimer);
+                      if (inputTimer) clearTimeout(inputTimer);
 
-         
-          const newTimer = setTimeout(() => {
-            const normalizedZipCode = inputValue.replace(/[^0-9]/g, "");
-            if (normalizedZipCode.length !== 8) {
-              toast.error("Digite um CEP válido com 8 números.");
-            }
-          }, 8000); 
+                      const newTimer = setTimeout(() => {
+                        const normalizedZipCode = inputValue.replace(
+                          /[^0-9]/g,
+                          ""
+                        );
+                        if (normalizedZipCode.length !== 8) {
+                          toast.error("Digite um CEP válido com 8 números.");
+                        }
+                      }, 8000);
 
-          setInputTimer(newTimer); 
-        }}
-        className="tf-select w-100"
-        placeholder="12345-678"
-      />
-    </fieldset>
-
+                      setInputTimer(newTimer);
+                    }}
+                    className="tf-select w-100"
+                    placeholder="12345-678"
+                  />
+                </fieldset>
 
                 <fieldset className="box fieldset">
                   <label htmlFor="shipping-city">Cidade</label>

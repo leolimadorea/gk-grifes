@@ -57,10 +57,10 @@ export default function Nav({ isArrow = false, textColor = "", Linkfs = "" }) {
           }}
           className={`item-link ${Linkfs} ${textColor}`}
         >
-          Departamentos
+          Nossos Produtos
         </a>
       </li>
-      <li className="menu-item">
+      {/* <li className="menu-item">
         <a
           href="shop-default"
           style={{
@@ -98,7 +98,7 @@ export default function Nav({ isArrow = false, textColor = "", Linkfs = "" }) {
         >
           Contato
         </a>
-      </li>
+      </li> */}
     </>
   );
 }
