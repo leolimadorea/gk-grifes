@@ -727,7 +727,7 @@ const Checkout = () => {
                     />
                     <button
                       type="button"
-                      onClick={applyCoupon}
+                      // onClick={applyCoupon}
                       className="tf-btn radius-3 btn-fill btn-icon animate-hover-btn justify-content-center"
                       style={{ whiteSpace: "nowrap" }}
                     >
