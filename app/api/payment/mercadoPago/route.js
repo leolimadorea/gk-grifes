@@ -51,8 +51,7 @@ export async function POST(req) {
             number: cpf,
           },
         },
-        notification_url:
-          "https://www.clchamines.com.br/api/payment/mercadopago-webhook",
+        notification_url: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/payment/mercadopago-webhook`,
       },
     });
 

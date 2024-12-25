@@ -11,13 +11,12 @@ async function refreshTokenIfNeeded() {
   const { expiresAt, refreshToken } = tokenData;
   const now = new Date();
   const expirationThreshold = new Date();
-  expirationThreshold.setDate(expirationThreshold.getDate() + 2); // 2 dias antes de expirar
+  expirationThreshold.setDate(expirationThreshold.getDate() + 2);
 
   if (expiresAt && expiresAt > now && expiresAt > expirationThreshold) {
     return tokenData.token;
   }
 
-  // Solicitar novo token
   const options = {
     method: "POST",
     url: "https://melhorenvio.com.br/oauth/token",
@@ -39,7 +38,7 @@ async function refreshTokenIfNeeded() {
     const { access_token, refresh_token, expires_in } = response.data;
 
     const newExpiresAt = new Date();
-    newExpiresAt.setSeconds(newExpiresAt.getSeconds() + expires_in);
+    newExpiresAt.setHours(newExpiresAt.getHours() + 5);
 
     await prisma.accessToken.update({
       where: { id: tokenData.id },

@@ -11,7 +11,7 @@ export async function POST(req) {
       );
     }
     const tokenData = await refreshTokenIfNeeded();
-    console.log(tokenData, "TOKENDATA");
+
     const options = {
       method: "POST",
       url: "https://melhorenvio.com.br/api/v2/me/shipment/calculate",
@@ -19,7 +19,7 @@ export async function POST(req) {
         Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${tokenData}`,
-        "User-Agent": "CLC (marta.carolina01@gmail.com)",
+        "User-Agent": `${process.env.MELHOR_ENVIO_USER_AGENT}`,
       },
       data: {
         from: { postal_code: `${process.env.FROM_POSTAL_CODE}` },

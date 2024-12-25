@@ -14,8 +14,7 @@ export async function POST(req) {
     useTLS: true,
   });
 
-  const secret =
-    "efd2bdde39ec6ccd9cec723082d3d19e4857b6e0ef92696f1a1a6dc65cbd6a79";
+  const secret = `${process.env.WEBHOOK_SECRET}`;
 
   try {
     const signatureHeader = req.headers.get("x-signature");
@@ -140,15 +139,15 @@ export async function POST(req) {
         const shippingData = {
           service: deliveryAddress.serviceId,
           from: {
-            name: "Imuno Pump",
-            postal_code: "80420080",
-            document: "06223391501",
-            phone: "79999847482",
-            address: "Rua Emiliano Perneta",
-            complement: "805",
-            number: "659",
-            city: "Curitiba",
-            state_abbr: "PR",
+            name: process.env.FROM_NAME,
+            postal_code: process.env.FROM_POSTAL_CODE,
+            document: process.env.FROM_DOCUMENT,
+            phone: process.env.FROM_PHONE,
+            address: process.env.FROM_ADDRESS,
+            complement: process.env.FROM_COMPLEMENT,
+            number: process.env.FROM_NUMBER,
+            city: process.env.FROM_CITY,
+            state_abbr: process.env.FROM_STATE_ABBR,
           },
           to: {
             name: deliveryAddress.name,
@@ -189,7 +188,7 @@ export async function POST(req) {
         };
 
         const shippingResponse = await fetch(
-          "https://clchamines.com.br/api/createShipping",
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/createShipping`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },

@@ -1,17 +1,20 @@
+import refreshTokenIfNeeded from "@/app/db/token/getAcessToken";
 import axios from "axios";
 
 export async function POST(req) {
   try {
     const { orderData } = await req.json();
     console.log(orderData);
+
+    const accessToken = await refreshTokenIfNeeded();
     const options = {
       method: "POST",
       url: "https://melhorenvio.com.br/api/v2/me/cart",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
-        "User-Agent": "TESTANDO (gustavopacosa@gmail.com)",
+        Authorization: `Bearer ${accessToken}`,
+        "User-Agent": `${process.env.MELHOR_ENVIO_USER_AGENT}`,
       },
       data: {
         service: orderData.service,

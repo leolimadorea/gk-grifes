@@ -41,7 +41,7 @@ export async function POST(req) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer TEST-3758424019225992-040322-010d86f865bf1f9635ef37103c630a7b-1164572593`,
+        Authorization: `Bearer ${process.env.MERCADO_PAGO_ACCESS_TOKEN}`,
         "X-Idempotency-Key": crypto.randomUUID(),
       },
       body: JSON.stringify({
@@ -135,7 +135,7 @@ export async function POST(req) {
       console.log("Criando frete...");
 
       const shippingResponse = await fetch(
-        "http://clchamines.com.br/api/createShipping",
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/createShipping`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
