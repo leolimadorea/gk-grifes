@@ -6,7 +6,7 @@ export default function Hero() {
       <div className="banner-wrapper">
         <Image
           className="lazyload"
-          src="/images/slider/about-banner-01.jpg"
+          src="https://firebasestorage.googleapis.com/v0/b/bb-queue.appspot.com/o/chimney-roof.jpg?alt=media&token=655c8404-76fd-4592-840b-227871c44d93"
           data-=""
           alt="image-collection"
           width={2000}
@@ -14,10 +14,7 @@ export default function Hero() {
         />
         <div className="box-content text-center">
           <div className="container">
-            <div className="text text-white">
-              Empowering women to achieve <br className="d-xl-block d-none" />
-              fitness goals with style
-            </div>
+            <div className="text text-white">CLC CHAMINÉS</div>
           </div>
         </div>
       </div>

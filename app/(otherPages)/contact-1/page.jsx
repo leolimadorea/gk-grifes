@@ -1,7 +1,8 @@
 import Footer1 from "@/components/footers/Footer1";
-import Header18 from "@/components/headers/Header18";
+import Header2 from "@/components/headers/Header2";
 import ContactForm from "@/components/othersPages/contact/ContactForm";
 import Map from "@/components/othersPages/contact/Map";
+import Map2 from "@/components/othersPages/contact/Map2";
 import React from "react";
 
 export const metadata = {
@@ -11,15 +12,15 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <Header18 />
+      <Header2 />
       <div className="tf-page-title style-2">
         <div className="container-full">
-          <div className="heading text-center">Contact Us</div>
+          <div className="heading text-center">Entre em contato</div>
         </div>
       </div>
 
-      <Map />
-      <ContactForm />
+      <Map2 />
+
       <Footer1 />
     </>
   );

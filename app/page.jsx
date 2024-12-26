@@ -1,6 +1,6 @@
 import Footer1 from "@/components/footers/Footer1";
 import Hero from "@/components/homes/home-grocery/Hero";
-import Header18 from "@/components/headers/Header18";
+
 import Categories from "@/components/homes/home-grocery/Categories";
 import Collections from "@/components/homes/home-grocery/Collections";
 import Products from "@/components/homes/home-grocery/Products";
@@ -23,12 +23,9 @@ export const revalidate = 0;
 
 export default async function Page() {
   // Fetching products
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products`,
-    {
-      cache: "no-store",
-    }
-  );
+  const res = await fetch(`http://localhost:3000/api/products`, {
+    cache: "no-store",
+  });
 
   if (!res.ok) {
     throw new Error("Erro ao buscar os produtos");

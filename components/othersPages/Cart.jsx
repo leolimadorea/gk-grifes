@@ -426,17 +426,7 @@ export default function Cart() {
                     <Link href={`/shipping-delivery`}>shipping</Link> calculated
                     at checkout
                   </p> */}
-                  <div className="cart-checkbox">
-                    <input
-                      type="checkbox"
-                      className="tf-check"
-                      id="check-agree"
-                    />
-                    <label htmlFor="check-agree" className="fw-4">
-                      Eu concordo com os{" "}
-                      <Link href={`/terms-conditions`}>termos e condições</Link>
-                    </label>
-                  </div>
+
                   <div className="cart-checkout-btn">
                     <button
                       href="#login"

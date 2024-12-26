@@ -3,7 +3,7 @@ import Footer1 from "@/components/footers/Footer1";
 
 import Hero from "@/components/homes/home-grocery/Hero";
 
-import Header18 from "@/components/headers/Header18";
+import Header2 from "@/components/headers/Header2";
 import Categories from "@/components/homes/home-grocery/Categories";
 import Collections from "@/components/homes/home-grocery/Collections";
 import Products from "@/components/homes/home-grocery/Products";
@@ -17,7 +17,7 @@ export default function Page() {
   return (
     <>
       <Topbar4 />
-      <Header18 />
+      <Header2 />
       <Hero />
       <Categories />
       <Collections />

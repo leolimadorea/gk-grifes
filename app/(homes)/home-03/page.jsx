@@ -1,7 +1,7 @@
 import Features from "@/components/common/Features";
 import ShopGram from "@/components/common/ShopGram";
 import Footer1 from "@/components/footers/Footer1";
-import Header18 from "@/components/headers/Header18";
+import Header2 from "@/components/headers/Header2";
 import Categories from "@/components/homes/home-3/Categories";
 import Countdown from "@/components/homes/home-3/Countdown";
 import Hero from "@/components/homes/home-3/Hero";
@@ -18,7 +18,7 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <Header18 />
+      <Header2 />
       <Hero />
       <Countdown />
       <Products />

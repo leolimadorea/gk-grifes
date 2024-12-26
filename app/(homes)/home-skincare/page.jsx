@@ -14,7 +14,7 @@ import React from "react";
 import ShopGram from "@/components/homes/home-skincare/ShopGram";
 import Features from "@/components/homes/home-6/Features";
 import Footer1 from "@/components/footers/Footer1";
-import Header18 from "@/components/headers/Header18";
+import Header2 from "@/components/headers/Header2";
 
 export const metadata = {
   title: "Home Skincare || CLC",
@@ -24,7 +24,7 @@ export default function Page() {
   return (
     <>
       <Announcement />
-      <Header18 />
+      <Header2 />
       <Hero />
       <Products />
       <Banner />

@@ -4,33 +4,61 @@ import { useEffect, useState } from "react";
 import Pagination from "../common/Pagination";
 import ProductGrid from "./ProductGrid";
 import ShopFilter from "./ShopFilter";
-import Sorting from "./Sorting";
 
 export default function ShopDefault({ filteredProducts }) {
   const [gridItems, setGridItems] = useState(4);
   const [products, setProducts] = useState(filteredProducts);
   const [finalSorted, setFinalSorted] = useState(filteredProducts);
-  const [loading, setLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
+    // Atualiza produtos apenas se `filteredProducts` mudar
     setProducts(filteredProducts);
     setFinalSorted(filteredProducts);
   }, [filteredProducts]);
+
+  useEffect(() => {
+    // Aplica o filtro de pesquisa
+    const applyFilter = () => {
+      if (searchQuery.trim() === "") {
+        setProducts(filteredProducts);
+        setFinalSorted(filteredProducts);
+      } else {
+        const filtered = products.filter((product) =>
+          product.title.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        setFinalSorted(filtered);
+        setProducts(filtered);
+      }
+    };
+    applyFilter();
+  }, [searchQuery, products]); // `products` muda quando `filteredProducts` muda
+
   return (
     <>
       <section className="flat-spacing-2">
         <div className="container">
           <div className="tf-shop-control grid-3 align-items-center">
             <div className="tf-control-filter">
-              <a
-                href="#filterShop"
-                data-bs-toggle="offcanvas"
-                aria-controls="offcanvasLeft"
-                className="tf-btn-filter"
+              <form
+                onSubmit={(e) => e.preventDefault()}
+                className="tf-mini-search-frm"
               >
-                <span className="icon icon-filter" />
-                <span className="text">Filter</span>
-              </a>
+                <fieldset className="text">
+                  <input
+                    type="text"
+                    placeholder="Pesquisar produtos..."
+                    className="search-input"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    aria-required="true"
+                    required
+                  />
+                </fieldset>
+                <button className="" type="submit">
+                  <i className="icon-search" />
+                </button>
+              </form>
             </div>
             <ul className="tf-control-layout d-flex justify-content-center">
               {layouts.map((layout, index) => (
@@ -47,27 +75,20 @@ export default function ShopDefault({ filteredProducts }) {
                 </li>
               ))}
             </ul>
-            <div className="tf-control-sorting d-flex justify-content-end">
-              <div className="tf-dropdown-sort" data-bs-toggle="dropdown">
-                <Sorting setFinalSorted={setFinalSorted} products={products} />
-              </div>
-            </div>
           </div>
           <div className="wrapper-control-shop">
-            <div className="meta-filter-shop" />
-            {/* Passa os produtos para ProductGrid */}
             <ProductGrid
               allproducts={finalSorted}
               gridItems={gridItems}
               products={products}
             />
-            {/* pagination */}
-            {finalSorted.length ? (
+            {/* Paginação */}
+            {finalSorted?.length ? (
               <ul className="tf-pagination-wrap tf-pagination-list tf-pagination-btn">
                 <Pagination />
               </ul>
             ) : (
-              ""
+              <p className="text-center">Nenhum produto encontrado.</p>
             )}
           </div>
         </div>

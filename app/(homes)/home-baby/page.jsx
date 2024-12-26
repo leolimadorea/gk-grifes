@@ -1,5 +1,5 @@
 import Footer1 from "@/components/footers/Footer1";
-import Header18 from "@/components/headers/Header18";
+import Header2 from "@/components/headers/Header2";
 import Topbar4 from "@/components/headers/Topbar4";
 
 import BannerCollections from "@/components/homes/home-baby/BannerCollections";
@@ -20,7 +20,7 @@ export default function Page() {
     <>
       <div className="color-primary-10">
         <Topbar4 />
-        <Header18 /> <Hero />
+        <Header2 /> <Hero />
         <BannerCollections />
         <Products />
         <Categories />

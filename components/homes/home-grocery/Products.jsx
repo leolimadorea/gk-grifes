@@ -65,7 +65,7 @@ export default function Products({ products }) {
             0: { slidesPerView: 1 },
           }}
         >
-          {products.map((product, index) => (
+          {products.slice(0, 10).map((product, index) => (
             <SwiperSlide className="swiper-slide" key={product.id}>
               <div className="card-product style-8 border-0 bg_grey-14 lg">
                 <div className="card-product-wrapper">

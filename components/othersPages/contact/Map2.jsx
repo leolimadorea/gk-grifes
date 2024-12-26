@@ -8,9 +8,9 @@ export default function Map2() {
         <div className="tf-grid-layout gap-0 lg-col-2">
           <div className="w-100">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d317859.6089702069!2d-0.075949!3d51.508112!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760349331f38dd%3A0xa8bf49dde1d56467!2sTower%20of%20London!5e0!3m2!1sen!2sus!4v1719221598456!5m2!1sen!2sus"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3605.7624180502853!2d-49.22618550000001!3d-25.345752200000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce791e7a882ab%3A0x7282301e90c7b6eb!2sClc%20Chamin%C3%A9s!5e0!3m2!1spt-BR!2sbr!4v1735194656693!5m2!1spt-BR!2sbr"
               width="100%"
-              height={894}
+              height={646}
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
@@ -19,32 +19,20 @@ export default function Map2() {
           </div>
           <div className="tf-content-left has-mt">
             <div className="sticky-top">
-              <h5 className="mb_20">Visit Our Store</h5>
+              <h5 className="mb_20">Venha nos visitar</h5>
               <div className="mb_20">
                 <p className="mb_15">
-                  <strong>Address</strong>
+                  <strong>Endereço</strong>
                 </p>
-                <p>66 Mott St, New York, New York, Zip Code: 10006, AS</p>
-              </div>
-              <div className="mb_20">
-                <p className="mb_15">
-                  <strong>Phone</strong>
-                </p>
-                <p>(623) 934-2400</p>
+                <p>R. José Brito, 136 - Roça Grande, Colombo - PR,</p>
               </div>
               <div className="mb_20">
                 <p className="mb_15">
-                  <strong>Email</strong>
+                  <strong>Telefone</strong>
                 </p>
-                <p>EComposer@example.com</p>
+                <p>(41) 99927-4760</p>
               </div>
-              <div className="mb_36">
-                <p className="mb_15">
-                  <strong>Open Time</strong>
-                </p>
-                <p className="mb_15">Our store has re-opened for shopping,</p>
-                <p>exchange Every day 11am to 7pm</p>
-              </div>
+
               <div>
                 <ul className="tf-social-icon d-flex gap-20 style-default">
                   {socialLinksWithBorder.map((link, index) => (

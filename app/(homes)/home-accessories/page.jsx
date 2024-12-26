@@ -1,7 +1,7 @@
 import Features from "@/components/common/Features2";
 import Footer1 from "@/components/footers/Footer1";
 import Footer7 from "@/components/footers/Footer7";
-import Header18 from "@/components/headers/Header18";
+import Header2 from "@/components/headers/Header2";
 import Header9 from "@/components/headers/Header9";
 import Topbar2 from "@/components/headers/Topbar2";
 import Topbar3 from "@/components/headers/Topbar3";
@@ -24,7 +24,7 @@ export default function Page() {
   return (
     <>
       <Topbar3 parentClass="announcement-bar bg_blue" />
-      <Header18 />
+      <Header2 />
       <Hero />
       <Features bgColor="" />
       <div className="has-line-bottom"></div>

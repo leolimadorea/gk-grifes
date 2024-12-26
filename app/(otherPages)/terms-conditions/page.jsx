@@ -1,11 +1,11 @@
 import Footer1 from "@/components/footers/Footer1";
-import Header18 from "@/components/headers/Header18";
+import Header2 from "@/components/headers/Header2";
 import React from "react";
 
 export default function Page() {
   return (
     <>
-      <Header18 />
+      <Header2 />
       <>
         {/* page-title */}
         <div className="tf-page-title style-2">

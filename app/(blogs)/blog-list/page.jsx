@@ -1,14 +1,14 @@
 "use client";
 import BlogList from "@/components/blogs/BlogList";
 import Footer1 from "@/components/footers/Footer1";
-import Header18 from "@/components/headers/Header18";
+import Header2 from "@/components/headers/Header2";
 import React from "react";
 import Link from "next/link";
 
 export default function Page() {
   return (
     <>
-      <Header18 />
+      <Header2 />
       <div className="tf-page-title">
         <div className="container-full">
           <div className="row">

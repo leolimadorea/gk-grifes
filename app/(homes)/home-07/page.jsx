@@ -1,6 +1,6 @@
 import Testimonials from "@/components/common/Testimonials";
 import Footer3 from "@/components/footers/Footer3";
-import Header18 from "@/components/headers/Header18";
+import Header2 from "@/components/headers/Header2";
 import Header5 from "@/components/headers/Header5";
 
 import Banner from "@/components/homes/home-7/Banner";
@@ -18,7 +18,7 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <Header18 />
+      <Header2 />
       <Hero />
       <Marquee />
       <Products />

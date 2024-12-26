@@ -2,9 +2,33 @@
 
 import { allHomepages, productsPages } from "@/data/menu";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Nav({ isArrow = false, textColor = "", Linkfs = "" }) {
   const pathname = usePathname();
+
+  const [categories, setCategories] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch("/api/categories/getAll");
+        if (!response.ok) {
+          throw new Error(`Erro HTTP! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        setCategories(data);
+      } catch (error) {
+        console.error("Erro ao buscar categorias:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
   const isMenuActive = (menuItem) => {
     let active = false;
     if (menuItem.href?.includes("/")) {
@@ -47,18 +71,40 @@ export default function Nav({ isArrow = false, textColor = "", Linkfs = "" }) {
   };
   return (
     <>
-      <li className="menu-item">
+      <li className="menu-item position-relative">
         <a
-          href="/"
+          href="#"
+          className={`item-link ${Linkfs} ${textColor}`}
           style={{
             color: "#CEB177",
             textDecoration: "none",
             fontWeight: "normal",
           }}
-          className={`item-link ${Linkfs} ${textColor}`}
         >
           Departamentos
+          {isArrow ? <i className="icon icon-arrow-down" /> : ""}
         </a>
+        <div className="sub-menu submenu-default">
+          <ul className="menu-list">
+            {isLoading ? (
+              <li>Carregando...</li>
+            ) : categories.length > 0 ? (
+              categories.map((category) => (
+                <li key={category.id}>
+                  <a
+                    href={`/shop-default?category=${category.id}`}
+                    className="menu-link-text link"
+                    style={{ color: "#333" }}
+                  >
+                    {category.name}
+                  </a>
+                </li>
+              ))
+            ) : (
+              <li>Nenhuma categoria encontrada</li>
+            )}
+          </ul>
+        </div>
       </li>
       <li className="menu-item">
         <a
@@ -75,7 +121,7 @@ export default function Nav({ isArrow = false, textColor = "", Linkfs = "" }) {
       </li>
       <li className="menu-item">
         <a
-          href="shop-default"
+          href="/about-us"
           style={{
             color: "#CEB177",
             textDecoration: "none",
@@ -88,7 +134,7 @@ export default function Nav({ isArrow = false, textColor = "", Linkfs = "" }) {
       </li>
       <li className="menu-item">
         <a
-          href="shop-default"
+          href="/contact-1"
           style={{
             color: "#CEB177",
             textDecoration: "none",

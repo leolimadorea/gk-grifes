@@ -1,6 +1,6 @@
 import { getUserOrders } from "@/app/db/getOrders/getUserOrders";
 import Footer1 from "@/components/footers/Footer1";
-import Header18 from "@/components/headers/Header18";
+import Header2 from "@/components/headers/Header2";
 import DashboardNav from "@/components/othersPages/dashboard/DashboardNav";
 import Orders from "@/components/othersPages/dashboard/Orders";
 import { getServerSession } from "next-auth";
@@ -17,7 +17,7 @@ export default async function Page() {
 
   return (
     <>
-      <Header18 />
+      <Header2 />
 
       <section className="flat-spacing-11">
         <div className="container">

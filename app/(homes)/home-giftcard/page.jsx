@@ -1,5 +1,5 @@
 import Footer1 from "@/components/footers/Footer1";
-import Header18 from "@/components/headers/Header18";
+import Header2 from "@/components/headers/Header2";
 import Header5 from "@/components/headers/Header5";
 import BestSell from "@/components/homes/home-giftcard/BestSell";
 import Blog from "@/components/homes/home-giftcard/Blog";
@@ -20,7 +20,7 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <Header18 />
+      <Header2 />
       <Hero />
       <Card />
       <Products />

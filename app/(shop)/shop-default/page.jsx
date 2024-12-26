@@ -3,7 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Footer1 from "@/components/footers/Footer1";
-import Header18 from "@/components/headers/Header18";
+
 import ShopDefault from "@/components/shop/ShopDefault";
 import Header2 from "@/components/headers/Header2";
 

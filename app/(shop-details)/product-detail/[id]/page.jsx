@@ -1,6 +1,5 @@
 import Footer1 from "@/components/footers/Footer1";
 import Header12 from "@/components/headers/Header12";
-import Header18 from "@/components/headers/Header18";
 import Header2 from "@/components/headers/Header2";
 import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
 import RecentProducts from "@/components/shopDetails/RecentProducts";
@@ -14,7 +13,7 @@ export const metadata = {
 
 export default async function Page({ params }) {
   const res = await axios.get(
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/products/${params.id}`
+    `http://localhost:3000/api/products/${params.id}`
   );
   const product = res.data;
 

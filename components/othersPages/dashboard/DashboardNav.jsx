@@ -6,7 +6,7 @@ import { signOut } from "next-auth/react";
 const accountLinks = [
   { href: "/my-account-orders", label: "Pedidos" },
 
-  { href: "/my-account-edit", label: "Detalhes da Conta" },
+  // { href: "/my-account-edit", label: "Detalhes da Conta" },
 ];
 
 export default function DashboardNav() {

@@ -248,26 +248,26 @@ export const recentCollectionSlides = [
 export const iconBoxes4 = [
   {
     iconClass: "icon-materials",
-    title: "High-Quality Materials",
+    title: "Materiais de Alta Qualidade",
     description:
-      "Crafted with precision and excellence, our activewear is meticulously engineered using premium materials to ensure unmatched comfort and durability.",
+      "Usamos materiais duráveis e resistentes, garantindo produtos que suportam as condições mais exigentes.",
   },
   {
     iconClass: "icon-design",
-    title: "Laconic Design",
+    title: "Personalização",
     description:
-      "Simplicity refined. Our activewear embodies the essence of minimalistic design, delivering effortless style that speaks volumes.",
+      "Oferecemos soluções sob medida para atender às necessidades específicas do seu projeto.",
   },
   {
     iconClass: "icon-sizes",
-    title: "Various Sizes",
+    title: "Eficiência na Instalação",
     description:
-      "Designed for every body and anyone, our activewear embraces diversity with a wide range of sizes and shapes, celebrating the beauty of individuality.",
+      "Nossos especialistas garantem um processo de instalação rápido e eficiente, sem comprometer a qualidade.",
   },
   {
-    iconClass: "icon-design",
-    title: "Laconic Design",
+    iconClass: "icon-sizes",
+    title: "Suporte Técnico",
     description:
-      "Simplicity refined. Our activewear embodies the essence of minimalistic design, delivering effortless style that speaks volumes.",
+      "Fornecemos assistência técnica dedicada para garantir a máxima satisfação em todas as etapas.",
   },
 ];

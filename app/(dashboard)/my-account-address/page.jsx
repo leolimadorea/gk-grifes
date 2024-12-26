@@ -1,5 +1,5 @@
 import Footer1 from "@/components/footers/Footer1";
-import Header18 from "@/components/headers/Header18";
+import Header2 from "@/components/headers/Header2";
 import AccountAddress from "@/components/othersPages/dashboard/AccountAddress";
 import DashboardNav from "@/components/othersPages/dashboard/DashboardNav";
 import React from "react";
@@ -11,7 +11,7 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <Header18 />
+      <Header2 />
       <div className="tf-page-title">
         <div className="container-full">
           <div className="heading text-center">My Account Address</div>

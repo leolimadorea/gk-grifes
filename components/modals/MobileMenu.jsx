@@ -1,13 +1,14 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import LanguageSelect from "../common/LanguageSelect";
 import CurrencySelect from "../common/CurrencySelect";
-import { navItems } from "@/data/menu";
 import { usePathname } from "next/navigation";
 
 export default function MobileMenu() {
   const pathname = usePathname();
+  const [categories, setCategories] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const isMenuActive = (menuItem) => {
     let active = false;
@@ -36,6 +37,25 @@ export default function MobileMenu() {
     return active;
   };
 
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch("/api/categories/getAll");
+        if (!response.ok) {
+          throw new Error(`Erro HTTP! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        setCategories(data);
+      } catch (error) {
+        console.error("Erro ao buscar categorias:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
   return (
     <div className="offcanvas offcanvas-start canvas-mb" id="mobileMenu">
       <span
@@ -52,43 +72,53 @@ export default function MobileMenu() {
               </a>
             </li>
             <li className="nav-mb-item">
+              <a href="/shop-default" className="mb-menu-link">
+                Instalações
+              </a>
+            </li>
+
+            <li className="nav-mb-item">
               <a href="#" className="mb-menu-link">
-                Produtos
+                Departamentos
               </a>
               <ul className="sub-menu">
-                <li>
-                  <a href="/products/camisetas" className="mb-menu-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                      <path d="M9 18l6-6-6-6" />
-                    </svg>
-                    Camisetas
-                  </a>
-                </li>
-                <li>
-                  <a href="/products/legging" className="mb-menu-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                      <path d="M9 18l6-6-6-6" />
-                    </svg>
-                    Legging
-                  </a>
-                </li>
-                <li>
-                  <a href="/products/meias" className="mb-menu-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                      <path d="M9 18l6-6-6-6" />
-                    </svg>
-                    Meias
-                  </a>
-                </li>
-                <li>
-                  <a href="/products/chinelos" className="mb-menu-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                      <path d="M9 18l6-6-6-6" />
-                    </svg>
-                    Chinelos
-                  </a>
-                </li>
+                {isLoading ? (
+                  <li>
+                    <a className="mb-menu-link">Carregando...</a>
+                  </li>
+                ) : categories.length > 0 ? (
+                  categories.map((category) => (
+                    <li key={category.id}>
+                      <a
+                        href={`/shop-default?category=${category.id}`}
+                        className="mb-menu-link"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M9 18l6-6-6-6" />
+                        </svg>
+                        {category.name}
+                      </a>
+                    </li>
+                  ))
+                ) : (
+                  <li>
+                    <a className="mb-menu-link">Nenhuma categoria encontrada</a>
+                  </li>
+                )}
               </ul>
+            </li>
+            <li className="nav-mb-item">
+              <a href="/about-us" className="mb-menu-link">
+                Sobre
+              </a>
+            </li>
+            <li className="nav-mb-item">
+              <a href="/contact-1" className="mb-menu-link">
+                Contato
+              </a>
             </li>
           </ul>
         </div>

@@ -1,5 +1,5 @@
 import Footer1 from "@/components/footers/Footer1";
-import Header18 from "@/components/headers/Header18";
+import Header2 from "@/components/headers/Header2";
 import DashboardNav from "@/components/othersPages/dashboard/DashboardNav";
 import OrderDetails from "@/components/othersPages/dashboard/OrderDetails";
 import React from "react";
@@ -40,7 +40,7 @@ export default async function Page({ params }) {
 
   return (
     <>
-      <Header18 />
+      <Header2 />
 
       <section className="flat-spacing-11">
         <div className="container">

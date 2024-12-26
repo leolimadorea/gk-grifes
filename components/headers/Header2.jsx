@@ -53,14 +53,13 @@ export default function Header2({
           </div>
           <div className="col-xl-3 col-md-4 col-3">
             <ul className="nav-icon d-flex justify-content-end align-items-center gap-20">
-              {/* {session ? (
+              {session ? (
                 // Se o usuário estiver logado, mostrar "Minha Conta"
                 <Link
                   href="/my-account-orders"
                   className="nav-icon-item align-items-center gap-10"
                 >
                   <i className="icon icon-account" />
-                  <span className="text">Minha Conta</span>
                 </Link>
               ) : (
                 // Se o usuário não estiver logado, mostrar "Login"
@@ -68,11 +67,11 @@ export default function Header2({
                   href="#login"
                   data-bs-toggle="modal"
                   className="nav-icon-item align-items-center gap-10"
+                  style={{ color: "#CEB177" }}
                 >
                   <i className="icon icon-account" />
-                  <span className="text">Login</span>
                 </a>
-              )} */}
+              )}
               <li className="nav-cart">
                 <a
                   href="#shoppingCart"

@@ -36,16 +36,16 @@ export default function ContactForm() {
       <div className="container">
         <div className="tf-grid-layout gap30 lg-col-2">
           <div className="tf-content-left">
-            <h5 className="mb_20">Visit Our Store</h5>
+            <h5 className="mb_20">Venha nos visitar</h5>
             <div className="mb_20">
               <p className="mb_15">
-                <strong>Address</strong>
+                <strong>Endereço</strong>
               </p>
-              <p>66 Mott St, New York, New York, Zip Code: 10006, AS</p>
+              <p>R. José Brito, 136 - Roça Grande, Colombo - PR</p>
             </div>
             <div className="mb_20">
               <p className="mb_15">
-                <strong>Phone</strong>
+                <strong>Telefone</strong>
               </p>
               <p>(623) 934-2400</p>
             </div>

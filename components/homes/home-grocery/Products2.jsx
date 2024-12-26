@@ -45,7 +45,7 @@ export default function Products2() {
               Produtos Populares
             </span>
             <ul className="widget-tab-5" role="tablist">
-              {categories.map((category) => (
+              {categories.slice(0, 3).map((category) => (
                 <li
                   key={category.id}
                   onClick={() => setActiveCategory(category.id)}
@@ -59,7 +59,7 @@ export default function Products2() {
               ))}
               <li className="nav-tab-item">
                 <Link
-                  href={`/shop-collection-sub`}
+                  href={`/shop-default`}
                   className="d-flex align-items-center gap-10"
                 >
                   Comprar Agora
@@ -82,7 +82,7 @@ export default function Products2() {
           <div className="tab-content">
             <div className="tab-pane active show" id="meat" role="tabpanel">
               <div className="tf-grid-layout tf-col-2 lg-col-4">
-                {activeProducts.map((product) => (
+                {activeProducts.slice(0, 10).map((product) => (
                   <div key={product.id} className="card-product style-9">
                     <div className="card-product-wrapper">
                       <Link
@@ -116,16 +116,6 @@ export default function Products2() {
                         <span className="price fw-6">
                           R${product.price.toFixed(2)}
                         </span>
-                      </div>
-                      <div className="list-product-btn">
-                        <a
-                          href="#quick_add"
-                          data-bs-toggle="modal"
-                          className="box-icon quick-add tf-btn-loading"
-                        >
-                          <span className="icon icon-bag" />
-                          <span className="tooltip">Adicionar ao Carrinho</span>
-                        </a>
                       </div>
                     </div>
                   </div>

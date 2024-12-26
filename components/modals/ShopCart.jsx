@@ -218,25 +218,7 @@ export default function ShopCart() {
                     Impostos e <a href="#">frete</a> calculados no checkout
                   </div>
                   <div className="tf-mini-cart-line" />
-                  <div className="tf-cart-checkbox">
-                    <div className="tf-checkbox-wrapp">
-                      <input
-                        className=""
-                        type="checkbox"
-                        id="CartDrawer-Form_agree"
-                        name="agree_checkbox"
-                      />
-                      <div>
-                        <i className="icon-check" />
-                      </div>
-                    </div>
-                    <label htmlFor="CartDrawer-Form_agree">
-                      Eu concordo com os{" "}
-                      <a href="#" title="Terms of Service">
-                        termos e condições
-                      </a>
-                    </label>
-                  </div>
+
                   <div className="tf-mini-cart-view-checkout">
                     <Link
                       href={`/view-cart`}
