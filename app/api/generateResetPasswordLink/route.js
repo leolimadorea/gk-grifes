@@ -9,8 +9,8 @@ const secret = process.env.JWT_SECRET || "supersecretkey";
 const transporter = nodemailer.createTransport({
   service: "gmail", // Use o serviço do seu provedor (Ex: Gmail, Outlook)
   auth: {
-    user: process.env.EMAIL_USER, // Seu email
-    pass: process.env.EMAIL_PASS, // Sua senha ou App Password
+    user: "chaminesclc@gmail.com", // Use environment variables to store sensitive info
+    pass: "eureniwbqxooujgmrv",
   },
 });
 

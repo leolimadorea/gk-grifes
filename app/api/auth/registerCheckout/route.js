@@ -51,8 +51,8 @@ export async function POST(req) {
       host: "smtp.gmail.com", // Replace with your SMTP provider's settings
       port: 587,
       auth: {
-        user: "leolimadorea@gmail.com", // Use environment variables to store sensitive info
-        pass: "itrgazwuarcsbfxz",
+        user: "chaminesclc@gmail.com", // Use environment variables to store sensitive info
+        pass: "eureniwbqxooujgmrv",
       },
     });
     const mailOptions = {
