@@ -25,7 +25,7 @@ enum PaymentStatus {
 
 model Product {
     id          Int           @id @default(autoincrement())
-    img         String
+  img         String        @db.VarChar(512)
     title       String
     price       Float?
     categoryId  Int
@@ -152,7 +152,7 @@ model PaymentProduct {
     productId Int
     quantity  Int
     approved  Boolean?
-    variantId Int?
+   
 
     product Product @relation(fields: [productId], references: [id])
     payment Payment @relation(fields: [paymentId], references: [id])
