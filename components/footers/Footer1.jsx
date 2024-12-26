@@ -82,9 +82,7 @@ export default function Footer1({ bgColor = "" }) {
                   <ul>
                     <li>
                       <p>
-                        Endereço: Rua João Fernandes Camisa Nova Júnior n808,{" "}
-                        <br />
-                        Jardim São Luís São Paulo
+                        Endereço: R. José Brito, 136 - Roça Grande, Colombo - PR
                       </p>
                     </li>
                   </ul>
