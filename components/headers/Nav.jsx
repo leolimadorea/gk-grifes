@@ -106,7 +106,7 @@ export default function Nav({ isArrow = false, textColor = "", Linkfs = "" }) {
           </ul>
         </div>
       </li>
-      {/* <li className="menu-item">
+      <li className="menu-item">
         <a
           href="shop-default"
           style={{
@@ -144,7 +144,7 @@ export default function Nav({ isArrow = false, textColor = "", Linkfs = "" }) {
         >
           Contato
         </a>
-      </li> */}
+      </li>
     </>
   );
 }
