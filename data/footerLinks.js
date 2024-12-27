@@ -1,10 +1,10 @@
 export const footerLinks = [
-  { text: "Segunda a Sábado das 7:00 ás 21:00" },
+  { text: "Segunda a Sábado das 8:00 ás 18:00" },
   { text: "Domingo e Feriados das 8:00 ás 16:00" },
 ];
 export const aboutLinks = [
-  { title: "Telefone Fixo ", text: "(11) 23641485" },
-  { title: "Whatsapp ", text: "(11) 94934-3750" },
+  // { title: "Telefone Fixo ", text: "(11) 23641485" },
+  { title: "Whatsapp ", text: "41999274760" },
 ];
 export const paymentImages = [
   { src: "/images/payments/visa.png", width: 48, height: 30, alt: "" },
