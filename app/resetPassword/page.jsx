@@ -38,7 +38,7 @@ const ResetPasswordPage = () => {
         newPassword,
       });
       toast.success("Senha redefinida com sucesso!", { autoClose: 3000 });
-      router.push("/login");
+      router.push("/");
     } catch (error) {
       toast.error(
         error.response?.data?.message ||

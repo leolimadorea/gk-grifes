@@ -8,7 +8,7 @@ export default function Login() {
         <div className="tf-grid-layout lg-col-2 tf-login-wrap">
           <div className="tf-login-form">
             <div id="recover">
-              <h5 className="mb_24">Reset your password</h5>
+              <h5 className="mb_24">Mudar senha</h5>
               <p className="mb_30">
                 We will send you an email to reset your password
               </p>
@@ -85,11 +85,7 @@ export default function Login() {
                       Password *
                     </label>
                   </div>
-                  <div className="mb_20">
-                    <a href="#recover" className="tf-btn btn-line">
-                      Forgot your password?
-                    </a>
-                  </div>
+
                   <div className="">
                     <button
                       type="submit"
@@ -101,17 +97,6 @@ export default function Login() {
                 </form>
               </div>
             </div>
-          </div>
-          <div className="tf-login-content">
-            <h5 className="mb_36">I'm new here</h5>
-            <p className="mb_20">
-              Sign up for early Sale access plus tailored new arrivals, trends
-              and promotions. To opt out, click unsubscribe in our emails.
-            </p>
-            <Link href={`/register`} className="tf-btn btn-line">
-              Register
-              <i className="icon icon-arrow1-top-left" />
-            </Link>
           </div>
         </div>
       </div>

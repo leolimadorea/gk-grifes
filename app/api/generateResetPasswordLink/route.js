@@ -9,8 +9,8 @@ const secret = process.env.JWT_SECRET || "supersecretkey";
 const transporter = nodemailer.createTransport({
   service: "gmail", // Use o serviço do seu provedor (Ex: Gmail, Outlook)
   auth: {
-    user: "chaminesclc@gmail.com", // Use environment variables to store sensitive info
-    pass: "eureniwbqxooujgmrv",
+    user: "ddiegerfernandes@gmail.com", // Use environment variables to store sensitive info
+    pass: "roir wqhv raqz zubc",
   },
 });
 
@@ -40,11 +40,11 @@ export async function POST(req) {
       expiresIn: "1h",
     });
 
-    const resetLink = `${process.env.NEXT_PUBLIC_APP_URL}/resetPassword?token=${token}`;
+    const resetLink = `${process.env.NEXT_PUBLIC_API_BASE_URL}/resetPassword?token=${token}`;
 
     // Enviar o email
     const mailOptions = {
-      from: process.env.EMAIL_USER, // Email do remetente
+      from: "ddiegerfernandes@gmail.com", // Email do remetente
       to: email, // Email do destinatário
       subject: "Redefinição de Senha",
       html: `
