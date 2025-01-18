@@ -15,9 +15,29 @@ export const ProductCard = ({ product }) => {
     addToCompareItem,
     isAddedtoCompareItem,
   } = useContextElement();
+
   useEffect(() => {
     setCurrentImage(product.img);
   }, [product]);
+
+  const getPriceDisplay = () => {
+    if (
+      product.productVariantValues &&
+      product.productVariantValues.length > 0
+    ) {
+      const prices = product.productVariantValues.map(
+        (variant) => variant.price
+      );
+      const lowestPrice = Math.min(...prices);
+      const highestPrice = Math.max(...prices);
+
+      if (lowestPrice === highestPrice) {
+        return `$${lowestPrice.toFixed(2)}`;
+      }
+      return `$${lowestPrice.toFixed(2)} - $${highestPrice.toFixed(2)}`;
+    }
+    return `$${product.price.toFixed(2)}`;
+  };
 
   return (
     <div className="card-product fl-item" key={product.id}>
@@ -53,7 +73,7 @@ export const ProductCard = ({ product }) => {
         <Link href={`/product-detail/${product.id}`} className="title link">
           {product.title}
         </Link>
-        <span className="price">${product.price.toFixed(2)}</span>
+        <span className="price">{getPriceDisplay()}</span>
       </div>
     </div>
   );

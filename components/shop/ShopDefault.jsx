@@ -34,6 +34,8 @@ export default function ShopDefault({ filteredProducts }) {
     applyFilter();
   }, [searchQuery, products]); // `products` muda quando `filteredProducts` muda
 
+  console.log(products);
+
   return (
     <>
       <section className="flat-spacing-2">
