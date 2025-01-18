@@ -7,34 +7,20 @@ import ShopFilter from "./ShopFilter";
 
 export default function ShopDefault({ filteredProducts }) {
   const [gridItems, setGridItems] = useState(4);
-  const [products, setProducts] = useState(filteredProducts);
-  const [finalSorted, setFinalSorted] = useState(filteredProducts);
+  const [displayedProducts, setDisplayedProducts] = useState(filteredProducts);
   const [searchQuery, setSearchQuery] = useState("");
 
+  // Atualiza produtos quando filteredProducts mudar
   useEffect(() => {
-    // Atualiza produtos apenas se `filteredProducts` mudar
-    setProducts(filteredProducts);
-    setFinalSorted(filteredProducts);
-  }, [filteredProducts]);
-
-  useEffect(() => {
-    // Aplica o filtro de pesquisa
-    const applyFilter = () => {
-      if (searchQuery.trim() === "") {
-        setProducts(filteredProducts);
-        setFinalSorted(filteredProducts);
-      } else {
-        const filtered = products.filter((product) =>
-          product.title.toLowerCase().includes(searchQuery.toLowerCase())
-        );
-        setFinalSorted(filtered);
-        setProducts(filtered);
-      }
-    };
-    applyFilter();
-  }, [searchQuery, products]); // `products` muda quando `filteredProducts` muda
-
-  console.log(products);
+    if (searchQuery.trim() === "") {
+      setDisplayedProducts(filteredProducts);
+    } else {
+      const filtered = filteredProducts.filter((product) =>
+        product.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setDisplayedProducts(filtered);
+    }
+  }, [searchQuery, filteredProducts]);
 
   return (
     <>
@@ -80,12 +66,12 @@ export default function ShopDefault({ filteredProducts }) {
           </div>
           <div className="wrapper-control-shop">
             <ProductGrid
-              allproducts={finalSorted}
+              allproducts={displayedProducts}
               gridItems={gridItems}
-              products={products}
+              products={displayedProducts}
             />
             {/* Paginação */}
-            {finalSorted?.length ? (
+            {displayedProducts?.length ? (
               <ul className="tf-pagination-wrap tf-pagination-list tf-pagination-btn">
                 <Pagination />
               </ul>
@@ -95,7 +81,7 @@ export default function ShopDefault({ filteredProducts }) {
           </div>
         </div>
       </section>
-      <ShopFilter setProducts={setFinalSorted} />
+      <ShopFilter setProducts={setDisplayedProducts} />
     </>
   );
 }
