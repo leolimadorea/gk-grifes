@@ -1,0 +1,12 @@
+.whatsappButton {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 50;
+  img {
+    width: 50px;
+    @media screen and (max-width: 768px) {
+      width: 40px;
+    }
+  }
+}

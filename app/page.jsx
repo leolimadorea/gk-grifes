@@ -14,6 +14,7 @@ import Section1 from "@/components/clc/Section1";
 import Section2 from "@/components/clc/Section2";
 import Section3 from "@/components/clc/Section3";
 import Section4 from "@/components/clc/Section4";
+import WhatsAppButton from "@/components/clc/Whats/WhatsAppButton";
 
 export const metadata = {
   title: "CLC - Chaminé",
@@ -56,6 +57,7 @@ export default async function Page() {
       <Products2 products={products} />
       <Section4 />
       <Footer1 />
+      <WhatsAppButton />
     </div>
   );
 }
