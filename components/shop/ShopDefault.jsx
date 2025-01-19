@@ -1,26 +1,36 @@
 "use client";
 import { layouts } from "@/data/shop";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Pagination from "../common/Pagination";
 import ProductGrid from "./ProductGrid";
 import ShopFilter from "./ShopFilter";
 
 export default function ShopDefault({ filteredProducts }) {
-  const [gridItems, setGridItems] = useState(4);
+  const [gridItems, setGridItems] = useState(window?.innerWidth < 768 ? 2 : 4);
   const [displayedProducts, setDisplayedProducts] = useState(filteredProducts);
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Atualiza produtos quando filteredProducts mudar
+  // Memoize a função de filtro
+  const filterProducts = useCallback((query, products) => {
+    if (!query.trim()) return products;
+    return products.filter((product) =>
+      product.title.toLowerCase().includes(query.toLowerCase())
+    );
+  }, []);
+
+  // Atualiza produtos quando filteredProducts ou searchQuery mudar
   useEffect(() => {
-    if (searchQuery.trim() === "") {
-      setDisplayedProducts(filteredProducts);
-    } else {
-      const filtered = filteredProducts.filter((product) =>
-        product.title.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+    const timeoutId = setTimeout(() => {
+      const filtered = filterProducts(searchQuery, filteredProducts);
       setDisplayedProducts(filtered);
-    }
-  }, [searchQuery, filteredProducts]);
+    }, 300); // Debounce de 300ms
+
+    return () => clearTimeout(timeoutId);
+  }, [searchQuery, filteredProducts, filterProducts]);
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
 
   return (
     <>
@@ -38,12 +48,12 @@ export default function ShopDefault({ filteredProducts }) {
                     placeholder="Pesquisar produtos..."
                     className="search-input"
                     value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onChange={handleSearchChange}
                     aria-required="true"
                     required
                   />
                 </fieldset>
-                <button className="" type="submit">
+                <button type="submit">
                   <i className="icon-search" />
                 </button>
               </form>
