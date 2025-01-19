@@ -41,7 +41,7 @@ export default function Header2({
           </div>
           <div className="col-xl-3 col-md-4 col-6">
             <Link href={`/`} className="logo-header">
-              <img src="/images/logo/logoCLC.png" alt="" />
+              <img src="/images/logo/clclogo.svg" alt="" />
             </Link>
           </div>
           <div className="col-xl-6 tf-md-hidden">

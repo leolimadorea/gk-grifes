@@ -73,7 +73,7 @@ export default function Footer1({ bgColor = "" }) {
                     <Link href={`/`}>
                       <Image
                         alt=""
-                        src="/images/logo/logoCLC.png "
+                        src="/images/logo/clclogo.svg "
                         width="136"
                         height="21"
                       />
