@@ -5,6 +5,7 @@ import Header2 from "@/components/headers/Header2";
 import Cart from "@/components/othersPages/Cart";
 import RecentProducts from "@/components/shopDetails/RecentProducts";
 import React from "react";
+import WhatsAppButton from "@/components/clc/Whats/WhatsAppButton";
 
 export const metadata = {
   title: " CLC",
@@ -18,6 +19,7 @@ export default function Page() {
       <Cart />
 
       <Footer1 />
+      <WhatsAppButton />
     </>
   );
 }

@@ -5,6 +5,7 @@ import DetailsOuterZoom from "@/components/shopDetails/DetailsOuterZoom";
 import RecentProducts from "@/components/shopDetails/RecentProducts";
 import axios from "axios";
 import Link from "next/link";
+import WhatsAppButton from "@/components/clc/Whats/WhatsAppButton";
 
 export const metadata = {
   title: " CLC",
@@ -47,7 +48,7 @@ export default async function Page({ params }) {
         </div>
       </div>
       <DetailsOuterZoom product={product} />
-
+      <WhatsAppButton />
       <Footer1 />
     </>
   );

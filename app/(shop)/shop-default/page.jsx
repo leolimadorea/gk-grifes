@@ -3,7 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Footer1 from "@/components/footers/Footer1";
-
+import WhatsAppButton from "@/components/clc/Whats/WhatsAppButton";
 import ShopDefault from "@/components/shop/ShopDefault";
 import Header2 from "@/components/headers/Header2";
 
@@ -51,6 +51,7 @@ export default function Page() {
         <ShopDefault filteredProducts={filteredProducts} />
       )}
       <Footer1 />
+      <WhatsAppButton />
     </>
   );
 }

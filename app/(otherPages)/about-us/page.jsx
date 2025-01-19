@@ -7,6 +7,7 @@ import Hero from "@/components/othersPages/about/Hero";
 import ShopGram from "@/components/othersPages/about/ShopGram";
 import Testimonials from "@/components/othersPages/about/Testimonials";
 import React from "react";
+import WhatsAppButton from "@/components/clc/Whats/WhatsAppButton";
 
 export const metadata = {
   title: "About Us || CLC",
@@ -29,6 +30,7 @@ export default function Page() {
       </div>
       {/* <ShopGram /> */}
       <Footer1 />
+      <WhatsAppButton />
     </>
   );
 }

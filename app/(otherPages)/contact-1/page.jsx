@@ -4,6 +4,7 @@ import ContactForm from "@/components/othersPages/contact/ContactForm";
 import Map from "@/components/othersPages/contact/Map";
 import Map2 from "@/components/othersPages/contact/Map2";
 import React from "react";
+import WhatsAppButton from "@/components/clc/Whats/WhatsAppButton";
 
 export const metadata = {
   title: "Contact 1 || CLC",
@@ -22,6 +23,7 @@ export default function Page() {
       <Map2 />
 
       <Footer1 />
+      <WhatsAppButton />
     </>
   );
 }
