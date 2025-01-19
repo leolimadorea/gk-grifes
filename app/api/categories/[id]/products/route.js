@@ -34,6 +34,25 @@ export async function GET(req, { params }) {
             name: true,
           },
         },
+        productVariantValues: {
+          select: {
+            id: true,
+            price: true,
+            stock: true,
+            variantValue: {
+              select: {
+                id: true,
+                name: true,
+                variant: {
+                  select: {
+                    id: true,
+                    name: true,
+                  },
+                },
+              },
+            },
+          },
+        },
       },
     });
 
