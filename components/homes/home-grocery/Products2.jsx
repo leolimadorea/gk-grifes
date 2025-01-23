@@ -1,133 +1,224 @@
-"use client";
+// "use client";
+// import Image from "next/image";
+// import Link from "next/link";
 
-import { useEffect, useState } from "react";
+// export default function BestSellers({ products }) {
+//   const formatPrice = (price) => `R$ ${price.toFixed(2)}`;
+
+//   return (
+//     <section style={{ padding: "20px", textAlign: "center" }}>
+//       <div>
+//         <div style={styles.gridContainer}>
+//           {products.slice(0,12).map((product) => (
+//             <div style={styles.card} key={product.id}>
+//               <span style={styles.tag}>Novo</span>
+//               <Link href={`/product-detail/${product.id}`}>
+//                 <Image
+//                   src="/images/camiseta.png"
+//                   alt={product.title}
+//                   width={533}
+//                   height={497}
+//                   style={styles.image}
+//                 />
+//               </Link>
+//               <div>
+//                 <Link
+//                   href={`/product-detail/${product.id}`}
+//                   style={{ ...styles.link, ...styles.title }}
+//                 >
+//                   {product.title}
+//                 </Link>
+//                 <p style={styles.description}>{product.description.slice(0, 100)}</p>
+//                 <span style={styles.price}>{formatPrice(product.price)}</span>
+//               </div>
+//               <button style={styles.comprarBtn}>Comprar</button>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
+// const styles = {
+//   gridContainer: {
+//     display: "grid",
+//     gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+//     gap: "20px",
+//     justifyItems: "center",
+//   },
+//   card: {
+//     backgroundColor: "#000",
+//     color: "#fff",
+//     borderRadius: "8px",
+//     padding: "15px",
+//     width: "250px",
+//     textAlign: "center",
+//     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+//     position: "relative",
+//   },
+//   tag: {
+//     position: "absolute",
+//     top: "10px",
+//     left: "10px",
+//     backgroundColor: "#ffea00",
+//     color: "#000",
+//     padding: "5px 10px",
+//     borderRadius: "5px",
+//     fontSize: "12px",
+//     fontWeight: "bold",
+//   },
+//   image: {
+//     width: "100%",
+//     height: "auto",
+//     borderRadius: "5px",
+//     marginBottom: "10px",
+//   },
+//   link: {
+//     textDecoration: "none",
+//     color: "#ffc107",
+//   },
+//   title: {
+//     fontWeight: "bold",
+//     display: "block",
+//     marginBottom: "5px",
+//   },
+//   description: {
+//     fontSize: "14px",
+//     color: "#ccc",
+//     marginBottom: "10px",
+//   },
+//   price: {
+//     fontSize: "18px",
+//     fontWeight: "bold",
+//     marginBottom: "10px",
+//     color: "#ffc107",
+//     display: "block",
+//   },
+//   comprarBtn: {
+//     backgroundColor: "#ffc107",
+//     color: "#000",
+//     border: "none",
+//     borderRadius: "5px",
+//     padding: "10px 15px",
+//     cursor: "pointer",
+//     fontWeight: "bold",
+//     transition: "background-color 0.3s ease",
+//   },
+//   comprarBtnHover: {
+//     backgroundColor: "#ffdb4d",
+//   },
+// };
+
+
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Products2() {
-  const [categories, setCategories] = useState([]);
-  const [activeCategory, setActiveCategory] = useState(null);
-
-  // Fetch categories on component mount
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const response = await fetch("/api/categories/getAll");
-        if (!response.ok) {
-          throw new Error(`Erro HTTP! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        setCategories(data);
-        // Set the first category as the default active category
-        if (data.length > 0) setActiveCategory(data[0].id);
-      } catch (error) {
-        console.error("Erro ao buscar categorias:", error);
-      }
-    };
-
-    fetchCategories();
-  }, []);
-
-  // Get products for the active category
-  const activeProducts =
-    categories.find((category) => category.id === activeCategory)?.products ||
-    [];
+export default function BestSellers({ products }) {
+  const formatPrice = (price) => `R$ ${price.toFixed(2)}`;
 
   return (
-    <section className="flat-spacing-5 pt_0">
-      <div className="container">
-        <div className="flat-animate-tab">
-          <div className="flat-title flat-title-tab flex-row justify-content-between px-0">
-            <span
-              className="title text-nowrap fw-6 wow fadeInUp"
-              data-wow-delay="0s"
-            >
-              Produtos Populares
-            </span>
-            <ul className="widget-tab-5" role="tablist">
-              {categories.slice(0, 3).map((category) => (
-                <li
-                  key={category.id}
-                  onClick={() => setActiveCategory(category.id)}
-                  className="nav-tab-item"
-                  role="presentation"
-                >
-                  <a className={activeCategory === category.id ? "active" : ""}>
-                    {category.name}
-                  </a>
-                </li>
-              ))}
-              <li className="nav-tab-item">
-                <Link
-                  href={`/shop-default`}
-                  className="d-flex align-items-center gap-10"
-                >
-                  Comprar Agora
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={10}
-                    height={10}
-                    viewBox="0 0 10 10"
-                    fill="none"
-                  >
-                    <path
-                      d="M1.07692 10L0 8.92308L7.38462 1.53846H0.769231V0H10V9.23077H8.46154V2.61538L1.07692 10Z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="tab-content">
-            <div className="tab-pane active show" id="meat" role="tabpanel">
-              <div className="tf-grid-layout tf-col-2 lg-col-4">
-                {activeProducts.slice(0, 10).map((product) => (
-                  <div key={product.id} className="card-product style-9">
-                    <div className="card-product-wrapper">
-                      <Link
-                        href={`/product-detail/${product.id}`}
-                        className="product-img"
-                      >
-                        <Image
-                          className="lazyload img-product"
-                          src={product.img}
-                          alt="image-product"
-                          width={360}
-                          height={360}
-                        />
-                        <Image
-                          className="lazyload img-hover"
-                          src={product.img}
-                          alt="image-hover"
-                          width={360}
-                          height={360}
-                        />
-                      </Link>
-                    </div>
-                    <div className="card-product-info">
-                      <div className="inner-info">
-                        <Link
-                          href={`/product-detail/${product.id}`}
-                          className="title link fw-6"
-                        >
-                          {product.title}
-                        </Link>
-                        <span className="price fw-6">
-                          R${product.price.toFixed(2)}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-                {activeProducts.length === 0 && (
-                  <p className="no-products">Nenhum produto encontrado.</p>
-                )}
+    <section style={{ padding: "20px", textAlign: "center" }}>
+      <div>
+        <h2 style={{ 
+          marginTop: "100px",
+          marginBottom: "30px",
+          fontSize: "24px",
+          fontWeight: "500"
+        }}>
+          MAIS VENDIDOS
+        </h2>
+        <div style={styles.gridContainer}>
+          {products.slice(0, 12).map((product) => (
+            <div style={styles.card} key={product.id}>
+              <Link href={`/product-detail/${product.id}`}>
+                <Image
+                  src="/images/camiseta.png"
+                  alt={product.title}
+                  width={533}
+                  height={497}
+                  style={styles.image}
+                />
+              </Link>
+              <div style={styles.details}>
+                <p style={styles.description}>{product.description.slice(0, 100)}</p>
+                <span style={styles.price}>{formatPrice(product.price)}</span>
+                <div style={styles.buttonGroup}>
+                  <button style={styles.buyButton}>Comprar</button>
+                  <Link href={`/product-detail/${product.id}`} style={styles.viewButton}>
+                    Visualizar
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
+
+const styles = {
+  gridContainer: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+    gap: "20px",
+    justifyItems: "center",
+  },
+  card: {
+    textAlign: "center",
+    width: "250px",
+    padding: "15px",
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+    backgroundColor: "#fff",
+  },
+  image: {
+    width: "100%",
+    height: "auto",
+    borderRadius: "5px",
+  },
+  details: {
+    marginTop: "10px",
+  },
+  description: {
+    fontSize: "14px",
+    color: "#555",
+    marginBottom: "8px",
+  },
+  price: {
+    fontSize: "18px",
+    fontWeight: "bold",
+    color: "#333",
+    marginBottom: "12px",
+    display: "block",
+  },
+  buttonGroup: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: "10px",
+  },
+  buyButton: {
+    backgroundColor: "#ffc107",
+    color: "#000",
+    border: "none",
+    borderRadius: "5px",
+    padding: "10px 20px",
+    fontWeight: "bold",
+    cursor: "pointer",
+    transition: "background-color 0.3s ease",
+    flex: 1,
+  },
+  viewButton: {
+    textDecoration: "none",
+    backgroundColor: "#000",
+    color: "#fff",
+    borderRadius: "5px",
+    padding: "10px 15px",
+    fontWeight: "bold",
+    textAlign: "center",
+    flex: 1,
+  },
+};

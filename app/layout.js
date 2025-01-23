@@ -154,58 +154,13 @@ export default function RootLayout({ children }) {
     }, 800);
   });
   return (
-    <html lang="en">
-      <body className="preload-wrapper">
-        <div className="preload preload-container" id="preloader">
-          <div className="preload-logo">
-            <div className="spinner"></div>
-          </div>
-        </div>
+    <html lang="pt-BR">
+      <body>
         <Context>
           <NextAuthSessionProvider>
-            {showChild ? (
-              <>
-                <div id="wrapper">{children}</div>
-                <HomesModal /> <QuickView />
-                <QuickAdd />
-                <ProductSidebar />
-                <Compare />
-                <ShopCart />
-                <AskQuestion />
-                <BlogSidebar />
-                <ColorCompare />
-                <DeliveryReturn />
-                <FindSize />
-                <Login />
-                <MobileMenu />
-                <Register />
-                <ResetPass />
-                <SearchModal />
-                <ToolbarBottom />
-                <ToolbarShop />
-                <ShareModal />{" "}
-              </>
-            ) : (
-              " "
-            )}
-            <ToastContainer
-              position="top-right"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              className="custom-toast-container"
-              toastClassName="custom-toast"
-              bodyClassName="custom-toast-body"
-              progressClassName="custom-progress-bar"
-            />
+            {children}
           </NextAuthSessionProvider>
         </Context>
-        <ScrollTop />
       </body>
     </html>
   );

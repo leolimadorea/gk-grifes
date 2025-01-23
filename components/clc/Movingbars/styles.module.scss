@@ -1,0 +1,124 @@
+.movingBars {
+  padding-block: 130px;
+  background: #fff;
+  @media screen and (max-width: 768px) {
+    padding-block: 0;
+    padding-top: 100px;
+    padding-bottom: 30px;
+  }
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  background: yellow;
+  backdrop-filter: blur(20px);
+  transform: rotate(5deg);
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  z-index: 10;
+  padding-block: 60px;
+  position: relative;
+  right: 10px;
+  width: 100%;
+  @media screen and (max-width: 768px) {
+    padding-block: 20px;
+  }
+}
+
+.topBarContent {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  width: 100%;
+  animation: scrolling-left 20s linear infinite;
+  @media screen and (max-width: 768px) {
+    animation: scrolling-left 10s linear infinite;
+  }
+  span {
+    color: #fff;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 27px;
+    letter-spacing: 0.167px;
+    @media screen and (max-width: 768px) {
+      font-size: 12px;
+    }
+  }
+
+  img {
+    width: 120px;
+    height: auto;
+  }
+}
+
+@keyframes scrolling-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+@keyframes scrolling-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.bottomBar {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  background: yellow;
+  filter: blur(2.5px);
+  width: 100%;
+  right: 10px;
+  padding-block: 60px;
+  transform: rotate(-5deg);
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  margin-bottom: 15px;
+  bottom: 75px;
+  @media screen and (max-width: 768px) {
+    padding-block: 20px;
+    bottom: 33px;
+  }
+}
+
+.bottomBarContent {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  width: 100%;
+  animation: scrolling-right 20s linear infinite;
+  span {
+    color: var(--brand-black, #1c1c1c);
+    font-family: Montserrat;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 27px;
+    letter-spacing: 0.167px;
+    @media screen and (max-width: 768px) {
+      font-size: 12px;
+    }
+  }
+
+  img {
+    width: 120px;
+    height: auto;
+  }
+} 

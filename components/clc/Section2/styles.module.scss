@@ -1,58 +1,213 @@
+// .container {
+//   background: #fff;
+// }
+
+// .content {
+//   display: flex; /* Alinha as imagens lado a lado */
+//   justify-content: space-between; /* Espaço igual entre os elementos */
+//   align-items: center; /* Centraliza verticalmente */
+//   gap: 20px;
+
+//   /* Responsividade */
+//   @media (max-width: 768px) {
+//     flex-direction: column; /* Empilha os elementos no mobile */
+//     gap: 20px;
+//   }
+// }
+
+// .image {
+//   position: relative;
+//   width: 100%;
+//   height: 300px; // Ajuste a altura conforme necessário
+//   overflow: hidden;
+// }
+
+// .text {
+//   position: relative;
+//   z-index: 1; // Garante que o texto fique sobre a faixa amarela
+// }
+
+// .yellowStrip {
+//   width: 100%;
+//   height: 170px;
+//   background-color: #FFD700;
+//   position: absolute;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   padding: 20px;
+// }
+
+// .stripContent {
+//   max-width: 1200px;
+//   width: 100%;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   gap: 20px;
+// }
+
+// .item {
+//   flex: 1;
+//   text-align: center;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: flex-start; // Alinha os itens no topo
+  
+//   .icon {
+//     width: 32px;
+//     height: 32px;
+//     margin-bottom: 10px;
+//     object-fit: contain;
+//   }
+  
+//   h2 {
+//     font-size: 19.2px;
+//     line-height: 23.42px;
+//     color: #000;
+//     font-weight: 700;
+//     white-space: nowrap;
+//     align-items: center;
+//     margin-bottom: 5px;
+//   }
+  
+//   h5 {
+//     font-size: 14px;
+//     color: #333;
+//     font-weight: normal;
+//     line-height: 1.4;
+//     max-width: 200px; // Limita a largura do texto
+//     margin: 0 auto;
+//   }
+// }
+
 .container {
   background: #fff;
 }
 
 .content {
-  display: flex; /* Alinha as imagens lado a lado */
-  justify-content: space-between; /* Espaço igual entre os elementos */
+  display: flex; /* Alinha os itens lado a lado */
+  justify-content: space-between; /* Distribui os elementos */
   align-items: center; /* Centraliza verticalmente */
   gap: 20px;
 
-  /* Responsividade */
-  @media (max-width: 768px) {
-    flex-direction: column; /* Empilha os elementos no mobile */
-    gap: 20px;
+  @media (max-width: 828px) {
+    flex-direction: row; /* Mantém os itens lado a lado */
+    flex-wrap: wrap; /* Permite que os elementos quebrem linha */
+    gap: 10px; /* Reduz o espaçamento entre os elementos */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    padding: 15px;
   }
 }
 
 .image {
-  position: relative; /* Para posicionar o texto sobre a imagem */
-  width: 48%; /* Cada imagem ocupa metade da largura */
+  position: relative;
+  width: 45%; /* Deixa a imagem ocupar 45% da largura */
+  height: 300px;
+  overflow: hidden;
+
+  @media (max-width: 828px) {
+    width: 100%; /* A imagem ocupa 100% em telas menores */
+    height: 250px; /* Ajusta a altura para não ocupar muito espaço */
+  }
 
   img {
-    width: 100%; /* Garante que a imagem preencha a largura do contêiner */
-    height: auto;
-    object-fit: cover; /* Ajusta o conteúdo da imagem */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem se ajuste ao espaço */
+  }
+}
+
+.text {
+  position: relative;
+  z-index: 1; /* Garante que o texto fique visível */
+  width: 45%; /* Deixa o texto ocupar 45% da largura */
+
+  @media (max-width: 828px) {
+    width: 100%; /* Texto ocupa 100% em telas menores */
+    text-align: center; /* Centraliza o texto no mobile */
+  }
+}
+
+.yellowStrip {
+  width: 100%;
+  height: 220px; /* Altura padrão */
+  background-color: #FFD700;
+  position: relative; /* Alterado para evitar sobreposição */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin-top: 20px; /* Adiciona espaço acima da faixa */
+
+  @media (max-width: 828px) {
+    height: 260px; /* Altura maior para mobile */
+    padding: 15px; /* Ajusta o padding no mobile */
+    margin-top: 15px; /* Ajusta o espaço superior */
+  }
+}
+
+.stripContent {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  @media (max-width: 828px) {
+    flex-wrap: wrap; /* Permite que os elementos quebrem linha */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    gap: 10px; /* Reduz o espaçamento entre os elementos */
+  }
+}
+
+.item {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  .icon {
+    width: 28px; /* Ajuste inicial */
+    height: 28px;
+    margin-bottom: 10px;
+
+    @media (max-width: 828px) {
+      width: 24px; /* Ícones menores no mobile */
+      height: 24px;
+    }
   }
 
-  .text {
-    position: absolute;
-    top: 20px; /* Ajusta o texto para aparecer na parte superior */
-    left: 20px; /* Alinha o texto à esquerda */
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
+  h2 {
+    font-size: 18px;
+    line-height: 22px;
+    color: #000;
+    font-weight: 700;
+    margin-bottom: 5px;
 
-    h4 {
-      color: #fff;
-      font-family: "Sora", sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    img {
-      width: 20px;
-      height: 20px;
+    @media (max-width: 828px) {
+      font-size: 14px; /* Reduz o tamanho do título */
+      line-height: 18px;
     }
   }
 
-  /* Responsividade */
-  @media (max-width: 768px) {
-    width: 100%; /* Imagem ocupa toda a largura no mobile */
-    .text {
-      top: 10px; /* Ajusta a posição do texto no mobile */
-      left: 10px;
+  h5 {
+    font-size: 14px;
+    color: #333;
+    font-weight: normal;
+    line-height: 1.4;
+    max-width: 200px; /* Limita a largura do texto */
+    margin: 0 auto;
+
+    @media (max-width: 828px) {
+      font-size: 12px; /* Texto menor no mobile */
+      line-height: 16px;
     }
   }
 }

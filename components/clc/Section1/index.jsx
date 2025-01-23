@@ -5,15 +5,14 @@ export default function Section1() {
     <div className={styles.container}>
       <div className={styles.content}>
         <div className={styles.block}>
-          <h1>Descubra a Chama Perfeita</h1>
+          <h1>Encontre seu estilo único!</h1>
           <h4>
-            No Calor de lar, oferecemos uma seleção exclusiva de chaminés de
-            alta qualidade que combinam eficiência, durabilidade e estilo.
+           Na GK GRIFES transformamos tendências em looks incríveis. Aproveite ofertas exclusivas e eleve seu guarda-roupa agora mesmo.
           </h4>
-          <button>Saber Mais</button>
+          <button>@GKGRIFES</button>
         </div>
         <div className={styles.image}>
-          <img src="/images/clc/foto1.png" alt="Chaminé" />
+          <img src="/images/homegk.png" alt="Imagem da home" />
         </div>
       </div>
     </div>

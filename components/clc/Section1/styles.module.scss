@@ -1,109 +1,192 @@
+// .container {
+//   background: #fff;
+//   position: relative;
+//   display: flex;
+//   flex-direction: column;
+// }
+
+// .image {
+//   width: 100vw;
+//   height: 100vh;
+//   margin: 0;
+//   order: -1;
+//   overflow: hidden;
+  
+//   img {
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//   }
+// }
+
+// .content {
+//   max-width: 1440px;
+//   margin: 0 auto;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   background: #fff;
+  
+//   @media screen and (max-width: 768px) {
+//     padding-inline: 20px;
+//   }
+// }
+
+// .block {
+//   background: white;
+//   padding-inline: 40px;
+//   padding-block: 50px;
+//   width: 100%;
+//   text-align: center;
+  
+//   @media screen and (max-width: 768px) {
+//     padding-inline: 20px;
+//     padding-block: 20px;
+//   }
+
+//   h1 {
+//     color: black;
+//     font-family: "Red Rose", sans-serif;
+//     font-size: 60px;
+//     font-weight: 700;
+//     line-height: 84px;
+    
+//     @media screen and (max-width: 768px) {
+//       font-size: 30px;
+//       line-height: 34px;
+//     }
+//   }
+
+//   h4 {
+//     color: black;
+//     font-family: "Sora", sans-serif;
+//     font-size: 15px;
+//     font-weight: 400;
+//     line-height: 24.75px;
+//     padding-block: 20px;
+    
+//     @media screen and (max-width: 768px) {
+//       font-size: 12px;
+//       line-height: 21px;
+//     }
+//   }
+
+//   button {
+//     color: yellow;
+//     font-family: "Red Rose", sans-serif;
+//     font-size: 16px;
+//     font-weight: 700;
+//     line-height: 16px;
+//     background: black;
+//     padding: 10px 20px;
+//     border: none;
+//     cursor: pointer;
+//     transition: background 0.3s ease;
+    
+//     @media screen and (max-width: 768px) {
+//       font-size: 12px;
+//     }
+
+//     &:hover {
+//       background: #f0f0f0;
+//     }
+//   }
+// }
+
+
 .container {
   background: #fff;
-  position: relative; /* Necessário para que a imagem use posição absoluta */
-}
-
-.content {
-  max-width: 1440px;
-  margin: 0 auto;
-  display: flex; /* Alinha o texto e a imagem lado a lado */
-  align-items: center; /* Centraliza verticalmente */
-  gap: 30px; /* Espaço entre os elementos */
-  padding-inline: 40px;
-  padding-block: 150px;
   position: relative;
-  @media screen and (max-width: 768px) {
-    flex-direction: column; /* Muda a direção dos elementos em telas menores */
-    gap: 0; /* Remove o espaço entre os elementos */
-    padding-block: 50px;
-    position: static;
-    padding-inline: 20px;
-  }
-}
+  display: flex;
+  flex-direction: column;
 
-.block {
-  background: #2d3736;
-  padding-inline: 40px;
-  padding-block: 50px;
-  width: 47%;
-  position: relative;
-  z-index: 2;
-  @media screen and (max-width: 768px) {
+  .image {
+    order: -1; /* Garante que a imagem fique no topo */
     width: 100%;
-    padding-inline: 20px;
-    padding-block: 20px;
-    text-align: center;
-  }
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
 
-  h1 {
-    color: #fff;
-    font-family: "Red Rose", sans-serif;
-    font-size: 60px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 84px;
-    @media screen and (max-width: 768px) {
-      font-size: 30px;
-      line-height: 34px;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
     }
   }
 
-  h4 {
-    color: #fff;
-    font-family: "Sora", sans-serif;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24.75px;
-    padding-block: 20px;
-    @media screen and (max-width: 768px) {
-      font-size: 12px;
-      line-height: 21px;
-    }
-  }
-
-  button {
-    color: #000;
-    text-align: center;
-    font-family: "Red Rose", sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 16px;
+  .content {
+    max-width: 1440px;
+    margin: 10px auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background: #fff;
-    padding-block: 10px;
-    padding-inline: 20px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s ease;
 
-    @media screen and (max-width: 768px) {
-      font-size: 12px;
-    }
-
-    &:hover {
-      background: #f0f0f0;
+    @media screen and (max-width: 828px) {
+      padding-inline: 15px;
     }
   }
-}
 
-.image {
-  position: absolute; /* Torna a imagem posicionável */
-  top: 50%; /* Ajuste para que fique na vertical central, se necessário */
-  right: 2%; /* Parte da imagem aparece atrás do texto */
-  max-width: 800px;
-  z-index: 1; /* Coloca a imagem atrás do texto */
-  transform: translateY(-50%); /* Alinha verticalmente o centro da imagem */
-
-  img {
+  .block {
+    background: white;
+    padding-inline: 40px;
+    padding-block: 50px;
     width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
+    text-align: center;
 
-  @media screen and (max-width: 768px) {
-    position: static; /* Remove a posição absoluta */
-    margin-block: 20px; /* Espaço entre a imagem e o texto */
-    transform: translateY(-10%);
+    @media screen and (max-width: 828px) {
+      padding-inline: 10px;
+      padding-block: 20px;
+    }
+
+    h1 {
+      color: black;
+      font-family: "Red Rose", sans-serif;
+      font-size: 60px;
+      font-weight: 700;
+      line-height: 84px;
+
+      @media screen and (max-width: 828px) {
+        font-size: 28px;
+        line-height: 36px;
+      }
+    }
+
+    h4 {
+      color: black;
+      font-family: "Sora", sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 24.75px;
+      padding-block: 20px;
+
+      @media screen and (max-width: 828px) {
+        font-size: 12px;
+        line-height: 18px;
+      }
+    }
+
+    button {
+      color: yellow;
+      font-family: "Red Rose", sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 16px;
+      background: black;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+
+      @media screen and (max-width: 828px) {
+        font-size: 12px;
+        padding: 8px 16px;
+      }
+
+      &:hover {
+        background: #f0f0f0;
+      }
+    }
   }
 }

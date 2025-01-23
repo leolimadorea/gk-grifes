@@ -1,117 +1,231 @@
+// "use client";
+// import Image from "next/image";
+// import Link from "next/link";
+
+// export default function BestSellers({ products }) {
+//   const formatPrice = (price) => `R$ ${price.toFixed(2)}`;
+
+//   return (
+//     <section style={{ padding: "20px", textAlign: "center" }}>
+//       <div>
+//         <h2 style={{ 
+//           marginTop: "100px",
+//           marginBottom: "30px",
+//           fontSize: "24px",
+//           fontWeight: "500"
+//         }}>
+//           MAIS VENDIDOS
+//         </h2>
+//         <div style={styles.gridContainer}>
+//           {products.slice(0,12).map((product) => (
+//             <div style={styles.card} key={product.id}>
+//               <span style={styles.tag}>Novo</span>
+//               <Link href={`/product-detail/${product.id}`}>
+//                 <Image
+//                   src="/images/camiseta.png"
+//                   alt={product.title}
+//                   width={533}
+//                   height={497}
+//                   style={styles.image}
+//                 />
+//               </Link>
+//               <div>
+//                 <Link
+//                   href={`/product-detail/${product.id}`}
+//                   style={{ ...styles.link, ...styles.title }}
+//                 >
+//                   {product.title}
+//                 </Link>
+//                 <p style={styles.description}>{product.description.slice(0, 100)}</p>
+//                 <span style={styles.price}>{formatPrice(product.price)}</span>
+//               </div>
+//               <button style={styles.comprarBtn}>Comprar</button>
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
+// const styles = {
+//   gridContainer: {
+//     display: "grid",
+//     gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+//     gap: "20px",
+//     justifyItems: "center",
+//   },
+//   card: {
+//     backgroundColor: "#000",
+//     color: "#fff",
+//     borderRadius: "8px",
+//     padding: "15px",
+//     width: "250px",
+//     textAlign: "center",
+//     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+//     position: "relative",
+//   },
+//   tag: {
+//     position: "absolute",
+//     top: "10px",
+//     left: "10px",
+//     backgroundColor: "#ffea00",
+//     color: "#000",
+//     padding: "5px 10px",
+//     borderRadius: "5px",
+//     fontSize: "12px",
+//     fontWeight: "bold",
+//   },
+//   image: {
+//     width: "100%",
+//     height: "auto",
+//     borderRadius: "5px",
+//     marginBottom: "10px",
+//   },
+//   link: {
+//     textDecoration: "none",
+//     color: "#ffc107",
+//   },
+//   title: {
+//     fontWeight: "bold",
+//     display: "block",
+//     marginBottom: "5px",
+//   },
+//   description: {
+//     fontSize: "14px",
+//     color: "#ccc",
+//     marginBottom: "10px",
+//   },
+//   price: {
+//     fontSize: "18px",
+//     fontWeight: "bold",
+//     marginBottom: "10px",
+//     color: "#ffc107",
+//     display: "block",
+//   },
+//   comprarBtn: {
+//     backgroundColor: "#ffc107",
+//     color: "#000",
+//     border: "none",
+//     borderRadius: "5px",
+//     padding: "10px 15px",
+//     cursor: "pointer",
+//     fontWeight: "bold",
+//     transition: "background-color 0.3s ease",
+//   },
+//   comprarBtnHover: {
+//     backgroundColor: "#ffdb4d",
+//   },
+// };
+
 "use client";
-import CountdownComponent from "@/components/common/Countdown";
-import { useContextElement } from "@/context/Context";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
 
-export default function Products({ products }) {
-  const { setQuickViewItem } = useContextElement();
-  const {
-    setQuickAddItem,
-    addToWishlist,
-    isAddedtoWishlist,
-    addToCompareItem,
-    isAddedtoCompareItem,
-  } = useContextElement();
-
-  const [currentImage, setCurrentImage] = useState(null);
-
-  useEffect(() => {
-    if (products.length > 0) {
-      setCurrentImage(products[0].img);
-    }
-  }, [products]);
-
+export default function BestSellers({ products }) {
   const formatPrice = (price) => `R$ ${price.toFixed(2)}`;
 
-  const getPriceRange = (product) => {
-    if (
-      product.productVariantValues &&
-      product.productVariantValues.length > 0
-    ) {
-      const prices = product.productVariantValues.map((v) => v.price);
-      const minPrice = Math.min(...prices);
-      const maxPrice = Math.max(...prices);
-      return minPrice === maxPrice
-        ? formatPrice(minPrice)
-        : `${formatPrice(minPrice)} - ${formatPrice(maxPrice)}`;
-    }
-    return formatPrice(product.price); // Fixed price if no variants
-  };
-
   return (
-    <section className="flat-spacing-8">
-      <div className="container">
-        <div className="flat-title flex-row justify-content-center px-0">
-          <span className="title fw-6 wow fadeInUp" data-wow-delay="0s">
-            NOVOS MODELOS
-          </span>
-        </div>
-        <Swiper
-          className="swiper tf-sw-product-sell"
-          modules={[Pagination]}
-          slidesPerView={3}
-          spaceBetween={30}
-          pagination={{
-            clickable: true,
-            el: ".p1spd",
-          }}
-          breakpoints={{
-            1000: { slidesPerView: 3, spaceBetween: 30 },
-            768: { slidesPerView: 2, spaceBetween: 15 },
-            0: { slidesPerView: 1 },
-          }}
-        >
-          {products.slice(0, 10).map((product, index) => (
-            <SwiperSlide className="swiper-slide" key={product.id}>
-              <div className="card-product style-8 border-0 bg_grey-14 lg">
-                <div className="card-product-wrapper">
-                  <Link
-                    href={`/product-detail/${product.id}`}
-                    className="product-img"
-                  >
-                    <Image
-                      className="lazyload img-product"
-                      src={product.img}
-                      alt="image-product"
-                      width={533}
-                      height={497}
-                    />
-                    <Image
-                      className="lazyload img-hover"
-                      src={product.img}
-                      alt="image-hover"
-                      width={533}
-                      height={497}
-                    />
+    <section style={{ padding: "20px", textAlign: "center" }}>
+      <div>
+        <h2 style={{ 
+          marginTop: "100px",
+          marginBottom: "30px",
+          fontSize: "24px",
+          fontWeight: "500"
+        }}>
+          MAIS VENDIDOS
+        </h2>
+        <div style={styles.gridContainer}>
+          {products.slice(0, 12).map((product) => (
+            <div style={styles.card} key={product.id}>
+              <Link href={`/product-detail/${product.id}`}>
+                <Image
+                  src="/images/camiseta.png"
+                  alt={product.title}
+                  width={533}
+                  height={497}
+                  style={styles.image}
+                />
+              </Link>
+              <div style={styles.details}>
+                <p style={styles.description}>{product.description.slice(0, 100)}</p>
+                <span style={styles.price}>{formatPrice(product.price)}</span>
+                <div style={styles.buttonGroup}>
+                  <button style={styles.buyButton}>Comprar</button>
+                  <Link href={`/product-detail/${product.id}`} style={styles.viewButton}>
+                    Visualizar
                   </Link>
-
-                  {product.salePercentage && (
-                    <div className="on-sale-wrap text-end">
-                      <div className="on-sale-item">{`${product.salePercentage}%`}</div>
-                    </div>
-                  )}
-                </div>
-                <div className="card-product-info">
-                  <Link
-                    href={`/product-detail/${product.id}`}
-                    className="title link fw-6"
-                  >
-                    {product.title}
-                  </Link>
-                  <span className="price">
-                    <span className="new-price">{getPriceRange(product)}</span>
-                  </span>
                 </div>
               </div>
-            </SwiperSlide>
+            </div>
           ))}
-          <div className="sw-dots style-2 sw-pagination-product justify-content-center p1spd" />
-        </Swiper>
+        </div>
       </div>
     </section>
   );
 }
+
+const styles = {
+  gridContainer: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+    gap: "20px",
+    justifyItems: "center",
+  },
+  card: {
+    textAlign: "center",
+    width: "250px",
+    padding: "15px",
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+    backgroundColor: "#fff",
+  },
+  image: {
+    width: "100%",
+    height: "auto",
+    borderRadius: "5px",
+  },
+  details: {
+    marginTop: "10px",
+  },
+  description: {
+    fontSize: "14px",
+    color: "#555",
+    marginBottom: "8px",
+  },
+  price: {
+    fontSize: "18px",
+    fontWeight: "bold",
+    color: "#333",
+    marginBottom: "12px",
+    display: "block",
+  },
+  buttonGroup: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    gap: "10px",
+  },
+  buyButton: {
+    backgroundColor: "#ffc107",
+    color: "#000",
+    border: "none",
+    borderRadius: "5px",
+    padding: "10px 20px",
+    fontWeight: "bold",
+    cursor: "pointer",
+    transition: "background-color 0.3s ease",
+    flex: 1,
+  },
+  viewButton: {
+    textDecoration: "none",
+    backgroundColor: "#000",
+    color: "#fff",
+    borderRadius: "5px",
+    padding: "10px 15px",
+    fontWeight: "bold",
+    textAlign: "center",
+    flex: 1,
+  },
+};
