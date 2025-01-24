@@ -128,15 +128,17 @@ export default function BestSellers({ products }) {
   return (
     <section style={{ padding: "20px", textAlign: "center" }}>
       <div>
-        <h2 style={{ 
-          marginTop: "100px",
-          marginBottom: "30px",
-          fontSize: "24px",
-          fontWeight: "500"
-        }}>
+        <h2
+          style={{
+            marginTop: "100px",
+            marginBottom: "30px",
+            fontSize: "24px",
+            fontWeight: "500",
+          }}
+        >
           MAIS VENDIDOS
         </h2>
-        <div style={styles.gridContainer}>
+        <div className="gridContainer">
           {products.slice(0, 12).map((product) => (
             <div style={styles.card} key={product.id}>
               <Link href={`/product-detail/${product.id}`}>
@@ -149,11 +151,16 @@ export default function BestSellers({ products }) {
                 />
               </Link>
               <div style={styles.details}>
-                <p style={styles.description}>{product.description.slice(0, 100)}</p>
+                <p style={styles.description}>
+                  {product.description.slice(0, 100)}
+                </p>
                 <span style={styles.price}>{formatPrice(product.price)}</span>
                 <div style={styles.buttonGroup}>
                   <button style={styles.buyButton}>Comprar</button>
-                  <Link href={`/product-detail/${product.id}`} style={styles.viewButton}>
+                  <Link
+                    href={`/product-detail/${product.id}`}
+                    style={styles.viewButton}
+                  >
                     Visualizar
                   </Link>
                 </div>
@@ -162,17 +169,35 @@ export default function BestSellers({ products }) {
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        .gridContainer {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 20px;
+          justify-items: center;
+        }
+
+        /* Media query para iPhone XR (largura máxima de 828px) */
+        @media (max-width: 828px) {
+          .gridContainer {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 10px 5px;
+          }
+
+          .gridContainer::-webkit-scrollbar {
+            display: none; /* Oculta a barra de rolagem no iOS */
+          }
+        }
+      `}</style>
     </section>
   );
 }
 
 const styles = {
-  gridContainer: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-    gap: "20px",
-    justifyItems: "center",
-  },
   card: {
     textAlign: "center",
     width: "250px",
@@ -180,6 +205,7 @@ const styles = {
     borderRadius: "8px",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
     backgroundColor: "#fff",
+    flex: "0 0 auto", // Permite o scroll horizontal
   },
   image: {
     width: "100%",
@@ -229,3 +255,4 @@ const styles = {
     flex: 1,
   },
 };
+
