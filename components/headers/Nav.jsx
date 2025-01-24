@@ -76,7 +76,7 @@ export default function Nav({ isArrow = false, textColor = "", Linkfs = "" }) {
           href="#"
           className={`item-link ${Linkfs} ${textColor}`}
           style={{
-            color: "#CEB177",
+            color: "#FFD700",
             textDecoration: "none",
             fontWeight: "normal",
           }}
@@ -110,7 +110,7 @@ export default function Nav({ isArrow = false, textColor = "", Linkfs = "" }) {
         <a
           href="shop-default"
           style={{
-            color: "#CEB177",
+            color: "#FFD700",
             textDecoration: "none",
             fontWeight: "normal",
           }}
@@ -123,7 +123,7 @@ export default function Nav({ isArrow = false, textColor = "", Linkfs = "" }) {
         <a
           href="/about-us"
           style={{
-            color: "#CEB177",
+            color: "#FFD700",
             textDecoration: "none",
             fontWeight: "normal",
           }}
@@ -136,7 +136,7 @@ export default function Nav({ isArrow = false, textColor = "", Linkfs = "" }) {
         <a
           href="/contact-1"
           style={{
-            color: "#CEB177",
+            color: "#FFD700",
             textDecoration: "none",
             fontWeight: "normal",
           }}

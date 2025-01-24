@@ -110,7 +110,6 @@
 //   },
 // };
 
-
 // "use client";
 // import Image from "next/image";
 // import Link from "next/link";
@@ -121,7 +120,7 @@
 //   return (
 //     <section style={{ padding: "20px", textAlign: "center" }}>
 //       <div>
-//         <h2 style={{ 
+//         <h2 style={{
 //           marginTop: "100px",
 //           marginBottom: "30px",
 //           fontSize: "24px",
@@ -244,7 +243,7 @@ export default function BestSellers({ products }) {
           MAIS VENDIDOS
         </h2>
         <div className="gridContainer">
-          {products.slice(0, 12).map((product) => (
+          {products.slice(0, 10).map((product) => (
             <div style={styles.card} key={product.id}>
               <Link href={`/product-detail/${product.id}`}>
                 <Image

@@ -19,6 +19,9 @@ import Header7 from "@/components/headers/Header7";
 import Header18 from "@/components/headers/Header18";
 import Header13 from "@/components/headers/Header13";
 import MovingBars from "@/components/clc/Movingbars";
+import Header12 from "@/components/headers/Header12";
+import Header11 from "@/components/headers/Header11";
+import Header1 from "@/components/headers/Header1";
 
 export const metadata = {
   title: "CLC - Chaminé",

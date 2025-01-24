@@ -6,6 +6,7 @@ import RecentProducts from "@/components/shopDetails/RecentProducts";
 import axios from "axios";
 import Link from "next/link";
 import WhatsAppButton from "@/components/clc/Whats/WhatsAppButton";
+import Header13 from "@/components/headers/Header13";
 
 export const metadata = {
   title: " CLC",
@@ -20,7 +21,7 @@ export default async function Page({ params }) {
 
   return (
     <>
-      <Header2 />
+      <Header13 />
       <div className="tf-breadcrumb">
         <div className="container">
           <div className="tf-breadcrumb-wrap d-flex justify-content-between flex-wrap align-items-center">

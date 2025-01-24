@@ -2,10 +2,10 @@
 //     background-color: black;
 //     color: yellow !important;
 //     padding: 20px 0;
-    
+
 //     .main-header {
 //       background-color: black;
-      
+
 //       .search-input {
 //         width: 300px;
 //         height: 40px;
@@ -14,7 +14,7 @@
 //         background-color: black;
 //         border: 2px solid yellow !important;
 //         color: yellow !important;
-        
+
 //         &::placeholder {
 //           color: yellow;
 //         }
@@ -43,7 +43,7 @@
 //         gap: 2rem !important;
 //       }
 //     }
-    
+
 //     .header-bottom,
 //     .bg_grey-11,
 //     .wrapper-header,
@@ -51,10 +51,10 @@
 //     .box-nav-ul {
 //       background-color: black !important;
 //     }
-    
+
 //     .item-link {
 //       color: yellow !important;
-      
+
 //       &:hover {
 //         color: #fff !important;
 //         text-decoration: none;
@@ -67,102 +67,140 @@
 //   }
 
 .header-default {
+  background-color: black;
+  color: yellow !important;
+  padding: 20px 0;
+
+  .main-header {
     background-color: black;
-    color: yellow !important;
-    padding: 20px 0;
-  
-    .main-header {
-      background-color: black;
-  
-      // Barra de pesquisa no layout normal
-      .search-box {
-        display: flex;
-        align-items: center;
-        position: relative;
-  
-        .search-input {
-          width: 300px;
-          height: 40px;
-          font-size: 16px;
-          padding: 0 15px;
-          background-color: black;
-          border: 2px solid yellow;
+
+    // Barra de pesquisa no layout normal
+    .search-box {
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      .search-input {
+        width: 300px;
+        height: 40px;
+        font-size: 16px;
+        padding: 0 15px;
+        background-color: black;
+        border: 2px solid yellow;
+        color: yellow;
+
+        &::placeholder {
           color: yellow;
-  
-          &::placeholder {
-            color: yellow;
-          }
-        }
-  
-        .search-icon {
-          position: absolute;
-          right: 10px;
-          cursor: pointer;
         }
       }
-  
-      // Logo padrão
+
+      .search-icon {
+        position: absolute;
+        right: 10px;
+        cursor: pointer;
+      }
+    }
+
+    // Logo padrão
+    .logo-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 200px;
+        height: auto;
+      }
+    }
+
+    // Ícones de navegação no layout normal
+    .nav-icon-item {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  // Ocultar os ícones no layout normal
+  // .media-icons {
+  //   display: none;
+  // }
+
+  // Media query para iPhone XR
+  @media only screen and (max-width: 414px) and (max-height: 896px) {
+    .main-header {
+      // Remove a barra de pesquisa no media query
+      .search-box {
+        display: none;
+      }
+
+      // Reduz o tamanho da logo no media query
       .logo-header {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-  
         img {
-          width: 200px;
+          width: 130px;
           height: auto;
         }
       }
-  
-      // Ícones de navegação no layout normal
+    }
+
+    // Ícones organizados no media query
+    .media-icons {
+      display: flex;
+      justify-content: space-between; // Ícone de pesquisa à esquerda, outros à direita
+      align-items: center;
+      padding: 0 15px;
+
+      // Ícone de pesquisa à esquerda
+      .search-icon-media {
+        display: block;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+      }
+
+      // Ícones de usuário e carrinho à direita
       .nav-icon-item {
         display: flex;
         align-items: center;
       }
     }
-  
-    // Ocultar os ícones no layout normal
-    .media-icons {
-      display: none;
-    }
-  
-    // Media query para iPhone XR
-    @media only screen and (max-width: 414px) and (max-height: 896px) {
-      .main-header {
-        // Remove a barra de pesquisa no media query
-        .search-box {
-          display: none;
-        }
-  
-        // Reduz o tamanho da logo no media query
-        .logo-header {
-          img {
-            width: 130px;
-            height: auto;
-          }
-        }
-      }
-  
-      // Ícones organizados no media query
-      .media-icons {
-        display: flex;
-        justify-content: space-between; // Ícone de pesquisa à esquerda, outros à direita
-        align-items: center;
-        padding: 0 15px;
-  
-        // Ícone de pesquisa à esquerda
-        .search-icon-media {
-          display: block;
-          width: 24px;
-          height: 24px;
-          cursor: pointer;
-        }
-  
-        // Ícones de usuário e carrinho à direita
-        .nav-icon-item {
-          display: flex;
-          align-items: center;
-        }
-      }
-    }
   }
-  
+}
+
+.media-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.search-box {
+  position: relative;
+  width: 200px;
+
+  .search-input {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 0px;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+    outline: none;
+  }
+
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+}
+
+.cart-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
