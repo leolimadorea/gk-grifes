@@ -1,11 +1,11 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const ResetPasswordPage = () => {
+function ResetPasswordContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [token, setToken] = useState(null);
@@ -70,6 +70,12 @@ const ResetPasswordPage = () => {
       </button>
     </div>
   );
-};
+}
 
-export default ResetPasswordPage;
+export default function ResetPassword() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ResetPasswordContent />
+    </Suspense>
+  );
+}

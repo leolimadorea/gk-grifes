@@ -2,13 +2,19 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Quantity from "./Quantity";
-import Slider1ZoomOuter from "./sliders/Slider1ZoomOuter";
+import dynamic from "next/dynamic";
 import { useContextElement } from "@/context/Context";
 import { openCartModal } from "@/utlis/openCartModal";
 
-export default function DetailsOuterZoom({ product }) {
+// Importação dinâmica do slider
+const Slider1ZoomOuter = dynamic(() => import("./sliders/Slider1ZoomOuter"), {
+  ssr: false,
+  loading: () => <div>Carregando...</div>,
+});
+
+export default function DetailsOuterZoom({ product = {} }) {
   const [quantity, setQuantity] = useState(1);
-  const [selectedVariant, setSelectedVariant] = useState(null); // Track selected variant
+  const [selectedVariant, setSelectedVariant] = useState(null);
 
   const {
     addProductToCart,
@@ -18,6 +24,11 @@ export default function DetailsOuterZoom({ product }) {
     addToWishlist,
     isAddedtoWishlist,
   } = useContextElement();
+
+  // Verificações de segurança
+  if (!product) {
+    return <div>Carregando produto...</div>;
+  }
 
   // Get price of the selected variant or fallback to range/default price
   const getPrice = () => {
@@ -60,10 +71,12 @@ export default function DetailsOuterZoom({ product }) {
             {/* Image Slider */}
             <div className="col-md-6">
               <div className="tf-product-media-wrap sticky-top">
-                <Slider1ZoomOuter
-                  currentColor={product.color || "default"} // Optional color
-                  productImage={product.img} // Pass product image
-                />
+                {product && (
+                  <Slider1ZoomOuter
+                    currentColor={product?.color || "default"}
+                    productImage={product?.img}
+                  />
+                )}
               </div>
             </div>
 

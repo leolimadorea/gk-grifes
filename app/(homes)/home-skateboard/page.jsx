@@ -17,7 +17,23 @@ export const metadata = {
   title: "Home Skateboard || CLC",
   description: "CLC",
 };
-export default function Page() {
+
+export const dynamic = "force-dynamic";
+
+async function getProducts() {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`);
+    if (!res.ok) throw new Error("Failed to fetch products");
+    return res.json();
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return [];
+  }
+}
+
+export default async function HomeSkateboard() {
+  const products = await getProducts();
+
   return (
     <>
       <Header2 />
@@ -28,7 +44,7 @@ export default function Page() {
       <div className="mt-5"></div>
       <Brands />
       <Categories />
-      <Products />
+      <Products products={products} />
       <Banner />
       <Products2 />
       <Testimonials />

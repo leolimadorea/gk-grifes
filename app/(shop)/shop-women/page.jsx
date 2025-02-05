@@ -7,7 +7,23 @@ export const metadata = {
   title: "Shop Women || CLC",
   description: "CLC",
 };
-export default function Page() {
+
+export const dynamic = "force-dynamic";
+
+async function getProducts() {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`);
+    if (!res.ok) throw new Error("Failed to fetch products");
+    return res.json();
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return [];
+  }
+}
+
+export default async function ShopWomenPage() {
+  const products = await getProducts();
+
   return (
     <>
       <Header2 />
@@ -19,7 +35,7 @@ export default function Page() {
           </p>
         </div>
       </div>
-      <ShopDefault />
+      <ShopDefault filteredProducts={products} />
       <Footer1 />
     </>
   );

@@ -6,9 +6,22 @@ import ProductGrid from "./ProductGrid";
 import ShopFilter from "./ShopFilter";
 
 export default function ShopDefault({ filteredProducts }) {
-  const [gridItems, setGridItems] = useState(window?.innerWidth < 768 ? 2 : 4);
+  // Inicializar com valor padrão
+  const [gridItems, setGridItems] = useState(4);
   const [displayedProducts, setDisplayedProducts] = useState(filteredProducts);
   const [searchQuery, setSearchQuery] = useState("");
+
+  // Atualizar grid baseado no tamanho da tela quando montar
+  useEffect(() => {
+    setGridItems(window.innerWidth < 768 ? 2 : 4);
+
+    const handleResize = () => {
+      setGridItems(window.innerWidth < 768 ? 2 : 4);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Memoize a função de filtro
   const filterProducts = useCallback((query, products) => {

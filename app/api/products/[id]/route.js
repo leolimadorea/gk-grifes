@@ -3,9 +3,11 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+export const dynamic = "force-dynamic";
+
 export async function GET(request, { params }) {
   try {
-    const { id } = params;
+    const id = parseInt(params.id);
 
     const product = await prisma.product.findUnique({
       where: { id: Number(id) },
@@ -40,10 +42,9 @@ export async function GET(request, { params }) {
 
     return NextResponse.json(product);
   } catch (error) {
-    console.error("Erro ao buscar o produto:", error);
-    return NextResponse.json(
-      { error: "Erro ao buscar o produto" },
-      { status: 500 }
-    );
+    console.error("Erro ao buscar produto:", error);
+    return new Response(JSON.stringify({ error: "Erro ao buscar produto" }), {
+      status: 500,
+    });
   }
 }

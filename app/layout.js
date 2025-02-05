@@ -157,9 +157,7 @@ export default function RootLayout({ children }) {
     <html lang="pt-BR">
       <body>
         <Context>
-          <NextAuthSessionProvider>
-            {children}
-          </NextAuthSessionProvider>
+          <NextAuthSessionProvider>{children}</NextAuthSessionProvider>
         </Context>
       </body>
     </html>

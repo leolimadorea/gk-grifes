@@ -15,7 +15,29 @@ export const metadata = {
   title: "Shop Drawer Sidebar || CLC",
   description: "CLC",
 };
-export default function Page() {
+
+export const dynamic = "force-dynamic";
+
+async function getProduct(id) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/products/${id}`
+    );
+    if (!res.ok) throw new Error("Failed to fetch product");
+    return res.json();
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    return null;
+  }
+}
+
+export default async function ProductPage() {
+  const product = await getProduct(1);
+
+  if (!product) {
+    return <div>Carregando...</div>;
+  }
+
   return (
     <>
       <Header2 />
@@ -52,7 +74,7 @@ export default function Page() {
       </div>
       <SidebarToggler />
 
-      <DetailsOuterZoom />
+      <DetailsOuterZoom product={product} />
       <ShopDetailsTab />
       <Products />
       <RecentProducts />

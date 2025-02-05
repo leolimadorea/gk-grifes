@@ -8,7 +8,23 @@ export const metadata = {
   title: "Shop Left Sidebar || CLC",
   description: "CLC",
 };
-export default function Page() {
+
+export const dynamic = "force-dynamic";
+
+async function getProducts() {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`);
+    if (!res.ok) throw new Error("Failed to fetch products");
+    return res.json();
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return [];
+  }
+}
+
+export default async function Page() {
+  const products = await getProducts();
+
   return (
     <>
       <Topbar1 /> <Header2 />
@@ -24,7 +40,7 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <ShopSidebarleft />
+      <ShopSidebarleft products={products} />
       <Footer1 />
     </>
   );

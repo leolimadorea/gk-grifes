@@ -7,49 +7,26 @@ import WhatsAppButton from "@/components/clc/Whats/WhatsAppButton";
 import ShopDefault from "@/components/shop/ShopDefault";
 import Header2 from "@/components/headers/Header2";
 
-export default function Page() {
-  const searchParams = useSearchParams();
-  const category = searchParams.get("category");
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+export const dynamic = "force-dynamic";
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        setLoading(true);
+async function getProducts() {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`);
+    if (!res.ok) throw new Error("Failed to fetch products");
+    return res.json();
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return [];
+  }
+}
 
-        const res = await fetch(
-          category ? `/api/categories/${category}/products` : `/api/products` // Caso nenhuma categoria seja selecionada
-        );
-
-        if (res.ok) {
-          const data = await res.json();
-          setFilteredProducts(data);
-        } else {
-          console.error("Erro ao buscar produtos:", await res.text());
-        }
-      } catch (error) {
-        console.error("Erro de rede ao buscar produtos:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, [category]);
+export default async function ShopPage() {
+  const products = await getProducts();
 
   return (
     <>
       <Header2 />
-      {loading ? (
-        <div className="preload preload-container" id="preloader">
-          <div className="preload-logo">
-            <div className="spinner"></div>
-          </div>
-        </div>
-      ) : (
-        <ShopDefault filteredProducts={filteredProducts} />
-      )}
+      <ShopDefault filteredProducts={products} />
       <Footer1 />
       <WhatsAppButton />
     </>
