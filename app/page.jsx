@@ -24,7 +24,7 @@ import Header11 from "@/components/headers/Header11";
 import Header1 from "@/components/headers/Header1";
 
 export const metadata = {
-  title: "CLC - Chaminé",
+  title: "GK - GRIFESS",
 };
 
 export const revalidate = 0;

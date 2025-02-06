@@ -4,8 +4,8 @@ import Header2 from "@/components/headers/Header2";
 import Link from "next/link";
 import React from "react";
 export const metadata = {
-  title: "Page Not Found || CLC",
-  description: "CLC",
+  title: "Page Not Found || GK",
+  description: "GK",
 };
 export default function notFound() {
   return (
