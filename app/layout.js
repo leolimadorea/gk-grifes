@@ -37,9 +37,7 @@ export default function RootLayout({ children }) {
   const pathname = usePathname();
   useEffect(() => {
     if (typeof window !== "undefined") {
-      import("bootstrap/dist/js/bootstrap.esm").then(() => {
-        // Module is imported, you can access any exported functionality if
-      });
+      import("bootstrap/dist/js/bootstrap.esm").then(() => {});
     }
   }, []);
   // useEffect(() => {
