@@ -1,141 +1,117 @@
 .header-default {
   background-color: black;
-  color: yellow !important;
+  color: yellow;
   padding: 20px 0;
 
-  .main-header {
+  .mainheader {
     background-color: black;
+  }
+  // Barra de pesquisa no layout normal
+  .searchbox {
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: black;
+  }
 
-    // Barra de pesquisa no layout normal
-    .search-box {
-      display: flex;
-      align-items: center;
-      position: relative;
+  .searchinput {
+    width: 300px;
+    height: 40px;
+    font-size: 16px;
+    padding: 0 15px;
+    background-color: black;
+    border: 2px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
 
-      .search-input {
-        width: 300px;
-        height: 40px;
-        font-size: 16px;
-        padding: 0 15px;
-        background-color: black;
-        border: 2px solid yellow;
-        color: yellow;
-
-        &::placeholder {
-          color: yellow;
-        }
-      }
-
-      .search-icon {
-        position: absolute;
-        right: 10px;
-        cursor: pointer;
-      }
-    }
-
-    // Logo padrão
-    .logo-header {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      img {
-        width: 200px;
-        height: auto;
-      }
-    }
-
-    // Ícones de navegação no layout normal
-    .nav-icon-item {
-      display: flex;
-      align-items: center;
+    &::placeholder {
+      color: rgb(0, 0, 0);
     }
   }
 
-  // Ocultar os ícones no layout normal
-  // .media-icons {
-  //   display: none;
-  // }
+  .searchicon {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+  }
 
-  .search-toggle {
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 200px;
+      height: auto;
+    }
+  }
+
+  .nav-icon-item {
+    display: flex;
+    align-items: center;
+  }
+
+  .searchtoggle {
     display: none;
   }
+
   @media screen and (max-width: 768px) {
-    .search-box {
-      display: none; // Hide the default search bar on mobile
+    .searchbox {
+      display: flex; // Hide the default search bar on mobile
     }
 
-    .search-toggle {
+    .searchtoggle {
       display: flex;
       background: none;
       border: none;
       cursor: pointer;
     }
 
-    .mobile-search-box {
-      display: none;
+    .mobilesearch {
+      display: flex;
+      flex-direction: row;
       align-items: center;
       justify-content: center;
       background-color: black;
       padding: 10px;
       width: 100%;
       border-bottom: 2px solid yellow;
-
-      .search-input {
-        width: 80%;
-        padding: 8px;
-        border: 2px solid yellow;
-        color: yellow;
-        background: black;
-        font-size: 16px;
-        display: none;
-      }
-
-      button {
-        background: none;
-        border: none;
-        color: yellow;
-        font-size: 18px;
-        margin-left: 10px;
-        cursor: pointer;
-      }
+      position: absolute;
+      top: 60px;
+      left: 0;
     }
-  }
 
-  // Ícones organizados no media query
-  .media-icons {
-    display: flex;
-    justify-content: right; // Ícone de pesquisa à esquerda, outros à direita
-    margin-left: 15px;
-    padding: 0 15px;
-
-    // Ícone de pesquisa à esquerda
-    .search-icon-media {
+    .mobilesearch .searchinput {
+      width: 80%;
+      padding: 8px;
+      border: 2px solid yellow;
+      color: yellow;
+      background: black;
+      font-size: 16px;
       display: block;
-      width: 24px;
-      height: 24px;
+    }
+
+    .mobilesearch button {
+      background: none;
+      border: none;
+      color: yellow;
+      font-size: 18px;
+      margin-left: 10px;
       cursor: pointer;
     }
-
-    // Ícones de usuário e carrinho à direita
-    .nav-icon-item {
-      display: flex;
-      align-items: center;
-    }
   }
-}
 
-.media-icons {
-  display: flex;
-  justify-content: right;
-  gap: 1rem;
-}
+  .mediaicons {
+    display: flex;
+    justify-content: right;
+    gap: 1rem;
+  }
 
-.search-box {
-  position: relative;
-  width: 200px;
+  .searchbox {
+    position: relative;
+    width: 200px;
+  }
 
-  .search-input {
+  .searchbox .searchinput {
     width: 100%;
     padding: 10px 40px 10px 15px;
     border: 1px solid #ddd;
@@ -146,7 +122,7 @@
     outline: none;
   }
 
-  .search-icon {
+  .searchbox .searchicon {
     position: absolute;
     top: 50%;
     right: 10px;
@@ -155,7 +131,13 @@
   }
 }
 
-.cart-button {
+.mediaicons {
+  margin-top: 210px;
+}
+.logo {
+  margin-left: 30px;
+}
+.cart {
   background: none;
   border: none;
   padding: 0;
@@ -165,7 +147,7 @@
 }
 
 /* Hamburger Menu Button */
-.menu-toggle {
+.hamburger {
   background: none;
   border: none;
   cursor: pointer;
@@ -222,4 +204,9 @@
 
 .sidebar-menu nav ul li a:hover {
   background-color: rgba(255, 255, 0, 0.2);
+}
+.menus {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
