@@ -15,7 +15,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
           <h3>Seu Carrinho</h3>
           <button onClick={onClose} className={styles.closeButton}>
             <Image
-              src="/images/close.svg"
+              src="/images/item/cursor-close.svg"
               alt="Fechar"
               width={24}
               height={24}

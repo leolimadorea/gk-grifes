@@ -41,23 +41,6 @@ export default function Header13() {
               </button>
             </div>
 
-            <div className="col-xl-4 d-none d-xl-flex align-items-center">
-              <div className={styles["search-box"]}>
-                <input
-                  type="text"
-                  placeholder="Pesquisar..."
-                  className={styles["search-input"]}
-                />
-                <Image
-                  src="/images/buscar.svg"
-                  alt="Ícone de busca"
-                  width={24}
-                  height={24}
-                  className={styles["search-icon"]}
-                />
-              </div>
-            </div>
-
             <div className="col-xl-4 text-center">
               <Link href="/" className={styles["logo-header"]}>
                 <Image
@@ -73,19 +56,12 @@ export default function Header13() {
 
             <div className="col-xl-4 d-flex justify-content-end">
               <div className={styles["media-icons"]}>
-                <div className="d-flex gap-3">
+                <div className="d-flex gap-1">
                   <button
                     className={styles["search-toggle"]}
                     onClick={() => setIsSearchOpen(!isSearchOpen)}
                     aria-label="Abrir pesquisa"
-                  >
-                    <Image
-                      src="/images/buscar.svg"
-                      alt="Pesquisar"
-                      width={24}
-                      height={24}
-                    />
-                  </button>
+                  ></button>
                   <Link href="/my-account" className="nav-icon-item">
                     <Image
                       src="/images/user.svg"
@@ -107,6 +83,24 @@ export default function Header13() {
                     />
                   </button>
                 </div>
+              </div>
+            </div>
+
+            {/* New Search Bar Positioning */}
+            <div className={styles["search-box-bottom"]}>
+              <div className={styles["search-box"]}>
+                <input
+                  type="text"
+                  placeholder="Pesquisar..."
+                  className={styles["search-input"]}
+                />
+                <Image
+                  src="/images/buscar.svg"
+                  alt="Ícone de busca"
+                  width={24}
+                  height={24}
+                  className={styles["search-icon"]}
+                />
               </div>
             </div>
           </div>
