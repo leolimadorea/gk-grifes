@@ -18,7 +18,6 @@ export default function Collections() {
             768: { slidesPerView: 2, spaceBetween: 30 },
             0: { slidesPerView: 1, spaceBetween: 15 },
           }}
-          //   pagination={{clickable:true, clickable: true }}
           className="tf-sw-recent"
         >
           {recentItems.map((item, index) => (
