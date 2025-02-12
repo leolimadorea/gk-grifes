@@ -1,0 +1,56 @@
+.brandCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+}
+
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+}
+.text {
+  display: flex;
+  justify-content: center;
+}
+.brandsSwiper {
+  .brandsSlide {
+    max-width: 120px; // Set a fixed width to prevent it from stretching
+    display: flex;
+    justify-content: center;
+  }
+}
+.swiper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    color: black !important;
+  }
+
+  .swiper-button-prev {
+    left: -70px !important; // Move left button further
+  }
+
+  .swiper-button-next {
+    right: -70px !important; // Move right button further
+  }
+
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 20px !important; // Adjust arrow size
+  }
+}

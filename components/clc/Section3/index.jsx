@@ -78,8 +78,6 @@
 //   );
 // }
 
-
-
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -97,7 +95,7 @@ export default function Section3() {
     },
     {
       id: 2,
-      name: "COLEÇÃO INVERNO",
+      name: "CALÇA JEANS",
       image: "/images/inverno2.jpg",
     },
     {
@@ -108,6 +106,11 @@ export default function Section3() {
     {
       id: 4,
       name: "SHORTS",
+      image: "/images/shorts.jpg",
+    },
+    {
+      id: 5,
+      name: "CHINELOS",
       image: "/images/shorts.jpg",
     },
   ];
@@ -147,7 +150,9 @@ export default function Section3() {
                       priority={true}
                     />
                     <div className={styles.overlay}>
-                      <span className={styles.categoryName}>{category.name}</span>
+                      <span className={styles.categoryName}>
+                        {category.name}
+                      </span>
                     </div>
                   </div>
                 </div>
