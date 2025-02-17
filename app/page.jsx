@@ -23,6 +23,7 @@ import Header12 from "@/components/headers/Header12";
 import Header11 from "@/components/headers/Header11";
 import Header1 from "@/components/headers/Header1";
 import Marcas from "@/components/marcas";
+import styles from "./styles.module.scss";
 
 export const metadata = {
   title: "GK - GRIFESS",
@@ -52,7 +53,9 @@ export default async function Page() {
 
   return (
     <div className="color-primary-8 color-main-text-2">
-      <Header13 />
+      <body className={styles.margin}>
+        <Header13 />
+      </body>
       <Section1 />
       <Section2 />
       <Products products={products} />

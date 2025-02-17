@@ -17,8 +17,8 @@ const CartSidebar = ({ isOpen, onClose }) => {
             <Image
               src="/images/item/cursor-close.svg"
               alt="Fechar"
-              width={24}
-              height={24}
+              width={40}
+              height={40}
             />
           </button>
         </div>
