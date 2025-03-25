@@ -229,8 +229,8 @@
 .swiper-button-next:after,
 .swiper-button-prev:after {
   position: absolute !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
+  top: 25% !important;
+  transform: translateX(27%) !important;
   z-index: 10;
   width: 40px;
   height: 40px;

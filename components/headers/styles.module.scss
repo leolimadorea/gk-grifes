@@ -3,204 +3,352 @@ $primary-color: #d4af37; // Gold color
 $background-color: #000;
 $text-color: #fff;
 $transition-speed: 0.3s;
+$max-width: 1440px;
+$container-padding: 100px;
 
-.header {
+.headerWrapper {
+  background-color: $background-color;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+}
+
+.headerContainer {
+  max-width: $max-width;
+  padding: 2rem $container-padding;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: $background-color;
-  padding: 1rem 2rem;
-  color: $text-color;
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000; /* Ensure it's above other content */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a shadow effect to the header */
-  transition: top 0.3s; /* Optional: for smooth transition */
-  .rightside {
-    display: flex;
-    justify-content: right;
+  position: relative;
+}
+
+// Desktop Styles
+.desktopOnly {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 0.5rem;
+  width: 300px;
+  background: rgba(255, 255, 255, 0.1);
+
+  input {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 0.25rem;
+    font-size: 0.9rem;
+    background: transparent;
+    color: $text-color;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
   }
-  .leftside {
+
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
     display: flex;
-    justify-content: left;
-    gap: 55px;
+    align-items: center;
   }
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: $text-color;
-}
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
 
-.searchBar {
-  display: flex;
-  border: 1px solid $primary-color;
-  border-radius: 5px;
-  overflow: hidden;
-  width: 285px;
-  margin-top: 1rem; /* Add margin so it appears below the other elements */
-}
-
-.icons {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.menuToggleButton {
-  display: none; /* Hide by default on larger screens */
-  cursor: pointer;
-  background: none;
-  border: none;
-}
-
-.cartContainer {
-  position: relative;
-  background: none;
-  border-radius: none;
-  border: none;
-
-  .cartBadge {
-    top: -5px;
-    right: -10px;
-    font-size: 12px;
+  img {
+    object-fit: contain;
   }
 }
-.searchBar {
+
+.userIcons {
   display: flex;
-  border: 1px solid $primary-color;
-  border-radius: 5px;
-  overflow: hidden;
-  width: 285px;
+  gap: 1.5rem;
+  align-items: center;
+
+  a,
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .cartButton {
+    position: relative;
+
+    .cartCount {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: $primary-color;
+      color: $background-color;
+      font-size: 0.75rem;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+  }
+}
+
+// Mobile Styles
+.mobileMenuButton {
+  display: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.hamburgerIcon {
+  width: 24px;
+  height: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: $text-color;
+    transition: transform 0.3s ease;
+  }
+}
+
+.mobileCartButton {
+  display: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+
+  .cartCount {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: $primary-color;
+    color: $background-color;
+    font-size: 0.75rem;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+}
+
+.mobileSearchBar {
+  display: none;
+  width: 100%;
+  padding: 1rem;
+  background: $background-color;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 
   input {
-    border: none;
-    padding: 0.5rem;
-    outline: none;
-    background: transparent;
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
     color: $text-color;
+    font-size: 1rem;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
   }
 
   button {
-    background: transparent;
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
     border: none;
-    padding: 0.5rem;
-    cursor: pointer;
+    padding: 0;
   }
 }
 
-// New styles for the overlay HUD
-.overlay {
+.mobileMenu {
   position: fixed;
   top: 0;
-  right: 0;
-  width: 100vw;
+  left: -100%;
+  width: 80%;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 999;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding-top: 50px;
-  padding-right: 20px;
-}
-
-.nav {
   background: $background-color;
-  color: $text-color;
-  width: 250px;
-  padding: 20px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 20px;
-  position: relative;
   z-index: 1000;
+  transition: left 0.3s ease;
+  padding: 2rem;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
 
-  ul {
+  &.open {
+    left: 0;
+  }
+
+  .mobileMenuHeader {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    justify-content: flex-end;
+    margin-bottom: 2rem;
 
-    li {
-      position: relative;
-      font-size: 14px;
+    .closeButton {
+      background: none;
+      border: none;
+      padding: 0;
       cursor: pointer;
-      .start {
-        font-size: 14px;
-        color: white;
-      }
-      a {
-        font-size: 13px;
-        color: #d4af37;
+      width: 24px;
+      height: 24px;
+      position: relative;
+
+      .closeIcon {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        span {
+          position: absolute;
+          width: 100%;
+          height: 2px;
+          background-color: $text-color;
+          top: 50%;
+          left: 0;
+
+          &:first-child {
+            transform: rotate(45deg);
+          }
+
+          &:last-child {
+            transform: rotate(-45deg);
+          }
+        }
       }
     }
   }
 
-  .closeButton {
-    background: none;
-    border: none;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
+  .mobileNav {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 1.5rem;
+
+        a {
+          color: $text-color;
+          text-decoration: none;
+          font-size: 1.1rem;
+          font-weight: 500;
+          display: block;
+          padding: 0.5rem 0;
+          transition: color 0.2s;
+
+          &:hover {
+            color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Navigation
+.navWrapper {
+  background-color: $background-color;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+}
+
+.navContainer {
+  max-width: $max-width;
+  padding: 0.75rem $container-padding;
+  margin: 0 auto;
+
+  ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      a {
+        text-decoration: none;
+        color: $text-color;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: color 0.2s;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+// Media Queries
+@media (max-width: 1200px) {
+  .headerContainer,
+  .navContainer {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
 @media (max-width: 768px) {
-  .header {
-    display: flex;
-    flex-direction: column; /* Stack the elements vertically */
-    align-items: center;
-    gap: 1rem; /* Add space between stacked elements */
-    position: inherit;
-
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; /* Ensure it's above other content */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a shadow effect to the header */
-    transition: top 0.3s; /* Optional: for smooth transition */
+  .desktopOnly {
+    display: none;
   }
 
-  .logo {
-    font-size: 1.2rem; /* Adjust logo size for mobile */
+  .mobileMenuButton,
+  .mobileCartButton {
+    display: block;
   }
 
-  .searchBar {
-    width: 100%; /* Full width for search bar */
-    max-width: 300px; /* Limit the max-width */
-    margin-top: 1rem; /* Add space between the icons and search bar */
+  .mobileSearchBar {
+    display: block;
+    position: relative;
   }
 
-  .menuToggleButton {
-    display: block; /* Show hamburger menu on small screens */
-    background: none;
-    border: none;
-    margin-right: 330px;
-    img {
-      width: 32px;
-      height: 32px;
-      max-width: 150%;
+  .headerContainer {
+    padding: 1rem;
+    justify-content: space-between;
+
+    .logo {
+      position: static;
+      transform: none;
+      margin: 0;
     }
   }
 
-  .icons {
-    display: flex;
-    justify-content: center; /* Center the icons in a row */
-    gap: 1rem;
-    align-items: center;
-    margin-top: 1rem; /* Add margin above icons */
-  }
-}
-
-@media (min-width: 768px) {
-  .menuToggleButton {
-    display: block; /* Enable on desktop as well */
+  .navWrapper {
+    display: none;
   }
 }

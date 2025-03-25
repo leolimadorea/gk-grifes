@@ -8,156 +8,100 @@ import CartSidebar from "../common/CartSidebar";
 
 const Header13 = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [openSubMenu, setOpenSubMenu] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleCart = (e) => {
     e.preventDefault();
     setIsCartOpen(!isCartOpen);
   };
 
-  const toggleSubMenu = (menu) => {
-    setOpenSubMenu(openSubMenu === menu ? null : menu);
-  };
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = (e) => {
-    if (e.target.classList.contains(styles.overlay)) {
-      setIsMenuOpen(false);
-    }
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
-    <header className={styles.header}>
-      {/* Hamburger Button for mobile and desktop */}
-      <div className={styles.leftside}>
-        <button
-          className={styles.menuToggleButton}
-          onClick={toggleMenu}
-          aria-label="Toggle Menu"
-        >
-          <Image
-            src="/images/hamburger1.svg"
-            alt="Menu"
-            width={24}
-            height={24}
-          />
-        </button>
+    <>
+      <header className={styles.headerWrapper}>
+        <div className={styles.headerContainer}>
+          {/* Mobile Menu Button */}
+          <button
+            className={styles.mobileMenuButton}
+            onClick={toggleMobileMenu}
+          >
+            <div className={styles.hamburgerIcon}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </button>
 
-        {/* HUD Overlay Navigation */}
-        {isMenuOpen && (
-          <div className={styles.overlay} onClick={closeMenu}>
-            <div className={styles.nav} onClick={(e) => e.stopPropagation()}>
-              <button
-                className={styles.closeButton}
-                onClick={() => setIsMenuOpen(false)}
-                aria-label="Close Menu"
-              >
-                <img
-                  src="/images/close-button..png"
-                  alt="Close"
-                  width={16}
-                  height={16}
+          {/* Logo */}
+          <div className={styles.logo}>
+            <Link href="/">
+              <Image
+                src="/images/gkgrifes.png"
+                alt="GK Grifes"
+                width={100}
+                height={50}
+                priority
+              />
+            </Link>
+          </div>
+
+          {/* Cart Icon for Mobile */}
+          <button onClick={toggleCart} className={styles.mobileCartButton}>
+            <Image
+              src="/images/cart.svg"
+              alt="Carrinho"
+              width={24}
+              height={24}
+              className={styles.whiteIcon}
+            />
+            <span className={styles.cartCount}>0</span>
+          </button>
+
+          {/* Desktop Elements */}
+          <div className={styles.desktopOnly}>
+            {/* Search Bar */}
+            <div className={styles.searchBar}>
+              <input type="text" placeholder="Buscar" />
+              <button>
+                <Image
+                  src="/images/buscar.svg"
+                  alt="Search"
+                  width={24}
+                  height={24}
                 />
               </button>
+            </div>
 
-              <ul>
-                <li>
-                  <Link href="/" className={styles.start}>
-                    Início
-                  </Link>
-                </li>
-
-                <li
-                  onClick={() => toggleSubMenu("vestuario")}
-                  className={`${styles.dropdown} ${
-                    openSubMenu === "vestuario" ? styles.open : ""
-                  }`}
-                >
-                  Vestuário
-                  {openSubMenu === "vestuario" && (
-                    <ul className={styles.dropdownMenu}>
-                      <li>
-                        <Link href="/products/calca">Calça</Link>
-                      </li>
-                      <li>
-                        <Link href="/products/bermuda">Bermuda</Link>
-                      </li>
-                      <li>
-                        <Link href="/products/camisa">Camisa</Link>
-                      </li>
-                      <li>
-                        <Link href="/products/conjunto">Conjunto</Link>
-                      </li>
-                      <li>
-                        <Link href="/products/moletom">Moletom</Link>
-                      </li>
-                    </ul>
-                  )}
-                </li>
-
-                <li
-                  onClick={() => toggleSubMenu("calcados")}
-                  className={`${styles.dropdown} ${
-                    openSubMenu === "calcados" ? styles.open : ""
-                  }`}
-                >
-                  Calçados
-                  {openSubMenu === "calcados" && (
-                    <ul className={styles.dropdownMenu}>
-                      <li>
-                        <Link href="/products/tenis">Tênis</Link>
-                      </li>
-                      <li>
-                        <Link href="/products/chinelo">Chinelo</Link>
-                      </li>
-                    </ul>
-                  )}
-                </li>
-
-                <li
-                  onClick={() => toggleSubMenu("acessorios")}
-                  className={`${styles.dropdown} ${
-                    openSubMenu === "acessorios" ? styles.open : ""
-                  }`}
-                >
-                  Acessórios
-                  {openSubMenu === "acessorios" && (
-                    <ul className={styles.dropdownMenu}>
-                      <li>
-                        <Link href="/products/bones">Bonés</Link>
-                      </li>
-                      <li>
-                        <Link href="/products/cinto">Cinto</Link>
-                      </li>
-                      <li>
-                        <Link href="/products/bucket-hat">Bucket Hat</Link>
-                      </li>
-                      <li>
-                        <Link href="/products/oculos">Óculos</Link>
-                      </li>
-                    </ul>
-                  )}
-                </li>
-              </ul>
+            {/* User Icons */}
+            <div className={styles.userIcons}>
+              <Link href="/my-account">
+                <Image
+                  src="/images/user.svg"
+                  alt="Minha Conta"
+                  width={24}
+                  height={24}
+                  className={styles.whiteIcon}
+                />
+              </Link>
+              <button onClick={toggleCart} className={styles.cartButton}>
+                <Image
+                  src="/images/cart.svg"
+                  alt="Carrinho"
+                  width={24}
+                  height={24}
+                  className={styles.whiteIcon}
+                />
+                <span className={styles.cartCount}>0</span>
+              </button>
             </div>
           </div>
-        )}
-
-        <div className={styles.logo}>
-          <Image
-            src="/images/gkgrifes.png"
-            alt="GK Grifes"
-            width={100}
-            height={50}
-          />
         </div>
-      </div>
-      <div className={styles.leftside}>
-        <div className={styles.searchBar}>
+
+        {/* Mobile Search Bar */}
+        <div className={styles.mobileSearchBar}>
           <input type="text" placeholder="Buscar" />
           <button>
             <Image
@@ -168,33 +112,97 @@ const Header13 = () => {
             />
           </button>
         </div>
+      </header>
 
-        <div className={styles.icons}>
-          <Link href="/my-account" className="nav-icon-item">
-            <Image
-              src="/images/user.svg"
-              alt="Minha Conta"
-              width={24}
-              height={24}
-            />
-          </Link>
-          <button
-            onClick={toggleCart}
-            className={styles.cartContainer}
-            aria-label="Abrir carrinho"
-          >
-            <img
-              src="/images/cart.svg"
-              alt="Carrinho"
-              className={styles.cartBadge}
-            />
+      {/* Mobile Menu */}
+      <div
+        className={`${styles.mobileMenu} ${
+          isMobileMenuOpen ? styles.open : ""
+        }`}
+      >
+        <div className={styles.mobileMenuHeader}>
+          <button onClick={toggleMobileMenu} className={styles.closeButton}>
+            <div className={styles.closeIcon}>
+              <span></span>
+              <span></span>
+            </div>
           </button>
         </div>
+        <nav className={styles.mobileNav}>
+          <ul>
+            <li>
+              <Link href="/produtos" onClick={toggleMobileMenu}>
+                Produtos
+              </Link>
+            </li>
+            <li>
+              <Link href="/vestuario" onClick={toggleMobileMenu}>
+                Vestuário
+              </Link>
+            </li>
+            <li>
+              <Link href="/acessorios" onClick={toggleMobileMenu}>
+                Acessórios
+              </Link>
+            </li>
+            <li>
+              <Link href="/calcados" onClick={toggleMobileMenu}>
+                Calçados
+              </Link>
+            </li>
+            <li>
+              <Link href="/sob-encomenda" onClick={toggleMobileMenu}>
+                Sob Encomenda
+              </Link>
+            </li>
+            <li>
+              <Link href="/kids" onClick={toggleMobileMenu}>
+                Kids
+              </Link>
+            </li>
+            <li>
+              <Link href="/comunidade" onClick={toggleMobileMenu}>
+                Comunidade
+              </Link>
+            </li>
+          </ul>
+        </nav>
       </div>
+
+      {/* Desktop Navigation */}
+      <nav className={`${styles.navWrapper} ${styles.desktopOnly}`}>
+        <div className={styles.navContainer}>
+          <ul>
+            <li>
+              <Link href="/produtos">Produtos</Link>
+            </li>
+            <li>
+              <Link href="/vestuario">Vestuário</Link>
+            </li>
+            <li>
+              <Link href="/acessorios">Acessórios</Link>
+            </li>
+            <li>
+              <Link href="/calcados">Calçados</Link>
+            </li>
+            <li>
+              <Link href="/sob-encomenda">Sob Encomenda</Link>
+            </li>
+            <li>
+              <Link href="/kids">Kids</Link>
+            </li>
+            <li>
+              <Link href="/comunidade">Comunidade</Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      {/* Cart Sidebar */}
       {isCartOpen && (
         <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
       )}
-    </header>
+    </>
   );
 };
 

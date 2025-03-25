@@ -1,99 +1,3 @@
-// .container {
-//   background: #fff;
-//   position: relative;
-//   display: flex;
-//   flex-direction: column;
-// }
-
-// .image {
-//   width: 100vw;
-//   height: 100vh;
-//   margin: 0;
-//   order: -1;
-//   overflow: hidden;
-  
-//   img {
-//     width: 100%;
-//     height: 100%;
-//     object-fit: cover;
-//   }
-// }
-
-// .content {
-//   max-width: 1440px;
-//   margin: 0 auto;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   background: #fff;
-  
-//   @media screen and (max-width: 768px) {
-//     padding-inline: 20px;
-//   }
-// }
-
-// .block {
-//   background: white;
-//   padding-inline: 40px;
-//   padding-block: 50px;
-//   width: 100%;
-//   text-align: center;
-  
-//   @media screen and (max-width: 768px) {
-//     padding-inline: 20px;
-//     padding-block: 20px;
-//   }
-
-//   h1 {
-//     color: black;
-//     font-family: "Red Rose", sans-serif;
-//     font-size: 60px;
-//     font-weight: 700;
-//     line-height: 84px;
-    
-//     @media screen and (max-width: 768px) {
-//       font-size: 30px;
-//       line-height: 34px;
-//     }
-//   }
-
-//   h4 {
-//     color: black;
-//     font-family: "Sora", sans-serif;
-//     font-size: 15px;
-//     font-weight: 400;
-//     line-height: 24.75px;
-//     padding-block: 20px;
-    
-//     @media screen and (max-width: 768px) {
-//       font-size: 12px;
-//       line-height: 21px;
-//     }
-//   }
-
-//   button {
-//     color: yellow;
-//     font-family: "Red Rose", sans-serif;
-//     font-size: 16px;
-//     font-weight: 700;
-//     line-height: 16px;
-//     background: black;
-//     padding: 10px 20px;
-//     border: none;
-//     cursor: pointer;
-//     transition: background 0.3s ease;
-    
-//     @media screen and (max-width: 768px) {
-//       font-size: 12px;
-//     }
-
-//     &:hover {
-//       background: #f0f0f0;
-//     }
-//   }
-// }
-
-
 .container {
   background: #fff;
   position: relative;
@@ -101,10 +5,9 @@
   flex-direction: column;
 
   .image {
-    order: -1; 
+    order: -1;
     width: 100%;
-    margin-top: 10px;
-    margin-bottom: 10px;
+
     overflow: hidden;
 
     img {
@@ -116,8 +19,6 @@
   }
 
   .content {
-    max-width: 1440px;
-    margin: 10px auto 0;
     display: flex;
     flex-direction: column;
     align-items: center;

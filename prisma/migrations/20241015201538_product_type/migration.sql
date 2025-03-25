@@ -1,2 +1,0 @@
--- AlterTable
-ALTER TABLE `Product` ADD COLUMN `type` ENUM('PC', 'MOBILE') NOT NULL DEFAULT 'PC';
