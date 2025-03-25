@@ -29,10 +29,10 @@ const Marcas = () => {
             slidesPerView={4}
             spaceBetween={20}
             breakpoints={{
-              1024: { slidesPerView: 4, spaceBetween: 5 },
-              768: { slidesPerView: 3, spaceBetween: 5 },
-              576: { slidesPerView: 2, spaceBetween: 5 },
-              0: { slidesPerView: 1, spaceBetween: 5 },
+              1024: { slidesPerView: 4, spaceBetween: 3 },
+              768: { slidesPerView: 3, spaceBetween: 3 },
+              576: { slidesPerView: 2, spaceBetween: 3 },
+              0: { slidesPerView: 1, spaceBetween: 3 },
             }}
             className={styles.brandsSwiper} // Unique class for this instance
           >
@@ -40,7 +40,7 @@ const Marcas = () => {
               <SwiperSlide key={index} className={styles.brandsSlide}>
                 <div className={styles.brandCard}>
                   <div className={styles.imageWrapper}>
-                    <Image
+                    <img
                       src={category.image}
                       alt={category.name}
                       width={100}

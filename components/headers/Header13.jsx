@@ -1,14 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import Image from "next/image";
+import { useState } from "react";
 import Link from "next/link";
 import styles from "./styles.module.scss";
+import Image from "next/image";
 import CartSidebar from "../common/CartSidebar";
 
-export default function Header13() {
+const Header13 = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(null);
 
@@ -21,188 +20,182 @@ export default function Header13() {
     setOpenSubMenu(openSubMenu === menu ? null : menu);
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = (e) => {
+    if (e.target.classList.contains(styles.overlay)) {
+      setIsMenuOpen(false);
+    }
+  };
+
   return (
-    <header id="header" className={styles["header-default"]}>
-      <div className={styles.header}>
-        <div className="container-full px_15 lg-px_40">
-          <div className="row wrapper-header align-items-center">
-            {/* Flex container for hamburger, logo, and media icons */}
-            <div className="col-xl-12 d-flex justify-content-between align-items-center">
-              {/* Hamburger Menu */}
+    <header className={styles.header}>
+      {/* Hamburger Button for mobile and desktop */}
+      <div className={styles.leftside}>
+        <button
+          className={styles.menuToggleButton}
+          onClick={toggleMenu}
+          aria-label="Toggle Menu"
+        >
+          <Image
+            src="/images/hamburger1.svg"
+            alt="Menu"
+            width={24}
+            height={24}
+          />
+        </button>
+
+        {/* HUD Overlay Navigation */}
+        {isMenuOpen && (
+          <div className={styles.overlay} onClick={closeMenu}>
+            <div className={styles.nav} onClick={(e) => e.stopPropagation()}>
               <button
-                className={styles.hamburger}
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                aria-label="Abrir menu"
+                className={styles.closeButton}
+                onClick={() => setIsMenuOpen(false)}
+                aria-label="Close Menu"
               >
-                <Image
-                  src="/images/hamburger 1.svg"
-                  alt="Menu"
-                  width={30}
-                  height={30}
+                <img
+                  src="/images/close-button..png"
+                  alt="Close"
+                  width={16}
+                  height={16}
                 />
               </button>
 
-              {/* Logo */}
-              <div className={styles.logoWrapper}>
-                <Link href="/" className={styles.logo}>
-                  <Image
-                    alt="logo"
-                    className={styles.logo}
-                    src="/images/gkgrifes.png"
-                    width={200}
-                    height={35}
-                    priority
-                  />
-                </Link>
-              </div>
+              <ul>
+                <li>
+                  <Link href="/" className={styles.start}>
+                    Início
+                  </Link>
+                </li>
 
-              {/* Media Icons */}
-              <div className={styles.mediaicons}>
-                <button
-                  className={styles.searchtoggle}
-                  onClick={() => setIsSearchOpen(!isSearchOpen)}
-                  aria-label="Abrir pesquisa"
-                ></button>
-                <Link href="/my-account" className="nav-icon-item">
-                  <Image
-                    src="/images/user.svg"
-                    alt="Minha Conta"
-                    width={24}
-                    height={24}
-                  />
-                </Link>
-                <button
-                  onClick={toggleCart}
-                  className={styles.cart}
-                  aria-label="Abrir carrinho"
+                <li
+                  onClick={() => toggleSubMenu("vestuario")}
+                  className={`${styles.dropdown} ${
+                    openSubMenu === "vestuario" ? styles.open : ""
+                  }`}
                 >
-                  <Image
-                    src="/images/cart.svg"
-                    alt="Carrinho"
-                    width={24}
-                    height={24}
-                  />
-                </button>
-              </div>
-            </div>
+                  Vestuário
+                  {openSubMenu === "vestuario" && (
+                    <ul className={styles.dropdownMenu}>
+                      <li>
+                        <Link href="/products/calca">Calça</Link>
+                      </li>
+                      <li>
+                        <Link href="/products/bermuda">Bermuda</Link>
+                      </li>
+                      <li>
+                        <Link href="/products/camisa">Camisa</Link>
+                      </li>
+                      <li>
+                        <Link href="/products/conjunto">Conjunto</Link>
+                      </li>
+                      <li>
+                        <Link href="/products/moletom">Moletom</Link>
+                      </li>
+                    </ul>
+                  )}
+                </li>
 
-            {/* Search Bar */}
-            <div className={styles.searchboxbottom}>
-              <div className={styles.searchbox}>
-                <input
-                  type="text"
-                  placeholder="Pesquisar..."
-                  className={styles.searchinput}
-                />
-                <Image
-                  src="/images/buscar.svg"
-                  alt="Ícone de busca"
-                  width={24}
-                  height={24}
-                  className={styles.searchicon}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
+                <li
+                  onClick={() => toggleSubMenu("calcados")}
+                  className={`${styles.dropdown} ${
+                    openSubMenu === "calcados" ? styles.open : ""
+                  }`}
+                >
+                  Calçados
+                  {openSubMenu === "calcados" && (
+                    <ul className={styles.dropdownMenu}>
+                      <li>
+                        <Link href="/products/tenis">Tênis</Link>
+                      </li>
+                      <li>
+                        <Link href="/products/chinelo">Chinelo</Link>
+                      </li>
+                    </ul>
+                  )}
+                </li>
 
-        {isSearchOpen && (
-          <div className={styles.mobilesearch}>
-            <input
-              type="text"
-              placeholder="Pesquisar..."
-              className={styles.searchinput}
-            />
-            <button onClick={() => setIsSearchOpen(false)}>X</button>
+                <li
+                  onClick={() => toggleSubMenu("acessorios")}
+                  className={`${styles.dropdown} ${
+                    openSubMenu === "acessorios" ? styles.open : ""
+                  }`}
+                >
+                  Acessórios
+                  {openSubMenu === "acessorios" && (
+                    <ul className={styles.dropdownMenu}>
+                      <li>
+                        <Link href="/products/bones">Bonés</Link>
+                      </li>
+                      <li>
+                        <Link href="/products/cinto">Cinto</Link>
+                      </li>
+                      <li>
+                        <Link href="/products/bucket-hat">Bucket Hat</Link>
+                      </li>
+                      <li>
+                        <Link href="/products/oculos">Óculos</Link>
+                      </li>
+                    </ul>
+                  )}
+                </li>
+              </ul>
+            </div>
           </div>
         )}
-      </div>
 
-      {isSearchOpen && (
-        <div className={styles.mobilesearch}>
-          <input
-            type="text"
-            placeholder="Pesquisar..."
-            className={styles.searchinput}
+        <div className={styles.logo}>
+          <Image
+            src="/images/gkgrifes.png"
+            alt="GK Grifes"
+            width={100}
+            height={50}
           />
-          <button onClick={() => setIsSearchOpen(false)}>X</button>
         </div>
-      )}
-
-      <div
-        className={`${styles["sidebar-menu"]} ${
-          isMenuOpen ? styles["open"] : ""
-        }`}
-      >
-        <button
-          className={styles["close-menu"]}
-          onClick={() => setIsMenuOpen(false)}
-        >
-          ✖
-        </button>
-        <nav>
-          <ul>
-            <li>
-              <Link href="/">Início</Link>
-            </li>
-            <li>
-              <Link href="/shop">Loja</Link>
-            </li>
-            <li onClick={() => toggleSubMenu("vestuario")}>Vestuário</li>
-            {openSubMenu === "vestuario" && (
-              <ul>
-                <li>
-                  <Link href="/products/calca">Calça</Link>
-                </li>
-                <li>
-                  <Link href="/products/bermuda">Bermuda</Link>
-                </li>
-                <li>
-                  <Link href="/products/camisa">Camisa</Link>
-                </li>
-                <li>
-                  <Link href="/products/conjunto">Conjunto</Link>
-                </li>
-                <li>
-                  <Link href="/products/moletom">Moletom</Link>
-                </li>
-              </ul>
-            )}
-            <li onClick={() => toggleSubMenu("calcados")}>Calçados</li>
-            {openSubMenu === "calcados" && (
-              <ul>
-                <li>
-                  <Link href="/products/tenis">Tênis</Link>
-                </li>
-                <li>
-                  <Link href="/products/chinelo">Chinelo</Link>
-                </li>
-              </ul>
-            )}
-            <li onClick={() => toggleSubMenu("acessorios")}>Acessórios</li>
-            {openSubMenu === "acessorios" && (
-              <ul>
-                <li>
-                  <Link href="/products/bones">Bonés</Link>
-                </li>
-                <li>
-                  <Link href="/products/cinto">Cinto</Link>
-                </li>
-                <li>
-                  <Link href="/products/bucket-hat">Bucket Hat</Link>
-                </li>
-                <li>
-                  <Link href="/products/oculos">Óculos</Link>
-                </li>
-              </ul>
-            )}
-          </ul>
-        </nav>
       </div>
+      <div className={styles.leftside}>
+        <div className={styles.searchBar}>
+          <input type="text" placeholder="Buscar" />
+          <button>
+            <Image
+              src="/images/buscar.svg"
+              alt="Search"
+              width={24}
+              height={24}
+            />
+          </button>
+        </div>
 
+        <div className={styles.icons}>
+          <Link href="/my-account" className="nav-icon-item">
+            <Image
+              src="/images/user.svg"
+              alt="Minha Conta"
+              width={24}
+              height={24}
+            />
+          </Link>
+          <button
+            onClick={toggleCart}
+            className={styles.cartContainer}
+            aria-label="Abrir carrinho"
+          >
+            <img
+              src="/images/cart.svg"
+              alt="Carrinho"
+              className={styles.cartBadge}
+            />
+          </button>
+        </div>
+      </div>
       {isCartOpen && (
         <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
       )}
     </header>
   );
-}
+};
+
+export default Header13;
