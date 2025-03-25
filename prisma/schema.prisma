@@ -29,10 +29,12 @@ model Product {
     title       String
     price       Float?
     categoryId  Int
+    subCategoryId Int?       
     description String        @db.Text
     quantity    Int?           @default(1)
     status      ProductStatus
     category    Category      @relation(fields: [categoryId], references: [id])
+    subCategory SubCategory?  @relation(fields: [subCategoryId], references: [id]) 
     payments    Payment[]
     variants    Variant[] 
     productVariantValues ProductVariantValue[]
@@ -71,6 +73,7 @@ model ProductVariantValue {
   variantValue   VariantValue  @relation(fields: [variantValueId], references: [id])
   price          Float         @default(0.0)
   stock          Int           @default(0)
+  paymentProducts PaymentProduct[]
 
   createdAt      DateTime      @default(now())
   updatedAt      DateTime      @updatedAt
@@ -83,7 +86,24 @@ model Category {
     imageUrl    String?
     createdAt   DateTime  @default(now())
     products    Product[]
+    subCategories SubCategory[]
+
 }
+
+
+model SubCategory {
+    id          Int       @id @default(autoincrement())
+    name        String
+    description String?
+    imageUrl    String?
+    categoryId  Int
+    category    Category  @relation(fields: [categoryId], references: [id])
+    products    Product[]
+
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
+}
+
 
 enum Role {
     SUBSCRIBER
@@ -152,10 +172,11 @@ model PaymentProduct {
     productId Int
     quantity  Int
     approved  Boolean?
+    variantId Int?
    
-
     product Product @relation(fields: [productId], references: [id])
     payment Payment @relation(fields: [paymentId], references: [id])
+    variant ProductVariantValue? @relation(fields: [variantId], references: [id])
 }
 
 model PaymentDeliveryAddress {
