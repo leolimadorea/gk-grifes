@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import styles from "./styles.module.scss";
 import Image from "next/image";
@@ -9,6 +9,76 @@ import CartSidebar from "../common/CartSidebar";
 const Header13 = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [showResults, setShowResults] = useState(false);
+  const searchTimeoutRef = useRef(null);
+  const searchRef = useRef(null);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch("/api/categories/getAll");
+        if (!response.ok) throw new Error("Failed to fetch categories");
+        const data = await response.json();
+        setCategories(data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCategories();
+
+    // Add click outside listener to close search results
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setShowResults(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Clear previous timeout
+    if (searchTimeoutRef.current) {
+      clearTimeout(searchTimeoutRef.current);
+    }
+
+    if (searchQuery.length < 2) {
+      setSearchResults([]);
+      setShowResults(false);
+      return;
+    }
+
+    // Debounce search to avoid too many requests
+    searchTimeoutRef.current = setTimeout(async () => {
+      try {
+        const response = await fetch(
+          `/api/search?q=${encodeURIComponent(searchQuery)}`
+        );
+        if (!response.ok) throw new Error("Search failed");
+        const data = await response.json();
+        setSearchResults(data);
+        setShowResults(true);
+      } catch (error) {
+        console.error("Error searching products:", error);
+      }
+    }, 300);
+
+    return () => {
+      if (searchTimeoutRef.current) {
+        clearTimeout(searchTimeoutRef.current);
+      }
+    };
+  }, [searchQuery]);
 
   const toggleCart = (e) => {
     e.preventDefault();
@@ -17,6 +87,10 @@ const Header13 = () => {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const handleSearchInputChange = (e) => {
+    setSearchQuery(e.target.value);
   };
 
   return (
@@ -63,8 +137,14 @@ const Header13 = () => {
           {/* Desktop Elements */}
           <div className={styles.desktopOnly}>
             {/* Search Bar */}
-            <div className={styles.searchBar}>
-              <input type="text" placeholder="Buscar" />
+            <div className={styles.searchBar} ref={searchRef}>
+              <input
+                type="text"
+                placeholder="Buscar"
+                value={searchQuery}
+                onChange={handleSearchInputChange}
+                onFocus={() => searchQuery.length >= 2 && setShowResults(true)}
+              />
               <button>
                 <Image
                   src="/images/buscar.svg"
@@ -73,6 +153,40 @@ const Header13 = () => {
                   height={24}
                 />
               </button>
+
+              {/* Search Results Dropdown */}
+              {showResults && searchResults.length > 0 && (
+                <div className={styles.searchResultsDropdown}>
+                  {searchResults.map((product) => (
+                    <Link
+                      href={`/product/${product.id}`}
+                      key={product.id}
+                      onClick={() => setShowResults(false)}
+                      className={styles.searchResultItem}
+                    >
+                      {product.img && (
+                        <Image
+                          src={product.img}
+                          alt={product.title}
+                          width={40}
+                          height={40}
+                        />
+                      )}
+                      <div className={styles.productInfo}>
+                        <span className={styles.productTitle}>
+                          {product.title}
+                        </span>
+                        <span className={styles.productPrice}>
+                          {new Intl.NumberFormat("pt-BR", {
+                            style: "currency",
+                            currency: "BRL",
+                          }).format(product.price)}
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* User Icons */}
@@ -101,8 +215,14 @@ const Header13 = () => {
         </div>
 
         {/* Mobile Search Bar */}
-        <div className={styles.mobileSearchBar}>
-          <input type="text" placeholder="Buscar" />
+        <div className={styles.mobileSearchBar} ref={searchRef}>
+          <input
+            type="text"
+            placeholder="Buscar"
+            value={searchQuery}
+            onChange={handleSearchInputChange}
+            onFocus={() => searchQuery.length >= 2 && setShowResults(true)}
+          />
           <button>
             <Image
               src="/images/buscar.svg"
@@ -111,6 +231,38 @@ const Header13 = () => {
               height={24}
             />
           </button>
+
+          {/* Mobile Search Results Dropdown */}
+          {showResults && searchResults.length > 0 && (
+            <div className={styles.mobileSearchResultsDropdown}>
+              {searchResults.map((product) => (
+                <Link
+                  href={`/product/${product.id}`}
+                  key={product.id}
+                  onClick={() => setShowResults(false)}
+                  className={styles.searchResultItem}
+                >
+                  {product.img && (
+                    <Image
+                      src={product.img}
+                      alt={product.title}
+                      width={40}
+                      height={40}
+                    />
+                  )}
+                  <div className={styles.productInfo}>
+                    <span className={styles.productTitle}>{product.title}</span>
+                    <span className={styles.productPrice}>
+                      {new Intl.NumberFormat("pt-BR", {
+                        style: "currency",
+                        currency: "BRL",
+                      }).format(product.price)}
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </header>
 
@@ -130,41 +282,20 @@ const Header13 = () => {
         </div>
         <nav className={styles.mobileNav}>
           <ul>
-            <li>
-              <Link href="/produtos" onClick={toggleMobileMenu}>
-                Produtos
-              </Link>
-            </li>
-            <li>
-              <Link href="/vestuario" onClick={toggleMobileMenu}>
-                Vestuário
-              </Link>
-            </li>
-            <li>
-              <Link href="/acessorios" onClick={toggleMobileMenu}>
-                Acessórios
-              </Link>
-            </li>
-            <li>
-              <Link href="/calcados" onClick={toggleMobileMenu}>
-                Calçados
-              </Link>
-            </li>
-            <li>
-              <Link href="/sob-encomenda" onClick={toggleMobileMenu}>
-                Sob Encomenda
-              </Link>
-            </li>
-            <li>
-              <Link href="/kids" onClick={toggleMobileMenu}>
-                Kids
-              </Link>
-            </li>
-            <li>
-              <Link href="/comunidade" onClick={toggleMobileMenu}>
-                Comunidade
-              </Link>
-            </li>
+            {isLoading ? (
+              <li>Carregando...</li>
+            ) : (
+              categories.map((category) => (
+                <li key={category.id}>
+                  <Link
+                    href={`/category/${category.slug}`}
+                    onClick={toggleMobileMenu}
+                  >
+                    {category.name}
+                  </Link>
+                </li>
+              ))
+            )}
           </ul>
         </nav>
       </div>
@@ -173,27 +304,17 @@ const Header13 = () => {
       <nav className={`${styles.navWrapper} ${styles.desktopOnly}`}>
         <div className={styles.navContainer}>
           <ul>
-            <li>
-              <Link href="/produtos">Produtos</Link>
-            </li>
-            <li>
-              <Link href="/vestuario">Vestuário</Link>
-            </li>
-            <li>
-              <Link href="/acessorios">Acessórios</Link>
-            </li>
-            <li>
-              <Link href="/calcados">Calçados</Link>
-            </li>
-            <li>
-              <Link href="/sob-encomenda">Sob Encomenda</Link>
-            </li>
-            <li>
-              <Link href="/kids">Kids</Link>
-            </li>
-            <li>
-              <Link href="/comunidade">Comunidade</Link>
-            </li>
+            {isLoading ? (
+              <li>Carregando...</li>
+            ) : (
+              categories.map((category) => (
+                <li key={category.id}>
+                  <Link href={`/category/${category.slug}`}>
+                    {category.name}
+                  </Link>
+                </li>
+              ))
+            )}
           </ul>
         </div>
       </nav>
