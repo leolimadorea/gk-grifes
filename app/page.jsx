@@ -40,6 +40,8 @@ export default async function Page() {
     }
   );
 
+  console.log(res);
+
   if (!res.ok) {
     throw new Error("Erro ao buscar os produtos");
   }

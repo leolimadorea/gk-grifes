@@ -191,7 +191,7 @@ const Header13 = () => {
 
             {/* User Icons */}
             <div className={styles.userIcons}>
-              <Link href="/my-account">
+              {/* <Link href="/my-account">
                 <Image
                   src="/images/user.svg"
                   alt="Minha Conta"
@@ -199,7 +199,7 @@ const Header13 = () => {
                   height={24}
                   className={styles.whiteIcon}
                 />
-              </Link>
+              </Link> */}
               <button onClick={toggleCart} className={styles.cartButton}>
                 <Image
                   src="/images/cart.svg"
